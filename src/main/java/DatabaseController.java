@@ -5,26 +5,24 @@ import java.sql.*;
  */
 public class DatabaseController {
 
+    private String connectionURL = "jdbc:ucanaccess://CinemaPalooza.mdb"; //location of the database.
+
+    public String getConnectionURL() {
+        return connectionURL;
+    }
+
     public DatabaseController() {
 
     }
 
-    public Connection getCon() {
-        try {
-            return DriverManager.getConnection("jdbc:ucanaccess://CinemaPalooza.mdb");
-        } catch (SQLException ex) {
-            System.out.println("Error occured.");
-        }
 
-        return new Connection();
-    }
+
 
     public void setUpConnection() {
-
         try {
-            Connection conn = DriverManager.getConnection("jdbc:ucanaccess://CinemaPalooza.mdb");
+            Connection conn = DriverManager.getConnection(connectionURL);
             Statement s = conn.createStatement();
-            ResultSet rs = s.executeQuery("SELECT Customer_Forename FROM Customer");
+            ResultSet rs = s.executeQuery("SELECT * FROM Customer");
             try {
                 while (rs.next()) {
                     System.out.println(rs.getString(1));
@@ -35,7 +33,5 @@ public class DatabaseController {
         } catch (Exception ex) {
 
         }
-
-
     }
 }
