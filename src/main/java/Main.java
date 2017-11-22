@@ -8,14 +8,12 @@ import DatabaseManagers.User1TestManager;
 public class Main {
     public static void main(String[] args) {
         System.out.println("HELLO WORLD!");
-<<<<<<< HEAD
-        System.out.println("Leni says hello world!");
-=======
 
+        System.out.println("Leni says hello world!");
 
         User1TestManager user1TestManager = new User1TestManager();
      //   user1TestManager.insertIntoUser1();
        // user1TestManager.updateIntoUser1();
->>>>>>> TestingDatabase
+
     }
 }
