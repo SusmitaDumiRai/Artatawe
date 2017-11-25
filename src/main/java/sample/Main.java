@@ -1,9 +1,8 @@
 package sample;
 
-import Database.SQLiteTest;
+import Database.DatabaseManager;
+import Database.UserDatabaseManager;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
@@ -18,17 +17,22 @@ public class Main extends Application {
         BorderPane root = new BorderPane();
         primaryStage.setTitle("Hello World");
         primaryStage.setScene(new Scene(root, 300, 275));
+
+
         primaryStage.show();
     }
 
-
-    /*public static void main(String[] args) {
+/*
+    public static void main(String[] args) {
         launch(args);
-    }*/
+
+    }
+    */
 
     public static void main(String[] args) {
-        SQLiteTest sqLiteTest = new SQLiteTest();
-
-        sqLiteTest.createDatabase();
+        UserDatabaseManager userDatabaseManager = new UserDatabaseManager();
+        userDatabaseManager.createUserTable();
+       // userDatabaseManager.insertIntoTable();
+        userDatabaseManager.selectAll();
     }
 }
