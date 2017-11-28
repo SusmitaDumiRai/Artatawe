@@ -1,5 +1,6 @@
 package co.uk.artatawe.sample;
 
+import co.uk.artatawe.database.ArtworkDatabaseManager;
 import co.uk.artatawe.database.DatabaseManager;
 import co.uk.artatawe.database.UserDatabaseManager;
 import javafx.application.Application;
@@ -30,8 +31,20 @@ public class Main extends Application {
 
     public static void main(String[] args) {
        UserDatabaseManager userDatabaseManager = new UserDatabaseManager();
-       userDatabaseManager.createUserTable();
-       userDatabaseManager.getAllUsers();
+        ArtworkDatabaseManager artworkDatabaseManager = new ArtworkDatabaseManager();
+        //creates table if not exist.
+      //  userDatabaseManager.createUserTable();
+        artworkDatabaseManager.createArtworkTable();
+   //     String sqlInsertArtwork = "INSERT INTO artwork (title, description, photo, nameofcreator, reservedprice, dateentered, bidsallowed, typeofartwork, width, height) values ('title', 'description', 'photo', 'nameofcreator', '10', '12/02/2017', '15', 'painting', '5.5', '6.6' );";
+   //     artworkDatabaseManager.insertIntoTable(sqlInsertArtwork);
+
+        artworkDatabaseManager.getAllArtworks();
+
+        System.out.println("Displaying all users");
+
+
+    //    userDatabaseManager.getAllUsers();
 
     }
 }
+;

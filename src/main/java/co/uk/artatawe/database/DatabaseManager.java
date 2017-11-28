@@ -1,9 +1,6 @@
 package co.uk.artatawe.database;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 
 /**
  * Class that handles creation of database.
@@ -44,6 +41,23 @@ public abstract class DatabaseManager {
             PreparedStatement preparedStatement = connection.prepareStatement(sqlInsertUser);
             preparedStatement.executeUpdate(); //execute SQL statement.
             System.out.println("Successfully added record to database.");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+    }
+
+    /**
+     * Executes SQL statements.
+     * @param sqlStatement statement to be executed.
+     */
+    public void executeStatement(String sqlStatement) {
+
+        try {
+            Connection connection = connect();
+            Statement statement = connection.createStatement();
+            statement.execute(sqlStatement);
+
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }

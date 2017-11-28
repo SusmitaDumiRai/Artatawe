@@ -24,7 +24,7 @@ public class UserDatabaseManager extends  DatabaseManager {
      * Creates table in database if it does not exist.
      */
     public void createUserTable() {
-        String sqlCreateTable = "CREATE TABLE IF NOT EXISTS User(" +
+        String sqlCreateUserTable = "CREATE TABLE IF NOT EXISTS User(" +
                 " username text PRIMARY KEY not null,\n" +
                 " firstname text not null,\n" +
                 " surname text not null,\n" +
@@ -34,14 +34,8 @@ public class UserDatabaseManager extends  DatabaseManager {
                 " lastlogin text not null,\n" +
                 " profileimage text not null, UNIQUE(username));";
 
-        try {
-            Connection connection = connect();
-            Statement statement = connection.createStatement();
-            statement.execute(sqlCreateTable);
+        executeStatement(sqlCreateUserTable);
 
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
 
     }
 

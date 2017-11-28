@@ -57,3 +57,5 @@ String sqlInsertUser = "INSERT INTO user values (" +
                 "'AAA AAA', " +
                 "'2017-12-20T10:12:13'," +
                 "'some string url6');";
+
+String sqlInsertArtwork = "INSERT INTO artwork (title, description, photo, nameofcreator, reservedprice, dateentered, bidsallowed, typeofartwork, width, height) values ('title', 'description', 'photo', 'nameofcreator', '10', '12/02/2017', '15', 'painting', '5.5', '6.6' );"
