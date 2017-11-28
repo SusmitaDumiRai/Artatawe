@@ -1,5 +1,6 @@
 package co.uk.artatawe.database;
 
+import javax.swing.plaf.nimbus.State;
 import java.sql.*;
 
 /**
@@ -7,11 +8,9 @@ import java.sql.*;
  * Allows creation, deletion and updates to be made to user table.
  *
  * @author 908928.
+ * @version 1.0
  */
 public class UserDatabaseManager extends  DatabaseManager {
-    private String fileName = "artatawe.db"; //database file name.
-    private String url = "jdbc:sqlite:" + fileName; //connection url to database.
-
 
     /**
      * Empty constructor.
@@ -33,42 +32,25 @@ public class UserDatabaseManager extends  DatabaseManager {
                 " address text not null,\n" +
                 " postcode text not null,\n" +
                 " lastlogin text not null,\n" +
-                " profileimage text not null);";
-
-    }
-
-    /**
-     * Add some predefined users.
-     */
-
-
-    //TODO: ADD MORE USERS.
-
-    /**
-     * Inserts new user into
-     */
-
-    public void insertIntoTable(String sqlInsertUser) {
+                " profileimage text not null, UNIQUE(username));";
 
         try {
             Connection connection = connect();
-            PreparedStatement preparedStatement = connection.prepareStatement(sqlInsertUser);
-            preparedStatement.executeUpdate(); //execute SQL statement.
-            System.out.println("Successfully added record to database.");
+            Statement statement = connection.createStatement();
+            statement.execute(sqlCreateTable);
+
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
 
-
-
-    }
-
-    public void updateTable() {
-
     }
 
 
-    public void selectAll() {
+    /**
+     * Returns all users in the table.
+     */
+
+    public void getAllUsers() {
         String sqlSelect = "SELECT username," +
                 "firstname," +
                 "surname," +

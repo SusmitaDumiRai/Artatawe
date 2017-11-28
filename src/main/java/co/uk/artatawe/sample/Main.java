@@ -1,5 +1,6 @@
 package co.uk.artatawe.sample;
 
+import co.uk.artatawe.database.DatabaseManager;
 import co.uk.artatawe.database.UserDatabaseManager;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -28,10 +29,9 @@ public class Main extends Application {
     */
 
     public static void main(String[] args) {
-        UserDatabaseManager userDatabaseManager = new UserDatabaseManager();
-        userDatabaseManager.createUserTable();
-        userDatabaseManager.insertIntoTable();
-        userDatabaseManager.selectAll();
+       UserDatabaseManager userDatabaseManager = new UserDatabaseManager();
+       userDatabaseManager.createUserTable();
+       userDatabaseManager.getAllUsers();
 
     }
 }
