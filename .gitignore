@@ -133,3 +133,6 @@ nbdist/
 .nb-gradle/
 
 
+/.classpath
+/.checkstyle
+/.project
