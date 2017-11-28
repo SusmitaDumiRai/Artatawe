@@ -1,7 +1,11 @@
 package sample;
+import Artworks.Artwork;
+
+
 import java.util.*;
+
 public class Auction {
-	
+
 	private int numOfBidsLeft;
 	private boolean auctionComp;
 	private Artwork artwork;
@@ -11,78 +15,74 @@ public class Auction {
 	private Bid highestBid;
 	private ArrayList<Bid> bidsOnArtwork;
 
-	
-	public Auction(User user, Artwork artwork){
+
+	public Auction(User user, Artwork artwork) {
 		this.sellerUsername = user;
 		this.artwork = artwork;
 		this.highestBid = null;
 		this.bidsOnArtwork = new ArrayList<>();
 	}
-	
-	public void decBid(){
-		if(numOfBidsLeft < this.bidsAllowed && numOfBidsLeft != 0) {
+
+	public void decBid() {
+		if (numOfBidsLeft < this.bidsAllowed && numOfBidsLeft != 0) {
 			numOfBidsLeft--;
-		}
-		else{
+		} else {
 			setAuctionComp(auctionComp);
 		}
 	}
-	
-	public Bid addBid(Bid newBid){
-		if(numofBidsLeft < bidsAllowed && numOfBidsLeft != 0){
-			if(Bid.getBidAmount() < highestBid.getBidAmount()){
+
+	public Bid addBid(Bid newBid) {
+		if (numofBidsLeft < bidsAllowed && numOfBidsLeft != 0) {
+			if (Bid.getBidAmount() < highestBid.getBidAmount()) {
 				this.highestBid = newBid;
 				this.bidsOnArtwork.add(newBid);
 				this.decBid();
-			}
-			else{
+			} else {
 				System.out.println("Please enter a bid higher than the current highest bid price");
 			}
 		}
 	}
-	
-	public Artwork getArtwork(){
+
+	public Artwork getArtwork() {
 		return artwork;
 	}
-	
-	public int getNumOfBidsLeft(){
+
+	public int getNumOfBidsLeft() {
 		return numOfBidsLeft;
 	}
-	
-	public User getSeller(){
+
+	public User getSeller() {
 		return sellerUsername;
 	}
-	
-	public User getWinner(){
+
+	public User getWinner() {
 		return winner;
 	}
-	
-	public Bid getHighestBid(){
+
+	public Bid getHighestBid() {
 		return highestBid;
 	}
-	
-	public Bid getBidsOnArtwork(){
+
+	public Bid getBidsOnArtwork() {
 		return bidsOnArtwork;
 	}
-	
-	public void setAuctionComp(){
-		this.auctionComp;
+
+	public void setAuctionComp() {
 		auctionComp = false;
-		if (numOfBidsLeft == 0){
+		if (numOfBidsLeft == 0) {
 			auctionComp = true;
-		}
-		else{
+		} else {
 			auctionComp = false;
 		}
 	}
-	
-	public Boolean getAuctionComp(){
+
+	public Boolean getAuctionComp() {
 		return auctionComp;
 	}
-	
-	public String toString(){
-		String output = "Auction details \nArtwork ID: " + getArtwork().getArtworkID() + "\nArtwork Name: " 
-				+ this.getArtwork().getArtworkTitle() + "\nSeller Username: " + this.sellerUsername.toString() + "/nNumber of Bids Left: " 
+
+	public String toString() {
+		String output = "Auction details \nArtwork ID: " + getArtwork().getArtworkID() + "\nArtwork Name: "
+				+ this.getArtwork().getTitle() + "\nSeller Username: " + this.sellerUsername.toString() + "/nNumber of Bids Left: "
 				+ this.numOfBidsLeft.toString() + "/nHighestBid: " + this.highestBid.toString() + "/nHighest Bidder: " + this.highestBid.getBuyer().getUsername();
 		return output;
 		//SEE HOW JAMES TOSTRINGS HIS INFO TO SEE WHETHER I NEED TO PULL BID AMOUNT

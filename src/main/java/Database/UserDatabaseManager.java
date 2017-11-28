@@ -47,7 +47,7 @@ public class UserDatabaseManager extends  DatabaseManager {
     /**
      * {@inheritDoc}
      */
-    @Override
+
     public void insertIntoTable() {
         String sqlInsertUser = "INSERT INTO user values (" +
                 "'BuyGymMem'," +
@@ -58,6 +58,8 @@ public class UserDatabaseManager extends  DatabaseManager {
                 "'S2A NDD', " +
                 "'2017-01-01T10:10:10'," +
                 "'some string url');";
+
+
         try {
             Connection connection = connect();
             PreparedStatement preparedStatement = connection.prepareStatement(sqlInsertUser);
@@ -71,18 +73,11 @@ public class UserDatabaseManager extends  DatabaseManager {
 
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
     public void updateTable() {
 
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
+
     public void selectAll() {
         String sqlSelect = "SELECT username," +
                 "firstname," +

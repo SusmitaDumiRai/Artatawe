@@ -33,5 +33,6 @@ public class Main extends Application {
         userDatabaseManager.createUserTable();
        // userDatabaseManager.insertIntoTable();
         userDatabaseManager.selectAll();
+
     }
 }
