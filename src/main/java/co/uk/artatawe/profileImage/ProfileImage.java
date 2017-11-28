@@ -1,4 +1,4 @@
-package ProfileImage;
+package co.uk.artatawe.profileImage;
 
 import javafx.scene.canvas.GraphicsContext;
 
@@ -29,7 +29,9 @@ public abstract class ProfileImage {
         position[Y_INDEX] = posY;
     }
 
-
+    /**
+     * TODO comments
+     */
     public int[] getDimension() {
         return dimension;
     }
@@ -50,5 +52,5 @@ public abstract class ProfileImage {
     }
 
     //Unsure on the type of graphics input.
-    public abstract void drawProileImage(GraphicsContext g);
+    public abstract void drawProfileImage(GraphicsContext g);
 }

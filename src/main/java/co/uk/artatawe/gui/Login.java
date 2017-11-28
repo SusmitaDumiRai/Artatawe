@@ -1,9 +1,8 @@
-package GUI;/**
+package co.uk.artatawe.gui;/**
  * Created by Plamena on 27.11.2017 г..
  */
 
 import javafx.application.Application;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;

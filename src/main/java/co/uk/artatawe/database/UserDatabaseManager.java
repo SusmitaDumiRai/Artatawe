@@ -1,4 +1,4 @@
-package Database;
+package co.uk.artatawe.database;
 
 import java.sql.*;
 

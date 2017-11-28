@@ -1,6 +1,7 @@
-package Artworks;
+package co.uk.artatawe.artwork;
 
 /**
+ * @TODO leni add something
  * Created by Plamena on 27.11.2017
  */
 public class Artwork {

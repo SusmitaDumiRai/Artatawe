@@ -1,10 +1,11 @@
-package sample;
+package co.uk.artatawe.sample;
 
-import Artworks.Artwork;
-
-
+import co.uk.artatawe.artwork.Artwork;
 import java.util.*;
 
+/**
+ * @TODO add comments. Fix with bid when possible.
+ */
 public class Auction {
 
     private int numOfBidsLeft;
@@ -21,7 +22,7 @@ public class Auction {
         this.sellerUsername = user;
         this.artwork = artwork;
         this.highestBid = null;
-        this.bidsOnArtwork = new ArrayList<>();
+        this.bidsOnArtwork = new ArrayList<>(); //TODO what array list type?
     }
 
     public void decBid() {
@@ -83,7 +84,7 @@ public class Auction {
 
     public String toString() {
         String output = "Auction details \nArtwork ID: " + getArtwork().getArtworkID() + "\nArtwork Name: "
-                + this.getArtwork().getTitle() + "\nSeller Username: " + this.sellerUsername.toString() + "/nNumber of Bids Left: "
+                + this.getArtwork().getTitle() + "\nSeller Username: " + this.sellerUsername + "/nNumber of Bids Left: "
                 + this.numOfBidsLeft.toString() + "/nHighestBid: " + this.highestBid.toString() + "/nHighest Bidder: " + this.highestBid.getBuyer().getUsername();
         return output;
         //SEE HOW JAMES TOSTRINGS HIS INFO TO SEE WHETHER I NEED TO PULL BID AMOUNT

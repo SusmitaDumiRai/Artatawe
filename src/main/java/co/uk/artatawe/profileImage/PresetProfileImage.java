@@ -1,7 +1,9 @@
-package ProfileImage;
+package co.uk.artatawe.profileImage;
 
 import javafx.scene.canvas.GraphicsContext;
-
+/**
+ * TODO comments
+ */
 public class PresetProfileImage extends ProfileImage {
 
     public PresetProfileImage(int dimX, int dimY, int posX, int posY) {
@@ -9,7 +11,7 @@ public class PresetProfileImage extends ProfileImage {
     }
 
     @Override
-    public void drawProileImage(GraphicsContext g) {
+    public void drawProfileImage(GraphicsContext g) {
 
     }
 

@@ -1,15 +1,17 @@
-package sample;
+package co.uk.artatawe.sample;
+
+import co.uk.artatawe.profileImage.ProfileImage;
+import java.util.ArrayList;
+
+
 
 /**
  * The class handles information about a user.
  * @author Tihomir Trendafilov
  * @version 1.0
  */
-
-import java.util.ArrayList;
-import ProfileImage.ProfileImage;
-
 public class User {
+
     private String userName;
     private String firstName;
     private String surname;
@@ -19,10 +21,6 @@ public class User {
     private String lastLogin;
     private ArrayList<User> favouriteUsers = new ArrayList<User>();
     private ProfileImage profileImage;
-
-    public User() {
-
-    }
 
     public User(String userName, String firstName, String surname,
                 String phoneNumber, String address, String postcode,
@@ -44,8 +42,6 @@ public class User {
      */
     public void addFavouriteUser(User user) {
         favouriteUsers.add(user);
-
-
     }
 
     /**
@@ -98,6 +94,5 @@ public class User {
 
     //no display methods
     //no addAuciton method
-
 
 }

@@ -1,4 +1,4 @@
-package Artworks;
+package co.uk.artatawe.artwork;
 
 import java.util.ArrayList;
 

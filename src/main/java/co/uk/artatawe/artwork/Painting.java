@@ -1,4 +1,4 @@
-package Artworks;
+package co.uk.artatawe.artwork;
 
 /**
  * Created by Plamena on 27.11.2017

@@ -1,5 +1,7 @@
-package ProfileImage;
-
+package co.uk.artatawe.profileImage;
+/**
+ * TODO comments
+ */
 public enum PresetImage {
     IMAGE1(""),
     IMAGE2(""),

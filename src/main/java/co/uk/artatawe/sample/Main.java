@@ -1,7 +1,6 @@
-package sample;
+package co.uk.artatawe.sample;
 
-import Database.DatabaseManager;
-import Database.UserDatabaseManager;
+import co.uk.artatawe.database.UserDatabaseManager;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
@@ -13,7 +12,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-    //    Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+    //    Parent root = FXMLLoader.load(getClass().getResource("co.uk.artatawe.sample.fxml"));
         BorderPane root = new BorderPane();
         primaryStage.setTitle("Hello World");
         primaryStage.setScene(new Scene(root, 300, 275));
