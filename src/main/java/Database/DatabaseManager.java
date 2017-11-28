@@ -31,19 +31,4 @@ public abstract class DatabaseManager {
 
         return connection;
     }
-
-    /**
-     * Insert new record into the table.
-     */
-    abstract void insertIntoTable();
-
-    /**
-     * Update pre-existing information in table.
-     */
-    abstract void updateTable();
-
-    /**
-     * Select all possible rows from table.
-     */
-    abstract void selectAll();
 }

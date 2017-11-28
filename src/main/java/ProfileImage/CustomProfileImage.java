@@ -1,4 +1,5 @@
-package sample;
+package ProfileImage;
+
 
 import javafx.scene.canvas.GraphicsContext;
 
