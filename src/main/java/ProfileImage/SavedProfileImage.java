@@ -1,10 +1,10 @@
-package sample;
+package ProfileImage;
 
 import javafx.scene.canvas.GraphicsContext;
 
-public class CustomProfileImage extends ProfileImage {
+public class SavedProfileImage extends ProfileImage {
 
-	public CustomProfileImage(int dimX, int dimY, int posX, int posY) {
+	public SavedProfileImage(int dimX, int dimY, int posX, int posY) {
 		super(dimX, dimY, posX, posY);
 	}
 

@@ -1,4 +1,4 @@
-package sample;
+package ProfileImage;
 
 public enum PresetImage {
 	IMAGE1(""),
