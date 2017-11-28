@@ -45,20 +45,10 @@ public class UserDatabaseManager extends  DatabaseManager {
     //TODO: ADD MORE USERS.
 
     /**
-     * {@inheritDoc}
+     * Inserts new user into
      */
 
-    public void insertIntoTable() {
-        String sqlInsertUser = "INSERT INTO user values (" +
-                "'BuyGymMem'," +
-                "'Adam'," +
-                "'Taylor'," +
-                "'07412111111'," +
-                "'123 Fake Street'," +
-                "'S2A NDD', " +
-                "'2017-01-01T10:10:10'," +
-                "'some string url');";
-
+    public void insertIntoTable(String sqlInsertUser) {
 
         try {
             Connection connection = connect();

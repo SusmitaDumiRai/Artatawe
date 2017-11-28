@@ -10,6 +10,8 @@ import java.util.ArrayList;
  * @author Tihomir Trendafilov
  * @version 1.0
  */
+
+//todo add tostring
 public class User {
 
     private String userName;
