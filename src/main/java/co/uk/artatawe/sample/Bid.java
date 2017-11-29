@@ -1,4 +1,4 @@
-package co.uk.artatawe.bid;
+package co.uk.artatawe.sample;
 
 /**
  * creates bid object
@@ -8,7 +8,7 @@ package co.uk.artatawe.bid;
 public class Bid {
 
     //should be type User but causes an error as there's no User class yet
-    private String buyer;
+    private User buyer;
     private double bidAmount;
     private String dateAndTime;
 
@@ -19,7 +19,7 @@ public class Bid {
      * @param bidAmount
      * @param dateAndTime
      */
-    public Bid(String buyer, double bidAmount, String dateAndTime) {
+    public Bid(User buyer, double bidAmount, String dateAndTime) {
         this.buyer = buyer;
         this.bidAmount = bidAmount;
         this.dateAndTime = dateAndTime;
@@ -30,7 +30,7 @@ public class Bid {
      * gets the user that placed the bid
      * @return buyer
      */
-    public String getBuyer() {
+    public User getBuyer() {
         return buyer;
     }
 
