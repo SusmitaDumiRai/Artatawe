@@ -5,6 +5,7 @@ import java.util.*;
 
 /**
  * TODO add comments. Fix with bid when possible.
+ * TODO  add auctionID
  */
 public class Auction {
 

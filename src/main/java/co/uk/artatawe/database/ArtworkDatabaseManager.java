@@ -44,6 +44,7 @@ public class ArtworkDatabaseManager extends DatabaseManager {
 
     }
 
+    //currently does not support extra functionalities of
     public void getAllArtworks() {
         String sqlSelect = "SELECT artworkid," +
                 "title," +
@@ -70,6 +71,7 @@ public class ArtworkDatabaseManager extends DatabaseManager {
                         resultSet.getString("photo") + "\t" +
                         resultSet.getString("nameOfCreator") + "\t" +
                         resultSet.getDouble("reservedPrice") + "\t" +
+                        resultSet.getString("dateEntered") + "\t" +
                         resultSet.getInt("bidsAllowed") + "\t" +
                         resultSet.getString("typeOfArtwork") + "\t" +
                         resultSet.getDouble("width") + "\t" +

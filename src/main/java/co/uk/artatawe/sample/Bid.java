@@ -1,20 +1,23 @@
 package co.uk.artatawe.sample;
 
 /**
- * creates bid object
- * utilizes bidFileManager to store bid obj in txt file
+ * Creates bid object.
+ * Utilizes bidFileManager to store bid obj in txt file.
  */
 
 public class Bid {
 
-    //should be type User but causes an error as there's no User class yet
+    //TODO add bid id variable
+    //TODO add auction id variable
+
     private User buyer;
     private double bidAmount;
     private String dateAndTime;
 
 
     /**
-     * constructor for bid
+     * Constructor for bid.
+     * TODO needs more info here for the params
      * @param buyer
      * @param bidAmount
      * @param dateAndTime
@@ -27,7 +30,7 @@ public class Bid {
     }
 
     /**
-     * gets the user that placed the bid
+     * Gets the user that placed the bid.
      * @return buyer
      */
     public User getBuyer() {
@@ -35,7 +38,7 @@ public class Bid {
     }
 
     /**
-     * gets the amount that the user bid on the auction
+     * Gets the amount that the user bid on the auction.
      * @return bidAmount
      */
     public double getBidAmount() {
@@ -43,7 +46,7 @@ public class Bid {
     }
 
     /**
-     * gets the date and time that the bid was placed
+     * Gets the date and time that the bid was placed.
      * @return dateAndTime
      */
     public String getDateAndTime() {
