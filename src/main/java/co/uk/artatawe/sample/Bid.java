@@ -54,7 +54,7 @@ public class Bid {
     }
 
     //add method to give bid obj to bidFileManager
-
+    // add a toString method
 
 
 }
