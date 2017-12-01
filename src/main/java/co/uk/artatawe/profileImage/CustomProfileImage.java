@@ -1,9 +1,8 @@
-
 package co.uk.artatawe.profileImage;
-/**
- * TODO comments
- */
 
+import java.util.ArrayList;
+
+import javafx.scene.Parent;
 import javafx.scene.canvas.GraphicsContext;
 
 /**
@@ -13,24 +12,27 @@ import javafx.scene.canvas.GraphicsContext;
  * @version 1.0
  */
 public class CustomProfileImage extends ProfileImage {
-
+	//The list of components that create the custom profile image.
+	private ArrayList<ProfileImageComponent> component; 
+	
 	/**
-	 * Creates a custom profile image.
-	 * @param dimX The width of the profile image.
-	 * @param dimY The height of the profile image. 
+	 * Creates a blank custom profile image.
+	 * @param size The size of the profile image, which is square.
 	 * @param posX The x position of the center of the profile image.
 	 * @param posY The y position of the center of the profile image.	
 	 */
-	public CustomProfileImage(int dimX, int dimY, int posX, int posY) {
-		super(dimX, dimY, posX, posY);
+	public CustomProfileImage(int size, int posX, int posY) {
+		super(size, posX, posY);
 	}
 
-
-    @Override
-    public void drawProfileImage(GraphicsContext g) {
-
-
-    }
+	/**
+	 * Adds a component to the custom profile image.
+	 * @param component the component to be added to the custom profile image.
+	 */
+	public void addComponent(ProfileImageComponent component) {
+		this.component.add(component);
+	}
+	
     /**
      * Converts a saved profile image to a string.
      */
@@ -39,6 +41,10 @@ public class CustomProfileImage extends ProfileImage {
         result += super.toString();
         return result;
     }
+    
+    @Override
+    public void displayProfileImage(Parent p) {
 
 
+    }  
 }

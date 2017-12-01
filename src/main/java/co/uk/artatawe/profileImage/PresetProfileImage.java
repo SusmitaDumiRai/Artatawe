@@ -1,11 +1,9 @@
 package co.uk.artatawe.profileImage;
+
+import javafx.scene.Parent;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
-
-/**
- * TODO comments
-
-
+import javafx.scene.image.ImageView;
 
 /**
  * The attributes and behaviours of a preset profile image.
@@ -19,15 +17,14 @@ public class PresetProfileImage extends ProfileImage {
 	
 	/**
 	 * Creates a preset profile image.
-	 * @param dimX The width of the profile image.
-	 * @param dimY The height of the profile image. 
+	 * @param size The size of the profile image, which is square.
 	 * @param posX The x position of the center of the profile image.
 	 * @param posY The y position of the center of the profile image.	
 	 * @param presetImage The selected preset profile image.
 	 */
-	public PresetProfileImage(int dimX, int dimY, int posX, int posY, 
+	public PresetProfileImage(int size, int posX, int posY, 
 			PresetImage presetImage) {
-		super(dimX, dimY, posX, posY);
+		super(size, posX, posY);
 		this.presetImage = presetImage;
 	}
 
@@ -65,10 +62,18 @@ public class PresetProfileImage extends ProfileImage {
 		return result;
 	}
 
+	/**
+	 * This should display a preset profile image.
+	 * @param p The parent scene object the image is being displayed on.
+	 */
 	@Override
-        public void drawProfileImage(GraphicsContext g) {
-
-        }
+    public void displayProfileImage(Parent p) {
+		ImageView imageView1 = new ImageView();
+		imageView1.setImage(getImage());
+		imageView1.setFitWidth(getSize());
+		imageView1.setFitHeight(getSize());
+		p.getChildrenUnmodifiable().add(imageView1);
+    }
 
 
 }

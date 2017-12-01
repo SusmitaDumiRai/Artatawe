@@ -1,10 +1,8 @@
-
 package co.uk.artatawe.profileImage;
 
+import javafx.scene.Parent;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
-
-
 
 /**
  * The attributes and behaviours of a saved profile image.
@@ -17,15 +15,14 @@ public class SavedProfileImage extends ProfileImage {
 	
 	/**
 	 * Creates a saved profile image.
-	 * @param dimX The width of the profile image.
-	 * @param dimY The height of the profile image. 
+	 * @param size The size of the profile image, which is square.
 	 * @param posX The x position of the center of the profile image.
 	 * @param posY The y position of the center of the profile image.	
 	 * @param fileName The filename of the saved profile image.
 	 */
-	public SavedProfileImage(int dimX, int dimY, int posX, int posY, 
+	public SavedProfileImage(int size, int posX, int posY, 
 			String fileName) {
-		super(dimX, dimY, posX, posY);
+		super(size, posX, posY);
 		this.profileImage = new Image(fileName);
 	}
 	
@@ -56,17 +53,7 @@ public class SavedProfileImage extends ProfileImage {
 	}
 	
 	@Override
-	public void drawProfileImage(GraphicsContext g) {
-        }
-
-
-    public SavedProfileImage(int dimX, int dimY, int posX, int posY) {
-        super(dimX, dimY, posX, posY);
-    }
-
-
-
-
-
-
+	public void displayProfileImage(Parent p) {
+    
+	}
 }
