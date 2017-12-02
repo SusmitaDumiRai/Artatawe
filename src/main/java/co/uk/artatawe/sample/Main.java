@@ -41,6 +41,7 @@ public class Main extends Application {
         artworkDatabaseManager.getAllArtworks();
 
         System.out.println("Displaying all users");
+        //this is a changed comment. this can be deleted.
 
 
     //    userDatabaseManager.getAllUsers();
