@@ -15,9 +15,9 @@ import java.util.*;
  */
 public class Auction {
 
+	private Bid bid;
     private int numOfBidsLeft;
     private boolean auctionComp;
-    private Bid bid;
     private Artwork artwork;
     private User sellerUsername;
     private User winner;
@@ -52,15 +52,21 @@ public class Auction {
      * @param newBid - a new bid which is placed
      */
     public void addBid(Bid newBid) {
-        if (numOfBidsLeft < artwork.getBidsAllowed() && numOfBidsLeft != 0) {
-            if (bid.getBidAmount() < highestBid.getBidAmount()) {
-                this.highestBid = newBid;
-                this.bidsOnArtwork.add(newBid);
-                this.decBid();
-            } else {
-                System.out.println("Please enter a higher bid");
-            }
-        }
+    	if (bid.getBidAmount() > artwork.getReservedPrice()) {
+    		if (numOfBidsLeft < artwork.getBidsAllowed() 
+    				&& numOfBidsLeft != 0) {
+    			if (bid.getBidAmount() < highestBid.getBidAmount()) {
+    				this.highestBid = newBid;
+    				this.bidsOnArtwork.add(newBid);
+    				this.decBid();
+                } else {
+                	System.out.println("Please enter a higher bid");
+                }
+    		}
+    	} else {
+    		System.out.println("Please enter a bid higher than the" +
+    	           "reserve price");
+    	}
     }
 
     /**
@@ -150,9 +156,9 @@ public class Auction {
                 + this.sellerUsername + "/nNumber of Bids Left: "
                 + numOfBidsLeft + "/nHighestBid: " + this.highestBid.toString()
                 + "/nHighest Bidder: "
-                + this.highestBid.getBuyer().getUserName();
+                + this.highestBid.getBuyer().getUserName()
+        		+ bid.toString();
         return output;
-        //SEE HOW JAMES TOSTRINGS HIS INFO TO SEE WHETHER I NEED TO PULL BID AMOUNT
     }
 
 }
