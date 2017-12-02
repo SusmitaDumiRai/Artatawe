@@ -1,5 +1,6 @@
 package co.uk.artatawe.database;
 
+import javax.swing.plaf.nimbus.State;
 import java.sql.*;
 
 /**
@@ -7,11 +8,9 @@ import java.sql.*;
  * Allows creation, deletion and updates to be made to user table.
  *
  * @author 908928.
+ * @version 1.0
  */
 public class UserDatabaseManager extends  DatabaseManager {
-    private String fileName = "artatawe.db"; //database file name.
-    private String url = "jdbc:sqlite:" + fileName; //connection url to database.
-
 
     /**
      * Empty constructor.
@@ -25,7 +24,7 @@ public class UserDatabaseManager extends  DatabaseManager {
      * Creates table in database if it does not exist.
      */
     public void createUserTable() {
-        String sqlCreateTable = "CREATE TABLE IF NOT EXISTS User(" +
+        String sqlCreateUserTable = "CREATE TABLE IF NOT EXISTS User(" +
                 " username text PRIMARY KEY not null,\n" +
                 " firstname text not null,\n" +
                 " surname text not null,\n" +
@@ -33,52 +32,19 @@ public class UserDatabaseManager extends  DatabaseManager {
                 " address text not null,\n" +
                 " postcode text not null,\n" +
                 " lastlogin text not null,\n" +
-                " profileimage text not null);";
+                " profileimage text not null, UNIQUE(username));";
+
+        executeStatement(sqlCreateUserTable);
+
 
     }
+
 
     /**
-     * Add some predefined users.
+     * Returns all users in the table.
      */
 
-
-    //TODO: ADD MORE USERS.
-
-    /**
-     * {@inheritDoc}
-     */
-
-    public void insertIntoTable() {
-        String sqlInsertUser = "INSERT INTO user values (" +
-                "'BuyGymMem'," +
-                "'Adam'," +
-                "'Taylor'," +
-                "'07412111111'," +
-                "'123 Fake Street'," +
-                "'S2A NDD', " +
-                "'2017-01-01T10:10:10'," +
-                "'some string url');";
-
-
-        try {
-            Connection connection = connect();
-            PreparedStatement preparedStatement = connection.prepareStatement(sqlInsertUser);
-            preparedStatement.executeUpdate(); //execute SQL statement.
-            System.out.println("Successfully added record to database.");
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-
-
-
-    }
-
-    public void updateTable() {
-
-    }
-
-
-    public void selectAll() {
+    public void getAllUsers() {
         String sqlSelect = "SELECT username," +
                 "firstname," +
                 "surname," +
