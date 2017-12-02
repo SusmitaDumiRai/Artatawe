@@ -29,9 +29,9 @@ public class UserDatabaseManager extends  DatabaseManager {
                 " firstname text not null,\n" +
                 " surname text not null,\n" +
                 " phonenumber text not null,\n" +
-                " address text not null,\n" +
+                " address text not null,\n" + //first line of address - number + street name.
                 " postcode text not null,\n" +
-                " lastlogin text not null,\n" +
+                " lastlogin text not null,\n" + //date time of last login.
                 " profileimage text not null, UNIQUE(username));";
 
         executeStatement(sqlCreateUserTable);

@@ -10,19 +10,25 @@ package co.uk.artatawe.database;
 public class BidDatabaseManager extends DatabaseManager {
 
     /**
+     * Empty constructor.
+     */
+    public BidDatabaseManager() {
+
+    }
+
+    /**
      * Creates bid table if not exist.
      */
     public void createBidTable() {
         String sqlCreateBidTable = "CREATE TABLE IF NOT EXISTS bid( " +
                 "bidID INTEGER PRIMARY KEY not null,\n" +
-                "auctionID integer NOT NULL" +
-                "buyer text not null," +
+                "buyer text not null," + //username of buyer.
                 " bidAmount real not null," +
-                " dateAndTime text not null," +
-                "foreign key (auctionid) references auction (auctionid));";
+                " dateAndTime text not null" + //date and time of bid made.
+                ");";
 
         executeStatement(sqlCreateBidTable);
-
-
     }
+
+
 }

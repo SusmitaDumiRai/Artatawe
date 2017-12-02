@@ -35,8 +35,7 @@ public class Main extends Application {
         //creates table if not exist.
         //  userDatabaseManager.createUserTable();
         artworkDatabaseManager.createArtworkTable();
-        //     String sqlInsertArtwork = "INSERT INTO artwork (title, description, photo, nameofcreator, reservedprice, dateentered, bidsallowed, typeofartwork, width, height) values ('title', 'description', 'photo', 'nameofcreator', '10', '12/02/2017', '15', 'painting', '5.5', '6.6' );";
-        //     artworkDatabaseManager.insertIntoTable(sqlInsertArtwork);
+
 
         artworkDatabaseManager.getAllArtworks();
 
