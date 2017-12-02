@@ -63,7 +63,7 @@
                         <ColorAdjust brightness="1.0" />
                      </effect>
                      <image>
-                        <Image url="@Icons/icons8-binoculars-40%20(4).png" />
+                        <Image url="@Icons/icons8-binoculars-40%20.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -108,7 +108,7 @@
                         <ColorAdjust brightness="1.0" />
                      </effect>
                      <image>
-                        <Image url="@Icons/icons8-hourglass-40%20(1).png" />
+                        <Image url="@Icons/icons8-hourglass-40%20.png" />
                      </image>
                   </ImageView>
                </graphic>
