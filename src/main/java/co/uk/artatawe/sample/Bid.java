@@ -1,26 +1,24 @@
 package co.uk.artatawe.sample;
 
+import co.uk.artatawe.artwork.Artwork;
+
 /**
  * Creates bid object.
- * Utilizes bidFileManager to store bid obj in txt file.
  */
 
 public class Bid {
 
-    //TODO add bid id variable
-    //TODO add auction id variable
-
     private User buyer;
     private double bidAmount;
     private String dateAndTime;
+    private int bidID;
 
 
     /**
      * Constructor for bid.
-     * TODO needs more info here for the params
-     * @param buyer
-     * @param bidAmount
-     * @param dateAndTime
+     * @param buyer The User that placed the bid.
+     * @param bidAmount The amount that the user bid.
+     * @param dateAndTime The date and time that the bid was placed.
      */
     public Bid(User buyer, double bidAmount, String dateAndTime) {
         this.buyer = buyer;
@@ -53,9 +51,23 @@ public class Bid {
         return dateAndTime;
     }
 
-    //add method to give bid obj to bidFileManager
-    // add a toString method
+    /**
+     * Gets the ID of the bid.
+     * @return bidID
+     */
+    public int getBidID(){
+        return bidID;
+    }
 
+    @Override
+    public String toString(){
+        return "Bid: " +
+                "User='" + buyer +
+                ",bidID='" + bidID +
+                ",amount bid='" + bidAmount +
+                ",date and time='" + dateAndTime +
+                ",artwork bid on='" + artworkID;
+    }
 
 }
 
