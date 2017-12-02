@@ -28,10 +28,12 @@ public class Main extends Application {
     */
 
     public static void main(String[] args) {
+
         UserDatabaseManager userDatabaseManager = new UserDatabaseManager();
         userDatabaseManager.createUserTable();
        // userDatabaseManager.insertIntoTable();
         userDatabaseManager.selectAll();
+
 
     }
 }
