@@ -52,17 +52,15 @@ public class Auction {
      * @param newBid - a new bid which is placed
      */
     public void addBid(Bid newBid) {
-    	if (bid.getBidAmount() > artwork.getReservedPrice()) {
-    		if (numOfBidsLeft < artwork.getBidsAllowed() 
-    				&& numOfBidsLeft != 0) {
-    			if (bid.getBidAmount() < highestBid.getBidAmount()) {
+    	if (this.bidsOnArtwork.size() == 0 && newBid.getBidAmount() > artwork.getReservedPrice()) {
+    		this.bidsOnArtwork.add(newBid);
+    		this.decBid();
+    	}
+    	else if (newBid.getBidAmount() > this.highestBid.getBidAmount() && 
+    			this.bidsOnArtwork.size() <= this.numOfBidsLeft) {
     				this.highestBid = newBid;
     				this.bidsOnArtwork.add(newBid);
     				this.decBid();
-                } else {
-                	System.out.println("Please enter a higher bid");
-                }
-    		}
     	} else {
     		System.out.println("Please enter a bid higher than the" +
     	           "reserve price");
