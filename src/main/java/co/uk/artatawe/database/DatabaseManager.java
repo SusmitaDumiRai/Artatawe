@@ -32,13 +32,13 @@ public abstract class DatabaseManager {
 
     /**
      * Inserts new row into a table in the database.
-     * @param sqlInsertUser insert SQL statement.
+     * @param sqlInsert insert SQL statement.
      */
-    public void insertIntoTable(String sqlInsertUser) {
+    public void insertIntoTable(String sqlInsert) {
 
         try {
             Connection connection = connect();
-            PreparedStatement preparedStatement = connection.prepareStatement(sqlInsertUser);
+            PreparedStatement preparedStatement = connection.prepareStatement(sqlInsert);
             preparedStatement.executeUpdate(); //execute SQL statement.
             System.out.println("Successfully added record to database.");
         } catch (SQLException ex) {

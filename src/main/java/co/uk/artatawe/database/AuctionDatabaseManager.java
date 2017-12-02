@@ -33,7 +33,5 @@ public class AuctionDatabaseManager extends DatabaseManager {
                 "foreign key (bidID) references bid (bidid));";
 
         executeStatement(sqlCreateAuctionTable);
-
-
     }
 }

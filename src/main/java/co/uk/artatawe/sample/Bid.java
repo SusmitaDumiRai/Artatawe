@@ -55,14 +55,14 @@ public class Bid {
      * Gets the ID of the bid.
      * @return bidID
      */
-    public int getBidID(){
+    public int getBidID() {
         return bidID;
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return "Bid: " +
-                "User='" + buyer +
+                "User='" + buyer.getUserName() +
                 ",bidID='" + bidID +
                 ",amount bid='" + bidAmount +
                 ",date and time='" + dateAndTime;
