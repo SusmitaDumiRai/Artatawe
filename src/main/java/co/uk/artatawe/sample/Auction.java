@@ -62,8 +62,7 @@ public class Auction {
     				this.bidsOnArtwork.add(newBid);
     				this.decBid();
     	} else {
-    		System.out.println("Please enter a bid higher than the" +
-    	           "reserve price");
+    		System.out.println("There was an error placing the following bid:" + newBid.toString());
     	}
     }
 
