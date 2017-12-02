@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
@@ -10,35 +11,32 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.uk.artatawe.gui.login.Login">
-   <children>
-      <SplitPane disable="true" dividerPositions="0.5201005025125628" layoutX="140.0" layoutY="69.0" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
-               <children>
-                  <ImageView fitHeight="160.0" fitWidth="600.0" layoutY="73.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="43.0">
-                     <image>
-                        <Image url="@../../../../../../../../../../Javafxml/bob-dylan-paints-exhibit-03.jpg" />
-                     </image>
-                  </ImageView>
-                  <Label alignment="CENTER" disable="true" layoutX="175.0" layoutY="67.0" opacity="0.97" prefHeight="70.0" prefWidth="250.0" text="ARTATAWE" textAlignment="CENTER" textFill="WHITE" underline="true" AnchorPane.leftAnchor="175.0" AnchorPane.topAnchor="80.0">
-                     <font>
-                        <Font size="48.0" />
-                     </font>
-                  </Label>
-               </children>
-            </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
-               <children>
-                  <TextField layoutX="206.0" layoutY="-1.0" AnchorPane.bottomAnchor="156.0" AnchorPane.topAnchor="0.0" />
-                  <Label layoutX="117.0" layoutY="2.0" opacity="0.95" prefHeight="27.0" prefWidth="89.0" text="User Name" AnchorPane.bottomAnchor="158.0" AnchorPane.leftAnchor="117.0" AnchorPane.rightAnchor="392.0">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Button layoutX="328.0" layoutY="31.0" mnemonicParsing="false" opacity="0.72" text="Sign in" />
-               </children></AnchorPane>
-        </items>
-      </SplitPane>
-   </children>
-</AnchorPane>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <Pane prefHeight="200.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="160.0" fitWidth="500.0" layoutY="50.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../../../../../../../../../../Javafxml/bob-dylan-paints-exhibit-03.jpg" />
+               </image>
+            </ImageView>
+            <Label layoutX="160.0" layoutY="104.0" text="ARTATAWE" textFill="WHITE" underline="true">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+         </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+      </Pane>
+   </top>
+   <center>
+      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <TextField layoutX="157.0" layoutY="-8.0" promptText="Type in user name" />
+            <Button layoutX="276.0" layoutY="29.0" mnemonicParsing="false" opacity="0.67" prefHeight="25.0" prefWidth="67.0" text="Sign in" />
+         </children>
+      </Pane>
+   </center>
+</BorderPane>
