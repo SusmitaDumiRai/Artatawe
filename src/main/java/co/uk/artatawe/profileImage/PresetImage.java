@@ -1,9 +1,6 @@
 package co.uk.artatawe.profileImage;
-import javafx.scene.image.Image;
-/**
- * TODO comments
- */
 
+import javafx.scene.image.Image;
 
 /**
  * The attributes and behaviours of a collection of preset images.

@@ -1,48 +1,37 @@
 package co.uk.artatawe.profileImage;
 
-import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.Parent;
 
 /**
  * The attributes and behaviours of a profile image.
  * 
  * @author Adam Taylor
- * @version 1.1
+ * @version 1.2
  */
 public abstract class ProfileImage {
 	public static final int X_INDEX = 0; //The index of x in an array.
 	public static final int Y_INDEX = 1; //The index of y in an array.
-	private int[] dimension; //The height and width of the profile image.
+	private int size; //The size of the profile image, which is square.
 	private int[] position; //The x, y position of center of profile image.
 	
 	/**
 	 * Creates a profile image.
-	 * @param dimX The width of the profile image.
-	 * @param dimY The height of the profile image. 
+	 * @param size The size of the profile image, which is square.
 	 * @param posX The x position of the center of the profile image.
 	 * @param posY The y position of the center of the profile image.
 	 */
-	public ProfileImage(int dimX, int dimY, int posX, int posY) {
-		dimension[X_INDEX] = dimX;
-		dimension[Y_INDEX] = dimY;
+	public ProfileImage(int size, int posX, int posY) {
+		this.size = size;
 		position[X_INDEX] = posX;
 		position[Y_INDEX] = posY;
 	}
 
-
 	/**
-	 * Gets the width of the profile image.
-	 * @return The width of the profile image.
+	 * Gets the size of the profile image, which is square.
+	 * @return The size of the profile image.
 	 */
-	public int getWidth() {
-		return dimension[X_INDEX];
-	}
-	
-	/**
-	 * Gets the height of the profile image.
-	 * @return The height of the profile image.
-	 */
-	public int getHeight() {
-		return dimension[Y_INDEX];
+	public int getSize() {
+		return size;
 	}
 	
 	/**
@@ -62,19 +51,11 @@ public abstract class ProfileImage {
 	}
 	
 	/**
-	 * Resets the width of the profile image.
-	 * @param width The width of the profile image.
+	 * Resets the size of the profile image.
+	 * @param width The size of the profile image.
 	 */
-	public void setWidth(int width) {
-		this.dimension[X_INDEX] = width;
-	}
-	
-	/**
-	 * Resets the height of the profile image.
-	 * @param height The height of the profile image.
-	 */
-	public void setHeight(int height) {
-		this.dimension[Y_INDEX] = height;
+	public void setSize(int size) {
+		this.size = size;
 	}
 	
 	/**
@@ -98,14 +79,13 @@ public abstract class ProfileImage {
 	 */
 	public String toString() {
 		String result = "";
-		result += "Height:\t" + getHeight() + "\n";
-		result += "Width:\t" + getWidth() + "\n";
+		result += "Size:\t" + getSize() + "\n";
 		result += "X Position:\t" + getXPosition() + "\n";
 		result += "Y Position:\t" + getYPosition() + "\n";
 		return result;
 	}
 	
 	//Unsure on the type of graphics input.
-	public abstract void drawProfileImage(GraphicsContext g);
+	public abstract void displayProfileImage(Parent p);
 }
 
