@@ -42,6 +42,7 @@ public class Main extends Application {
 
         System.out.println("Displaying all users");
 
+        //test.
 
     //    userDatabaseManager.getAllUsers();
 
