@@ -39,7 +39,7 @@
                                                 <ColorAdjust brightness="1.0" />
                                              </effect>
                                              <image>
-                                                <Image url="@../Icons/icons8-customer-filled-40.png" />
+                                                <Image url="@Icons/icons8-customer-filled-40.png" />
                                              </image>
                                           </ImageView>
                                        </graphic>
@@ -54,7 +54,7 @@
                                                 <ColorAdjust brightness="1.0" />
                                              </effect>
                                              <image>
-                                                <Image url="@../Icons/icons8-love-filled-40.png" />
+                                                <Image url="@Icons/icons8-love-filled-40.png" />
                                              </image>
                                           </ImageView>
                                        </graphic>
@@ -84,7 +84,7 @@
                                                 <ColorAdjust brightness="1.0" />
                                              </effect>
                                              <image>
-                                                <Image url="@../Icons/icons8-add-filled-40.png" />
+                                                <Image url="@Icons/icons8-add-filled-40.png" />
                                              </image>
                                           </ImageView>
                                        </graphic>
@@ -99,7 +99,7 @@
                                                 <ColorAdjust brightness="1.0" />
                                              </effect>
                                              <image>
-                                                <Image url="@../Icons/icons8-bust-filled-40.png" />
+                                                <Image url="@Icons/icons8-bust-filled-40.png" />
                                              </image>
                                           </ImageView>
                                        </graphic>

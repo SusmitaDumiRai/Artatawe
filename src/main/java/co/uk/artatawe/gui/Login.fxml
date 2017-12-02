@@ -17,7 +17,7 @@
          <children>
             <ImageView fitHeight="160.0" fitWidth="500.0" layoutY="50.0" pickOnBounds="true">
                <image>
-                  <Image url="@../../../../../../../../../../Javafxml/bob-dylan-paints-exhibit-03.jpg" />
+                  <Image url="@../../../../../../../../../Javafxml/bob-dylan-paints-exhibit-03.jpg" />
                </image>
             </ImageView>
             <Label layoutX="160.0" layoutY="104.0" text="ARTATAWE" textFill="WHITE" underline="true">
