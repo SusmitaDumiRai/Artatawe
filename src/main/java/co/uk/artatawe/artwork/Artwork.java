@@ -19,7 +19,7 @@ public class Artwork {
     private double height;
 
     /**
-     * emty constructor
+     * empty constructor
      */
     public Artwork() {
     }
