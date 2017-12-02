@@ -28,7 +28,6 @@ public class AuctionDatabaseManager extends DatabaseManager {
                 "auctioncomp int not null," + //sqlite does not support boolean, but instead 0 and 1.
                 "highestbid real not null,"  + //originally the reserve price.
                 "foreign key (auctionID) references artwork (artworkID)," +
-                "foreign key (winner) references user (username)," +
                 "foreign key (buyer) references user (username)," +
                 "foreign key (winningBid) references bid (bidid)" +
                 "foreign key (bidID) references bid (bidid));";
