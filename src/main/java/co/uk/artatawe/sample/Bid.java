@@ -65,8 +65,7 @@ public class Bid {
                 "User='" + buyer +
                 ",bidID='" + bidID +
                 ",amount bid='" + bidAmount +
-                ",date and time='" + dateAndTime +
-                ",artwork bid on='" + artworkID;
+                ",date and time='" + dateAndTime;
     }
 
 }
