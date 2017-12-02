@@ -8,8 +8,12 @@ import co.uk.artatawe.database.UserDatabaseManager;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+
 
 
 
@@ -18,15 +22,21 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         //Parent root = FXMLLoader.load(getClass().getResource("co.uk.artatawe.sample.fxml"));
-        BorderPane root = new BorderPane();
 
-        primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 300, 275));
+        Image image = new Image("file:///D:/Git/Artatawe/src/main/java/co/uk/artatawe/artworkpictures/Giraffe.png");
+        ImageView imageView = new ImageView();
+        imageView.setImage(image);
 
+        // Display image on screen
+        StackPane root = new StackPane();
+        root.getChildren().add(imageView);
 
+        Scene scene = new Scene(root, 300, 250);
 
-
+        primaryStage.setTitle("Image Read Test");
+        primaryStage.setScene(scene);
         primaryStage.show();
+
     }
 
 
