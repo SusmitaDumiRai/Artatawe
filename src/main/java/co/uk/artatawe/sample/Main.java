@@ -25,7 +25,7 @@ public class Main extends Application {
         //ImageView imageView = new ImageView();
         //imageView.setImage(image);
 
-        String imagePath = "file:src/main/java/co/uk/artatawe/artworkpictures/Giraffe.png";
+        String imagePath = "co/uk/artatawe/artworkpictures/Giraffe.png";
         ImageView imageView = new ImageView(imagePath);
 
 
