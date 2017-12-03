@@ -4,9 +4,7 @@ package co.uk.artatawe.sample;
 import co.uk.artatawe.artwork.Artwork;
 import java.util.*;
 
-/**
- * TODO  add auctionID - talk to susie about this!!
- */
+
 /**
  * The Auction class creates an auction and stores information about an auction.
  * This includes data such as a user selling and buying an artwork, an artwork
@@ -15,7 +13,7 @@ import java.util.*;
  */
 public class Auction {
 
-	private Bid bid;
+    private Bid bid;
     private int numOfBidsLeft;
     private boolean auctionComp;
     private Artwork artwork;
