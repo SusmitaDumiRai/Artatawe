@@ -59,9 +59,11 @@ public class Main extends Application {
         BidDatabaseManager bidDatabaseManager = new BidDatabaseManager();
 
 
-        for (User user : userDatabaseManager.getAllUsers()) {
+      /*  for (User user : userDatabaseManager.getAllUsers()) {
             System.out.println(user.toString());
         }
+        */
+
     }
 
 }
