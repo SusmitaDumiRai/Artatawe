@@ -35,7 +35,7 @@
       <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
             <TextField fx:id="username" layoutX="157.0" layoutY="-8.0" promptText="Type in user name" />
-            <Button fx:id="signInButton" layoutX="276.0" layoutY="29.0" mnemonicParsing="false" onMouseClicked="#signInUser" opacity="0.9" prefHeight="25.0" prefWidth="67.0" text="Sign in" />
+            <Button fx:id="signInButton" layoutX="276.0" layoutY="29.0" mnemonicParsing="false" onAction="#signInUser" opacity="0.9" prefHeight="25.0" prefWidth="67.0" text="Sign in" />
          </children>
       </Pane>
    </center>
