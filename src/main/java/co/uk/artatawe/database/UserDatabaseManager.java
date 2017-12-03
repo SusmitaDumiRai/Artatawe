@@ -1,7 +1,10 @@
 package co.uk.artatawe.database;
 
+import co.uk.artatawe.sample.User;
+
 import javax.swing.plaf.nimbus.State;
 import java.sql.*;
+import java.util.ArrayList;
 
 /**
  * Handles communication to user table in database.
@@ -44,7 +47,8 @@ public class UserDatabaseManager extends  DatabaseManager {
      * Returns all users in the table.
      */
 
-    public void getAllUsers() {
+    public ArrayList<User> getAllUsers() {
+        ArrayList<User> userArrayList = new ArrayList<>();
         String sqlSelect = "SELECT username," +
                 "firstname," +
                 "surname," +
@@ -52,7 +56,8 @@ public class UserDatabaseManager extends  DatabaseManager {
                 "address," +
                 "postcode," +
                 "lastlogin," +
-                "profileimage FROM user;";
+                "profileimage," +
+                "favouriteuser FROM user;";
 
         try {
             Connection connection = connect();
@@ -60,6 +65,7 @@ public class UserDatabaseManager extends  DatabaseManager {
 
             ResultSet resultSet = statement.executeQuery(sqlSelect);
             while (resultSet.next()) {
+                /*
                 System.out.println(resultSet.getString("username") + "\t" +
                         resultSet.getString("firstname") + "\t" +
                         resultSet.getString("surname") + "\t" +
@@ -67,13 +73,25 @@ public class UserDatabaseManager extends  DatabaseManager {
                         resultSet.getString("address") + "\t" +
                         resultSet.getString("postcode") + "\t" +
                         resultSet.getString("lastlogin") + "\t" +
-                        resultSet.getString("profileimage") + "\t");
+                        resultSet.getString("profileimage") + "\t");*/
+
+                //currently does not support favourite users and profile image.
+                userArrayList.add(new User(resultSet.getString("username"), resultSet.getString("firstname"), resultSet.getString("surname"),
+                        resultSet.getString("phonenumber"), resultSet.getString("address"), resultSet.getString("postcode")));
+
+
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
 
+        return userArrayList;
     }
 
+    public User getUser(String username) {
+        String selectUser = "SELECT * FROM user where username = " + username;
+
+
+    }
 
 }

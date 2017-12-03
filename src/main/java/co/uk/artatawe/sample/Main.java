@@ -58,7 +58,10 @@ public class Main extends Application {
         AuctionDatabaseManager auctionDatabaseManager = new AuctionDatabaseManager();
         BidDatabaseManager bidDatabaseManager = new BidDatabaseManager();
 
-        artworkDatabaseManager.getAllArtworks();
+
+        for (User user : userDatabaseManager.getAllUsers()) {
+            System.out.println(user.toString());
+        }
     }
 
 }
