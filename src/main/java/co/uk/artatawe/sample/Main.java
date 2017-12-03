@@ -23,15 +23,19 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         //Parent root = FXMLLoader.load(getClass().getResource("co.uk.artatawe.sample.fxml"));
 
-        Image image = new Image("file:///D:/Git/Artatawe/src/main/java/co/uk/artatawe/artworkpictures/Giraffe.png");
-        ImageView imageView = new ImageView();
-        imageView.setImage(image);
+        //Image image = new Image("file:///D:/Git/Artatawe/src/main/java/co/uk/artatawe/artworkpictures/Giraffe.png");
+        //ImageView imageView = new ImageView();
+        //imageView.setImage(image);
+
+        String imagePath = "file:src/main/java/co/uk/artatawe/artworkpictures/Giraffe.png";
+        ImageView imageView = new ImageView(imagePath);
+
 
         // Display image on screen
         StackPane root = new StackPane();
         root.getChildren().add(imageView);
 
-        Scene scene = new Scene(root, 300, 250);
+        Scene scene = new Scene(root, 600, 500);
 
         primaryStage.setTitle("Image Read Test");
         primaryStage.setScene(scene);
