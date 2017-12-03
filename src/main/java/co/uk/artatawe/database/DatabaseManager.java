@@ -9,7 +9,7 @@ import java.sql.*;
  * @version 1.0
  */
 public abstract class DatabaseManager {
-    private String fileName = "artatawe.db"; //database file name.
+    private String fileName = "co/uk/artatawe/sample/artatawe.db"; //database file name.
     private String connURL = "jdbc:sqlite:" + fileName;
 
     /**
