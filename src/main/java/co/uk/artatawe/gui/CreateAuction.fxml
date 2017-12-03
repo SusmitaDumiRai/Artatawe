@@ -1,14 +1,265 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-
-            prefHeight="400.0" prefWidth="600.0">
-
-</AnchorPane>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="258.0" fitWidth="283.0" layoutX="24.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Icons/icons8-love-filled-40.png" />
+               </image>
+            </ImageView>
+            <VBox layoutX="312.0" layoutY="88.0" prefHeight="305.0" prefWidth="273.0">
+               <children>
+                  <HBox prefHeight="400.0" prefWidth="200.0">
+                     <children>
+                        <RadioButton fx:id="paintingRadioButton" mnemonicParsing="false" text="painting">
+                           <HBox.margin>
+                              <Insets right="50.0" />
+                           </HBox.margin>
+                        </RadioButton>
+                        <RadioButton fx:id="sculptureRadioButton" mnemonicParsing="false" text="sculpture" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="400.0" prefWidth="200.0">
+                     <children>
+                        <Label prefHeight="21.0" prefWidth="105.0" text="Artwork Title:">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                        </Label>
+                        <TextField fx:id="title" prefHeight="31.0" prefWidth="172.0" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="400.0" prefWidth="400.0">
+                     <children>
+                        <Label prefHeight="37.0" prefWidth="109.0" text="Creator Name:">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                        </Label>
+                        <TextField fx:id="creatorName" prefHeight="31.0" prefWidth="172.0" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="400.0" prefWidth="200.0">
+                     <children>
+                        <Label prefHeight="37.0" prefWidth="63.0" text="Year:">
+                           <HBox.margin>
+                              <Insets right="56.0" />
+                           </HBox.margin>
+                        </Label>
+                        <TextField fx:id="year" prefHeight="31.0" prefWidth="172.0" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="400.0" prefWidth="400.0">
+                     <children>
+                        <Label prefHeight="400.0" text="Size:">
+                           <padding>
+                              <Insets right="6.0" />
+                           </padding>
+                           <HBox.margin>
+                              <Insets right="19.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label prefHeight="400.0" text="width">
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
+                        </Label>
+                        <TextField fx:id="width" prefHeight="31.0" prefWidth="50.0" />
+                        <Label prefHeight="400.0" text="x">
+                           <HBox.margin>
+                              <Insets left="10.0" right="10.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label prefHeight="400.0" text="height">
+                           <HBox.margin>
+                              <Insets right="6.0" />
+                           </HBox.margin>
+                        </Label>
+                        <TextField fx:id="height" prefHeight="31.0" prefWidth="50.0" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="395.0" prefWidth="273.0">
+                     <children>
+                        <Label prefHeight="400.0" prefWidth="88.0" text="Entered on:">
+                           <HBox.margin>
+                              <Insets right="25.0" />
+                           </HBox.margin>
+                        </Label>
+                        <TextArea fx:id="date" prefHeight="34.0" prefWidth="167.0" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="400.0" prefWidth="202.0">
+                     <children>
+                        <Label prefHeight="400.0" text="Seller Name:">
+                           <padding>
+                              <Insets right="10.0" />
+                           </padding>
+                        </Label>
+                        <Label fx:id="sellerName" prefHeight="400.0" text="sellername" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="400.0">
+                     <children>
+                        <Label prefHeight="38.0" prefWidth="112.0" text="Reserved Price:">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                        </Label>
+                        <TextField fx:id="reservedPrice" prefHeight="31.0" prefWidth="172.0" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="400.0" prefWidth="200.0">
+                     <children>
+                        <Label prefHeight="35.0" prefWidth="199.0" text="Number of bids allowed:">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                        </Label>
+                        <TextField fx:id="allowedBids" prefHeight="31.0" prefWidth="135.0">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </TextField>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox layoutX="24.0" layoutY="400.0" prefHeight="133.0" prefWidth="562.0">
+               <children>
+                  <HBox prefHeight="61.0" prefWidth="600.0">
+                     <children>
+                        <Label alignment="TOP_LEFT" prefHeight="400.0" text="Description:">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                        </Label>
+                        <TextArea fx:id="description" prefHeight="61.0" prefWidth="474.0" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <Button fx:id="sumbitButton" layoutX="518.0" layoutY="526.0" mnemonicParsing="false" text="Sumbit" />
+         </children>
+      </Pane>
+   </center>
+   <left>
+      <VBox prefHeight="600.0" prefWidth="201.0" BorderPane.alignment="CENTER">
+         <children>
+            <AnchorPane prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #ca3a5e;">
+               <children>
+                  <Label fx:id="welcomeText" alignment="CENTER" contentDisplay="TOP" prefHeight="76.0" prefWidth="211.0" text="Welcome Back!" textFill="WHITE" textOverrun="CENTER_ELLIPSIS" underline="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
+               </VBox.margin>
+            </AnchorPane>
+            <Button fx:id="profile" contentDisplay="TOP" mnemonicParsing="false" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #23112a;" text="My Profile" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <effect>
+                        <ColorAdjust brightness="1.0" />
+                     </effect>
+                     <image>
+                        <Image url="@Icons/icons8-customer-filled-40.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <VBox.margin>
+                  <Insets bottom="6.0" left="6.0" right="6.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="favorites" contentDisplay="TOP" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #492976;" text="My Favorites" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <effect>
+                        <ColorAdjust brightness="1.0" />
+                     </effect>
+                     <image>
+                        <Image url="@Icons/icons8-love-filled-40.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <VBox.margin>
+                  <Insets bottom="6.0" left="6.0" right="6.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="artwork" contentDisplay="TOP" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #ca3a5e;" text="Browse Artwork" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <effect>
+                        <ColorAdjust brightness="1.0" />
+                     </effect>
+                     <image>
+                        <Image url="@Icons/binoculars.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <VBox.margin>
+                  <Insets bottom="6.0" left="6.0" right="6.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="auction" contentDisplay="TOP" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #f58071;" text="Create an Auction" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <effect>
+                        <ColorAdjust brightness="1.0" />
+                     </effect>
+                     <image>
+                        <Image url="@Icons/icons8-add-filled-40.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <VBox.margin>
+                  <Insets bottom="6.0" left="6.0" right="6.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="myActions" contentDisplay="TOP" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #361949;" text="My Auctions" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="15040.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <effect>
+                        <ColorAdjust brightness="1.0" />
+                     </effect>
+                     <image>
+                        <Image url="@Icons/icons8-bust-filled-40.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <VBox.margin>
+                  <Insets bottom="6.0" left="6.0" right="6.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="bidHistory" contentDisplay="TOP" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #23112a;" text="My Bid History" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <effect>
+                        <ColorAdjust brightness="1.0" />
+                     </effect>
+                     <image>
+                        <Image url="@Icons/sandtimer.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <VBox.margin>
+                  <Insets bottom="6.0" left="6.0" right="6.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+      </VBox>
+   </left>
+</BorderPane>

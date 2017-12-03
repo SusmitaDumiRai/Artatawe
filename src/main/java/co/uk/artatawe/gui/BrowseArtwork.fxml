@@ -136,38 +136,56 @@
                <GridPane.margin>
                   <Insets left="60.0" right="60.0" />
                </GridPane.margin>
+               <image>
+                  <Image url="@Icons/icons8-love-filled-40.png" />
+               </image>
             </ImageView>
             <ImageView fitHeight="183.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets left="60.0" right="60.0" />
                </GridPane.margin>
+               <image>
+                  <Image url="@Icons/icons8-love-filled-40.png" />
+               </image>
             </ImageView>
             <ImageView fitHeight="183.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets left="60.0" right="60.0" />
                </GridPane.margin>
+               <image>
+                  <Image url="@Icons/icons8-love-filled-40.png" />
+               </image>
             </ImageView>
             <ImageView fitHeight="183.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets left="60.0" right="60.0" />
                </GridPane.margin>
+               <image>
+                  <Image url="@Icons/icons8-love-filled-40.png" />
+               </image>
             </ImageView>
             <ImageView fitHeight="183.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets left="60.0" right="60.0" />
                </GridPane.margin>
+               <image>
+                  <Image url="@Icons/icons8-love-filled-40.png" />
+               </image>
             </ImageView>
             <ImageView fitHeight="183.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets left="60.0" right="60.0" />
                </GridPane.margin>
+               <image>
+                  <Image url="@Icons/icons8-love-filled-40.png" />
+               </image>
             </ImageView>
-            <CheckBox mnemonicParsing="false" text="paintings">
+            <CheckBox fx:id="paintings" mnemonicParsing="false" text="paintings">
                <GridPane.margin>
                   <Insets left="100.0" right="60.0" />
                </GridPane.margin>
             </CheckBox>
-            <CheckBox mnemonicParsing="false" text="sculptures" GridPane.columnIndex="1">
+            <CheckBox fx:id="sculptures" mnemonicParsing="false" text="sculptures" GridPane.columnIndex="1">
                <GridPane.margin>
                   <Insets left="100.0" />
                </GridPane.margin>

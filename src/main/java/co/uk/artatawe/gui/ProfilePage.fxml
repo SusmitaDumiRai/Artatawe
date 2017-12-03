@@ -26,7 +26,7 @@
                   <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
                </VBox.margin>
             </AnchorPane>
-            <Button fx:id="profile" contentDisplay="TOP" mnemonicParsing="false" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #23112a;" text="My Profile" textFill="WHITE">
+            <Button fx:id="profileButton" contentDisplay="TOP" mnemonicParsing="false" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #23112a;" text="My Profile" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                      <effect>
@@ -41,7 +41,7 @@
                   <Insets bottom="6.0" left="6.0" right="6.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="favorites" contentDisplay="TOP" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #492976;" text="My Favorites" textFill="WHITE">
+            <Button fx:id="favoritesButton" contentDisplay="TOP" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #492976;" text="My Favorites" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                      <effect>
@@ -56,7 +56,7 @@
                   <Insets bottom="6.0" left="6.0" right="6.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="artwork" contentDisplay="TOP" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #ca3a5e;" text="Browse Artwork" textFill="WHITE">
+            <Button fx:id="artworkButton" contentDisplay="TOP" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #ca3a5e;" text="Browse Artwork" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                      <effect>
@@ -71,7 +71,7 @@
                   <Insets bottom="6.0" left="6.0" right="6.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="auction" contentDisplay="TOP" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #f58071;" text="Create an Auction" textFill="WHITE">
+            <Button fx:id="auctionButton" contentDisplay="TOP" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #f58071;" text="Create an Auction" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                      <effect>
@@ -86,7 +86,7 @@
                   <Insets bottom="6.0" left="6.0" right="6.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="myActions" contentDisplay="TOP" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #361949;" text="My Auctions" textFill="WHITE">
+            <Button fx:id="myActionsButton" contentDisplay="TOP" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #361949;" text="My Auctions" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="15040.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                      <effect>
@@ -101,7 +101,7 @@
                   <Insets bottom="6.0" left="6.0" right="6.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="bidHistory" contentDisplay="TOP" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #23112a;" text="My Bid History" textFill="WHITE">
+            <Button fx:id="bidHistoryButton" contentDisplay="TOP" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #23112a;" text="My Bid History" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                      <effect>
@@ -124,16 +124,19 @@
          <children>
             <VBox layoutX="312.0" layoutY="100.0" prefHeight="240.0" prefWidth="257.0">
                <children>
-                  <Label fx:id="username" prefHeight="300.0" prefWidth="300.0" />
+                  <Label fx:id="username" prefHeight="300.0" text="crazyS3ller" />
                   <HBox prefHeight="300.0" prefWidth="200.0">
                      <children>
-                        <Label fx:id="firstName" prefHeight="300.0" prefWidth="150.0" />
-                        <Label fx:id="LastName" prefHeight="300.0" prefWidth="150.0" />
+                        <Label fx:id="firstName" prefHeight="300.0" text="James">
+                           <padding>
+                              <Insets right="10.0" />
+                           </padding></Label>
+                        <Label fx:id="LastName" prefHeight="300.0" text="Bond" />
                      </children>
                   </HBox>
-                  <Label fx:id="telephoneNumber" prefHeight="300.0" prefWidth="300.0" />
-                  <Label fx:id="address" prefHeight="300.0" prefWidth="300.0" />
-                  <MenuButton mnemonicParsing="false" prefHeight="31.0" text="Edit">
+                  <Label fx:id="telephoneNumber" prefHeight="300.0" text="+6969696969" />
+                  <Label fx:id="address" prefHeight="300.0" text="Swnasea, Tesco" />
+                  <MenuButton fx:id="editButton" mnemonicParsing="false" prefHeight="31.0" text="Edit">
                     <items>
                       <MenuItem mnemonicParsing="false" text="Change telephone number" />
                       <MenuItem mnemonicParsing="false" text="Change Address" />
@@ -143,8 +146,11 @@
             </VBox>
             <VBox layoutX="29.0" layoutY="100.0" prefHeight="240.0" prefWidth="237.0">
                <children>
-                  <ImageView fx:id="avatar" fitHeight="237.0" fitWidth="237.0" pickOnBounds="true" preserveRatio="true" />
-                  <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="242.0" text="Change Picture" />
+                  <ImageView fx:id="avatar" fitHeight="237.0" fitWidth="237.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Icons/icons8-love-filled-40.png" />
+                     </image></ImageView>
+                  <Button fx:id="changePictureButton" mnemonicParsing="false" prefHeight="31.0" prefWidth="242.0" text="Change Picture" />
                </children>
             </VBox>
          </children>
