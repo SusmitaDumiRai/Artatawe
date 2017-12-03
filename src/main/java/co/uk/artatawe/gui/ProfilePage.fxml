@@ -10,7 +10,8 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+   fx:controller="co.uk.artatawe.controller.ProfilePageController">
    <left>
       <VBox prefHeight="600.0" prefWidth="201.0" BorderPane.alignment="CENTER">
          <children>
@@ -127,11 +128,13 @@
                   <Label fx:id="username" prefHeight="300.0" text="crazyS3ller" />
                   <HBox prefHeight="300.0" prefWidth="200.0">
                      <children>
-                        <Label fx:id="firstName" prefHeight="300.0" text="James">
+
+                        <Label fx:id="firstName" prefHeight="300.0" prefWidth="150.0">
                            <padding>
                               <Insets right="10.0" />
                            </padding></Label>
-                        <Label fx:id="LastName" prefHeight="300.0" text="Bond" />
+                        <Label fx:id="lastName" prefHeight="300.0" prefWidth="150.0" />
+
                      </children>
                   </HBox>
                   <Label fx:id="telephoneNumber" prefHeight="300.0" text="+6969696969" />

@@ -1,6 +1,8 @@
 package co.uk.artatawe.sample;
 
 import co.uk.artatawe.profileImage.ProfileImage;
+
+import javax.jws.soap.SOAPBinding;
 import java.util.ArrayList;
 
 
@@ -23,6 +25,28 @@ public class User {
     private String lastLogin;
     private ArrayList<User> favouriteUsers = new ArrayList<User>();
     private ProfileImage profileImage;
+
+
+    /**
+     * Test constructor - susi
+     * @param userName
+     * @param firstName
+     * @param surname
+     * @param phoneNumber
+     * @param address
+     * @param postcode
+     */
+    public User(String userName, String firstName, String surname,
+                String phoneNumber, String address, String postcode) {
+
+        this.userName = userName;
+        this.firstName = firstName;
+        this.surname = surname;
+        this.phoneNumber = phoneNumber;
+        this.address = address;
+        this.postcode = postcode;
+    }
+
 
     public User(String userName, String firstName, String surname,
                 String phoneNumber, String address, String postcode,
@@ -92,6 +116,21 @@ public class User {
      */
     public void setLastLogin(String newLastLogin) {
         this.lastLogin = newLastLogin;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userName='" + userName + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", surname='" + surname + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", address='" + address + '\'' +
+                ", postcode='" + postcode + '\'' +
+                ", lastLogin='" + lastLogin + '\'' +
+                ", favouriteUsers=" + favouriteUsers +
+                ", profileImage=" + profileImage +
+                '}';
     }
 
     //no display methods

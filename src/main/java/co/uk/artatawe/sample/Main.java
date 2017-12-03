@@ -87,19 +87,6 @@ public class Main extends Application {
         BidDatabaseManager bidDatabaseManager = new BidDatabaseManager();
 
 
-        userDatabaseManager.getAllUsers();
-
-/*
-
-        String sqlInsertArtwork = "INSERT INTO artwork (title, description, photo, nameofcreator, reservedprice," +
-                "dateentered, bidsallowed, typeofartwork, width, height) values ('Bar reflection', 'This piece is themed on two young people lost in each other, sitting in a mirrored booth in a public house - in the style he is now well known for. The back of the painting is signed by the artist, and both young people, Carra and Luke who sat for the creation of this work.'," +
-                "'co/uk/artatawe/artworkpictures/Bar reflections.jpg'," +
-                "'Kevin Day', '100', '01/02/2017', '20', 'painting', '76', '60' );";
-                */
-
-     //   artworkDatabaseManager.executeStatement(sqlInsertArtwork);
-
-
     }
 
 }
