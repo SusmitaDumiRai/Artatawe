@@ -23,10 +23,16 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         StackPane root = new StackPane();
 
+
         try {
 
-            Image image = new Image("//co//uk//artatawe//artworkpictures//Lion 1.jpg");
-            ImageView imageView = new ImageView(image);
+
+            String imagePath = "co/uk/artatawe/artworkpictures/Giraffe.png";
+            ImageView imageView = new ImageView(imagePath);
+
+
+        //   Image image = new Image("//co//uk//artatawe//artworkpictures//Lion 1.jpg");
+         //   ImageView imageView = new ImageView(image);
             root.getChildren().add(imageView);
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
