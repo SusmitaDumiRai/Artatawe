@@ -45,7 +45,7 @@
          <graphic>
             <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@Icons/icons8-binoculars-40%20.png" />
+                  <Image url="@Icons/binoculars.png" />
                </image>
                <effect>
                   <ColorAdjust brightness="1.0" />
@@ -87,7 +87,7 @@
          <graphic>
             <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@Icons/icons8-hourglass-40%20.png" />
+                  <Image url="@Icons/sandtimer.png" />
                </image>
                <effect>
                   <ColorAdjust brightness="1.0" />
