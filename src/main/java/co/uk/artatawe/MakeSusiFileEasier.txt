@@ -58,6 +58,7 @@ String sqlInsertUser = "INSERT INTO user values (" +
                 "'2017-12-20T10:12:13'," +
                 "'some string url6');";
 
+----------------------------------
 String sqlInsertArtwork = "INSERT INTO artwork (title, description, photo, nameofcreator, reservedprice,
 dateentered, bidsallowed, typeofartwork, width, height) values ('title', 'description', 'photo',
 'nameofcreator', '10', '12/02/2017', '15', 'painting', '5.5', '6.6' );"
@@ -91,3 +92,5 @@ dateentered, bidsallowed, typeofartwork, width, height) values ('The Dangers of 
 'Unfortunately not everyone or everything is what it seems. Trust your instincts.',
 'co/uk/artatawe/artworkpictures/The dangers of late night mushroom picking.jpg',
 'Bobby Chiu', '205', '30/03/2017', '15', 'painting', '5.5', '6.6' );"
+-------------------------------------------------
+String sqlInsertIntoBid = "INSERT INTO BID (buyer, bidamount, dateandtime) values ('BuyGymmem', '300', '03/12/2017');";
