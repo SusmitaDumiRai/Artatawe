@@ -75,14 +75,15 @@ public class Main extends Application {
         BidDatabaseManager bidDatabaseManager = new BidDatabaseManager();
 
         userDatabaseManager.getAllUsers();
-/*
-        String sqlInsertArtwork = "INSERT INTO artwork (title, description, photo, nameofcreator, reservedprice," +
-                "dateentered, bidsallowed, typeofartwork, width, height) values ('Bar reflection', 'This piece is themed on two young people lost in each other, sitting in a mirrored booth in a public house - in the style he is now well known for. The back of the painting is signed by the artist, and both young people, Carra and Luke who sat for the creation of this work.'," +
-                "'co/uk/artatawe/artworkpictures/Bar reflections.jpg'," +
-                "'Kevin Day', '100', '01/02/2017', '20', 'painting', '76', '60' );";
-                */
 
-     //   artworkDatabaseManager.executeStatement(sqlInsertArtwork);
+        String sqlInsertArtwork = "INSERT INTO artwork (title, description, photo, nameofcreator, reservedprice," +
+        "dateentered, bidsallowed, typeofartwork, width, height) values ('The Dangers of Late Night Mushroom Picking'," +
+                "'Unfortunately not everyone or everything is what it seems. Trust your instincts.'," +
+                "'co/uk/artatawe/artworkpictures/The dangers of late night mushroom picking.jpg'," +
+                "'Bobby Chiu', '205', '30/03/2017', '15', 'painting', '5.5', '6.6' );";
+      artworkDatabaseManager.executeStatement(sqlInsertArtwork);
+
+        artworkDatabaseManager.getAllArtworks();
 
 
     }
