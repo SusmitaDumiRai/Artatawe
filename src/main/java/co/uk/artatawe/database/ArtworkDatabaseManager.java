@@ -44,7 +44,7 @@ public class ArtworkDatabaseManager extends DatabaseManager {
 
     }
 
-    //currently does not support extra functionalities of
+    //currently does not support extra functionalities of sculpture
     public void getAllArtworks() {
         String sqlSelect = "SELECT artworkid," +
                 "title," +

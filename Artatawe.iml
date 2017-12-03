@@ -8,7 +8,11 @@
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="inheritedJdk" />
+
     <orderEntry type="sourceFolder" forTests="false" />
+
+    <orderEntry type="library" name="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER" level="application" />
+
     <orderEntry type="library" name="Maven: org.xerial:sqlite-jdbc:3.20.1" level="project" />
   </component>
 </module>

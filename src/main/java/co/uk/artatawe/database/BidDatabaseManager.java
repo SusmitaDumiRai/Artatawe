@@ -1,5 +1,10 @@
 package co.uk.artatawe.database;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 /**
  * Handles communication to bid table in database.
  * Allows creation, deletion and updates to be made to bid table.
@@ -24,11 +29,33 @@ public class BidDatabaseManager extends DatabaseManager {
                 "bidID INTEGER PRIMARY KEY not null,\n" +
                 "buyer text not null," + //username of buyer.
                 " bidAmount real not null," +
-                " dateAndTime text not null" + //date and time of bid made.
-                ");";
+                " dateAndTime text not null," + //date and time of bid made.
+                "foreign key (buyer) references  user (username));";
 
         executeStatement(sqlCreateBidTable);
     }
 
+    public void getAllBids() {
+        String sqlSelect = "SELECT bidID," +
+                "buyer," +
+                "bidamount," +
+                "dateandtime FROM bid;";
 
+        try {
+            Connection connection = connect();
+            Statement statement = connection.createStatement();
+
+            ResultSet resultSet = statement.executeQuery(sqlSelect);
+            while (resultSet.next()) {
+                System.out.println(resultSet.getString("bidid") + "\t" +
+                        resultSet.getString("buyer") + "\t" +
+                        resultSet.getString("bidamount") + "\t" +
+                        resultSet.getString("dateandtime"));
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+
+    }
 }
