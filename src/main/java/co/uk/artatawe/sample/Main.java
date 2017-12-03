@@ -21,12 +21,23 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        StackPane root = new StackPane();
+
+        try {
+
+            Image image = new Image("//co//uk//artatawe//artworkpictures//Lion 1.jpg");
+            ImageView imageView = new ImageView(image);
+            root.getChildren().add(imageView);
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+
+
 
 
 
         // Display image on screen
-        StackPane root = new StackPane();
-        
+
         Scene scene = new Scene(root, 600, 500);
 
         primaryStage.setTitle("Image Read Test");
