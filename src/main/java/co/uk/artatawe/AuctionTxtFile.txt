@@ -1,0 +1,48 @@
+String sqlInsertAuction = "INSERT INTO auction (auctionid, seller, numofbidsleft, auctioncomp, highestbid) values (" +
+				"'1'," +
+				"'BuyGymMem'," +
+				"'20'" +
+				"'0'," +
+				"'100');";
+
+String sqlInsertAuction = "INSERT INTO auction (auctionid, seller, numofbidsleft, auctioncomp, highestbid) values (" +
+				"'3'," +
+				"'BuyGymMem'," +
+				"'10'" +
+				"'0'," +
+				"'300.00');";
+				
+String sqlInsertAuction = "INSERT INTO auction (auctionid, seller, numofbidsleft, auctioncomp, highestbid) values (" +
+				"'4'," +
+				"'LolFan'," +
+				"'20'," +
+				"'0'," +
+				"'500.00');";
+				
+String sqlInsertAuction = "INSERT INTO auction (auctionid, seller,  numofbidsleft, auctioncomp, highestbid) values (" +
+				"'5'," +
+				"'UglyBackPack'," +
+				"'15'," +
+				"'0'," +
+				"'205.00');";
+
+String sqlInsertAuction = "INSERT INTO auction (auctionid, seller, numofbidsleft, auctioncomp, highestbid) values (" +
+				"'6'," +
+				"'BuyGymMem'," +
+				"'50'," +
+				"'0'," +
+				"'250.00');";
+
+String sqlInsertAuction = "INSERT INTO auction (auctionid, seller, numofbidsleft, auctioncomp, highestbid) values (" +
+				"'7'," +
+				"'YayTesting'," +
+				"'30'," +
+				"'0'," +
+				"'3590.0');";
+
+String sqlInsertAuction = "INSERT INTO auction (auctionid, seller, numofbidsleft, auctioncomp, highestbid) values (" +
+				"'8'," +
+				"'username'," +
+				"'10000'," +
+				"'0'," +
+				"'100000.00');";

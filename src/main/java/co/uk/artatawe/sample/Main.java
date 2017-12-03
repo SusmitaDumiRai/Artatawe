@@ -23,10 +23,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         StackPane root = new StackPane();
 
-
         try {
-
-
             String imagePath = "co/uk/artatawe/artworkpictures/Giraffe.png";
             ImageView imageView = new ImageView(imagePath);
 
@@ -42,7 +39,6 @@ public class Main extends Application {
 
        /* String imagePath = "co/uk/artatawe/artworkpictures/Giraffe.png";
         ImageView imageView = new ImageView(imagePath);*/
-
 
 
         // Display image on screen
@@ -70,12 +66,14 @@ public class Main extends Application {
 
 
 
-/*
+
+    /*
     public static void main(String[] args) {
         launch(args);
 
     }
     */
+
 
 
 
@@ -88,6 +86,7 @@ public class Main extends Application {
         AuctionDatabaseManager auctionDatabaseManager = new AuctionDatabaseManager();
         BidDatabaseManager bidDatabaseManager = new BidDatabaseManager();
 
+
         userDatabaseManager.getAllUsers();
 
 /*
@@ -99,7 +98,6 @@ public class Main extends Application {
                 */
 
      //   artworkDatabaseManager.executeStatement(sqlInsertArtwork);
-
 
 
     }

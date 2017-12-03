@@ -44,7 +44,11 @@ public class ArtworkDatabaseManager extends DatabaseManager {
 
     }
 
-    //currently does not support extra functionalities of sculpture
+
+    /**
+     * Gets all artwork info.
+     */
+
     public void getAllArtworks() {
         String sqlSelect = "SELECT artworkid," +
                 "title," +
@@ -56,7 +60,10 @@ public class ArtworkDatabaseManager extends DatabaseManager {
                 "bidsAllowed," +
                 "typeOfArtwork," +
                 "width," +
-                "height" +
+                "height," +
+                "depth," +
+                "mainmaterial," +
+                "extraphotos" +
                 " FROM artwork;";
 
         try {
@@ -75,7 +82,10 @@ public class ArtworkDatabaseManager extends DatabaseManager {
                         resultSet.getInt("bidsAllowed") + "\t" +
                         resultSet.getString("typeOfArtwork") + "\t" +
                         resultSet.getDouble("width") + "\t" +
-                        resultSet.getDouble("height") + "\t");
+                        resultSet.getDouble("height") + "\t" +
+                        resultSet.getDouble("depth") + "\t" +
+                        resultSet.getString("mainmaterial") + "\t" +
+                        resultSet.getString("extraphotos") + "\t");
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
