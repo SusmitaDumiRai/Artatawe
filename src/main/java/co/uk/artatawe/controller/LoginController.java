@@ -1,4 +1,4 @@
-package co.uk.artatawe.cotroller;
+package co.uk.artatawe.controller;
 
 /**
  * Created by Plamena on 3.12.2017 г..

@@ -21,8 +21,6 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        //Parent root = FXMLLoader.load(getClass().getResource("co.uk.artatawe.sample.fxml"));
-
         //Image image = new Image("file:///D:/Git/Artatawe/src/main/java/co/uk/artatawe/artworkpictures/Giraffe.png");
         //ImageView imageView = new ImageView();
         //imageView.setImage(image);
