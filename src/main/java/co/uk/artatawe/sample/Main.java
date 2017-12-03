@@ -76,13 +76,6 @@ public class Main extends Application {
 
         userDatabaseManager.getAllUsers();
 
-        String sqlInsertArtwork = "INSERT INTO artwork (title, description, photo, nameofcreator, reservedprice," +
-        "dateentered, bidsallowed, typeofartwork, width, height) values ('The Dangers of Late Night Mushroom Picking'," +
-                "'Unfortunately not everyone or everything is what it seems. Trust your instincts.'," +
-                "'co/uk/artatawe/artworkpictures/The dangers of late night mushroom picking.jpg'," +
-                "'Bobby Chiu', '205', '30/03/2017', '15', 'painting', '5.5', '6.6' );";
-      artworkDatabaseManager.executeStatement(sqlInsertArtwork);
-
         artworkDatabaseManager.getAllArtworks();
 
 
