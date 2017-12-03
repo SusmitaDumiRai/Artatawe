@@ -23,10 +23,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         StackPane root = new StackPane();
 
-
         try {
-
-
             String imagePath = "co/uk/artatawe/artworkpictures/Giraffe.png";
             ImageView imageView = new ImageView(imagePath);
 
@@ -38,10 +35,6 @@ public class Main extends Application {
             System.out.println(ex.getMessage());
         }
 
-
-
-
-
         // Display image on screen
 
         Scene scene = new Scene(root, 600, 500);
@@ -52,11 +45,6 @@ public class Main extends Application {
 
     }
 
-
-
-
-
-
 /*
     public static void main(String[] args) {
         launch(args);
@@ -64,20 +52,13 @@ public class Main extends Application {
     }
     */
 
-
-
-
-
     public static void main(String[] args) {
         UserDatabaseManager userDatabaseManager = new UserDatabaseManager();
         ArtworkDatabaseManager artworkDatabaseManager = new ArtworkDatabaseManager();
         AuctionDatabaseManager auctionDatabaseManager = new AuctionDatabaseManager();
         BidDatabaseManager bidDatabaseManager = new BidDatabaseManager();
 
-        
-
-
-
+        artworkDatabaseManager.getAllArtworks();
     }
 
 }

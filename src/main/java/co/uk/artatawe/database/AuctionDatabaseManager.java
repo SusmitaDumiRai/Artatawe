@@ -41,6 +41,9 @@ public class AuctionDatabaseManager extends DatabaseManager {
     }
 
 
+    /**
+     * Displays all auction info.
+     */
     public void getAllAuctions() {
         String sqlSelect = "SELECT auctionid," +
                 "bidid," +

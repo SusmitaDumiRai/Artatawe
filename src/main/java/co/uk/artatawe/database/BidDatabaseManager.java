@@ -35,6 +35,9 @@ public class BidDatabaseManager extends DatabaseManager {
         executeStatement(sqlCreateBidTable);
     }
 
+    /**
+     * Displays all bids.
+     */
     public void getAllBids() {
         String sqlSelect = "SELECT bidID," +
                 "buyer," +
