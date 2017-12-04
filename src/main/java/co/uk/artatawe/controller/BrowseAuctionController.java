@@ -21,6 +21,8 @@ import java.util.ResourceBundle;
 public class BrowseAuctionController implements Initializable {
 
     private String username;
+    private final int WIDTH = 800;
+    private final int HEIGHT = 600;
 
     public BrowseAuctionController() {
     }
@@ -61,7 +63,7 @@ public class BrowseAuctionController implements Initializable {
             root = fxmlLoader.load();
             Stage stage = new Stage();
             stage.setTitle("Create new auction");
-            stage.setScene(new Scene(root, 500, 500)); //TODO magic numbers for create auction leni P:
+            stage.setScene(new Scene(root, WIDTH, HEIGHT));
 
             CreateAuctionController createAuctionController = fxmlLoader.getController();
 
