@@ -82,14 +82,17 @@ public class LoginController implements Initializable {
     }
 
 
-
+    /**
+     * Validates username.
+     * @return true of username is valid.
+     */
     public boolean validateUsername() {
         String usernameText = username.getText();
         UserDatabaseManager userDatabaseManager = new UserDatabaseManager();
 
         if (!usernameText.isEmpty()) {
             for (String username1 : userDatabaseManager.getAllUsernames()) {
-                if (usernameText.equalsIgnoreCase(username1)) {
+                if (usernameText.equals(username1)) {
                     return true;
 
                 }

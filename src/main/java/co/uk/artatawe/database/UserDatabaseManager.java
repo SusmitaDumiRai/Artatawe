@@ -126,6 +126,8 @@ public class UserDatabaseManager extends  DatabaseManager {
     }
 
 
+
+    /*
     public void testUser() {
         String sqlSelect = "SELECT username," +
                 "firstname," +
@@ -158,5 +160,6 @@ public class UserDatabaseManager extends  DatabaseManager {
             System.out.println(ex.getMessage());
         }
     }
+    */
 
 }

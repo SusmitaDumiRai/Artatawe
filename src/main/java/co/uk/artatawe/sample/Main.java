@@ -69,12 +69,8 @@ public class Main extends Application {
         BidDatabaseManager bidDatabaseManager = new BidDatabaseManager();
         FavouriteUserDatabaseManager favouriteUserDatabaseManager = new FavouriteUserDatabaseManager();
 
-
-        String sql = "update user set lastlogin = '25/12/2017 05:05:05' where username = 'username';";
-        userDatabaseManager.executeStatement(sql);
-        userDatabaseManager.testUser();
-
-
     }
+
+
 
 }
