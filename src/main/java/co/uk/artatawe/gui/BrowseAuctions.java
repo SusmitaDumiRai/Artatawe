@@ -9,11 +9,11 @@ import javafx.stage.Stage;
 /**
  * Created by Susi on 03/12/2017.
  */
-public class BrowseArtwork  extends Application {
+public class BrowseAuctions extends Application {
 
       @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("../gui/BrowseArtwork.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("BrowseAuctions.fxml"));
 
         Scene scene = new Scene(root);
 

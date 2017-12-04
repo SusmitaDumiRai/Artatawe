@@ -12,18 +12,21 @@ public class Bid {
     private double bidAmount;
     private String dateAndTime;
     private int bidID;
+    private int auctionID;
 
 
     /**
      * Constructor for bid.
-     * @param buyer The User that placed the bid.
+     * @param buyer The user that placed the bid.
      * @param bidAmount The amount that the user bid.
      * @param dateAndTime The date and time that the bid was placed.
+     * @param auctionID The ID of the auction that the bid is made on.
      */
-    public Bid(User buyer, double bidAmount, String dateAndTime) {
+    public Bid(User buyer, double bidAmount, String dateAndTime, int auctionID) {
         this.buyer = buyer;
         this.bidAmount = bidAmount;
         this.dateAndTime = dateAndTime;
+        this.auctionID = auctionID;
 
     }
 
@@ -57,6 +60,14 @@ public class Bid {
      */
     public int getBidID() {
         return bidID;
+    }
+
+    /**
+     * Gets the ID of the auction the bid is made on.
+     * @return auctionID
+     */
+    public int getAuctionID() {
+        return auctionID;
     }
 
     @Override
