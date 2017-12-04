@@ -1,12 +1,12 @@
 package co.uk.artatawe.artwork;
 
 /**
- * Painting class inherits from Artwork class, creates painting object
+ * Painting class inherits from Artwork class, creates painting object.
  */
 public class Painting extends Artwork {
 
     /**
-     * constructor that creates an painting object
+     * constructor that creates an painting object.
      * @param typeOfArtwork the type of an artwork, in this class it's a painting
      * @param title         title of the painting
      * @param description   description of the painting
