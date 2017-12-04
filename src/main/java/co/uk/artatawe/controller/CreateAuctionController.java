@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.paint.Paint;
 
 import java.net.URL;
 import java.text.DateFormat;
@@ -64,6 +65,20 @@ public class CreateAuctionController  implements Initializable {
     @FXML
     private TextField material;
 
+    @FXML
+    private Label radioButtonError;
+
+    @FXML
+    private Label priceError;
+
+    @FXML
+    private Label allowedBidsError;
+
+    @FXML
+    private Label sizeError;
+
+    @FXML
+    private Label yearError;
 
     /**
      * Display current seller's name.
@@ -117,6 +132,7 @@ public class CreateAuctionController  implements Initializable {
         } else {
             System.out.println("choose one radio button");
             //TODO NICE ERROR MSG.
+            radioButtonError.setTextFill(Paint.valueOf("RED"));
         }
 
         return false;
@@ -150,6 +166,7 @@ public class CreateAuctionController  implements Initializable {
         } catch (NumberFormatException ex) {
             System.out.println("enter a number."); //needs to be changed.
             //TODO nice error message.
+            yearError.setTextFill(Paint.valueOf("RED"));
         }
         return false;
     }
@@ -166,6 +183,7 @@ public class CreateAuctionController  implements Initializable {
         } catch (NumberFormatException ex) {
             System.out.println("enter digits only plz"); // needs to be cahnged.
             //TODO display error message
+            sizeError.setTextFill(Paint.valueOf("RED"));
         }
         return false;
     }
@@ -181,6 +199,7 @@ public class CreateAuctionController  implements Initializable {
         } catch (NumberFormatException ex) {
             System.out.println("enter digits only plz"); // needs to be cahnged.
             //TODO display error message
+            sizeError.setText("Invalid height");
         }
         return  false;
     }
@@ -196,6 +215,7 @@ public class CreateAuctionController  implements Initializable {
         } catch (NumberFormatException ex) {
             System.out.println("enter digits only plz"); // needs to be cahnged.
             //TODO display error message
+            sizeError.setText("Invalid depth");
         }
         return false;
     }
@@ -209,8 +229,9 @@ public class CreateAuctionController  implements Initializable {
             Float.parseFloat(reservedPrice.getText());
             return true;
         } catch (NumberFormatException ex) {
-            System.out.println("enter digits only plz"); // needs to be cahnged.
+            System.out.println("enter digits only please"); // needs to be cahnged.
             //TODO display error message
+            priceError.setTextFill(Paint.valueOf("RED"));
         }
         return false;
     }
@@ -228,11 +249,14 @@ public class CreateAuctionController  implements Initializable {
                 System.out.println("enter a number more than 0 plz.");
                 return false;
                 //TODO nice error message.
+
             }
 
         } catch (NumberFormatException ex) {
             System.out.println("enter a number."); //needs to be changed.
             //TODO nice error message.
+            allowedBidsError.setText("Please enter a number");
+            allowedBidsError.setTextFill(Paint.valueOf("RED"));
         }
         return false;
     }
