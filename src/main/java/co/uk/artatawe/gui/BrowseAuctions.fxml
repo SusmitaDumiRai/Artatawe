@@ -173,7 +173,7 @@
                <children>
                   <ImageView fx:id="artworkPhoto3" fitHeight="183.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@Icons/icons8-love-filled-40.png" />
+                        <Image url="@../artworkpictures/Demeter%201.png" />
                      </image>
                   </ImageView>
                   <Label fx:id="title3" text="'Title'" />

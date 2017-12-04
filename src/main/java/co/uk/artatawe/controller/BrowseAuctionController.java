@@ -36,14 +36,14 @@ public class BrowseAuctionController implements Initializable {
     	 ArrayList<Artwork> artworks = artworkDatabaseManager.getAllArtworks();
     	    int noOfArtworks = artworks.size();
     	    ArrayList<ImageView> images = new ArrayList<>();
-    	    StackPane root = new StackPane();
+    	    StackPane parent = new StackPane();
     	    
     	    for (Artwork a : artworks) {
     	    	images.add(new ImageView(a.getPhoto()));
     	    }
     	    
     	    for(ImageView i : images) {
-    	    	root.getChildren().add(i);
+    	    	parent.getChildren().add(i);
     	    }
     }
     
