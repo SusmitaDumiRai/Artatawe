@@ -5,7 +5,7 @@ String sqlInsertUser = "INSERT INTO user values (" +
                 "'07412111111'," +
                 "'123 Fake Street'," +
                 "'S2A NDD', " +
-                "'2017-01-01T10:10:10'," +
+                "'2017/01/01 10:10:10'," +
                 "'co/uk/artatawe/profileImage/SavedProfileImages/PresetImage_Penguin.jpg');";
 
 String sqlInsertUser = "INSERT INTO user values (" +
