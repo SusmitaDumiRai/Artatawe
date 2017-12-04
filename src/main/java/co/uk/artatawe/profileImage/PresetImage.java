@@ -9,13 +9,14 @@ import javafx.scene.image.Image;
  * @version 1.0
  */
 public enum PresetImage {
-	IMAGE_DOG("Dog.jpg"),		//THIS FILE DOESN'T YET EXIST.
-	IMAGE_CAT("Cat.jpg"),		//THIS FILE DOESN'T YET EXIST.
-	IMAGE_RABBIT("Rabbit.jpg"),	//THIS FILE DOESN'T YET EXIST.
-	IMAGE_FISH("Fish.jpg"),		//THIS FILE DOESN'T YET EXIST.
-	IMAGE_DRAGON("Dragon.jpg");	//THIS FILE DOESN'T YET EXIST.
+	IMAGE_DOG("PresetImage_Dog.jpg"),		//THIS FILE DOESN'T YET EXIST.
+	IMAGE_CAT("PresetImage_Cat.jpg"),		//THIS FILE DOESN'T YET EXIST.
+	IMAGE_BEAR("PresetImage_Bear.jpg"),	//THIS FILE DOESN'T YET EXIST.
+	IMAGE_LION("PresetImage_Lion.jpg"),		//THIS FILE DOESN'T YET EXIST.
+	IMAGE_PENGUIN("PresetImage_Penguin.jpg");	//THIS FILE DOESN'T YET EXIST.
 	
 	private final Image presetImage; //The preset JavaFX image. 
+	private static String filepath = "../PresetImages/"; //The file path of the location of the preset images.
 	
 	/**
 	 * Creates a preset image.

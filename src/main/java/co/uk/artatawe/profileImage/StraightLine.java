@@ -79,7 +79,7 @@ public class StraightLine extends ProfileImageComponent {
 	@Override
 	public void displayComponent(GraphicsContext g) {
 		// TODO Auto-generated method stub
-
+		g.strokeLine(getXStartPosition(), getYStartPosition(), getXFinishPosition(), getYFinishPosition());
 	}
 
 }
