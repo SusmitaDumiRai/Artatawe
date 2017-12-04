@@ -1,9 +1,14 @@
 package co.uk.artatawe.database;
 
+import co.uk.artatawe.artwork.Artwork;
+import co.uk.artatawe.artwork.Painting;
+import co.uk.artatawe.artwork.Sculpture;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 /**
  * Handles communication to user table in database.
@@ -49,7 +54,9 @@ public class ArtworkDatabaseManager extends DatabaseManager {
      * Gets all artwork info.
      */
 
-    public void getAllArtworks() {
+    public ArrayList<Artwork> getAllArtworks() {
+        ArrayList<Artwork> artworkArrayList = new ArrayList<>();
+
         String sqlSelect = "SELECT artworkid," +
                 "title," +
                 "description," +
@@ -72,24 +79,28 @@ public class ArtworkDatabaseManager extends DatabaseManager {
 
             ResultSet resultSet = statement.executeQuery(sqlSelect);
             while (resultSet.next()) {
-                System.out.println(resultSet.getInt("artworkid") + "\t" +
-                        resultSet.getString("title") + "\t" +
-                        resultSet.getString("description") + "\t" +
-                        resultSet.getString("photo") + "\t" +
-                        resultSet.getString("nameOfCreator") + "\t" +
-                        resultSet.getDouble("reservedPrice") + "\t" +
-                        resultSet.getString("dateEntered") + "\t" +
-                        resultSet.getInt("bidsAllowed") + "\t" +
-                        resultSet.getString("typeOfArtwork") + "\t" +
-                        resultSet.getDouble("width") + "\t" +
-                        resultSet.getDouble("height") + "\t" +
-                        resultSet.getDouble("depth") + "\t" +
-                        resultSet.getString("mainmaterial") + "\t" +
-                        resultSet.getString("extraphotos") + "\t");
+               if (resultSet.getString("typeofartwork").equals("painting")) { //add painting.
+
+                   artworkArrayList.add(new Painting(resultSet.getString("typeofartwork"), resultSet.getString("title"), resultSet.getString("description"),
+                           resultSet.getString("photo"), resultSet.getString("nameofcreator"), resultSet.getDouble("reservedprice"),
+                           resultSet.getString("dateentered"), resultSet.getInt("bidsallowed"), resultSet.getDouble("width"),
+                           resultSet.getDouble("height")));
+               } else { //add sculpture.
+                  artworkArrayList.add(new Sculpture(resultSet.getString("typeofartwork"), resultSet.getString("title"), resultSet.getString("description"),
+                           resultSet.getString("photo"), resultSet.getString("nameofcreator"), resultSet.getDouble("reservedprice"),
+                           resultSet.getString("dateentered"), resultSet.getInt("bidsallowed"), resultSet.getString("mainmaterial"),
+                           resultSet.getString("extraphotos"),
+                           resultSet.getDouble("width"),
+                           resultSet.getDouble("height"), resultSet.getDouble("depth")));
+
+               }
+
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
+
+        return artworkArrayList;
 
     }
 

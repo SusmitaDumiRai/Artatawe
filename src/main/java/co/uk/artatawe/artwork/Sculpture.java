@@ -9,7 +9,7 @@ public class Sculpture extends Artwork {
 
     private double depth;
     private String mainMaterial;
-    private ArrayList<String> extraPhoto = new ArrayList<>();
+    private String extraPhoto;
 
     /**
      * constructor that creates an sculpture object
@@ -22,14 +22,14 @@ public class Sculpture extends Artwork {
      * @param dateEntered   date of when the sculpture has been put to auction
      * @param bidsAllowed   amount of the bids allowed for the sculpture
      * @param mainMaterial  material the sculpture is made of
-     * @param extraPhotos   some extra photos for the sculpture
+     * @param extraPhoto    extra photo for the sculpture
      * @param width         width of the sculpture
      * @param height        height of the sculpture
      * @param depth         depth of the sculpture
      */
     public Sculpture(String typeOfArtwork, String title, String description, String photo,
                      String nameOfCreator, double reservedPrice, String dateEntered, int bidsAllowed,
-                     String mainMaterial, ArrayList<String> extraPhotos, double width, double height, double depth) {
+                     String mainMaterial, String extraPhoto, double width, double height, double depth) {
         super(typeOfArtwork, title, description, photo, nameOfCreator, reservedPrice, dateEntered, bidsAllowed, width, height);
 
         this.depth = depth;
@@ -73,7 +73,7 @@ public class Sculpture extends Artwork {
      * method that gets extra photos of the sculpture
      * @return extra photos of the sculpture
      */
-    public ArrayList<String> getExtraPhoto() {
+    public String getExtraPhoto() {
         return extraPhoto;
     }
 
@@ -81,7 +81,7 @@ public class Sculpture extends Artwork {
      * method that sets the extra photos of a sculpture
      * @param extraPhoto some extra photos of the sculpture
      */
-    public void setExtraPhoto(ArrayList<String> extraPhoto) {
+    public void setExtraPhoto(String extraPhoto) {
         this.extraPhoto = extraPhoto;
     }
 }
