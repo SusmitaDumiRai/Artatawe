@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
@@ -18,6 +19,7 @@ import java.util.ResourceBundle;
 
 import co.uk.artatawe.artwork.Artwork;
 import co.uk.artatawe.database.ArtworkDatabaseManager;
+import co.uk.artatawe.sample.Main;
 
 /**
  * Controller class for browse auction.
@@ -30,21 +32,27 @@ public class BrowseAuctionController implements Initializable {
     private final int WIDTH = 800;
     private final int HEIGHT = 600;
     
+    @FXML
+    private ImageView imv;
+    
     public void getImages() {
 
         ArtworkDatabaseManager artworkDatabaseManager = new ArtworkDatabaseManager();
     	 ArrayList<Artwork> artworks = artworkDatabaseManager.getAllArtworks();
     	    int noOfArtworks = artworks.size();
     	    ArrayList<ImageView> images = new ArrayList<>();
-    	    StackPane root = new StackPane();
+    	    StackPane parent = new StackPane();
     	    
     	    for (Artwork a : artworks) {
     	    	images.add(new ImageView(a.getPhoto()));
     	    }
     	    
     	    for(ImageView i : images) {
-    	    	root.getChildren().add(i);
+    	    	parent.getChildren().add(i);
     	    }
+    	    
+    	    final Image image2 = new Image(Main.class.getResourceAsStream("..//artworkpictures//Demeter 1.png"));
+            imv.setImage(image2);
     }
     
     public BrowseAuctionController() {
