@@ -92,16 +92,6 @@
                         <TextField prefHeight="31.0" prefWidth="50.0" />
                      </children>
                   </HBox>
-                  <HBox prefHeight="395.0" prefWidth="273.0">
-                     <children>
-                        <Label prefHeight="400.0" prefWidth="88.0" text="Entered on:">
-                           <HBox.margin>
-                              <Insets right="25.0" />
-                           </HBox.margin>
-                        </Label>
-                        <DatePicker prefHeight="31.0" prefWidth="172.0" />
-                     </children>
-                  </HBox>
                   <HBox prefHeight="400.0" prefWidth="202.0">
                      <children>
                         <Label prefHeight="400.0" text="Seller Name:">
