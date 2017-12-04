@@ -17,7 +17,7 @@ public class CreateAuctionTest extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("co/uk/artatawe/gui/CreateAuction.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("CreateAuction.fxml"));
 
         Scene scene = new Scene(root);
 
