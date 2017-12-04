@@ -1,11 +1,18 @@
 package co.uk.artatawe.controller;
 
+import co.uk.artatawe.artwork.Artwork;
+import co.uk.artatawe.database.ArtworkDatabaseManager;
+import co.uk.artatawe.database.AuctionDatabaseManager;
+import co.uk.artatawe.sample.Auction;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
 import java.net.URL;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 /**
@@ -15,7 +22,7 @@ import java.util.ResourceBundle;
 public class CreateAuctionController  implements Initializable {
 
     @FXML
-    private Label sellerName;
+    private Label sellerName; //seller username.
 
     @FXML
     private Button submitButton;
@@ -73,13 +80,37 @@ public class CreateAuctionController  implements Initializable {
 
     @FXML
     void handleSubmitAction(ActionEvent event) {
-        valRadioBtnSelected();
+        insertIntoAuction();
     }
 
+    /**
+     * Creates the auction.
+     * Commits information to artworks and auction database.
+     */
     public void createAuction() {
+        //validate all user inputs.
+        if (valRadioBtnSelected() && valTitle() && valCreatorName() && valYear() &&
+                valAllowedBids() && valWidth() && valHeight()) { //validate user responses.
+
+            //Add to artwork and auction tables.
+            if (paintingRadioButton.isSelected()) { //painting selected.
+                insertIntoArtwork(true);
+                insertIntoAuction();
+            } else { //sculpture selected.
+                if (valDepth()) {
+                    insertIntoArtwork(false);
+                    insertIntoAuction();
+                }
+            }
+        }
+
 
     }
 
+    /**
+     * Validates if one radio button is selected.
+     * @return true if one radio button selected.
+     */
     public boolean valRadioBtnSelected() {
         if (paintingRadioButton.isSelected() || sculptureRadioButton.isSelected()) {
             return true;
@@ -204,6 +235,51 @@ public class CreateAuctionController  implements Initializable {
             //TODO nice error message.
         }
         return false;
+    }
+
+    /**
+     * Insert artwork into artworks table.
+     * @param isPainting true if artwork is painting.
+     */
+    public void insertIntoArtwork(boolean isPainting) {
+        ArtworkDatabaseManager artworkDatabaseManager = new ArtworkDatabaseManager();
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        Date date = new Date();
+        System.out.println(dateFormat.format(date));
+        String sqlInsertArtwork;
+
+        if (isPainting) {
+             sqlInsertArtwork =  "INSERT INTO ARTWORK (title, description, photo, nameofcreator, reservedprice, date entered," +
+                    "bidsallowed, typeofartwork, width, height) values ('" + title.getText() + "', '" + description.getText() + "'," +
+                    "'SOME PHOTO URL'," + "'" + creatorName.getText() + "'," + //TODO PHOTO URL
+                    "'" + dateFormat.format(date) + "','" + allowedBids.getText() + "','painting', '" + width.getText() + "','" + height.getText() + "')";
+
+        } else {
+            sqlInsertArtwork = "INSERT INTO ARTWORK (title, description, photo, nameofcreator, reservedprice, date entered," +
+                    "bidsallowed, typeofartwork, width, height, depth, mainmaterial, extraphotos) values ('" + title.getText() + "', '" + description.getText() + "'," +
+                    "'SOME PHOTO URL'," + "'" + creatorName.getText() + "'," + //TODO PHOTO URL
+                    "'" + dateFormat.format(date) + "','" + allowedBids.getText() + "','sculpture', '" + width.getText() + "','" + height.getText() + "','" +
+                    depth.getText() + "','" + material.getText() + "','EXTRA PHOTOS URL');";
+        }
+
+
+        //artworkDatabaseManager.executeStatement(sqlInsertArtwork);VERY DANGEROUS LINE OF CODE. ONLY UNCOMMENT WHEN FINALISED.
+
+    }
+
+    /**
+     * Puts up artwork up for auction.
+     * Adds data into auction table.
+     */
+    public void insertIntoAuction() {
+        AuctionDatabaseManager auctionDatabaseManager = new AuctionDatabaseManager();
+        ArtworkDatabaseManager artworkDatabaseManager =  new ArtworkDatabaseManager();
+
+        String sqlInsertAuction = "INSERT INTO AUCTION (auctionid, seller,  numofbidsleft, auctioncomp, highestbid) values ('" +  artworkDatabaseManager.getArtworkID(title.getText()) +
+                "','"  +  sellerName.getText() + "','" + allowedBids.getText()  + "','0','" +  reservedPrice.getText() + "';";
+
+        //auctionDatabaseManager.executeStatement(sqlInsertAuction); VERY DANGEROUS LINE OF CODE. ONLY UNCOMMENT WHEN FINALISED.
+
     }
 
 

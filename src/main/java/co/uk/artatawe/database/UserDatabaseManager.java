@@ -114,11 +114,10 @@ public class UserDatabaseManager extends  DatabaseManager {
      * @return array list of usernames.
      */
     public ArrayList<String> getAllUsernames() {
-        UserDatabaseManager userDatabaseManager = new UserDatabaseManager();
 
         ArrayList<String> usernameArrayList = new ArrayList<>();
 
-        for (User user :  userDatabaseManager.getAllUsers()) {
+        for (User user :  getAllUsers()) {
             usernameArrayList.add(user.getUserName().toLowerCase());
         }
 

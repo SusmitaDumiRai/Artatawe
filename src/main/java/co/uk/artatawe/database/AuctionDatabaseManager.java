@@ -68,4 +68,5 @@ public class AuctionDatabaseManager extends DatabaseManager {
         }
 
     }
+
 }

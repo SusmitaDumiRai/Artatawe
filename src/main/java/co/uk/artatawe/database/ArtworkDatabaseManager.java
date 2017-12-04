@@ -94,5 +94,29 @@ public class ArtworkDatabaseManager extends DatabaseManager {
     }
 
 
+    /**
+     * Get artwork ID for artwork.
+     * @param title artwork to be searched.
+     * @return artwork ID for artwork.
+     */
+    public int getArtworkID(String title) {
+        String sqlSelectAuction = "SELECT artworkID where title = '" + title + "';";
+        int artworkID = -1;
+        try {
+            Connection connection = connect();
+            Statement statement = connection.createStatement();
+
+            ResultSet resultSet = statement.executeQuery(sqlSelectAuction);
+            while (resultSet.next()) {
+                artworkID = resultSet.getInt("artworkID");
+
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return artworkID;
+    }
+
 
 }
