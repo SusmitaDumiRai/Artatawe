@@ -183,11 +183,14 @@
             <HBox prefHeight="17.0" prefWidth="291.0">
                <children>
                   <RadioButton mnemonicParsing="false" prefHeight="21.0" prefWidth="51.0" text="all">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="typeArtwork" />
+                     </toggleGroup>
                      <padding>
                         <Insets left="80.0" />
                      </padding>
                   </RadioButton>
-                  <RadioButton mnemonicParsing="false" prefHeight="21.0" prefWidth="145.0" text="paintings">
+                  <RadioButton mnemonicParsing="false" prefHeight="21.0" prefWidth="145.0" text="paintings" toggleGroup="$typeArtwork">
                      <padding>
                         <Insets left="50.0" />
                      </padding>
@@ -199,12 +202,12 @@
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
                <children>
-                  <RadioButton mnemonicParsing="false" text="sculptures">
+                  <RadioButton mnemonicParsing="false" text="sculptures" toggleGroup="$typeArtwork">
                      <padding>
                         <Insets left="10.0" />
                      </padding>
                   </RadioButton>
-                  <RadioButton mnemonicParsing="false" text="favorite user">
+                  <RadioButton mnemonicParsing="false" text="favorite user" toggleGroup="$typeArtwork">
                      <padding>
                         <Insets left="50.0" />
                      </padding>
