@@ -7,11 +7,17 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
+
+import co.uk.artatawe.artwork.Artwork;
+import co.uk.artatawe.database.ArtworkDatabaseManager;
 
 /**
  * Controller class for browse auction.
@@ -23,7 +29,23 @@ public class BrowseAuctionController implements Initializable {
     private String username;
     private final int WIDTH = 800;
     private final int HEIGHT = 600;
-
+    
+    public void getImages(){
+    	
+    	 ArrayList<Artwork> artworks = ArtworkDatabaseManager.getAllArtworks();
+    	    int noOfArtworks = artworks.size();
+    	    ArrayList<ImageView> images = new ArrayList<>();
+    	    StackPane root = new StackPane();
+    	    
+    	    for(Artwork a : artworks){
+    	    	images.add(new ImageView(a.getPhoto()));
+    	    }
+    	    
+    	    for(ImageView i : images){
+    	    	root.getChildren().add(i);
+    	    }
+    }
+    
     public BrowseAuctionController() {
     }
 
