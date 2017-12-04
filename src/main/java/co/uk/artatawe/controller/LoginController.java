@@ -10,6 +10,7 @@ package co.uk.artatawe.controller;
 import co.uk.artatawe.database.UserDatabaseManager;
 import co.uk.artatawe.sample.User;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -18,7 +19,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.net.URL;
@@ -39,7 +43,10 @@ public class LoginController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+
     }
+
+
 
 
     @FXML
@@ -54,10 +61,29 @@ public class LoginController implements Initializable {
 
                    try {
 
-                       root = FXMLLoader.load(getClass().getClassLoader().getResource("co/uk/artatawe/gui/BrowseAuctions.fxml"));
+                       FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/BrowseAuctions.fxml"));
+
+                       root = loader.load();
+                       BrowseAuctionController browseAuctionController = loader.getController();
                        Stage stage = new Stage();
                        stage.setTitle("Browsing artworks");
-                       stage.setScene(new Scene(root, WIDTH, HEIGHT)); //TODO UPDATE TO NO MAGIC NUMBERS. GL LENI.
+                       stage.setScene(new Scene(root, WIDTH, HEIGHT));
+
+
+
+
+                    //   FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/CreateAuction.fxml"));
+                       //   FlowPane flowPane = loader.load();
+                       //
+                       //loader.load();
+                      // CreateAuctionController createAuctionController = loader.getController();
+
+                  //     createAuctionController.changeSellerUsername(username.getText());
+
+
+                       browseAuctionController.setUsername(username.getText());
+
+
                        stage.show();
 
                        //hides current window.
@@ -65,6 +91,7 @@ public class LoginController implements Initializable {
                    } catch (IOException ex) {
                        System.out.println(ex.getMessage());
                    }
+
 
 
                }
