@@ -226,6 +226,16 @@
                         <Label alignment="TOP_LEFT" prefHeight="400.0" text="description" textAlignment="JUSTIFY" />
                      </children>
                   </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label prefHeight="400.0" text="Material: ">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label prefHeight="400.0" text="N/A" />
+                     </children>
+                  </HBox>
                </children>
             </VBox>
          </children>

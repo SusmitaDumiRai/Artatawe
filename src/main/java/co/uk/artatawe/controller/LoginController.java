@@ -51,7 +51,7 @@ public class LoginController implements Initializable {
 
                    try {
 
-                       root = FXMLLoader.load(getClass().getClassLoader().getResource("co/uk/artatawe/gui/BrowseArtwork.fxml"));
+                       root = FXMLLoader.load(getClass().getClassLoader().getResource("co/uk/artatawe/gui/BrowseAuctions.fxml"));
                        Stage stage = new Stage();
                        stage.setTitle("Browsing artworks");
                        stage.setScene(new Scene(root, 400, 400)); //TODO UPDATE TO NO MAGIC NUMBERS. GL LENI.
