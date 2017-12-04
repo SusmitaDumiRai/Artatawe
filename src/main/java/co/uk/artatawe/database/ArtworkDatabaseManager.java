@@ -54,7 +54,7 @@ public class ArtworkDatabaseManager extends DatabaseManager {
      * Gets all artwork info.
      */
 
-    public static ArrayList<Artwork> getAllArtworks() {
+    public ArrayList<Artwork> getAllArtworks() {
         ArrayList<Artwork> artworkArrayList = new ArrayList<>();
 
         String sqlSelect = "SELECT artworkid," +
