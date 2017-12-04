@@ -10,7 +10,6 @@ package co.uk.artatawe.controller;
 import co.uk.artatawe.database.UserDatabaseManager;
 import co.uk.artatawe.sample.User;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -19,11 +18,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -31,8 +26,8 @@ import java.util.ResourceBundle;
 
 public class LoginController implements Initializable {
 
-    private final int WIDTH = 800;
-    private final int HEIGHT = 600;
+    private final int WIDTH = 800; //width size for browse auction window.
+    private final int HEIGHT = 600; //height size for browse auction window.
 
     @FXML
     private Button signInButton;
@@ -46,76 +41,54 @@ public class LoginController implements Initializable {
 
     }
 
-
-
-
+    /**
+     * Validates user password, if correct, opens browse auction window.
+     */
     @FXML
     void signInUser(ActionEvent event) {
-        String usernameText = username.getText();
+        if (validateUsername()) {
+            Parent root;
+            try {
 
-        if (!usernameText.isEmpty()) {
-           for (String username1 : getAllUsernames()) {
-               if (usernameText.equalsIgnoreCase(username1)) {
+                FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/BrowseAuctions.fxml"));
 
-                   Parent root;
+                root = loader.load();
+                BrowseAuctionController browseAuctionController = loader.getController();
+                Stage stage = new Stage();
+                stage.setTitle("Browsing artworks");
+                stage.setScene(new Scene(root, WIDTH, HEIGHT));
 
-                   try {
+                browseAuctionController.setUsername(username.getText()); //parse username.
 
-                       FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/BrowseAuctions.fxml"));
+                stage.show(); //display browse auctions.
 
-                       root = loader.load();
-                       BrowseAuctionController browseAuctionController = loader.getController();
-                       Stage stage = new Stage();
-                       stage.setTitle("Browsing artworks");
-                       stage.setScene(new Scene(root, WIDTH, HEIGHT));
-
-
-
-
-                    //   FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/CreateAuction.fxml"));
-                       //   FlowPane flowPane = loader.load();
-                       //
-                       //loader.load();
-                      // CreateAuctionController createAuctionController = loader.getController();
-
-                  //     createAuctionController.changeSellerUsername(username.getText());
-
-
-                       browseAuctionController.setUsername(username.getText());
-
-
-                       stage.show();
-
-                       //hides current window.
-                       ((Node) (event.getSource())).getScene().getWindow().hide();
-                   } catch (IOException ex) {
-                       System.out.println(ex.getMessage());
-                   }
-
-
-
-               }
-           }
+                //hides current window.
+                ((Node) (event.getSource())).getScene().getWindow().hide();
+            } catch (IOException ex) {
+                System.out.println(ex.getMessage());
+            }
+        } else {
+            //TODO display error message to user.
         }
-
     }
 
-    /**
-     * Gets array list of usernames.
-     * @return array list of usernames.
-     */
-    public ArrayList<String> getAllUsernames() {
+
+
+    public boolean validateUsername() {
+        String usernameText = username.getText();
         UserDatabaseManager userDatabaseManager = new UserDatabaseManager();
 
-        ArrayList<String> usernameArrayList = new ArrayList<>();
+        if (!usernameText.isEmpty()) {
+            for (String username1 : userDatabaseManager.getAllUsernames()) {
+                if (usernameText.equalsIgnoreCase(username1)) {
+                    return true;
 
-        for (User user :  userDatabaseManager.getAllUsers()) {
-            usernameArrayList.add(user.getUserName().toLowerCase());
+                }
+            }
         }
-
-        return usernameArrayList;
-
+        return false;
     }
+
 
     /*
     @FXML

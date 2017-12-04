@@ -109,6 +109,23 @@ public class UserDatabaseManager extends  DatabaseManager {
 
     }
 
+    /**
+     * Gets array list of usernames.
+     * @return array list of usernames.
+     */
+    public ArrayList<String> getAllUsernames() {
+        UserDatabaseManager userDatabaseManager = new UserDatabaseManager();
+
+        ArrayList<String> usernameArrayList = new ArrayList<>();
+
+        for (User user :  userDatabaseManager.getAllUsers()) {
+            usernameArrayList.add(user.getUserName().toLowerCase());
+        }
+
+        return usernameArrayList;
+
+    }
+
     /*
     public void testUser() {
         String sqlSelect = "SELECT username," +
