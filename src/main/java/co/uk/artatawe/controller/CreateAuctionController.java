@@ -13,6 +13,9 @@ import java.util.ResourceBundle;
  */
 public class CreateAuctionController  implements Initializable {
 
+    public CreateAuctionController() {
+    }
+
     public CreateAuctionController(String username) {
         changeSellerUsername(username);
 

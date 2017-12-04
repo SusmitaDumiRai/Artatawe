@@ -1,5 +1,6 @@
 package co.uk.artatawe.controller;
 
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -36,6 +37,15 @@ public class BrowseAuctionController implements Initializable {
 
     }
 
+    /**
+     * Displays profile page when clicked.
+     * @param event
+     */
+    @FXML
+    void handleProfileAction(Event event) {
+
+        System.out.println("My Profile clicked!");
+    }
 
 
 }
