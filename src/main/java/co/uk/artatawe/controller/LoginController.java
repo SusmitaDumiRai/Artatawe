@@ -27,6 +27,9 @@ import java.util.ResourceBundle;
 
 public class LoginController implements Initializable {
 
+    private final int WIDTH = 800;
+    private final int HEIGHT = 600;
+
     @FXML
     private Button signInButton;
 
@@ -54,7 +57,7 @@ public class LoginController implements Initializable {
                        root = FXMLLoader.load(getClass().getClassLoader().getResource("co/uk/artatawe/gui/BrowseAuctions.fxml"));
                        Stage stage = new Stage();
                        stage.setTitle("Browsing artworks");
-                       stage.setScene(new Scene(root, 800, 600)); //TODO UPDATE TO NO MAGIC NUMBERS. GL LENI.
+                       stage.setScene(new Scene(root, WIDTH, HEIGHT)); //TODO UPDATE TO NO MAGIC NUMBERS. GL LENI.
                        stage.show();
 
                        //hides current window.
