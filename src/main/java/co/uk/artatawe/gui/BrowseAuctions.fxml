@@ -10,7 +10,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.uk.artatawe.controller.BrowseAuctionController">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" type="BorderPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.uk.artatawe.controller.BrowseAuctionController">
    <left>
       <VBox prefHeight="600.0" prefWidth="201.0" BorderPane.alignment="CENTER">
          <children>
@@ -134,7 +134,7 @@
          <children>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
                <children>
-                  <ImageView fx:id="artworkPhoto" fitHeight="183.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imv1" fitHeight="183.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@Icons/icons8-love-filled-40.png" />
                      </image>
@@ -207,7 +207,7 @@
             </VBox>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
-                  <ImageView fx:id="artworkPhoto1" fitHeight="183.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imv" fitHeight="183.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@Icons/icons8-love-filled-40.png" />
                      </image>
@@ -231,4 +231,4 @@
    <right>
       <ScrollBar orientation="VERTICAL" prefHeight="590.0" prefWidth="18.0" BorderPane.alignment="CENTER" />
    </right>
-</BorderPane>
+</fx:root>

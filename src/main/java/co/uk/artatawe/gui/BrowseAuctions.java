@@ -2,6 +2,7 @@ package co.uk.artatawe.gui;
 
 import co.uk.artatawe.sample.Main;
 import javafx.application.Application;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -17,6 +18,8 @@ import javafx.stage.Stage;
  */
 public class BrowseAuctions extends Application {
 
+	
+	
       @Override
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("BrowseAuctions.fxml"));
@@ -25,10 +28,8 @@ public class BrowseAuctions extends Application {
         primaryStage.setTitle("Login Test");
         primaryStage.setScene(scene);
         primaryStage.show();
+       
         
-        final ImageView imv = new ImageView();
-        final Image image2 = new Image(Main.class.getResourceAsStream("..//artworkpictures//Demeter 1.png"));
-        imv.setImage(image2);
     }
 
 
