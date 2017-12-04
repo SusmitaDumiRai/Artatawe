@@ -120,7 +120,7 @@
       </VBox>
    </left>
    <center>
-      <GridPane BorderPane.alignment="CENTER">
+      <GridPane prefHeight="574.0" prefWidth="581.0" BorderPane.alignment="CENTER">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -180,16 +180,40 @@
                   <Image url="@Icons/icons8-love-filled-40.png" />
                </image>
             </ImageView>
-            <CheckBox fx:id="paintings" mnemonicParsing="false" text="paintings">
-               <GridPane.margin>
-                  <Insets left="100.0" right="60.0" />
-               </GridPane.margin>
-            </CheckBox>
-            <CheckBox fx:id="sculptures" mnemonicParsing="false" text="sculptures" GridPane.columnIndex="1">
-               <GridPane.margin>
-                  <Insets left="100.0" />
-               </GridPane.margin>
-            </CheckBox>
+            <HBox prefHeight="17.0" prefWidth="291.0">
+               <children>
+                  <RadioButton mnemonicParsing="false" prefHeight="21.0" prefWidth="51.0" text="all">
+                     <padding>
+                        <Insets left="80.0" />
+                     </padding>
+                  </RadioButton>
+                  <RadioButton mnemonicParsing="false" prefHeight="21.0" prefWidth="145.0" text="paintings">
+                     <padding>
+                        <Insets left="50.0" />
+                     </padding>
+                  </RadioButton>
+               </children>
+               <padding>
+                  <Insets left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
+               <children>
+                  <RadioButton mnemonicParsing="false" text="sculptures">
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </RadioButton>
+                  <RadioButton mnemonicParsing="false" text="favorite user">
+                     <padding>
+                        <Insets left="50.0" />
+                     </padding>
+                  </RadioButton>
+               </children>
+               <padding>
+                  <Insets left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </HBox>
          </children>
       </GridPane>
    </center>

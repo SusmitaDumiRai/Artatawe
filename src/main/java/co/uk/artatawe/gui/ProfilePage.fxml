@@ -10,8 +10,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-   fx:controller="co.uk.artatawe.controller.ProfilePageController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.uk.artatawe.controller.ProfilePageController">
    <left>
       <VBox prefHeight="600.0" prefWidth="201.0" BorderPane.alignment="CENTER">
          <children>
@@ -42,14 +41,14 @@
                   <Insets bottom="6.0" left="6.0" right="6.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="favoritesButton" contentDisplay="TOP" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #492976;" text="My Favorites" textFill="WHITE">
+            <Button fx:id="usersButton" contentDisplay="TOP" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #492976;" text="Browse Users" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                      <effect>
                         <ColorAdjust brightness="1.0" />
                      </effect>
                      <image>
-                        <Image url="@Icons/icons8-love-filled-40.png" />
+                        <Image url="@Icons/icons8-find-user-male-filled-40.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -147,13 +146,18 @@
                   </MenuButton>
                </children>
             </VBox>
-            <VBox layoutX="29.0" layoutY="100.0" prefHeight="240.0" prefWidth="237.0">
+            <VBox layoutX="29.0" layoutY="100.0" prefHeight="268.0" prefWidth="237.0">
                <children>
                   <ImageView fx:id="avatar" fitHeight="237.0" fitWidth="237.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@Icons/icons8-love-filled-40.png" />
                      </image></ImageView>
-                  <Button fx:id="changePictureButton" mnemonicParsing="false" prefHeight="31.0" prefWidth="242.0" text="Change Picture" />
+                  <MenuButton alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="31.0" prefWidth="248.0" text="Change User Icon">
+                    <items>
+                      <MenuItem mnemonicParsing="false" text="Use App Icons" />
+                      <MenuItem mnemonicParsing="false" text="Use Custom Drawing" />
+                    </items>
+                  </MenuButton>
                </children>
             </VBox>
          </children>
