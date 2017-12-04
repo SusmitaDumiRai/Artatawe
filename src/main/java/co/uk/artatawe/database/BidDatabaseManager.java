@@ -26,10 +26,12 @@ public class BidDatabaseManager extends DatabaseManager {
      */
     public void createBidTable() {
         String sqlCreateBidTable = "CREATE TABLE IF NOT EXISTS bid( " +
-                "bidID INTEGER PRIMARY KEY not null,\n" +
+                "bidID INTEGER PRIMARY KEY not null," +
+                "auctionID integer not null," +
                 "buyer text not null," + //username of buyer.
                 " bidAmount real not null," +
                 " dateAndTime text not null," + //date and time of bid made.
+                "foreign key (auctionid) references auction (auctionid)" +
                 "foreign key (buyer) references  user (username));";
 
         executeStatement(sqlCreateBidTable);

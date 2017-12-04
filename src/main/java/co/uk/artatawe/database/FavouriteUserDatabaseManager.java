@@ -2,7 +2,11 @@ package co.uk.artatawe.database;
 
 
 /**
- * Created by Susi on 04/12/2017.
+ * Handles communication to favourite user table in database.
+ * Allows creation, deletion and updates to be made to favourite user table.
+ *
+ * @author 908928.
+ * @version 1.0
  */
 public class FavouriteUserDatabaseManager extends DatabaseManager {
     /**

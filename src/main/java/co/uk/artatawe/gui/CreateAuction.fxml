@@ -27,8 +27,11 @@
                            <HBox.margin>
                               <Insets right="50.0" />
                            </HBox.margin>
+                           <toggleGroup>
+                              <ToggleGroup fx:id="typeArtwork" />
+                           </toggleGroup>
                         </RadioButton>
-                        <RadioButton fx:id="sculptureRadioButton" mnemonicParsing="false" text="sculpture" />
+                        <RadioButton fx:id="sculptureRadioButton" mnemonicParsing="false" text="sculpture" toggleGroup="$typeArtwork" />
                      </children>
                   </HBox>
                   <HBox prefHeight="400.0" prefWidth="200.0">
