@@ -26,7 +26,6 @@ public class AuctionDatabaseManager extends DatabaseManager {
     public void createAuctionTable() {
         String sqlCreateAuctionTable = "CREATE TABLE IF NOT EXISTS auction( " +
                 "auctionID INTEGER PRIMARY KEY not null,\n" +
-                "bidID integer," + //attributes have to be atomic.
                 "seller text not null," + //username of seller.
                 "winningBid int," + //winning bid id.
                 "numOfBidsLeft integer not null," +
@@ -34,8 +33,7 @@ public class AuctionDatabaseManager extends DatabaseManager {
                 "highestbid real not null,"  + //originally the reserve price.
                 "foreign key (auctionID) references artwork (artworkID)," +
                 "foreign key (seller) references user (username)," +
-                "foreign key (winningBid) references bid (bidid)" +
-                "foreign key (bidID) references bid (bidid));";
+                "foreign key (winningBid) references bid (bidid));";
 
         executeStatement(sqlCreateAuctionTable);
     }
@@ -46,7 +44,6 @@ public class AuctionDatabaseManager extends DatabaseManager {
      */
     public void getAllAuctions() {
         String sqlSelect = "SELECT auctionid," +
-                "bidid," +
                 "seller," +
                 "winningbid," +
                 "numofbidsleft," +
@@ -61,7 +58,6 @@ public class AuctionDatabaseManager extends DatabaseManager {
             ResultSet resultSet = statement.executeQuery(sqlSelect);
             while (resultSet.next()) {
                 System.out.println(resultSet.getInt("auctionid") + "\t" +
-                        resultSet.getString("bidid") + "\t" +
                         resultSet.getString("seller") + "\t" +
                         resultSet.getString("winningbid") + "\t" +
                         resultSet.getInt("auctioncomp") + "\t" +

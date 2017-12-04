@@ -1,14 +1,14 @@
 String sqlInsertAuction = "INSERT INTO auction (auctionid, seller, numofbidsleft, auctioncomp, highestbid) values (" +
 				"'1'," +
 				"'BuyGymMem'," +
-				"'20'" +
+				"'20'," +
 				"'0'," +
 				"'100');";
 
 String sqlInsertAuction = "INSERT INTO auction (auctionid, seller, numofbidsleft, auctioncomp, highestbid) values (" +
 				"'3'," +
 				"'BuyGymMem'," +
-				"'10'" +
+				"'10'," +
 				"'0'," +
 				"'300.00');";
 				

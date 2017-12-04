@@ -57,7 +57,7 @@ public abstract class DatabaseManager {
             Connection connection = connect();
             Statement statement = connection.createStatement();
             statement.execute(sqlStatement);
-
+            System.out.println("successful");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
