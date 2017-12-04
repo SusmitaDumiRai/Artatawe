@@ -132,36 +132,6 @@
           <RowConstraints maxHeight="229.0" minHeight="10.0" prefHeight="192.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <HBox alignment="CENTER" prefHeight="17.0" prefWidth="291.0">
-               <children>
-                  <RadioButton mnemonicParsing="false" prefHeight="21.0" prefWidth="51.0" text="all">
-                     <toggleGroup>
-                        <ToggleGroup fx:id="typeArtwork" />
-                     </toggleGroup>
-                  </RadioButton>
-                  <RadioButton mnemonicParsing="false" prefHeight="21.0" prefWidth="102.0" text="paintings" toggleGroup="$typeArtwork">
-                     <HBox.margin>
-                        <Insets left="50.0" />
-                     </HBox.margin>
-                  </RadioButton>
-               </children>
-               <padding>
-                  <Insets left="10.0" right="10.0" top="10.0" />
-               </padding>
-            </HBox>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
-               <children>
-                  <RadioButton mnemonicParsing="false" text="sculptures" toggleGroup="$typeArtwork" />
-                  <RadioButton mnemonicParsing="false" text="favorite user" toggleGroup="$typeArtwork">
-                     <HBox.margin>
-                        <Insets left="50.0" />
-                     </HBox.margin>
-                  </RadioButton>
-               </children>
-               <padding>
-                  <Insets left="10.0" right="10.0" top="10.0" />
-               </padding>
-            </HBox>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
                <children>
                   <ImageView fx:id="artworkPhoto" fitHeight="183.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
@@ -172,7 +142,23 @@
                   <Label fx:id="title" text="'Title'" />
                </children>
             </VBox>
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" />
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <RadioButton mnemonicParsing="false" prefHeight="21.0" prefWidth="51.0" text="all">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="typeArtwork" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <RadioButton mnemonicParsing="false" text="favorite user" toggleGroup="$typeArtwork">
+                           <HBox.margin>
+                              <Insets left="90.0" />
+                           </HBox.margin>
+                        </RadioButton>
+                     </children>
+                  </HBox>
+               </children></VBox>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="2">
                <children>
                   <ImageView fx:id="artworkPhoto2" fitHeight="183.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
@@ -229,6 +215,16 @@
                   <Label fx:id="title1" text="'Title'" />
                </children>
             </VBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
+               <children>
+                  <RadioButton mnemonicParsing="false" prefHeight="21.0" prefWidth="102.0" text="paintings" toggleGroup="$typeArtwork" />
+                  <RadioButton mnemonicParsing="false" text="sculptures" toggleGroup="$typeArtwork">
+                     <HBox.margin>
+                        <Insets left="90.0" />
+                     </HBox.margin>
+                  </RadioButton>
+               </children>
+            </HBox>
          </children>
       </GridPane>
    </center>
