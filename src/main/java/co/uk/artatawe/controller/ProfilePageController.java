@@ -15,6 +15,8 @@ import java.util.ResourceBundle;
  */
 public class ProfilePageController implements Initializable {
 
+    private String enteredUsername; //username of person logged in.
+
     @FXML
     private Label username;
 
@@ -29,6 +31,7 @@ public class ProfilePageController implements Initializable {
     }
 
     public ProfilePageController(String username) {
+        this.enteredUsername = username;
 
     }
 
@@ -36,7 +39,7 @@ public class ProfilePageController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
     }
-    
+
     @FXML
     void handleProfileAction(Event event) {
         //TODO fill in information in this tiho.

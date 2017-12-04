@@ -18,8 +18,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
 import java.io.IOException;
+import java.lang.reflect.Executable;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -50,10 +52,11 @@ public class LoginController implements Initializable {
             Parent root;
             try {
 
-                FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/BrowseAuctions.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/BrowseAuctions.fxml"));
 
-                root = loader.load();
-                BrowseAuctionController browseAuctionController = loader.getController();
+               root = fxmlLoader.load();
+
+                BrowseAuctionController browseAuctionController = fxmlLoader.getController();
                 Stage stage = new Stage();
                 stage.setTitle("Browsing artworks");
                 stage.setScene(new Scene(root, WIDTH, HEIGHT));
@@ -64,7 +67,7 @@ public class LoginController implements Initializable {
 
                 //hides current window.
                 ((Node) (event.getSource())).getScene().getWindow().hide();
-            } catch (IOException ex) {
+            } catch (Exception ex) {
                 System.out.println(ex.getMessage());
             }
         } else {
