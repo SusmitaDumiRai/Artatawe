@@ -18,11 +18,15 @@ public class ProfilePageController implements Initializable {
     @FXML
     private Label username;
 
+
     @FXML
     private Label firstName;
 
     @FXML
     private Label lastName;
+
+    public ProfilePageController() {
+    }
 
     public ProfilePageController(String username) {
 
@@ -32,7 +36,7 @@ public class ProfilePageController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
     }
-
+    
     @FXML
     void handleProfileAction(Event event) {
         //TODO fill in information in this tiho.
