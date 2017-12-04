@@ -63,31 +63,30 @@
                   </HBox>
                   <HBox prefHeight="400.0" prefWidth="400.0">
                      <children>
-                        <Label prefHeight="400.0" text="Size:">
+                        <Label prefHeight="34.0" prefWidth="39.0" text="Size:">
                            <padding>
                               <Insets right="6.0" />
                            </padding>
                            <HBox.margin>
-                              <Insets right="19.0" />
+                              <Insets right="30.0" />
                            </HBox.margin>
                         </Label>
-                        <Label prefHeight="400.0" text="width">
-                           <HBox.margin>
-                              <Insets right="5.0" />
-                           </HBox.margin>
-                        </Label>
-                        <TextField fx:id="width" prefHeight="31.0" prefWidth="50.0" />
+                        <TextField fx:id="width" prefHeight="3.0" prefWidth="50.0" />
                         <Label prefHeight="400.0" text="x">
                            <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                           <padding>
                               <Insets left="10.0" right="10.0" />
-                           </HBox.margin>
-                        </Label>
-                        <Label prefHeight="400.0" text="height">
-                           <HBox.margin>
-                              <Insets right="6.0" />
-                           </HBox.margin>
+                           </padding>
                         </Label>
                         <TextField fx:id="height" prefHeight="31.0" prefWidth="50.0" />
+                        <Label prefHeight="400.0" text="x">
+                           <padding>
+                              <Insets left="10.0" right="10.0" />
+                           </padding>
+                        </Label>
+                        <TextField prefHeight="31.0" prefWidth="50.0" />
                      </children>
                   </HBox>
                   <HBox prefHeight="395.0" prefWidth="273.0">
@@ -136,7 +135,7 @@
                   </HBox>
                </children>
             </VBox>
-            <VBox layoutX="24.0" layoutY="400.0" prefHeight="133.0" prefWidth="562.0">
+            <VBox layoutX="24.0" layoutY="409.0" prefHeight="133.0" prefWidth="562.0">
                <children>
                   <HBox prefHeight="61.0" prefWidth="600.0">
                      <children>
@@ -148,9 +147,23 @@
                         <TextArea fx:id="description" prefHeight="61.0" prefWidth="474.0" />
                      </children>
                   </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label prefHeight="71.0" prefWidth="68.0" text="Material:">
+                           <padding>
+                              <Insets right="10.0" />
+                           </padding>
+                        </Label>
+                        <TextField prefHeight="28.0">
+                           <HBox.margin>
+                              <Insets left="20.0" top="20.0" />
+                           </HBox.margin>
+                        </TextField>
+                     </children>
+                  </HBox>
                </children>
             </VBox>
-            <Button fx:id="sumbitButton" layoutX="518.0" layoutY="526.0" mnemonicParsing="false" text="Sumbit" />
+            <Button fx:id="sumbitButton" layoutX="506.0" layoutY="527.0" mnemonicParsing="false" text="Sumbit" />
          </children>
       </Pane>
    </center>
@@ -184,14 +197,14 @@
                   <Insets bottom="6.0" left="6.0" right="6.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="favorites" contentDisplay="TOP" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #492976;" text="My Favorites" textFill="WHITE">
+            <Button fx:id="users" contentDisplay="TOP" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #492976;" text="Browse Users" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                      <effect>
                         <ColorAdjust brightness="1.0" />
                      </effect>
                      <image>
-                        <Image url="@Icons/icons8-love-filled-40.png" />
+                        <Image url="@Icons/icons8-find-user-male-filled-40.png" />
                      </image>
                   </ImageView>
                </graphic>

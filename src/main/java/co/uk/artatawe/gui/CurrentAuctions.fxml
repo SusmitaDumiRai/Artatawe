@@ -116,14 +116,14 @@
                   <Insets bottom="6.0" left="6.0" right="6.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="favorites" contentDisplay="TOP" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #492976;" text="My Favorites" textFill="WHITE">
+            <Button fx:id="users" contentDisplay="TOP" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #492976;" text="Browse Users" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                      <effect>
                         <ColorAdjust brightness="1.0" />
                      </effect>
                      <image>
-                        <Image url="@Icons/icons8-love-filled-40.png" />
+                        <Image url="@Icons/icons8-find-user-male-filled-40.png" />
                      </image>
                   </ImageView>
                </graphic>

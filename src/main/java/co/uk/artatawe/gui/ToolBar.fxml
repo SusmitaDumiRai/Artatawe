@@ -27,11 +27,11 @@
          <VBox.margin>
             <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
          </VBox.margin></Button>
-      <Button fx:id="favoritesButton" contentDisplay="TOP" layoutX="10.0" layoutY="10.0" prefHeight="400.0" prefWidth="174.0" style="-fx-background-color: #492976;" text="My Favorites" textFill="WHITE">
+      <Button fx:id="usersButton" contentDisplay="TOP" layoutX="10.0" layoutY="10.0" prefHeight="400.0" prefWidth="174.0" style="-fx-background-color: #492976;" text="Browse Users" textFill="WHITE">
          <graphic>
             <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@Icons/icons8-love-filled-40.png" />
+                  <Image url="@Icons/icons8-find-user-male-filled-40.png" />
                </image>
                <effect>
                   <ColorAdjust brightness="1.0" />
@@ -41,7 +41,7 @@
          <VBox.margin>
             <Insets bottom="6.0" left="6.0" right="6.0" />
          </VBox.margin></Button>
-      <Button fx:id="artworkButton" contentDisplay="TOP" layoutX="10.0" layoutY="10.0" prefHeight="400.0" prefWidth="174.0" style="-fx-background-color: #ca3a5e;" text="Browse Artwork" textFill="WHITE">
+      <Button fx:id="artworkButton" contentDisplay="TOP" layoutX="10.0" layoutY="10.0" prefHeight="400.0" prefWidth="174.0" style="-fx-background-color: #ca3a5e;" text="Browse Auctions" textFill="WHITE">
          <graphic>
             <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                <image>
