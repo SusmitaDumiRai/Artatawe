@@ -13,7 +13,6 @@ import java.util.*;
  */
 public class Auction {
 
-    private Bid bid;
     private int numOfBidsLeft;
     private boolean auctionComp;
     private Artwork artwork;
@@ -70,14 +69,6 @@ public class Auction {
      */
     public Artwork getArtwork() {
         return artwork;
-    }
-
-    /**
-     * Method to get a bid
-     * @return bid - bid object
-     */
-    public Bid getBid() {
-        return bid;
     }
 
     /**
@@ -151,8 +142,7 @@ public class Auction {
                 + this.sellerUsername + "/nNumber of Bids Left: "
                 + numOfBidsLeft + "/nHighestBid: " + this.highestBid.toString()
                 + "/nHighest Bidder: "
-                + this.highestBid.getBuyer().getUserName()
-        		+ bid.toString();
+                + this.highestBid.getBuyer().getUserName();
         return output;
     }
 
