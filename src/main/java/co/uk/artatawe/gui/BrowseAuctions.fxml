@@ -41,14 +41,14 @@
                   <Insets bottom="6.0" left="6.0" right="6.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="favorites" contentDisplay="TOP" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #492976;" text="My Favorites" textFill="WHITE">
+            <Button fx:id="favorites" contentDisplay="TOP" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #492976;" text="Browse Users" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                      <effect>
                         <ColorAdjust brightness="1.0" />
                      </effect>
                      <image>
-                        <Image url="@Icons/icons8-love-filled-40.png" />
+                        <Image url="@Icons/icons8-find-user-male-filled-40.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -132,91 +132,103 @@
           <RowConstraints maxHeight="229.0" minHeight="10.0" prefHeight="192.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <ImageView fitHeight="183.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
-               <GridPane.margin>
-                  <Insets left="60.0" right="60.0" />
-               </GridPane.margin>
-               <image>
-                  <Image url="@Icons/icons8-love-filled-40.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="183.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
-               <GridPane.margin>
-                  <Insets left="60.0" right="60.0" />
-               </GridPane.margin>
-               <image>
-                  <Image url="@Icons/icons8-love-filled-40.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="183.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2">
-               <GridPane.margin>
-                  <Insets left="60.0" right="60.0" />
-               </GridPane.margin>
-               <image>
-                  <Image url="@Icons/icons8-love-filled-40.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="183.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
-               <GridPane.margin>
-                  <Insets left="60.0" right="60.0" />
-               </GridPane.margin>
-               <image>
-                  <Image url="@Icons/icons8-love-filled-40.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="183.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="3">
-               <GridPane.margin>
-                  <Insets left="60.0" right="60.0" />
-               </GridPane.margin>
-               <image>
-                  <Image url="@Icons/icons8-love-filled-40.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="183.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
-               <GridPane.margin>
-                  <Insets left="60.0" right="60.0" />
-               </GridPane.margin>
-               <image>
-                  <Image url="@Icons/icons8-love-filled-40.png" />
-               </image>
-            </ImageView>
-            <HBox prefHeight="17.0" prefWidth="291.0">
+            <HBox alignment="CENTER" prefHeight="17.0" prefWidth="291.0">
                <children>
                   <RadioButton mnemonicParsing="false" prefHeight="21.0" prefWidth="51.0" text="all">
                      <toggleGroup>
                         <ToggleGroup fx:id="typeArtwork" />
                      </toggleGroup>
-                     <padding>
-                        <Insets left="80.0" />
-                     </padding>
                   </RadioButton>
-                  <RadioButton mnemonicParsing="false" prefHeight="21.0" prefWidth="145.0" text="paintings" toggleGroup="$typeArtwork">
-                     <padding>
+                  <RadioButton mnemonicParsing="false" prefHeight="21.0" prefWidth="102.0" text="paintings" toggleGroup="$typeArtwork">
+                     <HBox.margin>
                         <Insets left="50.0" />
-                     </padding>
+                     </HBox.margin>
                   </RadioButton>
                </children>
                <padding>
                   <Insets left="10.0" right="10.0" top="10.0" />
                </padding>
             </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
                <children>
-                  <RadioButton mnemonicParsing="false" text="sculptures" toggleGroup="$typeArtwork">
-                     <padding>
-                        <Insets left="10.0" />
-                     </padding>
-                  </RadioButton>
+                  <RadioButton mnemonicParsing="false" text="sculptures" toggleGroup="$typeArtwork" />
                   <RadioButton mnemonicParsing="false" text="favorite user" toggleGroup="$typeArtwork">
-                     <padding>
+                     <HBox.margin>
                         <Insets left="50.0" />
-                     </padding>
+                     </HBox.margin>
                   </RadioButton>
                </children>
                <padding>
                   <Insets left="10.0" right="10.0" top="10.0" />
                </padding>
             </HBox>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
+               <children>
+                  <ImageView fx:id="artworkPhoto" fitHeight="183.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Icons/icons8-love-filled-40.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="title" text="'Title'" />
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" />
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="2">
+               <children>
+                  <ImageView fx:id="artworkPhoto2" fitHeight="183.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Icons/icons8-love-filled-40.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="title2" text="'Title'" />
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <children>
+                  <ImageView fx:id="artworkPhoto3" fitHeight="183.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Icons/icons8-love-filled-40.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="title3" text="'Title'" />
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="3">
+               <children>
+                  <ImageView fx:id="artworkPhoto4" fitHeight="183.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Icons/icons8-love-filled-40.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="title4" text="'Title'" />
+               </children>
+               <padding>
+                  <Insets bottom="10.0" />
+               </padding>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <children>
+                  <ImageView fx:id="artworkPhoto5" fitHeight="183.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Icons/icons8-love-filled-40.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="title5" text="'Title'" />
+               </children>
+               <padding>
+                  <Insets bottom="10.0" />
+               </padding>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <children>
+                  <ImageView fx:id="artworkPhoto1" fitHeight="183.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Icons/icons8-love-filled-40.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="title1" text="'Title'" />
+               </children>
+            </VBox>
          </children>
       </GridPane>
    </center>
