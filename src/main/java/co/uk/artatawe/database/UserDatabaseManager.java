@@ -38,8 +38,6 @@ public class UserDatabaseManager extends  DatabaseManager {
                 " profileimage text not null, UNIQUE(username));";
 
         executeStatement(sqlCreateUserTable);
-
-
     }
 
 
@@ -56,8 +54,7 @@ public class UserDatabaseManager extends  DatabaseManager {
                 "address," +
                 "postcode," +
                 "lastlogin," +
-                "profileimage," +
-                "favouriteuser FROM user;";
+                "profileimage FROM user;";
 
         try {
             Connection connection = connect();
@@ -65,16 +62,6 @@ public class UserDatabaseManager extends  DatabaseManager {
 
             ResultSet resultSet = statement.executeQuery(sqlSelect);
             while (resultSet.next()) {
-                /*
-                System.out.println(resultSet.getString("username") + "\t" +
-                        resultSet.getString("firstname") + "\t" +
-                        resultSet.getString("surname") + "\t" +
-                        resultSet.getString("phonenumber") + "\t" +
-                        resultSet.getString("address") + "\t" +
-                        resultSet.getString("postcode") + "\t" +
-                        resultSet.getString("lastlogin") + "\t" +
-                        resultSet.getString("profileimage") + "\t");*/
-
 
 
                 //currently does not support favourite users and profile image.
@@ -90,9 +77,14 @@ public class UserDatabaseManager extends  DatabaseManager {
         return userArrayList;
     }
 
+    /**
+     * Returns information of certain user.
+     * @param username user to search.
+     */
     public void getUser(String username) {
 
         String selectUser = "SELECT * FROM user where username = '" + username + "'";
+
         try {
             Connection connection = connect();
             Statement statement = connection.createStatement();
@@ -114,6 +106,41 @@ public class UserDatabaseManager extends  DatabaseManager {
             System.out.println(ex.getMessage());
         }
 
+
     }
 
+    /*
+    public void testUser() {
+        String sqlSelect = "SELECT username," +
+                "firstname," +
+                "surname," +
+                "phonenumber," +
+                "address," +
+                "postcode," +
+                "lastlogin," +
+                "profileimage FROM user;";
+
+        try {
+            Connection connection = connect();
+            Statement statement = connection.createStatement();
+
+            ResultSet resultSet = statement.executeQuery(sqlSelect);
+            while (resultSet.next()) {
+
+                System.out.println(resultSet.getString("username") + "\t" +
+                        resultSet.getString("firstname") + "\t" +
+                        resultSet.getString("surname") + "\t" +
+                        resultSet.getString("phonenumber") + "\t" +
+                        resultSet.getString("address") + "\t" +
+                        resultSet.getString("postcode") + "\t" +
+                        resultSet.getString("lastlogin") + "\t" +
+                        resultSet.getString("profileimage") + "\t");
+
+
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+*/
 }

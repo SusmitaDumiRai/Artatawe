@@ -6,7 +6,7 @@ String sqlInsertUser = "INSERT INTO user values (" +
                 "'123 Fake Street'," +
                 "'S2A NDD', " +
                 "'2017-01-01T10:10:10'," +
-                "'some string url');";
+                "'co/uk/artatawe/profileImage/SavedProfileImages/PresetImage_Penguin.jpg');";
 
 String sqlInsertUser = "INSERT INTO user values (" +
                 "'UglyBackpack'," +
@@ -16,7 +16,7 @@ String sqlInsertUser = "INSERT INTO user values (" +
                 "'503 Not real avenue'," +
                 "'SZ2 2AD', " +
                 "'2017-05-20T09:12:13'," +
-                "'some string url2');";
+                "'co/uk/artatawe/profileImage/SavedProfileImages/PresetImage_Lion.jpg');";
 
 String sqlInsertUser = "INSERT INTO user values (" +
                 "'YayTesting'," +
@@ -26,7 +26,7 @@ String sqlInsertUser = "INSERT INTO user values (" +
                 "'40 False close'," +
                 "'ZZ2 2HG', " +
                 "'2017-04-20T09:12:13'," +
-                "'some string url3');";
+                "'co/uk/artatawe/profileImage/SavedProfileImages/PresetImage_Penguin.jpg');";
 
 String sqlInsertUser = "INSERT INTO user values (" +
                 "'FinzFinz'," +
@@ -36,7 +36,7 @@ String sqlInsertUser = "INSERT INTO user values (" +
                 "'1022 Imitation Lane'," +
                 "'TT2 2HA', " +
                 "'2017-02-20T09:12:13'," +
-                "'some string url4');";
+                "'co/uk/artatawe/profileImage/SavedProfileImages/PresetImage_Bear.jpg');";
 
 String sqlInsertUser = "INSERT INTO user values (" +
                 "'LoLFan'," +
@@ -46,7 +46,7 @@ String sqlInsertUser = "INSERT INTO user values (" +
                 "'89 Not true lane'," +
                 "'DTA 2SS', " +
                 "'2017-06-20T09:12:13'," +
-                "'some string url5');";
+                "'co/uk/artatawe/profileImage/SavedProfileImages/PresetImage_Cat.jpg');";
 
 String sqlInsertUser = "INSERT INTO user values (" +
                 "'username'," +
@@ -56,7 +56,7 @@ String sqlInsertUser = "INSERT INTO user values (" +
                 "'1 Counterfeit road'," +
                 "'AAA AAA', " +
                 "'2017-12-20T10:12:13'," +
-                "'some string url6');";
+                "'co/uk/artatawe/profileImage/SavedProfileImages/PresetImage_Dog.jpg');";
 
 ----------------------------------
 String sqlInsertArtwork = "INSERT INTO artwork (title, description, photo, nameofcreator, reservedprice,

@@ -63,4 +63,19 @@ public abstract class DatabaseManager {
         }
 
     }
+
+    /**
+     * Executes a SQL statement where it is updating info.
+     * @param sqlStatement update sql statement.
+     */
+    public void updateStatement(String sqlStatement) {
+        try {
+            Connection connection = connect();
+            Statement statement = connection.createStatement();
+            statement.executeUpdate(sqlStatement);
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
 }

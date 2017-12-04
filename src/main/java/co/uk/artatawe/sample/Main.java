@@ -1,9 +1,6 @@
 package co.uk.artatawe.sample;
 
-import co.uk.artatawe.database.ArtworkDatabaseManager;
-import co.uk.artatawe.database.AuctionDatabaseManager;
-import co.uk.artatawe.database.BidDatabaseManager;
-import co.uk.artatawe.database.UserDatabaseManager;
+import co.uk.artatawe.database.*;
 
 
 import javafx.application.Application;
@@ -53,20 +50,6 @@ public class Main extends Application {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     /*
     public static void main(String[] args) {
         launch(args);
@@ -77,14 +60,14 @@ public class Main extends Application {
 
 
 
-
-
-
     public static void main(String[] args) {
         UserDatabaseManager userDatabaseManager = new UserDatabaseManager();
         ArtworkDatabaseManager artworkDatabaseManager = new ArtworkDatabaseManager();
         AuctionDatabaseManager auctionDatabaseManager = new AuctionDatabaseManager();
         BidDatabaseManager bidDatabaseManager = new BidDatabaseManager();
+        FavouriteUserDatabaseManager favouriteUserDatabaseManager = new FavouriteUserDatabaseManager();
+
+
 
 
     }
