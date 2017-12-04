@@ -17,8 +17,10 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.lang.reflect.Executable;
@@ -30,6 +32,10 @@ public class LoginController implements Initializable {
 
     private final int WIDTH = 800; //width size for browse auction window.
     private final int HEIGHT = 600; //height size for browse auction window.
+    private final String ERROR = "Wrong username";
+
+    @FXML
+    private Label errorMessage;
 
     @FXML
     private Button signInButton;
@@ -71,7 +77,7 @@ public class LoginController implements Initializable {
                 System.out.println(ex.getMessage());
             }
         } else {
-            //TODO display error message to user.
+            errorMessage.setTextFill(Paint.valueOf("RED"));
         }
     }
 
