@@ -73,13 +73,22 @@ public class CreateAuctionController  implements Initializable {
 
     @FXML
     void handleSubmitAction(ActionEvent event) {
-        valWidth();
-        valDepth();
-        valHeight();
+        valRadioBtnSelected();
     }
 
     public void createAuction() {
 
+    }
+
+    public boolean valRadioBtnSelected() {
+        if (paintingRadioButton.isSelected() || sculptureRadioButton.isSelected()) {
+            return true;
+        } else {
+            System.out.println("choose one radio button");
+            //TODO NICE ERROR MSG.
+        }
+
+        return false;
     }
 
     /**
