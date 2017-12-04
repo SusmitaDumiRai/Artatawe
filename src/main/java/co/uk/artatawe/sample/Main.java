@@ -67,7 +67,7 @@ public class Main extends Application {
         BidDatabaseManager bidDatabaseManager = new BidDatabaseManager();
         FavouriteUserDatabaseManager favouriteUserDatabaseManager = new FavouriteUserDatabaseManager();
 
-        
+
 
 
 

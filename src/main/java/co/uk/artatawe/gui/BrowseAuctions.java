@@ -7,7 +7,10 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
- * Created by Susi on 03/12/2017.
+ * Class to test browsing auction.
+ * Probably redundant
+ *
+ * @author 908928
  */
 public class BrowseAuctions extends Application {
 
