@@ -11,10 +11,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.TilePane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -93,23 +91,28 @@ public class BrowseAuctionController implements Initializable {
         for (Artwork artwork : artworkArrayList) {
             artworkPhoto.add(artwork.getPhoto());
         }
-        Rectangle2D viewportRect = new Rectangle2D(40, 35, 110, 110);
+        //Rectangle2D viewportRect = new Rectangle2D(40, 35, 200, 200);//don't need this
 
         String[] imageLocation = artworkPhoto.toArray(new String[artworkArrayList.size()]); //convert array list to array.
 
         for (int i = 0; i < imageLocation.length; i++) {
+
             images[i] = new Image(imageLocation[i], 200, 0, true, true); //get image.
             imageViews[i] = new ImageView(images[i]); //add image to image view.
-            imageViews[i].setFitWidth(150);
+            imageViews[i].setFitWidth(200);
             imageViews[i].setFitHeight(stage.getHeight() - 10);
             imageViews[i].setPreserveRatio(true);
             imageViews[i].setSmooth(true);
             imageViews[i].setCache(true);
-            imageViews[i].setViewport(viewportRect);
-            vBoxes[i] = new VBox();
-            vBoxes[i].getChildren().add(imageViews[i]); //add vbox inside gridpane.
-            artworkTilePane.getChildren().add(vBoxes[i]); //add image to gridpane.
 
+            //add some i guess details here.
+            //imageViews[i].setViewport(viewportRect);//don't need this
+
+            //imageViews[i].setViewport(viewportRect);
+
+            vBoxes[i] = new VBox();
+            vBoxes[i].getChildren().addAll(imageViews[i]); //add vbox inside gridpane.
+            artworkTilePane.getChildren().add(vBoxes[i]); //add image to gridpane.
         }
 
     }
