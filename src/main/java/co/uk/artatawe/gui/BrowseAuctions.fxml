@@ -135,7 +135,7 @@
       </VBox>
    </left>
    <center>
-      <ScrollPane fx:id="artworkScrollPane" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" vbarPolicy="ALWAYS" BorderPane.alignment="CENTER">
+      <ScrollPane fx:id="artworkScrollPane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="597.0" prefWidth="579.0">
                <children>
