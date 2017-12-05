@@ -10,10 +10,11 @@ import java.util.ArrayList;
 /**
  * The class handles information about a user.
  * @author Tihomir Trendafilov
+ * @author 908928
  * @version 1.0
  */
 
-//todo add tostring
+
 public class User {
 
   private String userName;
@@ -23,43 +24,38 @@ public class User {
   private String address;
   private String postcode;
   private String lastLogin;
-  private ArrayList<User> favouriteUsers = new ArrayList<User>();
-  private ProfileImage profileImage;
+  private ArrayList<User> favouriteUsers = new ArrayList<>();
+  private String profileImage;
 
 
   /**
-   * Test constructor - susi.
-   * @param userName
-   * @param firstName
-   * @param surname
-   * @param phoneNumber
-   * @param address
-   * @param postcode
+   * Constructor class for user.
+   * @param userName user name of user.
+   * @param firstName firstname of user.
+   * @param surname surname of user.
+   * @param phoneNumber phone number of user.
+   * @param address first line of address of user.
+   * @param postcode post code of user.
+   * @param lastLogin date time of user's last login.
   */
   public User(String userName, String firstName, String surname,
-              String phoneNumber, String address, String postcode) {
-
+              String phoneNumber, String address, String postcode, String lastLogin, String profileImage) {
     this.userName = userName;
     this.firstName = firstName;
     this.surname = surname;
     this.phoneNumber = phoneNumber;
     this.address = address;
     this.postcode = postcode;
+    this.lastLogin = lastLogin;
+    this.profileImage = profileImage;
   }
 
 
-  public User(String userName, String firstName, String surname,
-                String phoneNumber, String address, String postcode,
-                ArrayList<User> favoriteUsers, ProfileImage profileImage) {
+  /**
+   * Empty constructor
+   */
+  public User() {
 
-    this.userName = userName;
-    this.firstName = firstName;
-    this.surname = surname;
-    this.phoneNumber = phoneNumber;
-    this.address = address;
-    this.postcode = postcode;
-    this.favouriteUsers = favoriteUsers;
-    this.profileImage = profileImage;
   }
 
   /**
@@ -146,7 +142,7 @@ public class User {
    * Returns the profile image a user has chosen for their profile.
    * @return a user's profile image
   */
-  public ProfileImage getProfileImage() {
+  public String getProfileImage() {
     return profileImage;
   }
 
@@ -168,12 +164,8 @@ public class User {
                 ", address='" + address + '\'' +
                 ", postcode='" + postcode + '\'' +
                 ", lastLogin='" + lastLogin + '\'' +
-                ", favouriteUsers=" + favouriteUsers +
                 ", profileImage=" + profileImage +
                 '}';
   }
-
-  //no display methods
-  //no addAuciton method
 
 }

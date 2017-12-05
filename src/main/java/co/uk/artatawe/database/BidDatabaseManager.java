@@ -40,11 +40,7 @@ public class BidDatabaseManager extends DatabaseManager {
     /**
      * Displays all bids.
      */
-    public void getAllBids() {
-        String sqlSelect = "SELECT bidID," +
-                "buyer," +
-                "bidamount," +
-                "dateandtime FROM bid;";
+    public void getAllBids(String sqlSelect) {
 
         try {
             Connection connection = connect();
