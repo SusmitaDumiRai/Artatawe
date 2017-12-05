@@ -124,7 +124,13 @@
          <children>
             <VBox layoutX="312.0" layoutY="100.0" prefHeight="240.0" prefWidth="257.0">
                <children>
-                  <Label fx:id="userName" prefHeight="300.0" text="crazyS3ller" />
+                  <Label fx:id="userName" prefHeight="300.0" text="crazyS3ller">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="20.0" />
+                     </VBox.margin></Label>
                   <HBox prefHeight="300.0" prefWidth="200.0">
                      <children>
 
@@ -138,15 +144,10 @@
                   </HBox>
                   <Label fx:id="telephoneNumber" prefHeight="300.0" text="+6969696969" />
                   <Label fx:id="address" prefHeight="300.0" text="Swnasea, Tesco" />
-                  <MenuButton fx:id="editButton" mnemonicParsing="false" prefHeight="31.0" text="Edit">
-                    <items>
-                      <MenuItem mnemonicParsing="false" text="Change telephone number" />
-                      <MenuItem mnemonicParsing="false" text="Change Address" />
-                    </items>
-                  </MenuButton>
+                  <Label fx:id="postcode" prefHeight="300.0" text="SA1" />
                </children>
             </VBox>
-            <VBox layoutX="29.0" layoutY="100.0" prefHeight="268.0" prefWidth="237.0">
+           <VBox layoutX="29.0" layoutY="100.0" prefHeight="268.0" prefWidth="237.0">
                <children>
                   <ImageView fx:id="avatar" fitHeight="237.0" fitWidth="237.0" pickOnBounds="true" preserveRatio="true">
                      <image>
