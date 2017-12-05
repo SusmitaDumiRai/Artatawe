@@ -138,7 +138,7 @@
       <ScrollBar orientation="VERTICAL" prefHeight="590.0" prefWidth="18.0" BorderPane.alignment="CENTER" />
    </right>
    <center>
-      <ScrollPane hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <ScrollPane fx:id="artworkScrollPane" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="597.0" prefWidth="579.0">
                <children>
@@ -168,7 +168,7 @@
                         <Insets top="10.0" />
                      </padding>
                   </HBox>
-                  <TilePane hgap="15.0" layoutX="14.0" layoutY="23.0" prefHeight="574.0" prefWidth="579.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="23.0">
+                  <TilePane fx:id="artworkTilePane" hgap="15.0" layoutX="14.0" layoutY="23.0" prefHeight="574.0" prefWidth="579.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="23.0">
                      <padding>
                         <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                      </padding>

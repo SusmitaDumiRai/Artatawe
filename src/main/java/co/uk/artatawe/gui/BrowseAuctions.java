@@ -31,16 +31,25 @@ import java.io.FileNotFoundException;
  */
 public class BrowseAuctions extends Application {
 
-	Stage stage;
+
+
+    //OUTDATED. WARNING WHEN USING.
+    @FXML
+    private TilePane artworkTilePane;
+
+    @FXML
+    private ScrollPane artworkScrollPane;
+
+    Stage stage;
 	
-      @Override
+    @Override
     public void start(Stage primaryStage) throws Exception {
           stage = primaryStage;
-          ScrollPane root = new ScrollPane();
-          TilePane tile = new TilePane();
-          root.setStyle("-fx-background-color: DAE6F3;");
-          tile.setPadding(new Insets(15, 15, 15, 15));
-          tile.setHgap(15);
+         ScrollPane root = artworkScrollPane;
+         TilePane tile = artworkTilePane;
+       artworkScrollPane.setStyle("-fx-background-color: DAE6F3;");
+        artworkTilePane.setPadding(new Insets(15, 15, 15, 15));
+        artworkTilePane.setHgap(15);
 
           String path = "src/main/java/co/uk/artatawe/artworkpictures";
 
@@ -50,19 +59,19 @@ public class BrowseAuctions extends Application {
           for (final File file : listOfFiles) {
               ImageView imageView;
               imageView = createImageView(file);
-              tile.getChildren().addAll(imageView);
+              artworkTilePane.getChildren().addAll(imageView);
           }
 
 
-          root.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // Horizontal
-          root.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED); // Vertical scroll bar
-          root.setFitToWidth(true);
-          root.setContent(tile);
+        artworkScrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // Horizontal
+        artworkScrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED); // Vertical scroll bar
+        artworkScrollPane.setFitToWidth(true);
+        artworkScrollPane.setContent(artworkTilePane);
 
           primaryStage.setWidth(Screen.getPrimary().getVisualBounds().getWidth());
           primaryStage.setHeight(Screen.getPrimary().getVisualBounds()
                   .getHeight());
-          Scene scene = new Scene(root);
+          Scene scene = new Scene(artworkScrollPane);
           primaryStage.setScene(scene);
           primaryStage.show();
 
@@ -86,7 +95,7 @@ public class BrowseAuctions extends Application {
 
                     if(mouseEvent.getButton().equals(MouseButton.PRIMARY)){
 
-                        if(mouseEvent.getClickCount() == 2){
+                        if (mouseEvent.getClickCount() == 2) {
                             try {
                                 BorderPane borderPane = new BorderPane();
                                 ImageView imageView = new ImageView();

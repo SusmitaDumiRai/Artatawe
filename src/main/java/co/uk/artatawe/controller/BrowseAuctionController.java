@@ -4,13 +4,16 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -34,11 +37,12 @@ public class BrowseAuctionController implements Initializable {
     private final int WIDTH = 800;
     private final int HEIGHT = 600;
 
-    @FXML
-    private GridPane artworkgridpane;
 
     @FXML
-    private VBox artworkvbox01;
+    private TilePane artworkTilePane;
+
+    @FXML
+    private ScrollPane artworkScrollPane;
 
     @FXML
     private ImageView imv;
@@ -58,6 +62,9 @@ public class BrowseAuctionController implements Initializable {
         for (Artwork artwork : artworkArrayList) {
             artworkPhoto.add(artwork.getPhoto());
         }
+        Rectangle2D viewportRect = new Rectangle2D(40, 35, 110, 110);
+
+        System.out.println(artworkArrayList.size());
 
 
         String[] imageLocation = artworkPhoto.toArray(new String[artworkArrayList.size()]); //convert array list to array.
@@ -66,9 +73,10 @@ public class BrowseAuctionController implements Initializable {
             images[i] = new Image(imageLocation[i]); //get image.
             imageViews[i] = new ImageView(images[i]); //add image to image view.
             //add some i guess details here.
+            imageViews[i].setViewport(viewportRect);
             vBoxes[i] = new VBox();
             vBoxes[i].getChildren().add(imageViews[i]); //add vbox inside gridpane.
-            artworkgridpane.getChildren().add(vBoxes[i]); //add image to gridpane.
+            artworkTilePane.getChildren().add(vBoxes[i]); //add image to gridpane.
 
         }
 
