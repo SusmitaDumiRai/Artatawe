@@ -121,6 +121,7 @@ public class BrowseAuctionController implements Initializable {
             vBoxes[i].getChildren().addAll(imageViews[i]); //add vbox inside gridpane.
             artworkTilePane.getChildren().add(vBoxes[i]); //add image to gridpane.
             artworkTilePane.setAlignment(Pos.CENTER);
+
         }
 
     }
