@@ -3,6 +3,7 @@ package co.uk.artatawe.controller;
 
 /**
  * Controller for login page.
+ *
  * @author Plamena Tseneva
  * @author 908928
  *
@@ -102,22 +103,6 @@ public class LoginController implements Initializable {
         }
         return false;
     }
-
-
-    /*
-    @FXML
-    public void signInUser(ActionEvent event) {
-        String user = username.getText();
-
-        if (user.isEmpty()) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setHeaderText(null);
-            alert.setContentText("Please enter a username");
-            alert.showAndWait();
-            return;
-        }
-    }
-    */
 
 
 

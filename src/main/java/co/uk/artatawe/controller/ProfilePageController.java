@@ -50,27 +50,12 @@ public class ProfilePageController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
     	
     	UserDatabaseManager userDatabaseManager = new UserDatabaseManager();
-    	ArrayList<User> users = userDatabaseManager.getAllUsers();
-    	for(int i=0;i<users.size();i++){
-    		if(users.get(i).equals(enteredUserName)){
-    			userName.setText(users.get(i).getUserName());
-    	    	firstName.setText(users.get(i).getFirstName());
-    	    	lastName.setText(users.get(i).getLastName());
-    	    	telephoneNumber.setText(users.get(i).getPhoneNumber());
-    	    	address.setText(users.get(i).getAddress());
-    		}
-    		else enteredUserName="ERROR!LOG IN USER IS NOT IN THE SYSTEM FILES";
-    	}
-    	
+
     	
     }
 
-    public void setUserName(String userName){
-    	enteredUserName=userName;
-    }
-    @FXML
-    void handleProfileAction(Event event) {
-        //TODO fill in information in this tiho.
+    public void setUserName(String userName) {
+    	enteredUserName = userName;
     }
 
 

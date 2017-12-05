@@ -66,6 +66,12 @@ public class CreateAuctionController  implements Initializable {
     private TextField material;
 
     @FXML
+    private TextField photo;
+
+    @FXML
+    private TextField extraPhoto;
+
+    @FXML
     private Label radioButtonError;
 
     @FXML
@@ -95,7 +101,7 @@ public class CreateAuctionController  implements Initializable {
 
     @FXML
     void handleSubmitAction(ActionEvent event) {
-        //insertIntoAuction();
+
         createAuction();
     }
 
@@ -106,7 +112,7 @@ public class CreateAuctionController  implements Initializable {
     public void createAuction() {
         //validate all user inputs.
         if (valRadioBtnSelected() && valTitle() && valCreatorName() && valYear() &&
-                valAllowedBids() && valWidth() && valHeight()) { //validate user responses.
+                valAllowedBids() && valWidth() && valHeight() && valPhoto()) { //validate user responses.
 
             //Add to artwork and auction tables.
             if (paintingRadioButton.isSelected()) { //painting selected.
@@ -244,7 +250,7 @@ public class CreateAuctionController  implements Initializable {
     public boolean valAllowedBids() {
         try {
             Integer.parseInt(allowedBids.getText());
-            if ( Integer.parseInt(allowedBids.getText()) > 0) {
+            if (Integer.parseInt(allowedBids.getText()) > 0) {
                 return true;
             } else {
                 System.out.println("enter a number more than 0 plz.");
@@ -264,6 +270,9 @@ public class CreateAuctionController  implements Initializable {
         return false;
     }
 
+    public boolean valPhoto() {
+        return !(photo.getText().isEmpty()); //return false is empty.
+    }
     /**
      * Insert artwork into artworks table.
      * @param isPainting true if artwork is painting.
@@ -272,25 +281,26 @@ public class CreateAuctionController  implements Initializable {
         ArtworkDatabaseManager artworkDatabaseManager = new ArtworkDatabaseManager();
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         Date date = new Date();
-        System.out.println(dateFormat.format(date));
+
         String sqlInsertArtwork;
 
         if (isPainting) {
-             sqlInsertArtwork =  "INSERT INTO ARTWORK (title, description, photo, nameofcreator, reservedprice, date entered," +
+             sqlInsertArtwork =  "INSERT INTO ARTWORK (title, description, photo, nameofcreator, reservedprice, dateentered," +
                     "bidsallowed, typeofartwork, width, height) values ('" + title.getText() + "', '" + description.getText() + "'," +
-                    "'SOME PHOTO URL'," + "'" + creatorName.getText() + "'," + //TODO PHOTO URL
-                    "'" + dateFormat.format(date) + "','" + allowedBids.getText() + "','painting', '" + width.getText() + "','" + height.getText() + "')";
+                    "'" + photo.getText() + "'," + "'" + creatorName.getText() + "'," +  reservedPrice.getText() + "," +
+                    "'" + dateFormat.format(date) + "','" + allowedBids.getText() + "','painting', '" + width.getText() + "','" + height.getText() + "');";
 
         } else {
-            sqlInsertArtwork = "INSERT INTO ARTWORK (title, description, photo, nameofcreator, reservedprice, date entered," +
+            sqlInsertArtwork = "INSERT INTO ARTWORK (title, description, photo, nameofcreator, reservedprice, dateentered," +
                     "bidsallowed, typeofartwork, width, height, depth, mainmaterial, extraphotos) values ('" + title.getText() + "', '" + description.getText() + "'," +
-                    "'SOME PHOTO URL'," + "'" + creatorName.getText() + "'," + //TODO PHOTO URL
+                    "'" +  photo.getText() + "'," + "'" + creatorName.getText() + "'," +  reservedPrice.getText() + "," +
                     "'" + dateFormat.format(date) + "','" + allowedBids.getText() + "','sculpture', '" + width.getText() + "','" + height.getText() + "','" +
-                    depth.getText() + "','" + material.getText() + "','EXTRA PHOTOS URL');";
+                    depth.getText() + "','" + material.getText() + "','"  + extraPhoto.getText() + "');";
         }
 
+        //System.out.println(sqlInsertArtwork);
 
-        //artworkDatabaseManager.executeStatement(sqlInsertArtwork);VERY DANGEROUS LINE OF CODE. ONLY UNCOMMENT WHEN FINALISED.
+        artworkDatabaseManager.executeStatement(sqlInsertArtwork); //VERY DANGEROUS LINE OF CODE. ONLY UNCOMMENT WHEN FINALISED.
 
     }
 
@@ -303,10 +313,11 @@ public class CreateAuctionController  implements Initializable {
         ArtworkDatabaseManager artworkDatabaseManager =  new ArtworkDatabaseManager();
 
         String sqlInsertAuction = "INSERT INTO AUCTION (auctionid, seller,  numofbidsleft, auctioncomp, highestbid) values ('" +  artworkDatabaseManager.getArtworkID(title.getText()) +
-                "','"  +  sellerName.getText() + "','" + allowedBids.getText()  + "','0','" +  reservedPrice.getText() + "';";
+                "','"  +  sellerName.getText() + "','" + allowedBids.getText()  + "','0','" +  reservedPrice.getText() + "');";
 
-        //auctionDatabaseManager.executeStatement(sqlInsertAuction); VERY DANGEROUS LINE OF CODE. ONLY UNCOMMENT WHEN FINALISED.
+        auctionDatabaseManager.executeStatement(sqlInsertAuction);// VERY DANGEROUS LINE OF CODE. ONLY UNCOMMENT WHEN FINALISED.
 
+ //       System.out.println(sqlInsertAuction);
     }
 
 

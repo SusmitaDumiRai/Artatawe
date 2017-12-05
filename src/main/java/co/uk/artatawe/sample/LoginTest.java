@@ -19,9 +19,13 @@ public class LoginTest extends Application {
 
         Scene scene = new Scene(root);
 
+
+
         primaryStage.setTitle("Login Test");
         primaryStage.setScene(scene);
         primaryStage.show();
+
+
     }
 
 

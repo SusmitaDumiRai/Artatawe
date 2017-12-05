@@ -31,7 +31,8 @@ public class ArtworkDatabaseManager extends DatabaseManager {
      * Creates table in database if it does not exist.
      */
     public void createArtworkTable() {
-        String sqlCreateArtworkTable = "CREATE TABLE IF NOT EXISTS Artwork( artworkID INTEGER PRIMARY KEY not null,\n" +
+        String sqlCreateArtworkTable = "CREATE TABLE IF NOT EXISTS Artwork( " +
+                "artworkID INTEGER PRIMARY KEY not null,\n" +
                 "title text not null," +
                 " description text," +
                 " photo text not null," +
@@ -57,36 +58,23 @@ public class ArtworkDatabaseManager extends DatabaseManager {
     public ArrayList<Artwork> getAllArtworks() {
         ArrayList<Artwork> artworkArrayList = new ArrayList<>();
 
-        String sqlSelect = "SELECT artworkid," +
-                "title," +
-                "description," +
-                "photo," +
-                "nameOfCreator," +
-                "reservedPrice," +
-                "dateEntered," +
-                "bidsAllowed," +
-                "typeOfArtwork," +
-                "width," +
-                "height," +
-                "depth," +
-                "mainmaterial," +
-                "extraphotos" +
-                " FROM artwork;";
+        String sqlSelect = "SELECT * FROM artwork;";
 
         try {
             Connection connection = connect();
             Statement statement = connection.createStatement();
 
+
             ResultSet resultSet = statement.executeQuery(sqlSelect);
             while (resultSet.next()) {
                if (resultSet.getString("typeofartwork").equals("painting")) { //add painting.
 
-                   artworkArrayList.add(new Painting(resultSet.getString("typeofartwork"), resultSet.getString("title"), resultSet.getString("description"),
+                   artworkArrayList.add(new Painting(resultSet.getInt("artworkid"), resultSet.getString("typeofartwork"), resultSet.getString("title"), resultSet.getString("description"),
                            resultSet.getString("photo"), resultSet.getString("nameofcreator"), resultSet.getDouble("reservedprice"),
                            resultSet.getString("dateentered"), resultSet.getInt("bidsallowed"), resultSet.getDouble("width"),
                            resultSet.getDouble("height")));
                } else { //add sculpture.
-                  artworkArrayList.add(new Sculpture(resultSet.getString("typeofartwork"), resultSet.getString("title"), resultSet.getString("description"),
+                  artworkArrayList.add(new Sculpture(resultSet.getInt("artworkid"), resultSet.getString("typeofartwork"), resultSet.getString("title"), resultSet.getString("description"),
                            resultSet.getString("photo"), resultSet.getString("nameofcreator"), resultSet.getDouble("reservedprice"),
                            resultSet.getString("dateentered"), resultSet.getInt("bidsallowed"), resultSet.getString("mainmaterial"),
                            resultSet.getString("extraphotos"),
@@ -100,6 +88,13 @@ public class ArtworkDatabaseManager extends DatabaseManager {
             System.out.println(ex.getMessage());
         }
 
+
+        for (Artwork artwork : artworkArrayList) {
+            System.out.println(artwork.toString());
+        }
+
+
+
         return artworkArrayList;
 
     }
@@ -111,7 +106,7 @@ public class ArtworkDatabaseManager extends DatabaseManager {
      * @return artwork ID for artwork.
      */
     public int getArtworkID(String title) {
-        String sqlSelectAuction = "SELECT artworkID where title = '" + title + "';";
+        String sqlSelectAuction = "SELECT artworkid FROM artwork where title = '" + title + "';";
         int artworkID = -1;
         try {
             Connection connection = connect();
@@ -119,7 +114,7 @@ public class ArtworkDatabaseManager extends DatabaseManager {
 
             ResultSet resultSet = statement.executeQuery(sqlSelectAuction);
             while (resultSet.next()) {
-                artworkID = resultSet.getInt("artworkID");
+                artworkID = resultSet.getInt("artworkid");
 
             }
         } catch (SQLException ex) {
