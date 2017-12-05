@@ -138,7 +138,7 @@
       <ScrollBar orientation="VERTICAL" prefHeight="590.0" prefWidth="18.0" BorderPane.alignment="CENTER" />
    </right>
    <center>
-      <ScrollPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <ScrollPane hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="597.0" prefWidth="579.0">
                <children>
