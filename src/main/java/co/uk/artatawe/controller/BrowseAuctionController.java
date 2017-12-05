@@ -71,6 +71,7 @@ public class BrowseAuctionController implements Initializable {
      * Gets all artworks currently in auction. Displays them.
      */
     public void getImages() {
+        Stage stage = new Stage();
 
         ArtworkDatabaseManager artworkDatabaseManager = new ArtworkDatabaseManager();
 
