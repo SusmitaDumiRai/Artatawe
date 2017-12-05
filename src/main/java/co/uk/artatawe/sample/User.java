@@ -1,10 +1,6 @@
 package co.uk.artatawe.sample;
 
-import co.uk.artatawe.profileImage.ProfileImage;
-
-import javax.jws.soap.SOAPBinding;
 import java.util.ArrayList;
-
 
 
 /**
