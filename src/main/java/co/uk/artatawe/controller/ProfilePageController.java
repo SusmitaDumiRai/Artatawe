@@ -16,6 +16,7 @@ import co.uk.artatawe.database.ArtworkDatabaseManager;
 import co.uk.artatawe.database.UserDatabaseManager;
 import co.uk.artatawe.sample.Main;
 import co.uk.artatawe.sample.User;
+import javafx.scene.layout.VBox;
 
 /**
  * Controller class created for profile page.
@@ -24,69 +25,91 @@ import co.uk.artatawe.sample.User;
  */
 public class ProfilePageController implements Initializable {
 
-    private String enteredUserName; //username of person logged in.
+    private String username; //logged in user's username.
 
     @FXML
     private Label userName;
+
     @FXML
     private Label firstName;
+
     @FXML
     private Label lastName;
+
     @FXML
     private Label telephoneNumber;
+
     @FXML
     private Label address;
+
     @FXML
     private Label postcode;
+
     @FXML
-    private ImageView imv;
+    private ImageView avatar;
 
+    @FXML
+    private VBox avatarVbox;
+
+    /**
+     * Empty constructor.
+     */
     public ProfilePageController() {
+
     }
 
+    /**
+     * Constructor that takes in username.
+     * @param username username of logged in user.
+     */
     public ProfilePageController(String username) {
-        this.enteredUserName = username;
-
+        this.username = username;
     }
+
 
     /**
      * Loads information about the user that is log in.
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-    	
-    	UserDatabaseManager userDatabaseManager = new UserDatabaseManager();
+        displayUserInfo();
 
-
-    	/*
-    	ArrayList<User> users = userDatabaseManager.getAllUsers();
-    	for (int i=0; i<users.size(); i++){
-    		if (users.get(i).equals(enteredUserName)) {
-    			userName.setText(users.get(i).getUserName());
-    	    	firstName.setText(users.get(i).getFirstName());
-    	    	lastName.setText(users.get(i).getLastName());
-    	    	telephoneNumber.setText(users.get(i).getPhoneNumber());
-    	    	address.setText(users.get(i).getAddress());
-    	    	postcode.setText(users.get(i).getPostcode());
-    	    	//final Image image2 = new Image(Main.class.getResourceAsStream(users.get(i).getProfileImage()));
-    	    	//imv.setImage(users.get(i).getProfileImage());
-    	    	//users.get(i).getProfileImage().displayProfileImage(p);
-    		}
-    		else enteredUserName="ERROR!LOG IN USER IS NOT IN THE SYSTEM FILES";
-    	}
-    	*/
-
-    	
-
-    	
     }
 
-    public void setUserName(String userName) {
-    	this.enteredUserName = userName;
+
+    /**
+     * Gets the logged in user's username.
+     * @return logged in user's username.
+     */
+    public String getUsername() {
+        return username;
     }
 
+    /**
+     * Sets logged in user's username.
+     * @param username logged in user's username.
+     */
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    /**
+     * Gets user info from database and displays it.
+     */
     public void displayUserInfo() {
+        UserDatabaseManager userDatabaseManager = new UserDatabaseManager();
 
+        User user = userDatabaseManager.getUser(this.username); //get user.
+
+        userName.setText(this.username);
+        firstName.setText(user.getFirstName());
+        lastName.setText(user.getLastName());
+        telephoneNumber.setText(user.getPhoneNumber());
+        address.setText(user.getAddress());
+        postcode.setText(user.getPostcode());
+
+        Image image = new Image(user.getProfileImage());
+        avatar.setImage(image);
     }
 
 

@@ -109,7 +109,6 @@ public class UserDatabaseManager extends  DatabaseManager {
             System.out.println(ex.getMessage());
         }
 
-        System.out.println(user.toString());
         return user;
 
     }

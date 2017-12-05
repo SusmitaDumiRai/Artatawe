@@ -10,7 +10,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.uk.artatawe.controller.ProfilePageController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <left>
       <VBox prefHeight="600.0" prefWidth="201.0" BorderPane.alignment="CENTER">
          <children>
@@ -147,7 +147,7 @@
                   <Label fx:id="postcode" prefHeight="300.0" text="SA1" />
                </children>
             </VBox>
-           <VBox layoutX="29.0" layoutY="100.0" prefHeight="268.0" prefWidth="237.0">
+           <VBox fx:id="avatarVbox" layoutX="29.0" layoutY="100.0" prefHeight="268.0" prefWidth="237.0">
                <children>
                   <ImageView fx:id="avatar" fitHeight="237.0" fitWidth="237.0" pickOnBounds="true" preserveRatio="true">
                      <image>

@@ -69,8 +69,7 @@ public class BrowseAuctions extends Application {
         artworkScrollPane.setContent(artworkTilePane);
 
           primaryStage.setWidth(Screen.getPrimary().getVisualBounds().getWidth());
-          primaryStage.setHeight(Screen.getPrimary().getVisualBounds()
-                  .getHeight());
+          primaryStage.setHeight(Screen.getPrimary().getVisualBounds().getHeight());
           Scene scene = new Scene(artworkScrollPane);
           primaryStage.setScene(scene);
           primaryStage.show();
