@@ -24,7 +24,7 @@
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                      <children>
                         <Label fx:id="username" alignment="CENTER" prefHeight="400.0" text="user" />
-                        <Button fx:id="heartButton" alignment="CENTER" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-border-color: tramsparent; -fx-text-fill: transparent;" text="heart">
+                        <Button fx:id="heartButton" alignment="CENTER" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-text-fill: transparent;" text="heart">
                            <graphic>
                               <ImageView fx:id="heart" fitHeight="37.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -47,7 +47,7 @@
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                      <children>
                         <Label fx:id="username1" alignment="CENTER" prefHeight="400.0" text="user" />
-                        <Button fx:id="heartButton1" alignment="CENTER" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-border-color: tramsparent; -fx-text-fill: transparent;" text="heart">
+                        <Button fx:id="heartButton1" alignment="CENTER" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-text-fill: transparent;" text="heart">
                            <graphic>
                               <ImageView fx:id="heart1" fitHeight="37.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -70,7 +70,7 @@
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                      <children>
                         <Label fx:id="username2" alignment="CENTER" prefHeight="400.0" text="user" />
-                        <Button fx:id="heartButton2" alignment="CENTER" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-border-color: tramsparent; -fx-text-fill: transparent;" text="heart">
+                        <Button fx:id="heartButton2" alignment="CENTER" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-text-fill: transparent;" text="heart">
                            <graphic>
                               <ImageView fx:id="heart2" fitHeight="37.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -93,7 +93,7 @@
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                      <children>
                         <Label fx:id="username3" alignment="CENTER" prefHeight="400.0" text="user" />
-                        <Button fx:id="heartButton3" alignment="CENTER" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-border-color: tramsparent; -fx-text-fill: transparent;" text="heart">
+                        <Button fx:id="heartButton3" alignment="CENTER" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-text-fill: transparent;" text="heart">
                            <graphic>
                               <ImageView fx:id="heart3" fitHeight="37.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -116,7 +116,7 @@
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                      <children>
                         <Label fx:id="username4" alignment="CENTER" prefHeight="400.0" text="user" />
-                        <Button fx:id="heartButton4" alignment="CENTER" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-border-color: tramsparent; -fx-text-fill: transparent;" text="heart">
+                        <Button fx:id="heartButton4" alignment="CENTER" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-text-fill: transparent;" text="heart">
                            <graphic>
                               <ImageView fx:id="heart4" fitHeight="37.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -142,7 +142,7 @@
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                      <children>
                         <Label fx:id="username5" alignment="CENTER" prefHeight="400.0" text="user" />
-                        <Button fx:id="heartButton5" alignment="CENTER" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-border-color: tramsparent; -fx-text-fill: transparent;" text="heart">
+                        <Button fx:id="heartButton5" alignment="CENTER" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-text-fill: transparent;" text="heart">
                            <graphic>
                               <ImageView fx:id="heart5" fitHeight="37.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>

@@ -62,6 +62,7 @@ public class LoginController implements Initializable {
 
                root = fxmlLoader.load();
 
+
                 BrowseAuctionController browseAuctionController = fxmlLoader.getController();
                 Stage stage = new Stage();
                 stage.setTitle("Browsing artworks");

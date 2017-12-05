@@ -187,7 +187,7 @@
                            </padding>
                         </Label>
                         <Label fx:id="sellerName" prefHeight="400.0" text="sellername" />
-                        <Button fx:id="heartButton" mnemonicParsing="false" prefHeight="400.0" style="-fx-background-color: transparent; -fx-border-color: tramsparent; -fx-text-fill: transparent;" text="heart">
+                        <Button fx:id="heartButton" mnemonicParsing="false" prefHeight="400.0" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-text-fill: transparent;" text="heart">
                            <graphic>
                               <ImageView fx:id="heart" fitHeight="37.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
