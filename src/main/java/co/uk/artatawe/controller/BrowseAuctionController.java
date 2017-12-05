@@ -66,7 +66,7 @@ public class BrowseAuctionController implements Initializable {
             images[i] = new Image(imageLocation[i]); //get image.
             imageViews[i] = new ImageView(images[i]); //add image to image view.
             //add some i guess details here.
-            artworkvbox01.getChildren().add(imageViews[i]);
+//            artworkvbox01.getChildren().add(imageViews[i]);
 
         }
 
