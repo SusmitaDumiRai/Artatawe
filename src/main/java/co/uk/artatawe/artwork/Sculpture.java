@@ -38,6 +38,33 @@ public class Sculpture extends Artwork {
     }
 
     /**
+     * //TODO LENI.
+     * @param artworkID
+     * @param typeOfArtwork
+     * @param title
+     * @param description
+     * @param photo
+     * @param nameOfCreator
+     * @param reservedPrice
+     * @param dateEntered
+     * @param bidsAllowed
+     * @param mainMaterial
+     * @param extraPhoto
+     * @param width
+     * @param height
+     * @param depth
+     */
+    public Sculpture(int artworkID, String typeOfArtwork, String title, String description, String photo,
+                     String nameOfCreator, double reservedPrice, String dateEntered, int bidsAllowed,
+                     String mainMaterial, String extraPhoto, double width, double height, double depth) {
+        super(artworkID, typeOfArtwork, title, description, photo, nameOfCreator, reservedPrice, dateEntered, bidsAllowed, width, height);
+
+        this.depth = depth;
+        this.mainMaterial = mainMaterial;
+        this.extraPhoto = extraPhoto;
+    }
+
+    /**
      * method that gets depth of a sculpture.
      * @return the depth of a sculpture
      */

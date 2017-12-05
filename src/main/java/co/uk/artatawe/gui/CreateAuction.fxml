@@ -14,12 +14,7 @@
    <center>
       <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="258.0" fitWidth="283.0" layoutX="24.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@Icons/icons8-love-filled-40.png" />
-               </image>
-            </ImageView>
-            <VBox layoutX="312.0" layoutY="88.0" prefHeight="305.0" prefWidth="388.0">
+            <VBox layoutX="128.0" layoutY="2.0" prefHeight="391.0" prefWidth="572.0">
                <children>
                   <HBox prefHeight="400.0" prefWidth="200.0">
                      <children>
@@ -34,7 +29,8 @@
                         <RadioButton fx:id="sculptureRadioButton" mnemonicParsing="false" text="sculpture" toggleGroup="$typeArtwork">
                            <HBox.margin>
                               <Insets right="10.0" />
-                           </HBox.margin></RadioButton>
+                           </HBox.margin>
+                        </RadioButton>
                         <Label fx:id="radioButtonError" style="-fx-text-fill: transparent;" text="'Please select one'">
                            <font>
                               <Font size="13.0" />
@@ -188,8 +184,10 @@
                               <Font size="13.0" />
                            </font>
                         </Label>
+                        <Label prefHeight="31.0" prefWidth="432.0" text="Sorry leni, the text box below is photo path. IDK WHAT I DIDOK " />
                      </children>
                   </HBox>
+                  <TextField fx:id="photo" prefHeight="25.0" prefWidth="368.0" />
                </children>
             </VBox>
             <VBox layoutX="24.0" layoutY="409.0" prefHeight="133.0" prefWidth="562.0">
@@ -216,6 +214,7 @@
                               <Insets left="20.0" top="20.0" />
                            </HBox.margin>
                         </TextField>
+                        <TextField fx:id="extraPhoto" prefHeight="28.0" />
                      </children>
                   </HBox>
                </children>

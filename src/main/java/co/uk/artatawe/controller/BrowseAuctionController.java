@@ -30,6 +30,7 @@ import co.uk.artatawe.sample.Main;
  * Controller class for browse auction.
  *
  * @author 908928
+ * @author Plamena Tseneva
  */
 public class BrowseAuctionController implements Initializable {
 

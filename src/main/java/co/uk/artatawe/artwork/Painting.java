@@ -24,4 +24,24 @@ public class Painting extends Artwork {
 
     }
 
+    /**
+     * //TODO FOR YOU LENI
+     * @param artworkID
+     * @param typeOfArtwork
+     * @param title
+     * @param description
+     * @param photo
+     * @param nameOfCreator
+     * @param reservedPrice
+     * @param dateEntered
+     * @param bidsAllowed
+     * @param width
+     * @param height
+     */
+    public Painting(int artworkID, String typeOfArtwork, String title, String description, String photo, String nameOfCreator,
+                    double reservedPrice, String dateEntered, int bidsAllowed, double width, double height) {
+        super(artworkID, typeOfArtwork, title, description, photo, nameOfCreator, reservedPrice, dateEntered, bidsAllowed, width, height);
+
+    }
+
 }

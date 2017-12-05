@@ -28,6 +28,7 @@ public class CreateAuctionTest extends Application {
 
 
     public static void main(String[] args) {
+
         launch(args);
 
     }
