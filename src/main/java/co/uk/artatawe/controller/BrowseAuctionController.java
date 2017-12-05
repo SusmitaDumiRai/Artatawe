@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -34,6 +35,9 @@ public class BrowseAuctionController implements Initializable {
     private final int HEIGHT = 600;
 
     @FXML
+    private GridPane artworkgridpane;
+
+    @FXML
     private VBox artworkvbox01;
 
     @FXML
@@ -48,19 +52,21 @@ public class BrowseAuctionController implements Initializable {
 
         Image[] images = new Image[artworkArrayList.size()];
         ImageView[] imageViews = new ImageView[artworkArrayList.size()];
+        VBox[] vBoxes = new VBox[artworkArrayList.size()]; //vboxs to add in grid pane.
 
         //Get location of artwork photos.
         for (Artwork artwork : artworkArrayList) {
             artworkPhoto.add(artwork.getPhoto());
         }
 
+
         String[] imageLocation = artworkPhoto.toArray(new String[artworkArrayList.size()]); //convert array list to array.
 
         for (int i = 0; i < imageLocation.length; i++) {
-            images[i] = new Image(getClass().getResourceAsStream(imageLocation[i])); //get image.
+            images[i] = new Image(imageLocation[i]); //get image.
             imageViews[i] = new ImageView(images[i]); //add image to image view.
             //add some i guess details here.
-
+            artworkvbox01.getChildren().add(imageViews[i]);
 
         }
 
