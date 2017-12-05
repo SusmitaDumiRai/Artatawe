@@ -26,8 +26,23 @@
 <?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.uk.artatawe.controller.BrowseAuctionController">
+   <center>
+      <ScrollPane fx:id="artworkScrollPane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="597.0" prefWidth="579.0">
+               <children>
+                  <TilePane fx:id="artworkTilePane" hgap="15.0" layoutX="14.0" layoutY="23.0" prefHeight="574.0" prefWidth="579.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="23.0">
+                     <padding>
+                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                     </padding>
+                  </TilePane>
+               </children>
+            </AnchorPane>
+         </content>
+      </ScrollPane>
+   </center>
    <left>
-      <VBox prefHeight="600.0" prefWidth="201.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="610.0" prefWidth="201.0" BorderPane.alignment="CENTER">
          <children>
             <AnchorPane prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #ca3a5e;">
                <children>
@@ -38,7 +53,7 @@
                   </Label>
                </children>
                <VBox.margin>
-                  <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
+                  <Insets bottom="6.0" left="6.0" right="6.0" />
                </VBox.margin>
             </AnchorPane>
             <Button fx:id="profile" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleProfileAction" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #23112a;" text="My Profile" textFill="WHITE">
@@ -134,45 +149,33 @@
          </children>
       </VBox>
    </left>
-   <center>
-      <ScrollPane fx:id="artworkScrollPane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-        <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="597.0" prefWidth="579.0">
-               <children>
-                  <HBox alignment="CENTER" prefHeight="12.0" prefWidth="581.0">
-                     <children>
-                        <RadioButton mnemonicParsing="false" text="all">
-                           <toggleGroup>
-                              <ToggleGroup fx:id="typeOfArtwork" />
-                           </toggleGroup>
-                           <HBox.margin>
-                              <Insets right="70.0" />
-                           </HBox.margin>
-                        </RadioButton>
-                        <RadioButton mnemonicParsing="false" text="user favorites" toggleGroup="$typeOfArtwork">
-                           <HBox.margin>
-                              <Insets right="70.0" />
-                           </HBox.margin>
-                        </RadioButton>
-                        <RadioButton mnemonicParsing="false" text="paintings" toggleGroup="$typeOfArtwork">
-                           <HBox.margin>
-                              <Insets right="70.0" />
-                           </HBox.margin>
-                        </RadioButton>
-                        <RadioButton mnemonicParsing="false" text="sculptures" toggleGroup="$typeOfArtwork" />
-                     </children>
-                     <padding>
-                        <Insets top="10.0" />
-                     </padding>
-                  </HBox>
-                  <TilePane fx:id="artworkTilePane" hgap="15.0" layoutX="14.0" layoutY="23.0" prefHeight="574.0" prefWidth="579.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="23.0">
-                     <padding>
-                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
-                     </padding>
-                  </TilePane>
-               </children>
-            </AnchorPane>
-        </content>
-      </ScrollPane>
-   </center>
+   <top>
+      <HBox alignment="CENTER" prefHeight="23.0" prefWidth="591.0" BorderPane.alignment="CENTER">
+         <children>
+            <RadioButton mnemonicParsing="false" text="sculptures">
+               <toggleGroup>
+                  <ToggleGroup fx:id="typeOfArtwork" />
+               </toggleGroup>
+               <HBox.margin>
+                  <Insets left="150.0" right="40.0" />
+               </HBox.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="paintings" toggleGroup="$typeOfArtwork">
+               <HBox.margin>
+                  <Insets right="40.0" />
+               </HBox.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="user favorites" toggleGroup="$typeOfArtwork">
+               <HBox.margin>
+                  <Insets right="40.0" />
+               </HBox.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" prefHeight="21.0" prefWidth="49.0" text="all" toggleGroup="$typeOfArtwork">
+               <HBox.margin>
+                  <Insets right="40.0" />
+               </HBox.margin>
+            </RadioButton>
+         </children>
+      </HBox>
+   </top>
 </BorderPane>

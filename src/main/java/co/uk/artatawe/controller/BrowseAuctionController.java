@@ -4,15 +4,18 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -45,6 +48,7 @@ public class BrowseAuctionController implements Initializable {
 
     @FXML
     private ImageView imv;
+
 
 
     /**
@@ -86,6 +90,11 @@ public class BrowseAuctionController implements Initializable {
         VBox[] vBoxes = new VBox[artworkArrayList.size()]; //vboxs to add in grid pane.
 
 
+        artworkScrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); //scroller can't move horizontally.
+        artworkScrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED); //scroller can move vertically.
+        artworkScrollPane.setFitToHeight(true);
+        artworkScrollPane.setContent(artworkTilePane);
+
         //Get location of artwork photos.
         for (Artwork artwork : artworkArrayList) {
             artworkPhoto.add(artwork.getPhoto());
@@ -109,11 +118,10 @@ public class BrowseAuctionController implements Initializable {
             //add some i guess details here.
             //imageViews[i].setViewport(viewportRect);//don't need this
 
-            //imageViews[i].setViewport(viewportRect);
-
             vBoxes[i] = new VBox();
             vBoxes[i].getChildren().addAll(imageViews[i]); //add vbox inside gridpane.
             artworkTilePane.getChildren().add(vBoxes[i]); //add image to gridpane.
+            artworkTilePane.setAlignment(Pos.CENTER);
         }
 
     }
@@ -137,7 +145,10 @@ public class BrowseAuctionController implements Initializable {
             root = fxmlLoader.load();
 
             stage.setTitle("Create new auction");
-            stage.setScene(new Scene(root, WIDTH, HEIGHT));
+            //stage.setScene(new Scene(root, WIDTH, HEIGHT));
+            //delete down
+            stage.setWidth(Screen.getPrimary().getVisualBounds().getWidth());
+            stage.setHeight(Screen.getPrimary().getVisualBounds().getHeight());
 
             CreateAuctionController createAuctionController = fxmlLoader.getController();
 
