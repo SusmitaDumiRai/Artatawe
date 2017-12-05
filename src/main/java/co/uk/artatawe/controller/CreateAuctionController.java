@@ -95,7 +95,8 @@ public class CreateAuctionController  implements Initializable {
 
     @FXML
     void handleSubmitAction(ActionEvent event) {
-        insertIntoAuction();
+        //insertIntoAuction();
+        createAuction();
     }
 
     /**
@@ -247,8 +248,10 @@ public class CreateAuctionController  implements Initializable {
                 return true;
             } else {
                 System.out.println("enter a number more than 0 plz.");
+                allowedBidsError.setTextFill(Paint.valueOf("RED"));
                 return false;
                 //TODO nice error message.
+
 
             }
 
@@ -256,7 +259,7 @@ public class CreateAuctionController  implements Initializable {
             System.out.println("enter a number."); //needs to be changed.
             //TODO nice error message.
             allowedBidsError.setText("Please enter a number");
-            allowedBidsError.setTextFill(Paint.valueOf("RED"));
+
         }
         return false;
     }

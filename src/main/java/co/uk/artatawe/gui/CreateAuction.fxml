@@ -35,7 +35,7 @@
                            <HBox.margin>
                               <Insets right="10.0" />
                            </HBox.margin></RadioButton>
-                        <Label fx:id="radioButtonError" style="-fx-text-fill: transparent;" text="'Please select only one'">
+                        <Label fx:id="radioButtonError" style="-fx-text-fill: transparent;" text="'Please select one'">
                            <font>
                               <Font size="13.0" />
                            </font>
