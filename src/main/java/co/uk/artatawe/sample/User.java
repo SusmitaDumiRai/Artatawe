@@ -98,7 +98,7 @@ public class User {
      * Returns the first name of a user
      * @return first name
      */
-    public String getFirstName(){
+    public String getFirstName() {
     	return firstName;
     }
     
@@ -106,7 +106,7 @@ public class User {
      * Returns the last name of a user
      * @return last name
      */
-    public String getLastName(){
+    public String getLastName() {
     	return surname;
     }
     
@@ -122,7 +122,7 @@ public class User {
      * Returns the phone number of a user
      * @return phone number
      */
-    public String getPhoneNumber(){
+    public String getPhoneNumber() {
     	return phoneNumber;
     }
     
@@ -130,11 +130,18 @@ public class User {
      * Returns the address of a user
      * @return address
      */
-    public String getAddress(){
+    public String getAddress() {
     	return address;
     }
     
-
+    /**
+     * Returns the postcode of a user
+     * @return postcode
+     */
+    public String getPostcode() {
+    	return postcode;
+    }
+    
     /**
      * Returns the profile image a user has chosen for their profile.
      * @return a user's profile image
