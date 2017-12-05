@@ -124,27 +124,51 @@
          <children>
             <VBox layoutX="312.0" layoutY="100.0" prefHeight="240.0" prefWidth="257.0">
                <children>
-                  <Label fx:id="userName" prefHeight="300.0" text="crazyS3ller">
+                  <Label fx:id="userName" text="crazyS3ller">
                      <font>
                         <Font size="20.0" />
                      </font>
                      <VBox.margin>
-                        <Insets bottom="20.0" />
+                        <Insets bottom="10.0" />
                      </VBox.margin></Label>
-                  <HBox prefHeight="300.0" prefWidth="200.0">
+                  <HBox>
                      <children>
 
-                        <Label fx:id="firstName" prefHeight="300.0" prefWidth="150.0">
+                        <Label fx:id="firstName">
                            <padding>
                               <Insets right="10.0" />
-                           </padding></Label>
-                        <Label fx:id="lastName" prefHeight="300.0" prefWidth="150.0" />
+                           </padding>
+                           <font>
+                              <Font size="18.0" />
+                           </font></Label>
+                        <Label fx:id="lastName">
+                           <font>
+                              <Font size="18.0" />
+                           </font></Label>
 
                      </children>
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
                   </HBox>
-                  <Label fx:id="telephoneNumber" prefHeight="300.0" text="+6969696969" />
-                  <Label fx:id="address" prefHeight="300.0" text="Swnasea, Tesco" />
-                  <Label fx:id="postcode" prefHeight="300.0" text="SA1" />
+                  <Label fx:id="telephoneNumber" text="+6969696969">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin></Label>
+                  <Label fx:id="address" text="Swnasea, Tesco">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin></Label>
+                  <Label fx:id="postcode" text="SA1">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
                </children>
             </VBox>
            <VBox fx:id="avatarVbox" layoutX="29.0" layoutY="100.0" prefHeight="268.0" prefWidth="237.0">
