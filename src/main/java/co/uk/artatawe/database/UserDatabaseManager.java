@@ -2,7 +2,6 @@ package co.uk.artatawe.database;
 
 import co.uk.artatawe.sample.User;
 
-import javax.swing.plaf.nimbus.State;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -45,9 +44,9 @@ public class UserDatabaseManager extends  DatabaseManager {
      * Returns all users in the table.
      */
 
-    public ArrayList<User> getAllUsers() {
+    public ArrayList<User> getAllUsers(String sqlSelect) {
         ArrayList<User> userArrayList = new ArrayList<>();
-        String sqlSelect = "SELECT * FROM user;";
+
 
         try {
             Connection connection = connect();
@@ -121,9 +120,10 @@ public class UserDatabaseManager extends  DatabaseManager {
      */
     public ArrayList<String> getAllUsernames() {
 
+        String sqlSelect = "SELECT * FROM USER;";
         ArrayList<String> usernameArrayList = new ArrayList<>();
 
-        for (User user :  getAllUsers()) {
+        for (User user :  getAllUsers(sqlSelect)) {
             usernameArrayList.add(user.getUserName().toLowerCase());
         }
 

@@ -42,15 +42,7 @@ public class AuctionDatabaseManager extends DatabaseManager {
     /**
      * Displays all auction info.
      */
-    public void getAllAuctions() {
-        String sqlSelect = "SELECT auctionid," +
-                "seller," +
-                "winningbid," +
-                "numofbidsleft," +
-                "auctioncomp," +
-                "highestbid " +
-                "FROM auction;";
-
+    public void getAllAuctions(String sqlSelect) {
         try {
             Connection connection = connect();
             Statement statement = connection.createStatement();
@@ -62,11 +54,45 @@ public class AuctionDatabaseManager extends DatabaseManager {
                         resultSet.getString("winningbid") + "\t" +
                         resultSet.getInt("auctioncomp") + "\t" +
                         resultSet.getDouble("highestbid"));
+                        //TODO WINNER.
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
 
     }
+    /*
+
+    public  ArrayList<Artwork> getOngoingAuctions() {
+        String sqlSelect = "Select * from artwork, auction where auction.auctionid = artwork.artworkid;";
+        ArrayList<Artwork> onGoignArtworks = new ArrayList<>();
+
+        try {
+            Connection connection = connect();
+            Statement statement = connection.createStatement();
+
+            ResultSet resultSet = statement.executeQuery(sqlSelect);
+            while (resultSet.next()) {
+                if (resultSet.getString("typeofartwork").equals("painting")) { //add painting.
+                    onGoignArtworks.add(new Painting(resultSet.getInt("artworkid"), resultSet.getString("typeofartwork"), resultSet.getString("title"), resultSet.getString("description"),
+                            resultSet.getString("photo"), resultSet.getString("nameofcreator"), resultSet.getDouble("reservedprice"),
+                            resultSet.getString("dateentered"), resultSet.getInt("bidsallowed"), resultSet.getDouble("width"),
+                            resultSet.getDouble("height")));
+                } else { //add sculpture.
+                    onGoignArtworks.add(new Sculpture(resultSet.getInt("artworkid"), resultSet.getString("typeofartwork"), resultSet.getString("title"), resultSet.getString("description"),
+                            resultSet.getString("photo"), resultSet.getString("nameofcreator"), resultSet.getDouble("reservedprice"),
+                            resultSet.getString("dateentered"), resultSet.getInt("bidsallowed"), resultSet.getString("mainmaterial"),
+                            resultSet.getString("extraphotos"),
+                            resultSet.getDouble("width"), resultSet.getDouble("height"), resultSet.getDouble("depth")));
+                }
+
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return onGoignArtworks;
+    }
+    */
 
 }

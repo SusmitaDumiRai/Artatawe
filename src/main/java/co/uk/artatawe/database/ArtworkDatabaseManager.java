@@ -55,10 +55,9 @@ public class ArtworkDatabaseManager extends DatabaseManager {
      * Gets all artwork info.
      */
 
-    public ArrayList<Artwork> getAllArtworks() {
+    public ArrayList<Artwork> getAllArtworks(String sqlSelect) {
         ArrayList<Artwork> artworkArrayList = new ArrayList<>();
 
-        String sqlSelect = "SELECT * FROM artwork;";
 
         try {
             Connection connection = connect();
@@ -98,6 +97,7 @@ public class ArtworkDatabaseManager extends DatabaseManager {
         return artworkArrayList;
 
     }
+
 
 
     /**

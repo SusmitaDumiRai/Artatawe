@@ -34,9 +34,9 @@ import co.uk.artatawe.sample.Main;
  */
 public class BrowseAuctionController implements Initializable {
 
-    private String username;
-    private final int WIDTH = 800;
-    private final int HEIGHT = 600;
+    private String username; //logged in user.
+    private final int WIDTH = 800; //size of window.
+    private final int HEIGHT = 600; //size of window.
 
 
     @FXML
@@ -47,11 +47,39 @@ public class BrowseAuctionController implements Initializable {
 
     @FXML
     private ImageView imv;
-    
+
+
+    /**
+     * Empty constructor.
+     */
+    public BrowseAuctionController() {
+    }
+
+    /**
+     * Sets username.
+     * @param username username of logged in user.
+     */
+    public BrowseAuctionController(String username) {
+        this.username = username;
+
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        getImages();
+    }
+
+
+    /**
+     * Gets all artworks currently in auction. Displays them.
+     */
     public void getImages() {
 
         ArtworkDatabaseManager artworkDatabaseManager = new ArtworkDatabaseManager();
-        ArrayList<Artwork> artworkArrayList = artworkDatabaseManager.getAllArtworks();
+
+        String sqlSelect = "Select * from artwork, auction where auction.auctionid = artwork.artworkid and auctioncomp = 0;";
+
+        ArrayList<Artwork> artworkArrayList = artworkDatabaseManager.getAllArtworks(sqlSelect); //get ongoing artworks.
 
         ArrayList<String> artworkPhoto = new ArrayList<>();
 
@@ -68,9 +96,7 @@ public class BrowseAuctionController implements Initializable {
 
         System.out.println(artworkArrayList.size());
 
-
         String[] imageLocation = artworkPhoto.toArray(new String[artworkArrayList.size()]); //convert array list to array.
-
 
         for (int i = 0; i < imageLocation.length; i++) {
             images[i] = new Image(imageLocation[i], 200, 0, true, true); //get image.
@@ -80,7 +106,6 @@ public class BrowseAuctionController implements Initializable {
             imageViews[i].setPreserveRatio(true);
             imageViews[i].setSmooth(true);
             imageViews[i].setCache(true);
-            //add some i guess details here.
             imageViews[i].setViewport(viewportRect);
             vBoxes[i] = new VBox();
             vBoxes[i].getChildren().add(imageViews[i]); //add vbox inside gridpane.
@@ -88,61 +113,12 @@ public class BrowseAuctionController implements Initializable {
 
         }
 
-
-
-
-
-      //  Image[] images = new Image[artworkArrayList.size()].getClass().getResourceAsStream(imageLocation);
-
-
-
-
-
-
-
-
-
-
-        /**
-        StackPane parent = new StackPane();
-
-    	    for (Artwork a : artworks) {
-    	    	images.add(new ImageView(a.getPhoto()));
-    	    }
-    	    
-    	    for(ImageView i : images) {
-    	    	parent.getChildren().add(i);
-    	    }
-    	    
-    	    final Image image2 = new Image(Main.class.getResourceAsStream("..//artworkpictures//Demeter 1.png"));
-            imv.setImage(image2);
-         **/
-    }
-    
-    public BrowseAuctionController() {
     }
 
-    public BrowseAuctionController(String username) {
-        this.username = username;
-
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        getImages();
-    }
 
     /**
      * Displays profile page when clicked.
-     * @param event
+     * @param event event.
      */
     @FXML
     void handleProfileAction(ActionEvent event) {
@@ -175,6 +151,11 @@ public class BrowseAuctionController implements Initializable {
 
     }
 
+    public String getUsername() {
+        return username;
+    }
 
-
+    public void setUsername(String username) {
+        this.username = username;
+    }
 }
