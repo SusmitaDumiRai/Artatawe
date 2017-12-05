@@ -72,11 +72,12 @@ public class Main extends Application {
 
 
 
+
      // String sql = "update from artwork set artworkid = 10 where title = 'Giraffe'; ";
        //userDatabaseManager.updateStatement(sql);
 
-        artworkDatabaseManager.getAllArtworks();
-        auctionDatabaseManager.getAllAuctions();
+   //     artworkDatabaseManager.getAllArtworks();
+    //    auctionDatabaseManager.getAllAuctions();
 
     }
 

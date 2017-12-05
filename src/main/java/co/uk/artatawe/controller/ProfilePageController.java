@@ -57,7 +57,8 @@ public class ProfilePageController implements Initializable {
     	
     	UserDatabaseManager userDatabaseManager = new UserDatabaseManager();
 
-    	/* TODO change this piece of code.
+
+    	/*
     	ArrayList<User> users = userDatabaseManager.getAllUsers();
     	for (int i=0; i<users.size(); i++){
     		if (users.get(i).equals(enteredUserName)) {
@@ -73,14 +74,19 @@ public class ProfilePageController implements Initializable {
     		}
     		else enteredUserName="ERROR!LOG IN USER IS NOT IN THE SYSTEM FILES";
     	}
-         */
+    	*/
+
     	
 
     	
     }
 
     public void setUserName(String userName) {
-    	enteredUserName = userName;
+    	this.enteredUserName = userName;
+    }
+
+    public void displayUserInfo() {
+
     }
 
 
