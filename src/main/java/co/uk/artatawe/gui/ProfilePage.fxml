@@ -124,7 +124,7 @@
          <children>
             <VBox layoutX="312.0" layoutY="100.0" prefHeight="240.0" prefWidth="257.0">
                <children>
-                  <Label fx:id="username" prefHeight="300.0" text="crazyS3ller" />
+                  <Label fx:id="userName" prefHeight="300.0" text="crazyS3ller" />
                   <HBox prefHeight="300.0" prefWidth="200.0">
                      <children>
 
