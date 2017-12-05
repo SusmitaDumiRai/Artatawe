@@ -134,64 +134,50 @@
          </children>
       </VBox>
    </left>
-   <center>
-      <GridPane prefHeight="574.0" prefWidth="581.0" BorderPane.alignment="CENTER">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-            <RowConstraints maxHeight="145.0" minHeight="0.0" prefHeight="23.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="380.0" minHeight="10.0" prefHeight="184.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="349.0" minHeight="10.0" prefHeight="187.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="229.0" minHeight="10.0" prefHeight="192.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <children>
-            <VBox fx:id="artworkvbox01" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1" />
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
-               <children>
-                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-                     <children>
-                        <RadioButton mnemonicParsing="false" prefHeight="21.0" prefWidth="51.0" text="all">
-                           <toggleGroup>
-                              <ToggleGroup fx:id="typeArtwork" />
-                           </toggleGroup>
-                        </RadioButton>
-                        <RadioButton mnemonicParsing="false" text="favorite user" toggleGroup="$typeArtwork">
-                           <HBox.margin>
-                              <Insets left="90.0" />
-                           </HBox.margin>
-                        </RadioButton>
-                     </children>
-                  </HBox>
-               </children></VBox>
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="2" />
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="3">
-               <padding>
-                  <Insets bottom="10.0" />
-               </padding>
-            </VBox>
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
-               <padding>
-                  <Insets bottom="10.0" />
-               </padding>
-            </VBox>
-            <VBox fx:id="artworkVbox" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
-               <children>
-                  <RadioButton mnemonicParsing="false" prefHeight="21.0" prefWidth="102.0" text="paintings" toggleGroup="$typeArtwork" />
-                  <RadioButton mnemonicParsing="false" text="sculptures" toggleGroup="$typeArtwork">
-                     <HBox.margin>
-                        <Insets left="90.0" />
-                     </HBox.margin>
-                  </RadioButton>
-               </children>
-            </HBox>
-         </children>
-      </GridPane>
-   </center>
    <right>
       <ScrollBar orientation="VERTICAL" prefHeight="590.0" prefWidth="18.0" BorderPane.alignment="CENTER" />
    </right>
+   <center>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER" prefHeight="12.0" prefWidth="581.0">
+               <children>
+                  <RadioButton mnemonicParsing="false" text="all">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="typeOfArtwork" />
+                     </toggleGroup>
+                     <HBox.margin>
+                        <Insets right="70.0" />
+                     </HBox.margin>
+                  </RadioButton>
+                  <RadioButton mnemonicParsing="false" text="user favorites" toggleGroup="$typeOfArtwork">
+                     <HBox.margin>
+                        <Insets right="70.0" />
+                     </HBox.margin>
+                  </RadioButton>
+                  <RadioButton mnemonicParsing="false" text="paintings" toggleGroup="$typeOfArtwork">
+                     <HBox.margin>
+                        <Insets right="70.0" />
+                     </HBox.margin>
+                  </RadioButton>
+                  <RadioButton mnemonicParsing="false" text="sculptures" toggleGroup="$typeOfArtwork" />
+               </children>
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
+            </HBox>
+            <GridPane prefHeight="535.0" prefWidth="581.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+            </GridPane>
+         </children>
+      </VBox>
+   </center>
 </BorderPane>
