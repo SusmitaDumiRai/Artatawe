@@ -1,6 +1,5 @@
 package co.uk.artatawe.controller;
 
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -8,13 +7,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-import co.uk.artatawe.artwork.Artwork;
-import co.uk.artatawe.database.ArtworkDatabaseManager;
 import co.uk.artatawe.database.UserDatabaseManager;
-import co.uk.artatawe.sample.Main;
 import co.uk.artatawe.sample.User;
 import javafx.scene.layout.VBox;
 

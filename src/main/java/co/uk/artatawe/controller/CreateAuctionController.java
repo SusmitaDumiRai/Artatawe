@@ -1,10 +1,7 @@
 package co.uk.artatawe.controller;
 
-import co.uk.artatawe.artwork.Artwork;
 import co.uk.artatawe.database.ArtworkDatabaseManager;
 import co.uk.artatawe.database.AuctionDatabaseManager;
-import co.uk.artatawe.sample.Auction;
-import com.sun.org.apache.bcel.internal.generic.LADD;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -344,7 +341,7 @@ public class CreateAuctionController  implements Initializable {
         String sqlInsertAuction = "INSERT INTO AUCTION (auctionid, seller,  numofbidsleft, auctioncomp, highestbid) values ('" +  artworkDatabaseManager.getArtworkID(title.getText()) +
                 "','"  +  sellerName.getText() + "','" + allowedBids.getText()  + "','0','" +  reservedPrice.getText() + "');";
 
-        auctionDatabaseManager.executeStatement(sqlInsertAuction);// VERY DANGEROUS LINE OF CODE. ONLY UNCOMMENT WHEN FINALISED.
+        auctionDatabaseManager.executeStatement(sqlInsertAuction); // VERY DANGEROUS LINE OF CODE. ONLY UNCOMMENT WHEN FINALISED.
 
  //       System.out.println(sqlInsertAuction);
     }

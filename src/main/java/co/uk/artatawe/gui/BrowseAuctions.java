@@ -92,8 +92,7 @@ public class BrowseAuctions extends Application {
                 @Override
                 public void handle(MouseEvent mouseEvent) {
 
-                    if(mouseEvent.getButton().equals(MouseButton.PRIMARY)){
-
+                    if (mouseEvent.getButton().equals(MouseButton.PRIMARY)) {
                         if (mouseEvent.getClickCount() == 2) {
                             try {
                                 BorderPane borderPane = new BorderPane();

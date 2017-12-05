@@ -1,6 +1,5 @@
 package co.uk.artatawe.sample;
 
-import co.uk.artatawe.artwork.Artwork;
 
 /**
  * Creates bid object.

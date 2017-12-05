@@ -10,7 +10,6 @@ package co.uk.artatawe.controller;
  * @version 1.0
  */
 import co.uk.artatawe.database.UserDatabaseManager;
-import co.uk.artatawe.sample.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,13 +20,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.FlowPane;
 import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
-import java.io.IOException;
-import java.lang.reflect.Executable;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class LoginController implements Initializable {

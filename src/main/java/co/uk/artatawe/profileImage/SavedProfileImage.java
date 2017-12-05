@@ -1,7 +1,6 @@
 package co.uk.artatawe.profileImage;
 
 import javafx.scene.Parent;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
 /**
