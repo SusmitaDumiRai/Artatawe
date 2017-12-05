@@ -4,6 +4,7 @@ import co.uk.artatawe.artwork.Artwork;
 import co.uk.artatawe.database.ArtworkDatabaseManager;
 import co.uk.artatawe.database.AuctionDatabaseManager;
 import co.uk.artatawe.sample.Auction;
+import com.sun.org.apache.bcel.internal.generic.LADD;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -85,6 +86,34 @@ public class CreateAuctionController  implements Initializable {
 
     @FXML
     private Label yearError;
+
+    @FXML
+    private Label depthX;
+
+    /**
+     * Hide textboxes not related to painting.
+     * @param event
+     */
+    @FXML
+    void handlePaintingRadioAction(ActionEvent event) {
+        depth.setVisible(false);
+        material.setVisible(false);
+        extraPhoto.setVisible(false);
+        depthX.setVisible(false);
+
+    }
+
+    /**
+     * Display textboxes related to sculpture.
+     * @param event
+     */
+    @FXML
+    void handleSculptureRadioAction(ActionEvent event) {
+        depth.setVisible(true);
+        material.setVisible(true);
+        extraPhoto.setVisible(true);
+        depthX.setVisible(true);
+    }
 
     /**
      * Display current seller's name.

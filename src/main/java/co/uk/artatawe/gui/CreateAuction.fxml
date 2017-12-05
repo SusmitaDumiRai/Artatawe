@@ -18,7 +18,7 @@
                <children>
                   <HBox prefHeight="400.0" prefWidth="200.0">
                      <children>
-                        <RadioButton fx:id="paintingRadioButton" mnemonicParsing="false" text="painting">
+                        <RadioButton fx:id="paintingRadioButton" mnemonicParsing="false" onAction="#handlePaintingRadioAction" text="painting">
                            <HBox.margin>
                               <Insets right="30.0" />
                            </HBox.margin>
@@ -26,7 +26,7 @@
                               <ToggleGroup fx:id="typeArtwork" />
                            </toggleGroup>
                         </RadioButton>
-                        <RadioButton fx:id="sculptureRadioButton" mnemonicParsing="false" text="sculpture" toggleGroup="$typeArtwork">
+                        <RadioButton fx:id="sculptureRadioButton" mnemonicParsing="false" onAction="#handleSculptureRadioAction" text="sculpture" toggleGroup="$typeArtwork">
                            <HBox.margin>
                               <Insets right="10.0" />
                            </HBox.margin>
@@ -111,7 +111,7 @@
                            </padding>
                         </Label>
                         <TextField fx:id="height" prefHeight="31.0" prefWidth="50.0" />
-                        <Label prefHeight="400.0" text="x">
+                        <Label fx:id="depthX" prefHeight="400.0" text="x">
                            <padding>
                               <Insets left="10.0" right="10.0" />
                            </padding>
