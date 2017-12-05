@@ -76,8 +76,8 @@ public class Main extends Application {
      // String sql = "update from artwork set artworkid = 10 where title = 'Giraffe'; ";
        //userDatabaseManager.updateStatement(sql);
 
-        String sqlSelect = "Select * from artwork, auction where auction.auctionid = artwork.artworkid and auctioncomp = 0;";
-        artworkDatabaseManager.getAllArtworks(sqlSelect);
+     //   String sqlSelect = "Select * from artwork, auction where auction.auctionid = artwork.artworkid and auctioncomp = 0;";
+       // artworkDatabaseManager.getAllArtworks(sqlSelect);
     //    auctionDatabaseManager.getAllAuctions();
 
     }

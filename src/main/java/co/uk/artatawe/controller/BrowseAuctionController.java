@@ -38,6 +38,7 @@ public class BrowseAuctionController implements Initializable {
     private String username; //logged in user.
     private final int WIDTH = 800; //size of window.
     private final int HEIGHT = 600; //size of window.
+    private Stage stage = new Stage();
 
 
     @FXML
@@ -101,8 +102,6 @@ public class BrowseAuctionController implements Initializable {
         }
         //Rectangle2D viewportRect = new Rectangle2D(40, 35, 200, 200);//don't need this
 
-        System.out.println(artworkArrayList.size());
-
         String[] imageLocation = artworkPhoto.toArray(new String[artworkArrayList.size()]); //convert array list to array.
 
         for (int i = 0; i < imageLocation.length; i++) {
@@ -133,10 +132,37 @@ public class BrowseAuctionController implements Initializable {
      */
     @FXML
     void handleProfileAction(ActionEvent event) {
+        Parent root;
+        try {
 
-        System.out.println("My Profile clicked!");
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/ProfilePage.fxml"));
+
+            //manually set controller.
+            ProfilePageController profilePageController = new ProfilePageController();
+            profilePageController.setUsername(this.username);
+            fxmlLoader.setController(profilePageController);
+
+            root = fxmlLoader.load();
+
+            Stage stage = new Stage();
+            stage.setTitle("My profile");
+            stage.setScene(new Scene(root, WIDTH, HEIGHT));
+
+            profilePageController.setUsername(this.username); //parse username.
+
+            stage.show(); //display profile page.
+
+            //hides current window.
+            ((Node) (event.getSource())).getScene().getWindow().hide();
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
     }
-    Stage stage = new Stage();
+
+    /**
+     * Displays create auction when clicked.
+     * @param event event.
+     */
     @FXML
     void handleAuctionAction(ActionEvent event) {
         Parent root;

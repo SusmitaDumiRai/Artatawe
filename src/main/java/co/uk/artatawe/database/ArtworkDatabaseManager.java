@@ -87,12 +87,13 @@ public class ArtworkDatabaseManager extends DatabaseManager {
             System.out.println(ex.getMessage());
         }
 
+        /*
 
         for (Artwork artwork : artworkArrayList) {
             System.out.println(artwork.toString());
         }
 
-
+         */
 
         return artworkArrayList;
 
