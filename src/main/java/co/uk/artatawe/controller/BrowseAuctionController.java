@@ -58,6 +58,7 @@ public class BrowseAuctionController implements Initializable {
         ImageView[] imageViews = new ImageView[artworkArrayList.size()];
         VBox[] vBoxes = new VBox[artworkArrayList.size()]; //vboxs to add in grid pane.
 
+
         //Get location of artwork photos.
         for (Artwork artwork : artworkArrayList) {
             artworkPhoto.add(artwork.getPhoto());
@@ -69,9 +70,15 @@ public class BrowseAuctionController implements Initializable {
 
         String[] imageLocation = artworkPhoto.toArray(new String[artworkArrayList.size()]); //convert array list to array.
 
+
         for (int i = 0; i < imageLocation.length; i++) {
-            images[i] = new Image(imageLocation[i]); //get image.
+            images[i] = new Image(imageLocation[i], 200, 0, true, true); //get image.
             imageViews[i] = new ImageView(images[i]); //add image to image view.
+            imageViews[i].setFitWidth(150);
+            imageViews[i].setFitHeight(stage.getHeight() - 10);
+            imageViews[i].setPreserveRatio(true);
+            imageViews[i].setSmooth(true);
+            imageViews[i].setCache(true);
             //add some i guess details here.
             imageViews[i].setViewport(viewportRect);
             vBoxes[i] = new VBox();
@@ -141,14 +148,14 @@ public class BrowseAuctionController implements Initializable {
 
         System.out.println("My Profile clicked!");
     }
-
+    Stage stage = new Stage();
     @FXML
     void handleAuctionAction(ActionEvent event) {
         Parent root;
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/CreateAuction.fxml"));
             root = fxmlLoader.load();
-            Stage stage = new Stage();
+
             stage.setTitle("Create new auction");
             stage.setScene(new Scene(root, WIDTH, HEIGHT));
 
