@@ -10,7 +10,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" type="BorderPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.uk.artatawe.controller.BrowseAuctionController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0"  xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.uk.artatawe.controller.BrowseAuctionController">
    <left>
       <VBox prefHeight="600.0" prefWidth="201.0" BorderPane.alignment="CENTER">
          <children>
@@ -231,4 +231,4 @@
    <right>
       <ScrollBar orientation="VERTICAL" prefHeight="590.0" prefWidth="18.0" BorderPane.alignment="CENTER" />
    </right>
-</fx:root>
+</BorderPane>
