@@ -6,7 +6,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
+
+import co.uk.artatawe.artwork.Artwork;
+import co.uk.artatawe.database.ArtworkDatabaseManager;
+import co.uk.artatawe.database.UserDatabaseManager;
+import co.uk.artatawe.sample.User;
 
 /**
  * Controller class created for profile page.
@@ -15,31 +21,53 @@ import java.util.ResourceBundle;
  */
 public class ProfilePageController implements Initializable {
 
-    private String enteredUsername; //username of person logged in.
+    private String enteredUserName; //username of person logged in.
 
     @FXML
-    private Label username;
-
-
+    private Label userName;
     @FXML
     private Label firstName;
-
     @FXML
     private Label lastName;
+    @FXML
+    private Label telephoneNumber;
+    @FXML
+    private Label address;
+
 
     public ProfilePageController() {
     }
 
     public ProfilePageController(String username) {
-        this.enteredUsername = username;
+        this.enteredUserName = username;
 
     }
 
+    /**
+     * Loads information about the user that is log in.
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+    	
+    	UserDatabaseManager userDatabaseManager = new UserDatabaseManager();
+    	ArrayList<User> users = userDatabaseManager.getAllUsers();
+    	for(int i=0;i<users.size();i++){
+    		if(users.get(i).equals(enteredUserName)){
+    			userName.setText(users.get(i).getUserName());
+    	    	firstName.setText(users.get(i).getFirstName());
+    	    	lastName.setText(users.get(i).getLastName());
+    	    	telephoneNumber.setText(users.get(i).getPhoneNumber());
+    	    	address.setText(users.get(i).getAddress());
+    		}
+    		else enteredUserName="ERROR!LOG IN USER IS NOT IN THE SYSTEM FILES";
+    	}
+    	
+    	
     }
 
+    public void setUserName(String userName){
+    	enteredUserName=userName;
+    }
     @FXML
     void handleProfileAction(Event event) {
         //TODO fill in information in this tiho.

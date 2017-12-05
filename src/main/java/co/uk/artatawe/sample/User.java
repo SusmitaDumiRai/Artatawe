@@ -95,12 +95,45 @@ public class User {
     }
 
     /**
+     * Returns the first name of a user
+     * @return first name
+     */
+    public String getFirstName(){
+    	return firstName;
+    }
+    
+    /**
+     * Returns the last name of a user
+     * @return last name
+     */
+    public String getLastName(){
+    	return surname;
+    }
+    
+    /**
      * Returns the time and date of the last Login of the user in the system.
      * @return the time and date of the last log in
      */
     public String getLastLogin() {
         return lastLogin;
     }
+    
+    /**
+     * Returns the phone number of a user
+     * @return phone number
+     */
+    public String getPhoneNumber(){
+    	return phoneNumber;
+    }
+    
+    /**
+     * Returns the address of a user
+     * @return address
+     */
+    public String getAddress(){
+    	return address;
+    }
+    
 
     /**
      * Returns the profile image a user has chosen for their profile.
