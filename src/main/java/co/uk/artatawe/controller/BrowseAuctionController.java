@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -31,18 +32,56 @@ public class BrowseAuctionController implements Initializable {
     private String username;
     private final int WIDTH = 800;
     private final int HEIGHT = 600;
-    
+
+    @FXML
+    private VBox artworkvbox01;
+
     @FXML
     private ImageView imv;
     
     public void getImages() {
 
         ArtworkDatabaseManager artworkDatabaseManager = new ArtworkDatabaseManager();
-    	 ArrayList<Artwork> artworks = artworkDatabaseManager.getAllArtworks();
-    	    int noOfArtworks = artworks.size();
-    	    ArrayList<ImageView> images = new ArrayList<>();
-    	    StackPane parent = new StackPane();
-    	    
+        ArrayList<Artwork> artworkArrayList = artworkDatabaseManager.getAllArtworks();
+
+        ArrayList<String> artworkPhoto = new ArrayList<>();
+
+        Image[] images = new Image[artworkArrayList.size()];
+        ImageView[] imageViews = new ImageView[artworkArrayList.size()];
+
+        //Get location of artwork photos.
+        for (Artwork artwork : artworkArrayList) {
+            artworkPhoto.add(artwork.getPhoto());
+        }
+
+        String[] imageLocation = artworkPhoto.toArray(new String[artworkArrayList.size()]); //convert array list to array.
+
+        for (int i = 0; i < imageLocation.length; i++) {
+            images[i] = new Image(getClass().getResourceAsStream(imageLocation[i])); //get image.
+            imageViews[i] = new ImageView(images[i]); //add image to image view.
+            //add some i guess details here.
+
+
+        }
+
+
+
+
+
+      //  Image[] images = new Image[artworkArrayList.size()].getClass().getResourceAsStream(imageLocation);
+
+
+
+
+
+
+
+
+
+
+        /**
+        StackPane parent = new StackPane();
+
     	    for (Artwork a : artworks) {
     	    	images.add(new ImageView(a.getPhoto()));
     	    }
@@ -53,6 +92,7 @@ public class BrowseAuctionController implements Initializable {
     	    
     	    final Image image2 = new Image(Main.class.getResourceAsStream("..//artworkpictures//Demeter 1.png"));
             imv.setImage(image2);
+         **/
     }
     
     public BrowseAuctionController() {
@@ -73,7 +113,7 @@ public class BrowseAuctionController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        getImages();
     }
 
     /**
