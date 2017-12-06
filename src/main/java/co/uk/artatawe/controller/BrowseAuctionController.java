@@ -141,7 +141,7 @@ public class BrowseAuctionController implements Initializable    {
             //add some i guess details here.
             //imageViews[i].setViewport(viewportRect);//don't need this
 
-            imageViews[i].addEventHandler(MouseEvent.MOUSE_CLICKED, handler);
+            imageViews[i].addEventHandler(MouseEvent.MOUSE_CLICKED, handler); //add event handler.
 
             vBoxes[i] = new VBox();
             vBoxes[i].getChildren().addAll(imageViews[i]); //add vbox inside gridpane.
