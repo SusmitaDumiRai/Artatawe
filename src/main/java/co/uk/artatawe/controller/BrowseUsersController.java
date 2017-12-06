@@ -1,7 +1,11 @@
 package co.uk.artatawe.controller;
 
 /**
- * Created by 914937
+ * Handles browse user fxml file.
+ * Displays all users and the ability to un/favourite them.
+ *
+ * @author 914937
+ * @author 908928
  */
 import co.uk.artatawe.database.UserDatabaseManager;
 import co.uk.artatawe.sample.User;
@@ -34,6 +38,9 @@ public class BrowseUsersController implements Initializable {
     @FXML
     private ScrollPane scrollPane;
 
+    /**
+     * Empty constructor
+     */
     public BrowseUsersController() {
 
     }
@@ -51,6 +58,10 @@ public class BrowseUsersController implements Initializable {
         getUserProfiles();
     }
 
+    /**
+     * Displays all users' profile image and their username.
+     * Also displays heart button to favourite/unfavourite users.
+     */
     public void getUserProfiles() {
         Stage stage = new Stage();
 
@@ -77,6 +88,7 @@ public class BrowseUsersController implements Initializable {
         scrollPane.setFitToHeight(true);
         scrollPane.setContent(tilePane);
 
+        //gets all usernames and profile images
         for (User user: userArrayList) {
             userIcon.add(user.getProfileImage());
             allUsernames.add(user.getUserName());
@@ -84,11 +96,10 @@ public class BrowseUsersController implements Initializable {
 
 
 
-
-
         String[] usernameArray = allUsernames.toArray(new String[userArrayList.size()]);
         String[] imageLocation = userIcon.toArray(new String[userArrayList.size()]);
 
+        //Display in GUI.
         for (int i = 0; i < imageLocation.length; i++) {
 
             icons[i] = new Image(imageLocation[i], 150, 0, true, true);
@@ -111,10 +122,18 @@ public class BrowseUsersController implements Initializable {
         }
     }
 
+    /**
+     * Gets logged in user's username.
+     * @return username of logged in user.
+     */
     public String getUsername() {
         return username;
     }
 
+    /**
+     * Sets logged in user's username.
+     * @param username username of logged in user.
+     */
     public void setUsername(String username) {
         this.username = username;
     }
