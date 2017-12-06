@@ -7,8 +7,10 @@ package co.uk.artatawe.controller;
  * @author 914937
  * @author 908928
  */
+import co.uk.artatawe.database.FavouriteUserDatabaseManager;
 import co.uk.artatawe.database.UserDatabaseManager;
 import co.uk.artatawe.main.User;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -62,6 +64,7 @@ public class BrowseUsersController implements Initializable {
         Stage stage = new Stage();
 
         UserDatabaseManager userDatabaseManager = new UserDatabaseManager();
+        FavouriteUserDatabaseManager favouriteUserDatabaseManager = new FavouriteUserDatabaseManager();
 
         String sqlSelect = "Select * from user where username <> 'username'";
 
@@ -69,6 +72,8 @@ public class BrowseUsersController implements Initializable {
 
         ArrayList<String> userIcon = new ArrayList<>();
         ArrayList<String> allUsernames = new ArrayList<>();
+
+
 
         Image[] icons = new Image[userArrayList.size()];
         ImageView[] imageViews = new ImageView[userArrayList.size()];
@@ -116,7 +121,10 @@ public class BrowseUsersController implements Initializable {
         }
     }
 
+    @FXML
+    void handleHeartButtonAction(ActionEvent event) {
 
+    }
 
     /**
      * Gets logged in user's username.
