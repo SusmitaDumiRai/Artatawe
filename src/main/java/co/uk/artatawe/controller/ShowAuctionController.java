@@ -95,7 +95,8 @@ public class ShowAuctionController implements Initializable {
     @FXML
     private ImageView imageViewPhoto;
 
-
+    @FXML
+    private Label errorMessage;
 
 
     /**
@@ -240,12 +241,16 @@ public class ShowAuctionController implements Initializable {
                 return true;
             } else {
                 System.out.println("bid price too low"); //TODO ERROR MESAGE.
+                errorMessage.setText("'Bid is too low'");
+                errorMessage.setTextFill(Paint.valueOf("RED"));
                 return  false;
             }
 
         } catch (NumberFormatException ex) {
             System.out.println("enter digits only please"); // needs to be cahnged.
             //TODO display error message
+            errorMessage.setText("'Enter digits only'");
+            errorMessage.setTextFill(Paint.valueOf("RED"));
         }
         return false;
 

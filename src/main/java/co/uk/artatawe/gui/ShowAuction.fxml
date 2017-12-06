@@ -202,12 +202,17 @@
                   </HBox>
                   <HBox prefHeight="400.0">
                      <children>
-                        <Label prefHeight="400.0" text="Reserved Price:">
+                        <Label prefHeight="400.0" text="Highest bid:">
                            <HBox.margin>
                               <Insets right="10.0" />
                            </HBox.margin>
                         </Label>
                         <Label fx:id="reservedPrice" prefHeight="400.0" text="400$" />
+                        <Label fx:id="errorMessage" style="-fx-text-fill: transparent;" text="Label">
+                           <HBox.margin>
+                              <Insets left="15.0" top="10.0" />
+                           </HBox.margin>
+                        </Label>
                      </children>
                   </HBox>
                   <HBox prefHeight="400.0" prefWidth="273.0">
