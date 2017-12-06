@@ -1,6 +1,9 @@
 package co.uk.artatawe.controller;
 
 import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventHandler;
+import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -11,6 +14,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.InputEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
@@ -23,13 +28,15 @@ import java.util.ResourceBundle;
 import co.uk.artatawe.artwork.Artwork;
 import co.uk.artatawe.database.ArtworkDatabaseManager;
 
+import javax.swing.*;
+
 /**
  * Controller class for browse auction.
  *
  * @author 908928
  * @author Plamena Tseneva
  */
-public class BrowseAuctionController implements Initializable {
+public class BrowseAuctionController implements Initializable    {
 
     private String username; //logged in user.
     private final int WIDTH = 800; //size of window.
@@ -71,6 +78,26 @@ public class BrowseAuctionController implements Initializable {
      * Gets all artworks currently in auction. Displays them.
      */
     public void getImages() {
+
+        EventHandler handler = new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent event) {
+                System.out.println("Handling event " + event.getEventType());
+                event.consume();
+            }
+        };
+
+        /**
+         * img.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+
+        @Override
+        public void handle(MouseEvent event) {
+        System.out.println("Tile pressed ");
+        event.consume();
+        }
+        });
+         */
+
+
         Stage stage = new Stage();
 
         ArtworkDatabaseManager artworkDatabaseManager = new ArtworkDatabaseManager();
@@ -109,8 +136,12 @@ public class BrowseAuctionController implements Initializable {
             imageViews[i].setSmooth(true);
             imageViews[i].setCache(true);
 
+
+
             //add some i guess details here.
             //imageViews[i].setViewport(viewportRect);//don't need this
+
+            imageViews[i].addEventHandler(MouseEvent.MOUSE_CLICKED, handler);
 
             vBoxes[i] = new VBox();
             vBoxes[i].getChildren().addAll(imageViews[i]); //add vbox inside gridpane.
@@ -119,7 +150,9 @@ public class BrowseAuctionController implements Initializable {
 
         }
 
+
     }
+
 
     /**
      * Displays create auction when clicked.

@@ -112,7 +112,7 @@ public class ShowAuctionController implements Initializable {
 
     public void getArtwork() {
       //  String sql = "SELECT * from artwork where photo = '" + this.photo + "';";
-        String sql = "SELECT * from artwork where photo = 'co/uk/artatawe/artworkpictures/Giraffe.png';";
+        String sql = "SELECT * from artwork where photo = 'co/uk/artatawe/artworkpictures/FLIGHTLESS BIRD FROM FAIRY TALE 1.jpg';";
 
         ArtworkDatabaseManager artworkDatabaseManager = new ArtworkDatabaseManager();
         ArrayList<Artwork> artworkArrayList = artworkDatabaseManager.getAllArtworks(sql); //returns one artwork, photo = UNIQUE.
