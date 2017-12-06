@@ -229,7 +229,11 @@
                               <Insets right="10.0" />
                            </HBox.margin>
                         </Label>
-                        <Label fx:id="description" alignment="TOP_LEFT" prefHeight="400.0" text="description" textAlignment="JUSTIFY" />
+                        <ScrollPane prefViewportHeight="47.0" prefViewportWidth="74.0">
+                           <content>
+                              <Label fx:id="description" alignment="TOP_LEFT" prefHeight="400.0" text="description" textAlignment="JUSTIFY" />
+                           </content>
+                        </ScrollPane>
                      </children>
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
