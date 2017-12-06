@@ -124,6 +124,8 @@ public class ShowAuctionController implements Initializable {
             this.width.setText(Double.toString(artwork.getWidth()));
             this.height.setText(Double.toString(artwork.getHeight()));
             this.reservedPrice.setText(Double.toString(artwork.getReservedPrice()));
+            this.date.setText(artwork.getDateEntered());
+            this.creator.setText(artwork.getNameOfCreator());
 
 
            Image image = new Image(artwork.getPhoto());
