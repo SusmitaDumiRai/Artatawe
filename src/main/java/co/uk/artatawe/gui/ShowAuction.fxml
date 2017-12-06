@@ -122,14 +122,17 @@
    <center>
       <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fx:id="imageViewPhoto" fitHeight="258.0" fitWidth="283.0" layoutX="24.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imageViewPhoto" fitHeight="258.0" fitWidth="283.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@Icons/icons8-love-filled-40.png" />
                </image>
             </ImageView>
-            <VBox layoutX="312.0" layoutY="88.0" prefHeight="305.0" prefWidth="273.0">
+            <VBox layoutX="290.0" layoutY="88.0" prefHeight="305.0" prefWidth="362.0">
                <children>
-                  <Label fx:id="title" alignment="CENTER" contentDisplay="CENTER" prefHeight="400.0" prefWidth="400.0" text="'Title'" />
+                  <Label fx:id="title" contentDisplay="CENTER" prefHeight="400.0" prefWidth="400.0" text="'Title'">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font></Label>
                   <HBox prefHeight="400.0" prefWidth="400.0">
                      <children>
                         <Label fx:id="creator" prefHeight="400.0" text="Creator name">
@@ -172,9 +175,9 @@
                               <Insets right="10.0" />
                            </HBox.margin>
                         </Label>
-                        <Label fx:id="date" prefHeight="400.0" text="14/02/2017">
+                        <Label fx:id="date" maxWidth="188.0" prefHeight="44.0" text="14/02/2017">
                            <HBox.margin>
-                              <Insets right="10.0" />
+                              <Insets />
                            </HBox.margin>
                         </Label>
                      </children>
@@ -210,7 +213,7 @@
                   </HBox>
                   <HBox prefHeight="400.0" prefWidth="273.0">
                      <children>
-                        <TextField fx:id="bid" prefHeight="31.0" prefWidth="154.0">
+                        <TextField fx:id="bid" prefHeight="31.0" prefWidth="154.0" promptText="Enter a bid">
                            <HBox.margin>
                               <Insets right="10.0" />
                            </HBox.margin>
@@ -219,6 +222,9 @@
                      </children>
                   </HBox>
                </children>
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
             </VBox>
             <VBox layoutX="24.0" layoutY="393.0" prefHeight="133.0" prefWidth="535.0">
                <children>

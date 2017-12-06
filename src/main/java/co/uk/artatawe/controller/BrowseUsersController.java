@@ -63,19 +63,16 @@ public class BrowseUsersController implements Initializable {
 
         UserDatabaseManager userDatabaseManager = new UserDatabaseManager();
 
-        String sqlSelect = "Select * from user";
+        String sqlSelect = "Select * from user where username <> 'username'";
 
         ArrayList<User> userArrayList = userDatabaseManager.getAllUsers(sqlSelect);
 
         ArrayList<String> userIcon = new ArrayList<>();
         ArrayList<String> allUsernames = new ArrayList<>();
 
-
         Image[] icons = new Image[userArrayList.size()];
         ImageView[] imageViews = new ImageView[userArrayList.size()];
         VBox[] vBoxes = new VBox[userArrayList.size()];
-
-
 
         scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
@@ -95,10 +92,6 @@ public class BrowseUsersController implements Initializable {
 
         //Display in GUI.
         for (int i = 0; i < imageLocation.length; i++) {
-
-            if (allUsernames.equals(username)) {
-
-            }
 
             icons[i] = new Image(imageLocation[i], 150, 0, true, true);
             imageViews[i] = new ImageView(icons[i]);
