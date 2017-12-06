@@ -202,15 +202,28 @@ public class ShowAuctionController implements Initializable {
     @FXML
     void handleButtonAction(ActionEvent event) {
         ArtworkDatabaseManager artworkDatabaseManager = new ArtworkDatabaseManager();
+        AuctionDatabaseManager auctionDatabaseManager = new AuctionDatabaseManager();
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         Date date = new Date();
 
+        //TODO REFRESH WHEN PLACING NEW BID.
+        //Insert into bid.
         if (valMakeBid()) {
             String sqlInsert = "INSERT INTO BID (auctionid, buyer, bidamount, dateandtime) values (" + artwork.getArtworkID() + ", '" +
                     this.username + "'," + bid.getText() + ", '" + dateFormat.format(date) + "');";
 
             BidDatabaseManager bidDatabaseManager = new BidDatabaseManager();
             bidDatabaseManager.executeStatement(sqlInsert);
+
+
+            String sqlUpdateBidAmount = "";
+            //Decrease bid amount.
+            if (auction.getNumOfBidsLeft() > 1) {
+                sqlUpdateBidAmount = "Update auction set numofbidsleft = " + (auction.getNumOfBidsLeft() - 1) + " where auctionid = " + this.artwork.getArtworkID() + ";";
+            } else { //make it completed.
+                sqlUpdateBidAmount = "Update auction set numofbidsleft = " + (auction.getNumOfBidsLeft() - 1) + ", auctioncomp = 1 where auctionid = " + this.artwork.getArtworkID() + ";";
+            }
+            auctionDatabaseManager.updateStatement(sqlUpdateBidAmount);
 
         }
     }

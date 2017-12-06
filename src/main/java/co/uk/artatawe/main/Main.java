@@ -65,6 +65,8 @@ public class Main extends Application {
 
 
         System.out.println(bidDatabaseManager.getMaxBid(4));
+        String sql = "UPDATE auction set  numofbidsleft = 17 where auctionid = 4";
+        bidDatabaseManager.updateStatement(sql);
 
 
      //String sql = "update artwork set description = 'An unique handmade sculpture made from bright chamotte clay. Coated with glaze.' where title = 'FLIGHTLESS BIRD FROM FAIRY TALE'; ";
