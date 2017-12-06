@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.uk.artatawe.controller.NewProfilePageController">
+  <center>
+      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox layoutX="312.0" layoutY="100.0" prefHeight="240.0" prefWidth="257.0">
+               <children>
+                  <Label fx:id="userName" text="crazyS3ller">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin></Label>
+                  <HBox>
+                     <children>
+
+                        <Label fx:id="firstName">
+                           <padding>
+                              <Insets right="10.0" />
+                           </padding>
+                           <font>
+                              <Font size="18.0" />
+                           </font></Label>
+                        <Label fx:id="lastName">
+                           <font>
+                              <Font size="18.0" />
+                           </font></Label>
+
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <Label fx:id="telephoneNumber" text="+6969696969">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin></Label>
+                  <Label fx:id="address" text="Swnasea, Tesco">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin></Label>
+                  <Label fx:id="postcode" text="SA1">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
+               </children>
+            </VBox>
+           <VBox fx:id="avatarVbox" layoutX="29.0" layoutY="100.0" prefHeight="268.0" prefWidth="237.0">
+               <children>
+                  <ImageView fx:id="avatar" fitHeight="237.0" fitWidth="237.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Icons/icons8-love-filled-40.png" />
+                     </image></ImageView>
+                  <MenuButton alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="31.0" prefWidth="248.0" text="Change User Icon">
+                    <items>
+                      <MenuItem mnemonicParsing="false" text="Use App Icons" />
+                      <MenuItem mnemonicParsing="false" text="Use Custom Drawing" />
+                    </items>
+                  </MenuButton>
+               </children>
+            </VBox>
+         </children>
+      </Pane>
+   </center>
+</BorderPane>
