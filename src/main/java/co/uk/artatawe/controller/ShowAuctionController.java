@@ -114,11 +114,12 @@ public class ShowAuctionController implements Initializable {
         materialLabel.setVisible(false);
 
         getArtwork();
+        valMakeBid();
     }
 
     public void getArtwork() {
        String sql = "SELECT * from artwork where photo = '" + this.photo + "';";
-      //  String sql = "SELECT * from artwork where photo = 'co/uk/artatawe/artworkpictures/FLIGHTLESS BIRD FROM FAIRY TALE 1.jpg';";
+     //   String sql = "SELECT * from artwork where photo = 'co/uk/artatawe/artworkpictures/FLIGHTLESS BIRD FROM FAIRY TALE 1.jpg';";
 
         ArtworkDatabaseManager artworkDatabaseManager = new ArtworkDatabaseManager();
         Artwork artwork = artworkDatabaseManager.getArtwork(sql); //returns one artwork
@@ -200,11 +201,11 @@ public class ShowAuctionController implements Initializable {
         ArtworkDatabaseManager artworkDatabaseManager = new ArtworkDatabaseManager();
         AuctionDatabaseManager auctionDatabaseManager = new AuctionDatabaseManager();
 
-
         String sqlSelectArtwork = "Select * from artwork where artwork.photo = '" + this.photo + "';";
         Artwork artwork = artworkDatabaseManager.getArtwork(sqlSelectArtwork);
 
-        //String sql = "select * from auction where auctionid = " +  number + ";";
+        String sqlSelectAuction = "select * from auction where auctionid = " +  artwork.getArtworkID() + ";";
+        Auction auction = auctionDatabaseManager.getAuction(sqlSelectAuction);
 
         //String update = update auction set numofbidsleft = -1
 

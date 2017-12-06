@@ -1,11 +1,13 @@
 package co.uk.artatawe.database;
 
 import co.uk.artatawe.main.Bid;
+import co.uk.artatawe.main.User;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 /**
  * Handles communication to bid table in database.
@@ -33,6 +35,7 @@ public class BidDatabaseManager extends DatabaseManager {
                 "buyer text not null," + //username of buyer.
                 " bidAmount real not null," +
                 " dateAndTime text not null," + //date and time of bid made.
+                "UNIQUE (bidamount, auctionid)," + //an amount is unique for certain auction.
                 "foreign key (auctionid) references auction (auctionid)" +
                 "foreign key (buyer) references  user (username));";
 
@@ -40,9 +43,11 @@ public class BidDatabaseManager extends DatabaseManager {
     }
 
     /**
-     * Displays all bids.
+     * Gets all bids.
      */
-    public void getAllBids(String sqlSelect) {
+    public ArrayList<Bid> getAllBids(String sqlSelect) {
+
+        ArrayList<Bid> bidArrayList = new ArrayList<>();
 
         try {
             Connection connection = connect();
@@ -50,30 +55,40 @@ public class BidDatabaseManager extends DatabaseManager {
 
             ResultSet resultSet = statement.executeQuery(sqlSelect);
             while (resultSet.next()) {
+                /*
                 System.out.println(resultSet.getString("bidid") + "\t" +
                         resultSet.getString("buyer") + "\t" +
                         resultSet.getString("bidamount") + "\t" +
                         resultSet.getString("dateandtime"));
+                        */
+                UserDatabaseManager userDatabaseManager = new UserDatabaseManager();
+                User user = userDatabaseManager.getUser(resultSet.getString("buyer"));
+                bidArrayList.add(new Bid(user, resultSet.getDouble("bidamount"), resultSet.getString("dateandtime"), resultSet.getInt("auctionid")));
+
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
 
+        return  bidArrayList;
 
     }
 
-    //TODO get winning bid.
-    /*
-    public Bid getBid(int bidID) {
+    /**
+     * Get bid from sql select statement.
+     * @param sqlSelectBid
+     * @return
+     */
+    public Bid getBid(String sqlSelectBid) {
 
-        String sqlSelectBid = "SELECT * FROM bid where bidID = " + bidID + "';";
         Bid bid = new Bid();
 
-
+/*
                this.buyer = buyer;
         this.bidAmount = bidAmount;
         this.dateAndTime = dateAndTime;
         this.auctionID = auctionID;
+        */
 
         try {
             Connection connection = connect();
@@ -82,15 +97,36 @@ public class BidDatabaseManager extends DatabaseManager {
             ResultSet resultSet = statement.executeQuery(sqlSelectBid);
             while (resultSet.next()) {
                 UserDatabaseManager userDatabaseManager = new UserDatabaseManager();
-
-                bid = new Bid()
+                User user = userDatabaseManager.getUser(resultSet.getString("buyer"));
+                bid = new Bid(user, resultSet.getDouble("bidamount"), resultSet.getString("dateandtime"), resultSet.getInt("auctionid"));
 
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
 
-
+        return bid;
     }
-    */
+
+    public double getMaxBid(int auctionID) {
+        String sqlSelect = "SELECT max(bidAmount) as maxBid from bid where auctionid = " + auctionID + ";";
+
+        double maxBid = 0;
+
+        try {
+            Connection connection = connect();
+            Statement statement = connection.createStatement();
+
+            ResultSet resultSet = statement.executeQuery(sqlSelect);
+            while (resultSet.next()) {
+                maxBid = resultSet.getDouble(1);
+
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return maxBid;
+    }
+
 }
