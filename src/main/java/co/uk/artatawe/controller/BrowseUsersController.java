@@ -79,10 +79,7 @@ public class BrowseUsersController implements Initializable {
         ImageView[] imageViews = new ImageView[userArrayList.size()];
         VBox[] vBoxes = new VBox[userArrayList.size()];
 
-        Button heartButton = new Button();
-        Image heartIcon = new Image(("co/uk/artatawe/gui/Icons/icons8-heart-40.png"));
-        heartButton.setGraphic(new ImageView(heartIcon));
-        heartButton.setStyle("-fx-background-color: transparent; -fx-text-fill: black; -fx-border-color: transparent");
+
 
         scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
@@ -111,9 +108,15 @@ public class BrowseUsersController implements Initializable {
             imageViews[i].setSmooth(true);
             imageViews[i].setCache(true);
 
+
+            Button heartButton = new Button();
+            Image heartIcon = new Image(("co/uk/artatawe/gui/Icons/icons8-heart-40.png"));
+            heartButton.setGraphic(new ImageView(heartIcon));
+            heartButton.setStyle("-fx-background-color: transparent; -fx-text-fill: black; -fx-border-color: transparent");
+
             vBoxes[i] = new VBox();
 
-            vBoxes[i].getChildren().addAll(imageViews[i]); //add vbox inside gridpane.
+            vBoxes[i].getChildren().addAll(imageViews[i]);
             heartButton.setText(usernameArray[i]);
 
             vBoxes[i].getChildren().add(heartButton);
