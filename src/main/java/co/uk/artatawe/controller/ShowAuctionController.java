@@ -4,6 +4,7 @@ import co.uk.artatawe.artwork.Artwork;
 import co.uk.artatawe.artwork.Sculpture;
 import co.uk.artatawe.database.ArtworkDatabaseManager;
 import co.uk.artatawe.database.AuctionDatabaseManager;
+import co.uk.artatawe.database.BidDatabaseManager;
 import co.uk.artatawe.main.Auction;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,7 +20,10 @@ import sun.awt.geom.AreaOp;
 
 import java.awt.geom.Arc2D;
 import java.net.URL;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.DoubleSummaryStatistics;
 import java.util.ResourceBundle;
 
@@ -33,6 +37,8 @@ public class ShowAuctionController implements Initializable {
 
     private String username; //logged in user.
     private String photo; //selected artwork.
+    private Artwork artwork;
+    private Auction auction;
 
     @FXML
     private Label date;
@@ -114,7 +120,7 @@ public class ShowAuctionController implements Initializable {
         materialLabel.setVisible(false);
 
         getArtwork();
-        valMakeBid();
+
     }
 
     public void getArtwork() {
@@ -125,10 +131,10 @@ public class ShowAuctionController implements Initializable {
         AuctionDatabaseManager auctionDatabaseManager = new AuctionDatabaseManager();
 
         String sqlSelectArtwork = "Select * from artwork where artwork.photo = '" + this.photo + "';";
-        Artwork artwork = artworkDatabaseManager.getArtwork(sqlSelectArtwork);
+        artwork = artworkDatabaseManager.getArtwork(sqlSelectArtwork);
 
         String sqlSelectAuction = "select * from auction where auctionid = " +  artwork.getArtworkID() + ";";
-        Auction auction = auctionDatabaseManager.getAuction(sqlSelectAuction);
+        auction = auctionDatabaseManager.getAuction(sqlSelectAuction);
 
 
         this.title.setText(artwork.getTitle());
@@ -138,6 +144,7 @@ public class ShowAuctionController implements Initializable {
         this.reservedPrice.setText(Double.toString(auction.getHighestBid()));
         this.date.setText(artwork.getDateEntered());
         this.creator.setText(artwork.getNameOfCreator());
+        this.sellerName.setText(auction.getSeller().getUserName());
 
 
         Image image = new Image(artwork.getPhoto());
@@ -194,7 +201,18 @@ public class ShowAuctionController implements Initializable {
 
     @FXML
     void handleButtonAction(ActionEvent event) {
+        ArtworkDatabaseManager artworkDatabaseManager = new ArtworkDatabaseManager();
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        Date date = new Date();
 
+        if (valMakeBid()) {
+            String sqlInsert = "INSERT INTO BID (auctionid, buyer, bidamount, dateandtime) values (" + artwork.getArtworkID() + ", '" +
+                    this.username + "'," + bid.getText() + ", '" + dateFormat.format(date) + "');";
+
+            BidDatabaseManager bidDatabaseManager = new BidDatabaseManager();
+            bidDatabaseManager.executeStatement(sqlInsert);
+
+        }
     }
 
     /**
@@ -203,30 +221,15 @@ public class ShowAuctionController implements Initializable {
      * @return
      */
     public boolean valMakeBid() {
-
-
-        //String update = update auction set numofbidsleft = -1
-
-        /**
-         *   "auctionID INTEGER PRIMARY KEY not null,\n" +
-         "seller text not null," + //username of seller.
-         "winningBid int," + //winning bid id.
-         "numOfBidsLeft integer not null," +
-         "auctioncomp int not null," + //sqlite does not support boolean, but instead 0 and 1.
-         "highestbid real not null,"  + //originally the reserve price.
-         */
-
-
-        /*
-        "bidID INTEGER PRIMARY KEY not null," +
-                "auctionID integer not null," +
-                "buyer text not null," + //username of buyer.
-                " bidAmount real not null," +
-                " dateAndTime text not null," + //date and time of bid made.
-                */
         try {
-            Float.parseFloat(bid.getText());
-            return true;
+            Double.parseDouble(bid.getText());
+            if (Double.parseDouble(bid.getText()) > Double.parseDouble(reservedPrice.getText())) {
+                return true;
+            } else {
+                System.out.println("bid price too low"); //TODO ERROR MESAGE.
+                return  false;
+            }
+
         } catch (NumberFormatException ex) {
             System.out.println("enter digits only please"); // needs to be cahnged.
             //TODO display error message

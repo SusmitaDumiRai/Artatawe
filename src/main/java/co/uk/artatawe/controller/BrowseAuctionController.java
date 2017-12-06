@@ -122,7 +122,7 @@ public class BrowseAuctionController implements Initializable    {
             imageViews[i].setOnMouseClicked(new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent event) {
-                    System.out.println("Handling event " + event.getEventType());
+
                     Parent root;
                     try {
                         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/ShowAuction.fxml"));
