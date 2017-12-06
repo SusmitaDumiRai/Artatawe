@@ -61,12 +61,13 @@ public class BrowseUsersController implements Initializable {
         ArrayList<User> userArrayList = userDatabaseManager.getAllUsers(sqlSelect);
 
         ArrayList<String> userIcon = new ArrayList<>();
+        ArrayList<String> allUsernames = new ArrayList<>();
 
         Image[] icons = new Image[userArrayList.size()];
         ImageView[] imageViews = new ImageView[userArrayList.size()];
         VBox[] vBoxes = new VBox[userArrayList.size()];
         Button heartButton = new Button();
-        Image heartIcon = new Image(String.valueOf(getClass().getResource("icons8-heart-40.png")));
+        Image heartIcon = new Image(("co/uk/artatawe/gui/Icons/icons8-heart-40.png"));
         heartButton.setGraphic(new ImageView(heartIcon));
         heartButton.setStyle("-fx-background-color: transparent; -fx-text-fill: transparent; -fx-border-color: transparent");
 
@@ -78,8 +79,14 @@ public class BrowseUsersController implements Initializable {
 
         for (User user: userArrayList) {
             userIcon.add(user.getProfileImage());
+            allUsernames.add(user.getUserName());
         }
 
+
+
+
+
+        String[] usernameArray = allUsernames.toArray(new String[userArrayList.size()]);
         String[] imageLocation = userIcon.toArray(new String[userArrayList.size()]);
 
         for (int i = 0; i < imageLocation.length; i++) {
@@ -98,7 +105,7 @@ public class BrowseUsersController implements Initializable {
             vBoxes[i].getChildren().add(heartButton);
 
             Label userName = new Label();
-        //    userName.setText(username);
+            userName.setText(usernameArray[i]);
             vBoxes[i].getChildren().add(userName);
             tilePane.getChildren().add(vBoxes[i]); //add image to gridpane.
         }
