@@ -70,27 +70,25 @@ public class BrowseUsersController implements Initializable {
         ArrayList<String> userIcon = new ArrayList<>();
         ArrayList<String> allUsernames = new ArrayList<>();
 
+
         Image[] icons = new Image[userArrayList.size()];
         ImageView[] imageViews = new ImageView[userArrayList.size()];
         VBox[] vBoxes = new VBox[userArrayList.size()];
-        Button heartButton = new Button();
-        Image heartIcon = new Image(("co/uk/artatawe/gui/Icons/icons8-heart-40.png"));
-        heartButton.setGraphic(new ImageView(heartIcon));
-        heartButton.setStyle("-fx-background-color: transparent; -fx-text-fill: transparent; -fx-border-color: transparent");
+
 
 
         scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
         scrollPane.setFitToHeight(true);
         scrollPane.setContent(tilePane);
+        tilePane.setHgap(10);
+        tilePane.setVgap(10);
 
         //gets all usernames and profile images
         for (User user: userArrayList) {
             userIcon.add(user.getProfileImage());
             allUsernames.add(user.getUserName());
         }
-
-
 
         String[] usernameArray = allUsernames.toArray(new String[userArrayList.size()]);
         String[] imageLocation = userIcon.toArray(new String[userArrayList.size()]);
@@ -106,17 +104,23 @@ public class BrowseUsersController implements Initializable {
             imageViews[i].setSmooth(true);
             imageViews[i].setCache(true);
 
+
+            Button heartButton = new Button();
+            Image heartIcon = new Image(("co/uk/artatawe/gui/Icons/icons8-heart-40.png"));
+            heartButton.setGraphic(new ImageView(heartIcon));
+            heartButton.setStyle("-fx-background-color: transparent; -fx-text-fill: black; -fx-border-color: transparent");
+
             vBoxes[i] = new VBox();
-            vBoxes[i].getChildren().addAll(imageViews[i]); //add vbox inside gridpane.
+
+            vBoxes[i].getChildren().addAll(imageViews[i]);
+            heartButton.setText(usernameArray[i]);
 
             vBoxes[i].getChildren().add(heartButton);
-
-            Label userName = new Label();
-            userName.setText(usernameArray[i]);
-            vBoxes[i].getChildren().add(userName);
             tilePane.getChildren().add(vBoxes[i]); //add image to gridpane.
         }
     }
+
+
 
     /**
      * Gets logged in user's username.

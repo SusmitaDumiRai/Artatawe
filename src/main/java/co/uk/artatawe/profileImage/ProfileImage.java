@@ -1,6 +1,7 @@
 package co.uk.artatawe.profileImage;
 
 import javafx.scene.Parent;
+import javafx.scene.layout.Pane;
 
 /**
  * The attributes and behaviours of a profile image.
@@ -9,10 +10,12 @@ import javafx.scene.Parent;
  * @version 1.2
  */
 public abstract class ProfileImage {
+	//The no of dimensions the profile image uses (e.g. 2 for 2D or 3 for 3D).
+	public static final int NO_OF_DIMENSIONS = 2; 	
 	public static final int X_INDEX = 0; //The index of x in an array.
 	public static final int Y_INDEX = 1; //The index of y in an array.
-	private int size; //The size of the profile image, which is square.
-	private int[] position; //The x, y position of center of profile image.
+	private double size; //The size of the profile image, which is square.
+	private double[] position; //The x, y position of center of profile image.
 	
 	/**
 	 * Creates a profile image.
@@ -20,8 +23,9 @@ public abstract class ProfileImage {
 	 * @param posX The x position of the center of the profile image.
 	 * @param posY The y position of the center of the profile image.
 	 */
-	public ProfileImage(int size, int posX, int posY) {
+	public ProfileImage(double size, double posX, double posY) {
 		this.size = size;
+		position = new double[NO_OF_DIMENSIONS];
 		position[X_INDEX] = posX;
 		position[Y_INDEX] = posY;
 	}
@@ -30,7 +34,7 @@ public abstract class ProfileImage {
 	 * Gets the size of the profile image, which is square.
 	 * @return The size of the profile image.
 	 */
-	public int getSize() {
+	public double getSize() {
 		return size;
 	}
 	
@@ -38,7 +42,7 @@ public abstract class ProfileImage {
 	 * Gets the x position of the center of the profile image.
 	 * @return The x position of the center of the profile image.
 	 */
-	public int getXPosition() {
+	public double getXPosition() {
 		return position[X_INDEX];
 	}
 	
@@ -46,7 +50,7 @@ public abstract class ProfileImage {
 	 * Gets the y position of the center of the profile image.
 	 * @return The y position of the center of the profile image.
 	 */
-	public int getYPosition() {
+	public double getYPosition() {
 		return position[Y_INDEX];
 	}
 	
@@ -54,7 +58,7 @@ public abstract class ProfileImage {
 	 * Resets the size of the profile image.
 	 * @param width The size of the profile image.
 	 */
-	public void setSize(int size) {
+	public void setSize(double size) {
 		this.size = size;
 	}
 	
@@ -62,7 +66,7 @@ public abstract class ProfileImage {
 	 * Resets the x position of the center of the profile image.
 	 * @param x The x position of the center of the profile image.
 	 */
-	public void setXPosition(int x) {
+	public void setXPosition(double x) {
 		this.position[X_INDEX] = x;
 	}
 	
@@ -70,7 +74,7 @@ public abstract class ProfileImage {
 	 * Resets the y position of the center of the profile image.
 	 * @param y The y position of the center of the profile image.
 	 */
-	public void setYPosition(int y) {
+	public void setYPosition(double y) {
 		this.position[Y_INDEX] = y;
 	}
 	
@@ -86,6 +90,6 @@ public abstract class ProfileImage {
 	}
 	
 	//Unsure on the type of graphics input.
-	public abstract void displayProfileImage(Parent p);
+	public abstract void displayProfileImage(Pane p);
 }
 
