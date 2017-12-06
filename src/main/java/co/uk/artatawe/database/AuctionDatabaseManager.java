@@ -91,7 +91,7 @@ public class AuctionDatabaseManager extends DatabaseManager {
                     auctionArrayList.add(new Auction(resultSet.getInt("numOfBidsLeft"), false, artwork, user,  bidDatabaseManager.getMaxBid(resultSet.getInt("auctionid"))));
 
                 } else { //completed auction
-                    // auctionArrayList.add(new Auction(resultSet.getInt("numOfBidsLeft"), true, artwork, user, bidDatabaseManager.getMaxBid(resultSet.getInt("auctionid"))));
+                    auctionArrayList.add(new Auction(resultSet.getInt("numOfBidsLeft"), true, artwork, user, bidDatabaseManager.getMaxBid(resultSet.getInt("auctionid"))));
                 }
 
             }
@@ -113,6 +113,7 @@ public class AuctionDatabaseManager extends DatabaseManager {
             ResultSet resultSet = statement.executeQuery(sqlSelect);
             while (resultSet.next()) {
                 UserDatabaseManager userDatabaseManager = new UserDatabaseManager();
+                BidDatabaseManager bidDatabaseManager = new BidDatabaseManager();
                 User user = userDatabaseManager.getUser(resultSet.getString("seller"));
 
 
@@ -125,10 +126,10 @@ public class AuctionDatabaseManager extends DatabaseManager {
                 if (resultSet.getInt("auctioncomp") == 0) {
 
                     //Get the highest bid.
-                    BidDatabaseManager bidDatabaseManager = new BidDatabaseManager();
+
                     auction = new Auction(resultSet.getInt("numOfBidsLeft"), false, artwork, user, bidDatabaseManager.getMaxBid(resultSet.getInt("auctionid")));
                 } else {
-                    //     auctionArrayList.add(new Auction(resultSet.getInt("numOfBidsLeft"), true, artwork, user, , resultSet.getDouble("highestbid"))); TODO. UPDATE ONCE BID DATABASE MANAGER IS SORTED :sob:
+                       auction =  new Auction(resultSet.getInt("numOfBidsLeft"), true, artwork, user, bidDatabaseManager.getMaxBid(resultSet.getInt("auctionid")));
                 }
             }
         } catch (SQLException ex) {
