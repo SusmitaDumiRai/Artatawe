@@ -143,7 +143,6 @@
                               <Insets right="10.0" />
                            </HBox.margin>
                         </Label>
-                        <Label fx:id="year" prefHeight="400.0" text="Year" />
                      </children>
                   </HBox>
                   <HBox prefHeight="400.0" prefWidth="400.0">
