@@ -2,6 +2,8 @@ package co.uk.artatawe.profileImage;
 
 import javafx.scene.Parent;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 
 /**
  * The attributes and behaviours of a saved profile image.
@@ -51,8 +53,19 @@ public class SavedProfileImage extends ProfileImage {
 		return result;
 	}
 	
+	/**
+	 * This should display a preset profile image.
+	 * @param p The pane scene object the image is being displayed on.
+	 */
 	@Override
-	public void displayProfileImage(Parent p) {
-    
-	}
+    public void displayProfileImage(Pane p) {
+		ImageView presetImageView = new ImageView();
+		presetImageView.setImage(getProfileImage());
+		presetImageView.setTranslateX(getXPosition());
+		presetImageView.setTranslateY(getYPosition());
+		presetImageView.setFitWidth(getSize());
+		presetImageView.setFitHeight(getSize());
+		presetImageView.setPreserveRatio(true);
+		p.getChildren().add(presetImageView);
+    }
 }

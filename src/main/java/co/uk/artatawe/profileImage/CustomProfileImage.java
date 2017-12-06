@@ -3,6 +3,8 @@ package co.uk.artatawe.profileImage;
 import java.util.ArrayList;
 
 import javafx.scene.Parent;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.layout.Pane;
 
 /**
  * The attributes and behaviours of a custom profile image.
@@ -42,7 +44,7 @@ public class CustomProfileImage extends ProfileImage {
     }
     
     @Override
-    public void displayProfileImage(Parent p) {
+    public void displayProfileImage(Pane p) {
 
 
     }  
