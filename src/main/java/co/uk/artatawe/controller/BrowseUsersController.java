@@ -100,6 +100,10 @@ public class BrowseUsersController implements Initializable {
         //Display in GUI.
         for (int i = 0; i < imageLocation.length; i++) {
 
+            if (allUsernames.equals(username)) {
+
+            }
+
             icons[i] = new Image(imageLocation[i], 150, 0, true, true);
             imageViews[i] = new ImageView(icons[i]);
             imageViews[i].setFitWidth(150);
@@ -107,7 +111,6 @@ public class BrowseUsersController implements Initializable {
             imageViews[i].setPreserveRatio(true);
             imageViews[i].setSmooth(true);
             imageViews[i].setCache(true);
-
 
             Button heartButton = new Button();
             Image heartIcon = new Image(("co/uk/artatawe/gui/Icons/icons8-heart-40.png"));
