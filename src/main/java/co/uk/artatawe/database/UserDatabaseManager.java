@@ -1,8 +1,7 @@
 package co.uk.artatawe.database;
 
-import co.uk.artatawe.sample.User;
+import co.uk.artatawe.main.User;
 
-import javax.swing.plaf.nimbus.State;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -45,16 +44,9 @@ public class UserDatabaseManager extends  DatabaseManager {
      * Returns all users in the table.
      */
 
-    public ArrayList<User> getAllUsers() {
+    public ArrayList<User> getAllUsers(String sqlSelect) {
         ArrayList<User> userArrayList = new ArrayList<>();
-        String sqlSelect = "SELECT username," +
-                "firstname," +
-                "surname," +
-                "phonenumber," +
-                "address," +
-                "postcode," +
-                "lastlogin," +
-                "profileimage FROM user;";
+
 
         try {
             Connection connection = connect();
@@ -63,10 +55,9 @@ public class UserDatabaseManager extends  DatabaseManager {
             ResultSet resultSet = statement.executeQuery(sqlSelect);
             while (resultSet.next()) {
 
-
-                //currently does not support favourite users and profile image.
                 userArrayList.add(new User(resultSet.getString("username"), resultSet.getString("firstname"), resultSet.getString("surname"),
-                        resultSet.getString("phonenumber"), resultSet.getString("address"), resultSet.getString("postcode")));
+                        resultSet.getString("phonenumber"), resultSet.getString("address"), resultSet.getString("postcode"),
+                        resultSet.getString("lastlogin"), resultSet.getString("profileimage")));
 
 
             }
@@ -80,8 +71,15 @@ public class UserDatabaseManager extends  DatabaseManager {
     /**
      * Returns information of certain user.
      * @param username user to search.
+     * @return user info.
      */
-    public void getUser(String username) {
+    public User getUser(String username) {
+
+        /*
+        String userName, String firstName, String surname,
+              String phoneNumber, String address, String postcode
+         */
+        User user = new User();
 
         String selectUser = "SELECT * FROM user where username = '" + username + "'";
 
@@ -92,6 +90,10 @@ public class UserDatabaseManager extends  DatabaseManager {
             ResultSet resultSet = statement.executeQuery(selectUser);
             while (resultSet.next()) {
 
+                user = new User(resultSet.getString("username"), resultSet.getString("firstName"), resultSet.getString("surname"),
+                        resultSet.getString("phonenumber"), resultSet.getString("address"), resultSet.getString("postcode"),
+                        resultSet.getString("lastlogin"), resultSet.getString("profileImage"));
+                /*
                 System.out.println(resultSet.getString("username") + "\t" +
                         resultSet.getString("firstname") + "\t" +
                         resultSet.getString("surname") + "\t" +
@@ -100,14 +102,35 @@ public class UserDatabaseManager extends  DatabaseManager {
                         resultSet.getString("postcode") + "\t" +
                         resultSet.getString("lastlogin") + "\t" +
                         resultSet.getString("profileimage") + "\t");
+                        */
 
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
 
+        return user;
 
     }
+
+    /**
+     * Gets array list of usernames.
+     * @return array list of usernames.
+     */
+    public ArrayList<String> getAllUsernames() {
+
+        String sqlSelect = "SELECT * FROM USER;";
+        ArrayList<String> usernameArrayList = new ArrayList<>();
+
+        for (User user :  getAllUsers(sqlSelect)) {
+            usernameArrayList.add(user.getUserName().toLowerCase());
+        }
+
+        return usernameArrayList;
+
+    }
+
+
 
     /*
     public void testUser() {
@@ -142,5 +165,6 @@ public class UserDatabaseManager extends  DatabaseManager {
             System.out.println(ex.getMessage());
         }
     }
-*/
+    */
+
 }

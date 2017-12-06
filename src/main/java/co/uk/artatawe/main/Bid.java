@@ -1,6 +1,5 @@
-package co.uk.artatawe.sample;
+package co.uk.artatawe.main;
 
-import co.uk.artatawe.artwork.Artwork;
 
 /**
  * Creates bid object.
@@ -14,6 +13,10 @@ public class Bid {
     private int bidID;
     private int auctionID;
 
+
+    public Bid() {
+
+    }
 
     /**
      * Constructor for bid.

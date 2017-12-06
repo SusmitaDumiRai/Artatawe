@@ -3,16 +3,16 @@ package co.uk.artatawe.artwork;
 import java.util.ArrayList;
 
 /**
- * Sculpture class inherits from Artwork class, creates sculpture object
+ * Sculpture class inherits from Artwork class, creates sculpture object.
  */
 public class Sculpture extends Artwork {
 
     private double depth;
     private String mainMaterial;
-    private ArrayList<String> extraPhoto = new ArrayList<>();
+    private String extraPhoto;
 
     /**
-     * constructor that creates an sculpture object
+     * constructor that creates an sculpture object.
      * @param typeOfArtwork the type of an artwork, in this class it's a sculpture
      * @param title         title of the sculpture
      * @param description   description of the sculpture
@@ -22,14 +22,14 @@ public class Sculpture extends Artwork {
      * @param dateEntered   date of when the sculpture has been put to auction
      * @param bidsAllowed   amount of the bids allowed for the sculpture
      * @param mainMaterial  material the sculpture is made of
-     * @param extraPhotos   some extra photos for the sculpture
+     * @param extraPhoto    extra photo for the sculpture
      * @param width         width of the sculpture
      * @param height        height of the sculpture
      * @param depth         depth of the sculpture
      */
     public Sculpture(String typeOfArtwork, String title, String description, String photo,
                      String nameOfCreator, double reservedPrice, String dateEntered, int bidsAllowed,
-                     String mainMaterial, ArrayList<String> extraPhotos, double width, double height, double depth) {
+                     String mainMaterial, String extraPhoto, double width, double height, double depth) {
         super(typeOfArtwork, title, description, photo, nameOfCreator, reservedPrice, dateEntered, bidsAllowed, width, height);
 
         this.depth = depth;
@@ -38,7 +38,34 @@ public class Sculpture extends Artwork {
     }
 
     /**
-     * method that gets depth of a sculpture
+     * //TODO LENI.
+     * @param artworkID
+     * @param typeOfArtwork
+     * @param title
+     * @param description
+     * @param photo
+     * @param nameOfCreator
+     * @param reservedPrice
+     * @param dateEntered
+     * @param bidsAllowed
+     * @param mainMaterial
+     * @param extraPhoto
+     * @param width
+     * @param height
+     * @param depth
+     */
+    public Sculpture(int artworkID, String typeOfArtwork, String title, String description, String photo,
+                     String nameOfCreator, double reservedPrice, String dateEntered, int bidsAllowed,
+                     String mainMaterial, String extraPhoto, double width, double height, double depth) {
+        super(artworkID, typeOfArtwork, title, description, photo, nameOfCreator, reservedPrice, dateEntered, bidsAllowed, width, height);
+
+        this.depth = depth;
+        this.mainMaterial = mainMaterial;
+        this.extraPhoto = extraPhoto;
+    }
+
+    /**
+     * method that gets depth of a sculpture.
      * @return the depth of a sculpture
      */
     public double getDepth() {
@@ -46,7 +73,7 @@ public class Sculpture extends Artwork {
     }
 
     /**
-     * method that sets the depth of a sculpture
+     * method that sets the depth of a sculpture.
      * @param depth depth of a sculpture
      */
     public void setDepth(double depth) {
@@ -54,7 +81,7 @@ public class Sculpture extends Artwork {
     }
 
     /**
-     * method that gets the main material of a sculpture
+     * method that gets the main material of a sculpture.
      * @return the main material a sculpture is made of
      */
     public String getMainMaterial() {
@@ -62,7 +89,7 @@ public class Sculpture extends Artwork {
     }
 
     /**
-     * method that sets the main material of a sculpture
+     * method that sets the main material of a sculpture.
      * @param mainMaterial the main material a sculpture is made of
      */
     public void setMainMaterial(String mainMaterial) {
@@ -70,18 +97,18 @@ public class Sculpture extends Artwork {
     }
 
     /**
-     * method that gets extra photos of the sculpture
+     * method that gets extra photos of the sculpture.
      * @return extra photos of the sculpture
      */
-    public ArrayList<String> getExtraPhoto() {
+    public String getExtraPhoto() {
         return extraPhoto;
     }
 
     /**
-     * method that sets the extra photos of a sculpture
+     * method that sets the extra photos of a sculpture.
      * @param extraPhoto some extra photos of the sculpture
      */
-    public void setExtraPhoto(ArrayList<String> extraPhoto) {
+    public void setExtraPhoto(String extraPhoto) {
         this.extraPhoto = extraPhoto;
     }
 }

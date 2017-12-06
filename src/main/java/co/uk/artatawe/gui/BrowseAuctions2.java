@@ -1,21 +1,20 @@
-package co.uk.artatawe.sample;
+package co.uk.artatawe.gui;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-/**
- * Created by Plamena on 3.12.2017 г..
- */
-public class LoginTest extends Application {
 
+/**
+ * Created by Susi on 05/12/2017.
+ */
+public class BrowseAuctions2 extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("../gui/Login.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("BrowseAuctions.fxml"));
 
         Scene scene = new Scene(root);
 

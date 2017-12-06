@@ -5,7 +5,7 @@ String sqlInsertUser = "INSERT INTO user values (" +
                 "'07412111111'," +
                 "'123 Fake Street'," +
                 "'S2A NDD', " +
-                "'2017-01-01T10:10:10'," +
+                "'2017/01/01 10:10:10'," +
                 "'co/uk/artatawe/profileImage/SavedProfileImages/PresetImage_Penguin.jpg');";
 
 String sqlInsertUser = "INSERT INTO user values (" +
@@ -65,33 +65,33 @@ dateentered, bidsallowed, typeofartwork, width, height) values ('title', 'descri
 
 
 String sqlInsertArtwork = "INSERT INTO artwork (title, description, photo, nameofcreator, reservedprice,
-dateentered, bidsallowed, typeofartwork, width, height) values ('Bar reflection', 'This piece is themed on two young people lost in each other, sitting in a mirrored booth in a public house - in the style he is now well known for. The back of the painting is signed by the artist, and both young people, Carra and Luke who sat for the creation of this work.',
+dateentered, bidsallowed, typeofartwork, width, height) values ('Bar reflection', 'This piece is themed on two young people lost in each other.',
 'co/uk/artatawe/artworkpictures/Bar reflections.jpg',
-'Kevin Day', '100', '01/02/2017', '20', 'painting', '76', '60' );"
+'Kevin Day', '100', '04/12/2017 21:41:45', '20', 'painting', '76', '60' );"
 
 
 String sqlInsertArtwork = "INSERT INTO artwork (title, description, photo, nameofcreator, reservedprice,
-dateentered, bidsallowed, typeofartwork, width, height) values ('Pile of strawberries', 'Neil Carrolls still life paintings tease viewers with a sense of momentary presence... in other words, it is almost as if he captured a glimpse of the objects - a moment caught in time out of the corner of the eye.',
+dateentered, bidsallowed, typeofartwork, width, height) values ('Pile of strawberries', 'Neil Carrolls still life paintings tease viewers with a sense of momentary presence.',
 'co/uk/artatawe/artworkpictures/Pile of strawberries.jpg',
-'Neil Carroll', '250', '12/02/2015', '50', 'painting', '40', '40' );"
+'Neil Carroll', '250', '12/02/2015 10:20:30', '50', 'painting', '40', '40' );"
 
 String sqlInsertArtwork = "INSERT INTO artwork (title, description, photo, nameofcreator, reservedprice,
-dateentered, bidsallowed, typeofartwork, width, height) values ('Summer Holiday', 'Created by hand cutting each and every shape and colour from sheets of vinyl, the pieces are applied - in the same nature as a collage - to a mountboard backing. This original artwork is from a new series of pieces created in homage to two main inspirations: David Hockney and Jeff Koons... plus missing another holiday! The unique 'finish' of the vinyl portrays a surreal depiction of water - partly due to how the vinyl reflects light from the environment the picture is hung. Overall, this unique artwork simply invites the viewer to jump in.',
+dateentered, bidsallowed, typeofartwork, width, height) values ('Summer Holiday', 'Created by hand cutting each and every shape and colour from sheets of vinyl.',
 'co/uk/artatawe/artworkpictures/Summer holiday.jpg',
-'Joel Clark', '300', '26/05/2017', '10', 'painting', '40', '80' );"
+'Joel Clark', '300', '26/05/2017 12:30:34', '10', 'painting', '40', '80' );"
 
 String sqlInsertArtwork = "INSERT INTO artwork (title, description, photo, nameofcreator, reservedprice,
 dateentered, bidsallowed, typeofartwork, width, height) values ('To Catch A Moon-Fish',
-'This fanciful piece ties in the elements with skill and blending for a delightful piece. The strawberries are part of the clouds and the clock is patterned in a cool way into the fish dangling from the gorgeous blue sky. The adorable kitty is perched far above the city as he takes in the imaginative sights.',
+'This fanciful piece ties in the elements with skill and blending for a delightful piece.',
 'co/uk/artatawe/artworkpictures/To catch a moon-fish.jpg',
-'Qinni', '500', '27/12/2017', '20', 'painting', '30', '50.5' );"
+'Qinni', '500', '27/12/2017 06:09:10', '20', 'painting', '30', '50.5' );"
 
 
 String sqlInsertArtwork = "INSERT INTO artwork (title, description, photo, nameofcreator, reservedprice,
 dateentered, bidsallowed, typeofartwork, width, height) values ('The Dangers of Late Night Mushroom Picking',
 'Unfortunately not everyone or everything is what it seems. Trust your instincts.',
 'co/uk/artatawe/artworkpictures/The dangers of late night mushroom picking.jpg',
-'Bobby Chiu', '205', '30/03/2017', '15', 'painting', '5.5', '6.6' );"
+'Bobby Chiu', '205', '30/03/2017 11:23:20', '15', 'painting', '5.5', '6.6' );"
 
 
 "title text not null," +
@@ -112,22 +112,22 @@ dateentered, bidsallowed, typeofartwork, width, height, depth, mainMaterial, ext
 ('title',
 'description',
 'co/uk/artatawe/artworkpictures/Wooden wonders 1.jpg',
-'Willy Verginer', '3590', '12/06/2017', '30', 'sculpture', '5.5', '6.6', '10', 'wood', 'co/uk/artatawe/artworkpictures/Wooden wonders 2.jpg' );"
+'Willy Verginer', '3590', '12/06/2017 13:14:15', '30', 'sculpture', '5.5', '6.6', '10', 'wood', 'co/uk/artatawe/artworkpictures/Wooden wonders 2.jpg' );"
 
 
 String sqlInsertArtwork = "INSERT INTO artwork (title, description, photo, nameofcreator, reservedprice,
 dateentered, bidsallowed, typeofartwork, width, height, depth, mainMaterial, extraphotos) values
 ('Wooden wonders',
-'Once his naturalistic, near-life size wooden sculptures are carved, the artist adds eye-catching blocks of geometric colour using acrylic paint. It's an unusual but inspired approach that sets up a sharp contrast of styles within each piece, and makes these figures all the more mysterious and alluring.',
+'Once his naturalistic, near-life size wooden sculptures are carved, the artist adds eye-catching blocks of geometric colour using acrylic paint.',
 'co/uk/artatawe/artworkpictures/Wooden wonders 1.jpg',
-'Willy Verginer', '3590', '12/06/2017', '30', 'sculpture', '5.5', '6.6', '10', 'wood', 'co/uk/artatawe/artworkpictures/Wooden wonders 2.jpg' );"
+'Willy Verginer', '3590', '12/06/2017 16:17:18', '30', 'sculpture', '5.5', '6.6', '10', 'wood', 'co/uk/artatawe/artworkpictures/Wooden wonders 2.jpg' );"
 
 String sqlInsertArtwork = "INSERT INTO artwork (title, description, photo, nameofcreator, reservedprice,
 dateentered, bidsallowed, typeofartwork, width, height, depth, mainMaterial, extraphotos) values
 ('FLIGHTLESS BIRD FROM FAIRY TALE',
-'An unique handmade sculpture made from bright chamotte clay. Coated with glaze. Author’s signature',
+'An unique handmade sculpture made from bright chamotte clay. Coated with glaze.',
 'co/uk/artatawe/artworkpictures/FLIGHTLESS BIRD FROM FAIRY TALE 1.jpg',
-'Monika Kaszynska', '100000', '25/12/2017', '10000', 'sculpture', '4.7', '15', '5.5', 'clay', 'co/uk/artatawe/artworkpictures/FLIGHTLESS BIRD FROM FAIRY TALE 2.jpg' );"
+'Monika Kaszynska', '100000', '25/12/2017 19:20:21', '10000', 'sculpture', '4.7', '15', '5.5', 'clay', 'co/uk/artatawe/artworkpictures/FLIGHTLESS BIRD FROM FAIRY TALE 2.jpg' );"
 
 
 -------------------------------------------------

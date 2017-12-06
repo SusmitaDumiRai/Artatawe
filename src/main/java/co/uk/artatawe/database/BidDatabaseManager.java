@@ -1,5 +1,7 @@
 package co.uk.artatawe.database;
 
+import co.uk.artatawe.main.Bid;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -26,10 +28,12 @@ public class BidDatabaseManager extends DatabaseManager {
      */
     public void createBidTable() {
         String sqlCreateBidTable = "CREATE TABLE IF NOT EXISTS bid( " +
-                "bidID INTEGER PRIMARY KEY not null,\n" +
+                "bidID INTEGER PRIMARY KEY not null," +
+                "auctionID integer not null," +
                 "buyer text not null," + //username of buyer.
                 " bidAmount real not null," +
                 " dateAndTime text not null," + //date and time of bid made.
+                "foreign key (auctionid) references auction (auctionid)" +
                 "foreign key (buyer) references  user (username));";
 
         executeStatement(sqlCreateBidTable);
@@ -38,11 +42,7 @@ public class BidDatabaseManager extends DatabaseManager {
     /**
      * Displays all bids.
      */
-    public void getAllBids() {
-        String sqlSelect = "SELECT bidID," +
-                "buyer," +
-                "bidamount," +
-                "dateandtime FROM bid;";
+    public void getAllBids(String sqlSelect) {
 
         try {
             Connection connection = connect();
@@ -61,4 +61,36 @@ public class BidDatabaseManager extends DatabaseManager {
 
 
     }
+
+    //TODO get winning bid.
+    /*
+    public Bid getBid(int bidID) {
+
+        String sqlSelectBid = "SELECT * FROM bid where bidID = " + bidID + "';";
+        Bid bid = new Bid();
+
+
+               this.buyer = buyer;
+        this.bidAmount = bidAmount;
+        this.dateAndTime = dateAndTime;
+        this.auctionID = auctionID;
+
+        try {
+            Connection connection = connect();
+            Statement statement = connection.createStatement();
+
+            ResultSet resultSet = statement.executeQuery(sqlSelectBid);
+            while (resultSet.next()) {
+                UserDatabaseManager userDatabaseManager = new UserDatabaseManager();
+
+                bid = new Bid()
+
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+
+    }
+    */
 }

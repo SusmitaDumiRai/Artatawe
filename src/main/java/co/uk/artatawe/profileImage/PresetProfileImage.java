@@ -1,9 +1,9 @@
 package co.uk.artatawe.profileImage;
 
 import javafx.scene.Parent;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 
 /**
  * The attributes and behaviours of a preset profile image.
@@ -22,7 +22,7 @@ public class PresetProfileImage extends ProfileImage {
 	 * @param posY The y position of the center of the profile image.	
 	 * @param presetImage The selected preset profile image.
 	 */
-	public PresetProfileImage(int size, int posX, int posY, 
+	public PresetProfileImage(double size, double posX, double posY, 
 			PresetImage presetImage) {
 		super(size, posX, posY);
 		this.presetImage = presetImage;
@@ -64,16 +64,17 @@ public class PresetProfileImage extends ProfileImage {
 
 	/**
 	 * This should display a preset profile image.
-	 * @param p The parent scene object the image is being displayed on.
+	 * @param p The pane scene object the image is being displayed on.
 	 */
 	@Override
-    public void displayProfileImage(Parent p) {
-		ImageView imageView1 = new ImageView();
-		imageView1.setImage(getImage());
-		imageView1.setFitWidth(getSize());
-		imageView1.setFitHeight(getSize());
-		p.getChildrenUnmodifiable().add(imageView1);
+    public void displayProfileImage(Pane p) {
+		ImageView presetImageView = new ImageView();
+		presetImageView.setImage(getImage());
+		presetImageView.setTranslateX(getXPosition());
+		presetImageView.setTranslateY(getYPosition());
+		presetImageView.setFitWidth(getSize());
+		presetImageView.setFitHeight(getSize());
+		presetImageView.setPreserveRatio(true);
+		p.getChildren().add(presetImageView);
     }
-
-
 }

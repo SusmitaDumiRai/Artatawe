@@ -1,17 +1,13 @@
-package co.uk.artatawe.sample;
+package co.uk.artatawe.main;
 
 import co.uk.artatawe.database.*;
 
 
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-
-
 
 
 public class Main extends Application {
@@ -70,6 +66,19 @@ public class Main extends Application {
 
 
 
+
+     //String sql = "update artwork set description = 'An unique handmade sculpture made from bright chamotte clay. Coated with glaze.' where title = 'FLIGHTLESS BIRD FROM FAIRY TALE'; ";
+      //artworkDatabaseManager.updateStatement(sql);
+
+     //   String sqlSelect = "Select * from artwork, auction where auction.auctionid = artwork.artworkid and auctioncomp = 0;";
+
+//      String sqlSelect = "SELECT * FROM ARTWORK;";
+
+  //   artworkDatabaseManager.getAllArtworks(sqlSelect);
+    //    auctionDatabaseManager.getAllAuctions();
+
     }
+
+
 
 }
