@@ -122,15 +122,20 @@ public class ShowAuctionController implements Initializable {
      //   String sql = "SELECT * from artwork where photo = 'co/uk/artatawe/artworkpictures/FLIGHTLESS BIRD FROM FAIRY TALE 1.jpg';";
 
         ArtworkDatabaseManager artworkDatabaseManager = new ArtworkDatabaseManager();
-        Artwork artwork = artworkDatabaseManager.getArtwork(sql); //returns one artwork
+        AuctionDatabaseManager auctionDatabaseManager = new AuctionDatabaseManager();
 
+        String sqlSelectArtwork = "Select * from artwork where artwork.photo = '" + this.photo + "';";
+        Artwork artwork = artworkDatabaseManager.getArtwork(sqlSelectArtwork);
+
+        String sqlSelectAuction = "select * from auction where auctionid = " +  artwork.getArtworkID() + ";";
+        Auction auction = auctionDatabaseManager.getAuction(sqlSelectAuction);
 
 
         this.title.setText(artwork.getTitle());
         this.description.setText(artwork.getDescription());
         this.width.setText(Double.toString(artwork.getWidth()));
         this.height.setText(Double.toString(artwork.getHeight()));
-        this.reservedPrice.setText(Double.toString(artwork.getReservedPrice()));
+        this.reservedPrice.setText(Double.toString(auction.getHighestBid()));
         this.date.setText(artwork.getDateEntered());
         this.creator.setText(artwork.getNameOfCreator());
 
@@ -198,14 +203,7 @@ public class ShowAuctionController implements Initializable {
      * @return
      */
     public boolean valMakeBid() {
-        ArtworkDatabaseManager artworkDatabaseManager = new ArtworkDatabaseManager();
-        AuctionDatabaseManager auctionDatabaseManager = new AuctionDatabaseManager();
 
-        String sqlSelectArtwork = "Select * from artwork where artwork.photo = '" + this.photo + "';";
-        Artwork artwork = artworkDatabaseManager.getArtwork(sqlSelectArtwork);
-
-        String sqlSelectAuction = "select * from auction where auctionid = " +  artwork.getArtworkID() + ";";
-        Auction auction = auctionDatabaseManager.getAuction(sqlSelectAuction);
 
         //String update = update auction set numofbidsleft = -1
 
