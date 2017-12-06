@@ -96,7 +96,7 @@ public class ShowAuctionController implements Initializable {
      * Creates controller object.
      * @param username username of logged in user.
      */
-    public ShowAuctionController(String username) {
+    public ShowAuctionController(String username, String photo) {
         this.username = username;
     }
 
@@ -111,8 +111,8 @@ public class ShowAuctionController implements Initializable {
     }
 
     public void getArtwork() {
-      //  String sql = "SELECT * from artwork where photo = '" + this.photo + "';";
-        String sql = "SELECT * from artwork where photo = 'co/uk/artatawe/artworkpictures/Giraffe.png';";
+       String sql = "SELECT * from artwork where photo = '" + this.photo + "';";
+      //  String sql = "SELECT * from artwork where photo = 'co/uk/artatawe/artworkpictures/FLIGHTLESS BIRD FROM FAIRY TALE 1.jpg';";
 
         ArtworkDatabaseManager artworkDatabaseManager = new ArtworkDatabaseManager();
         ArrayList<Artwork> artworkArrayList = artworkDatabaseManager.getAllArtworks(sql); //returns one artwork, photo = UNIQUE.
@@ -144,12 +144,21 @@ public class ShowAuctionController implements Initializable {
 
         }
 
-
-
-
-
-
     }
 
+    public String getUsername() {
+        return username;
+    }
 
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
 }
