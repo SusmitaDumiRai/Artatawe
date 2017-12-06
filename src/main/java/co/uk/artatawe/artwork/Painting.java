@@ -1,12 +1,12 @@
 package co.uk.artatawe.artwork;
 
 /**
- * Painting class inherits from Artwork class, creates painting object
+ * Painting class inherits from Artwork class, creates painting object.
  */
 public class Painting extends Artwork {
 
     /**
-     * constructor that creates an painting object
+     * constructor that creates an painting object.
      * @param typeOfArtwork the type of an artwork, in this class it's a painting
      * @param title         title of the painting
      * @param description   description of the painting
@@ -21,6 +21,26 @@ public class Painting extends Artwork {
     public Painting(String typeOfArtwork, String title, String description, String photo, String nameOfCreator,
                     double reservedPrice, String dateEntered, int bidsAllowed, double width, double height) {
         super(typeOfArtwork, title, description, photo, nameOfCreator, reservedPrice, dateEntered, bidsAllowed, width, height);
+
+    }
+
+    /**
+     * //TODO FOR YOU LENI
+     * @param artworkID
+     * @param typeOfArtwork
+     * @param title
+     * @param description
+     * @param photo
+     * @param nameOfCreator
+     * @param reservedPrice
+     * @param dateEntered
+     * @param bidsAllowed
+     * @param width
+     * @param height
+     */
+    public Painting(int artworkID, String typeOfArtwork, String title, String description, String photo, String nameOfCreator,
+                    double reservedPrice, String dateEntered, int bidsAllowed, double width, double height) {
+        super(artworkID, typeOfArtwork, title, description, photo, nameOfCreator, reservedPrice, dateEntered, bidsAllowed, width, height);
 
     }
 

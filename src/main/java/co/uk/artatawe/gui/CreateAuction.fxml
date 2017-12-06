@@ -10,95 +10,125 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.uk.artatawe.controller.CreateAuctionController">
    <center>
       <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="258.0" fitWidth="283.0" layoutX="24.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@Icons/icons8-love-filled-40.png" />
-               </image>
-            </ImageView>
-            <VBox layoutX="312.0" layoutY="88.0" prefHeight="305.0" prefWidth="273.0">
+            <VBox alignment="CENTER" layoutX="128.0" layoutY="2.0" prefHeight="391.0" prefWidth="572.0">
                <children>
                   <HBox prefHeight="400.0" prefWidth="200.0">
                      <children>
-                        <RadioButton fx:id="paintingRadioButton" mnemonicParsing="false" text="painting">
+                        <RadioButton fx:id="paintingRadioButton" mnemonicParsing="false" onAction="#handlePaintingRadioAction" text="painting">
                            <HBox.margin>
-                              <Insets right="50.0" />
+                              <Insets right="30.0" />
+                           </HBox.margin>
+                           <toggleGroup>
+                              <ToggleGroup fx:id="typeArtwork" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="sculptureRadioButton" mnemonicParsing="false" onAction="#handleSculptureRadioAction" text="sculpture" toggleGroup="$typeArtwork">
+                           <HBox.margin>
+                              <Insets right="10.0" />
                            </HBox.margin>
                         </RadioButton>
-                        <RadioButton fx:id="sculptureRadioButton" mnemonicParsing="false" text="sculpture" />
+                        <Label fx:id="radioButtonError" style="-fx-text-fill: transparent;" text="'Please select one'">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
                      </children>
                   </HBox>
                   <HBox prefHeight="400.0" prefWidth="200.0">
                      <children>
                         <Label prefHeight="21.0" prefWidth="105.0" text="Artwork Title:">
                            <HBox.margin>
-                              <Insets right="10.0" />
+                              <Insets right="5.0" />
                            </HBox.margin>
                         </Label>
                         <TextField fx:id="title" prefHeight="31.0" prefWidth="172.0" />
                      </children>
+                     <padding>
+                        <Insets bottom="5.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
+                     </VBox.margin>
                   </HBox>
                   <HBox prefHeight="400.0" prefWidth="400.0">
                      <children>
                         <Label prefHeight="37.0" prefWidth="109.0" text="Creator Name:">
                            <HBox.margin>
-                              <Insets right="10.0" />
+                              <Insets right="1.0" />
                            </HBox.margin>
                         </Label>
                         <TextField fx:id="creatorName" prefHeight="31.0" prefWidth="172.0" />
                      </children>
+                     <padding>
+                        <Insets bottom="5.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
+                     </VBox.margin>
                   </HBox>
-                  <HBox prefHeight="400.0" prefWidth="200.0">
+                  <HBox prefHeight="410.0" prefWidth="200.0">
                      <children>
                         <Label prefHeight="37.0" prefWidth="63.0" text="Year:">
                            <HBox.margin>
-                              <Insets right="56.0" />
+                              <Insets right="46.0" />
                            </HBox.margin>
                         </Label>
-                        <TextField fx:id="year" prefHeight="31.0" prefWidth="172.0" />
+                        <TextField fx:id="year" prefHeight="31.0" prefWidth="172.0">
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin></TextField>
+                        <Label fx:id="yearError" alignment="TOP_LEFT" style="-fx-text-fill: transparent;" text="'Please &#10;enter an year'">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
                      </children>
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
+                     </VBox.margin>
                   </HBox>
-                  <HBox prefHeight="400.0" prefWidth="400.0">
+                  <HBox prefHeight="410.0" prefWidth="400.0">
                      <children>
-                        <Label prefHeight="400.0" text="Size:">
+                        <Label prefHeight="34.0" prefWidth="79.0" text="Size:">
                            <padding>
                               <Insets right="6.0" />
                            </padding>
                            <HBox.margin>
-                              <Insets right="19.0" />
+                              <Insets right="30.0" />
                            </HBox.margin>
                         </Label>
-                        <Label prefHeight="400.0" text="width">
-                           <HBox.margin>
-                              <Insets right="5.0" />
-                           </HBox.margin>
-                        </Label>
-                        <TextField fx:id="width" prefHeight="31.0" prefWidth="50.0" />
+                        <TextField fx:id="width" prefHeight="3.0" prefWidth="50.0" />
                         <Label prefHeight="400.0" text="x">
                            <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                           <padding>
                               <Insets left="10.0" right="10.0" />
-                           </HBox.margin>
-                        </Label>
-                        <Label prefHeight="400.0" text="height">
-                           <HBox.margin>
-                              <Insets right="6.0" />
-                           </HBox.margin>
+                           </padding>
                         </Label>
                         <TextField fx:id="height" prefHeight="31.0" prefWidth="50.0" />
-                     </children>
-                  </HBox>
-                  <HBox prefHeight="395.0" prefWidth="273.0">
-                     <children>
-                        <Label prefHeight="400.0" prefWidth="88.0" text="Entered on:">
-                           <HBox.margin>
-                              <Insets right="25.0" />
-                           </HBox.margin>
+                        <Label fx:id="depthX" prefHeight="400.0" text="x">
+                           <padding>
+                              <Insets left="10.0" right="10.0" />
+                           </padding>
                         </Label>
-                        <TextArea fx:id="date" prefHeight="34.0" prefWidth="167.0" />
+                        <TextField fx:id="depth" prefHeight="31.0" prefWidth="50.0">
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin></TextField>
+                        <Label fx:id="sizeError" style="-fx-text-fill: transparent;" text="'Please &#10;enter a number'">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
                      </children>
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
+                     </VBox.margin>
                   </HBox>
                   <HBox prefHeight="400.0" prefWidth="202.0">
                      <children>
@@ -109,34 +139,78 @@
                         </Label>
                         <Label fx:id="sellerName" prefHeight="400.0" text="sellername" />
                      </children>
+                     <padding>
+                        <Insets bottom="5.0" />
+                     </padding>
                   </HBox>
-                  <HBox prefHeight="400.0">
+                  <HBox prefHeight="410.0">
                      <children>
-                        <Label prefHeight="38.0" prefWidth="112.0" text="Reserved Price:">
+                        <Label prefHeight="34.0" prefWidth="109.0" text="Reserved Price:">
                            <HBox.margin>
-                              <Insets right="10.0" />
+                              <Insets right="2.0" />
                            </HBox.margin>
                         </Label>
-                        <TextField fx:id="reservedPrice" prefHeight="31.0" prefWidth="172.0" />
+                        <TextField fx:id="reservedPrice" prefHeight="31.0" prefWidth="172.0">
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin></TextField>
+                        <Label fx:id="priceError" style="-fx-text-fill: transparent;" text="'Please enter&#10;a reserved price'">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox prefHeight="412.0" prefWidth="200.0">
+                     <children>
+                        <Label prefHeight="38.0" prefWidth="109.0" text="Number of&#10;bids allowed:">
+                           <HBox.margin>
+                              <Insets right="2.0" />
+                           </HBox.margin>
+                        </Label>
+                        <TextField fx:id="allowedBids" prefHeight="31.0" prefWidth="172.0">
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
+                        </TextField>
+                        <Label fx:id="allowedBidsError" style="-fx-text-fill: transparent;" text="'Enter a number&#10;more than 0'  ">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
                      </children>
                   </HBox>
-                  <HBox prefHeight="400.0" prefWidth="200.0">
+                  <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label prefHeight="35.0" prefWidth="199.0" text="Number of bids allowed:">
-                           <HBox.margin>
-                              <Insets right="10.0" />
-                           </HBox.margin>
-                        </Label>
-                        <TextField fx:id="allowedBids" prefHeight="31.0" prefWidth="135.0">
+                        <Label prefHeight="31.0" prefWidth="109.0" text="Image File Path: " />
+                        <TextField fx:id="photo" prefHeight="31.0" prefWidth="348.0" />
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="7.0" top="5.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label fx:id="extraPhotoText" prefHeight="31.0" prefWidth="109.0" text="Extra Photo:">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
-                        </TextField>
+                        </Label>
+                        <TextField fx:id="extraPhoto" prefHeight="31.0" prefWidth="348.0" />
                      </children>
                   </HBox>
                </children>
+               <padding>
+                  <Insets bottom="10.0" top="15.0" />
+               </padding>
             </VBox>
-            <VBox layoutX="24.0" layoutY="400.0" prefHeight="133.0" prefWidth="562.0">
+            <VBox layoutX="24.0" layoutY="409.0" prefHeight="133.0" prefWidth="562.0">
                <children>
                   <HBox prefHeight="61.0" prefWidth="600.0">
                      <children>
@@ -148,9 +222,23 @@
                         <TextArea fx:id="description" prefHeight="61.0" prefWidth="474.0" />
                      </children>
                   </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label fx:id="materialText" prefHeight="71.0" prefWidth="68.0" text="Material:">
+                           <padding>
+                              <Insets right="10.0" />
+                           </padding>
+                        </Label>
+                        <TextField fx:id="material" prefHeight="28.0">
+                           <HBox.margin>
+                              <Insets left="20.0" top="20.0" />
+                           </HBox.margin>
+                        </TextField>
+                     </children>
+                  </HBox>
                </children>
             </VBox>
-            <Button fx:id="sumbitButton" layoutX="518.0" layoutY="526.0" mnemonicParsing="false" text="Sumbit" />
+            <Button fx:id="submitButton" layoutX="506.0" layoutY="527.0" mnemonicParsing="false" onAction="#handleSubmitAction" text="Submit" />
          </children>
       </Pane>
    </center>
@@ -184,14 +272,14 @@
                   <Insets bottom="6.0" left="6.0" right="6.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="favorites" contentDisplay="TOP" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #492976;" text="My Favorites" textFill="WHITE">
+            <Button fx:id="users" contentDisplay="TOP" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #492976;" text="Browse Users" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                      <effect>
                         <ColorAdjust brightness="1.0" />
                      </effect>
                      <image>
-                        <Image url="@Icons/icons8-love-filled-40.png" />
+                        <Image url="@Icons/icons8-find-user-male-filled-40.png" />
                      </image>
                   </ImageView>
                </graphic>

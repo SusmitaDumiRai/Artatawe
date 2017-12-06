@@ -1,9 +1,14 @@
 package co.uk.artatawe.database;
 
+import co.uk.artatawe.artwork.Artwork;
+import co.uk.artatawe.artwork.Painting;
+import co.uk.artatawe.artwork.Sculpture;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 /**
  * Handles communication to user table in database.
@@ -26,7 +31,8 @@ public class ArtworkDatabaseManager extends DatabaseManager {
      * Creates table in database if it does not exist.
      */
     public void createArtworkTable() {
-        String sqlCreateArtworkTable = "CREATE TABLE IF NOT EXISTS Artwork( artworkID INTEGER PRIMARY KEY not null,\n" +
+        String sqlCreateArtworkTable = "CREATE TABLE IF NOT EXISTS Artwork( " +
+                "artworkID INTEGER PRIMARY KEY not null,\n" +
                 "title text not null," +
                 " description text," +
                 " photo text not null," +
@@ -49,50 +55,75 @@ public class ArtworkDatabaseManager extends DatabaseManager {
      * Gets all artwork info.
      */
 
-    public void getAllArtworks() {
-        String sqlSelect = "SELECT artworkid," +
-                "title," +
-                "description," +
-                "photo," +
-                "nameOfCreator," +
-                "reservedPrice," +
-                "dateEntered," +
-                "bidsAllowed," +
-                "typeOfArtwork," +
-                "width," +
-                "height," +
-                "depth," +
-                "mainmaterial," +
-                "extraphotos" +
-                " FROM artwork;";
+    public ArrayList<Artwork> getAllArtworks(String sqlSelect) {
+        ArrayList<Artwork> artworkArrayList = new ArrayList<>();
+
 
         try {
             Connection connection = connect();
             Statement statement = connection.createStatement();
 
+
             ResultSet resultSet = statement.executeQuery(sqlSelect);
             while (resultSet.next()) {
-                System.out.println(resultSet.getInt("artworkid") + "\t" +
-                        resultSet.getString("title") + "\t" +
-                        resultSet.getString("description") + "\t" +
-                        resultSet.getString("photo") + "\t" +
-                        resultSet.getString("nameOfCreator") + "\t" +
-                        resultSet.getDouble("reservedPrice") + "\t" +
-                        resultSet.getString("dateEntered") + "\t" +
-                        resultSet.getInt("bidsAllowed") + "\t" +
-                        resultSet.getString("typeOfArtwork") + "\t" +
-                        resultSet.getDouble("width") + "\t" +
-                        resultSet.getDouble("height") + "\t" +
-                        resultSet.getDouble("depth") + "\t" +
-                        resultSet.getString("mainmaterial") + "\t" +
-                        resultSet.getString("extraphotos") + "\t");
+               if (resultSet.getString("typeofartwork").equals("painting")) { //add painting.
+
+                   artworkArrayList.add(new Painting(resultSet.getInt("artworkid"), resultSet.getString("typeofartwork"), resultSet.getString("title"), resultSet.getString("description"),
+                           resultSet.getString("photo"), resultSet.getString("nameofcreator"), resultSet.getDouble("reservedprice"),
+                           resultSet.getString("dateentered"), resultSet.getInt("bidsallowed"), resultSet.getDouble("width"),
+                           resultSet.getDouble("height")));
+               } else { //add sculpture.
+                  artworkArrayList.add(new Sculpture(resultSet.getInt("artworkid"), resultSet.getString("typeofartwork"), resultSet.getString("title"), resultSet.getString("description"),
+                           resultSet.getString("photo"), resultSet.getString("nameofcreator"), resultSet.getDouble("reservedprice"),
+                           resultSet.getString("dateentered"), resultSet.getInt("bidsallowed"), resultSet.getString("mainmaterial"),
+                           resultSet.getString("extraphotos"),
+                           resultSet.getDouble("width"),
+                           resultSet.getDouble("height"), resultSet.getDouble("depth")));
+
+               }
+
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
 
+        /*
+
+        for (Artwork artwork : artworkArrayList) {
+            System.out.println(artwork.toString());
+        }
+
+         */
+
+        return artworkArrayList;
+
     }
 
+
+
+    /**
+     * Get artwork ID for artwork.
+     * @param title artwork to be searched.
+     * @return artwork ID for artwork.
+     */
+    public int getArtworkID(String title) {
+        String sqlSelectAuction = "SELECT artworkid FROM artwork where title = '" + title + "';";
+        int artworkID = -1;
+        try {
+            Connection connection = connect();
+            Statement statement = connection.createStatement();
+
+            ResultSet resultSet = statement.executeQuery(sqlSelectAuction);
+            while (resultSet.next()) {
+                artworkID = resultSet.getInt("artworkid");
+
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return artworkID;
+    }
 
 
 }

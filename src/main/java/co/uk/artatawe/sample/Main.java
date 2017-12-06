@@ -1,9 +1,7 @@
 package co.uk.artatawe.sample;
 
-import co.uk.artatawe.database.ArtworkDatabaseManager;
-import co.uk.artatawe.database.AuctionDatabaseManager;
-import co.uk.artatawe.database.BidDatabaseManager;
-import co.uk.artatawe.database.UserDatabaseManager;
+import co.uk.artatawe.artwork.Artwork;
+import co.uk.artatawe.database.*;
 
 
 import javafx.application.Application;
@@ -14,7 +12,9 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
-
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 public class Main extends Application {
@@ -53,20 +53,6 @@ public class Main extends Application {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     /*
     public static void main(String[] args) {
         launch(args);
@@ -77,16 +63,25 @@ public class Main extends Application {
 
 
 
-
-
-
     public static void main(String[] args) {
         UserDatabaseManager userDatabaseManager = new UserDatabaseManager();
         ArtworkDatabaseManager artworkDatabaseManager = new ArtworkDatabaseManager();
         AuctionDatabaseManager auctionDatabaseManager = new AuctionDatabaseManager();
         BidDatabaseManager bidDatabaseManager = new BidDatabaseManager();
+        FavouriteUserDatabaseManager favouriteUserDatabaseManager = new FavouriteUserDatabaseManager();
 
+
+
+
+     // String sql = "update from artwork set artworkid = 10 where title = 'Giraffe'; ";
+       //userDatabaseManager.updateStatement(sql);
+
+     //   String sqlSelect = "Select * from artwork, auction where auction.auctionid = artwork.artworkid and auctioncomp = 0;";
+       // artworkDatabaseManager.getAllArtworks(sqlSelect);
+    //    auctionDatabaseManager.getAllAuctions();
 
     }
+
+
 
 }
