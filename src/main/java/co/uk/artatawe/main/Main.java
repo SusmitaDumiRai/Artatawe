@@ -64,7 +64,9 @@ public class Main extends Application {
         FavouriteUserDatabaseManager favouriteUserDatabaseManager = new FavouriteUserDatabaseManager();
 
 
-
+        System.out.println(bidDatabaseManager.getMaxBid(4));
+        String sql = "UPDATE auction set numofbidsleft = 18 where auctionid = 4";
+        bidDatabaseManager.updateStatement(sql);
 
 
      //String sql = "update artwork set description = 'An unique handmade sculpture made from bright chamotte clay. Coated with glaze.' where title = 'FLIGHTLESS BIRD FROM FAIRY TALE'; ";
@@ -74,7 +76,11 @@ public class Main extends Application {
 
 //      String sqlSelect = "SELECT * FROM ARTWORK;";
 
-  //   artworkDatabaseManager.getAllArtworks(sqlSelect);
+      //  String sql = "update auction set seller = 'buygymmem' where auctionid = 6;";
+
+    //    auctionDatabaseManager.updateStatement(sql);
+    //    auctionDatabaseManager.getAllAuctions("select * from auction;");
+        //   artworkDatabaseManager.getAllArtworks(sqlSelect);
     //    auctionDatabaseManager.getAllAuctions();
 
     }

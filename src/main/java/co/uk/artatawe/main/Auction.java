@@ -18,9 +18,15 @@ public class Auction {
     private Artwork artwork;
     private User sellerUsername;
     private User winner;
+
+
     private double highestBid;
  //   private ArrayList<Bid> bidsOnArtwork;
 
+
+    public Auction() {
+
+    }
 
     /**
      *
@@ -37,6 +43,9 @@ public class Auction {
         this.sellerUsername = sellerUsername;
         this.highestBid = highestBid;
     }
+
+
+
 
     /**
      *
@@ -170,6 +179,15 @@ public class Auction {
         return auctionComp;
     }
 
+
+    public double getHighestBid() {
+        return highestBid;
+    }
+
+    public void setHighestBid(double highestBid) {
+        this.highestBid = highestBid;
+    }
+
     /**
      * Method to output all relevant information about an auction
      */
@@ -177,7 +195,7 @@ public class Auction {
         String output = "Auction details \nArtwork ID: "
                 + getArtwork().getArtworkID() + "\nArtwork Name: "
                 + this.getArtwork().getTitle() + "\nSeller Username: "
-                + this.sellerUsername + "/nNumber of Bids Left: "
+                + this.sellerUsername.toString() + "/nNumber of Bids Left: "
               //  + numOfBidsLeft + "/nHighestBid: " + this.highestBid.toString()
                 + "/nHighest Bidder: ";
              //   + this.highestBid.getBuyer().getUserName();
