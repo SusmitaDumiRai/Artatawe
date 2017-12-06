@@ -222,16 +222,16 @@
             </VBox>
             <VBox layoutX="24.0" layoutY="393.0" prefHeight="133.0" prefWidth="535.0">
                <children>
-                  <HBox prefHeight="61.0" prefWidth="535.0">
+                  <HBox prefHeight="110.0" prefWidth="535.0">
                      <children>
                         <Label alignment="TOP_LEFT" prefHeight="400.0" text="Description:">
                            <HBox.margin>
                               <Insets right="10.0" />
                            </HBox.margin>
                         </Label>
-                        <ScrollPane prefViewportHeight="47.0" prefViewportWidth="74.0">
+                        <ScrollPane prefHeight="60.0" prefViewportHeight="47.0" prefViewportWidth="74.0" prefWidth="445.0">
                            <content>
-                              <Label fx:id="description" alignment="TOP_LEFT" prefHeight="400.0" text="description" textAlignment="JUSTIFY" />
+                              <Label fx:id="description" alignment="TOP_LEFT" text="description" textAlignment="JUSTIFY" />
                            </content>
                         </ScrollPane>
                      </children>
