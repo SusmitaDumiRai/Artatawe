@@ -19,7 +19,7 @@ public class CreateAuctionTest extends Application {
 
         Scene scene = new Scene(root);
 
-        primaryStage.setTitle("Login Test");
+        primaryStage.setTitle("create auction Test");
         primaryStage.setScene(scene);
         primaryStage.show();
     }

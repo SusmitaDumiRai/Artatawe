@@ -8,10 +8,9 @@ package co.uk.artatawe.controller;
  * @author 908928
  */
 import co.uk.artatawe.database.UserDatabaseManager;
-import co.uk.artatawe.sample.User;
+import co.uk.artatawe.main.User;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -24,9 +23,6 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-
-import co.uk.artatawe.sample.User;
-import co.uk.artatawe.database.UserDatabaseManager;
 
 public class BrowseUsersController implements Initializable {
 

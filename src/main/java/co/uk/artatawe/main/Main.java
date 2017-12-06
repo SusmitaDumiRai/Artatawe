@@ -1,20 +1,13 @@
-package co.uk.artatawe.sample;
+package co.uk.artatawe.main;
 
-import co.uk.artatawe.artwork.Artwork;
 import co.uk.artatawe.database.*;
 
 
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 
 public class Main extends Application {
@@ -77,7 +70,8 @@ public class Main extends Application {
        //userDatabaseManager.updateStatement(sql);
 
      //   String sqlSelect = "Select * from artwork, auction where auction.auctionid = artwork.artworkid and auctioncomp = 0;";
-       // artworkDatabaseManager.getAllArtworks(sqlSelect);
+
+        //artworkDatabaseManager.getAllArtworks(sqlSelect);
     //    auctionDatabaseManager.getAllAuctions();
 
     }

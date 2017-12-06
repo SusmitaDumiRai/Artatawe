@@ -121,6 +121,38 @@ public class BrowseAuctionController implements Initializable {
 
     }
 
+    /**
+     * Displays create auction when clicked.
+     * @param event event.
+     */
+    @FXML
+    void handleAuctionAction(ActionEvent event) {
+        Parent root;
+        Stage stage = new Stage();
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/CreateAuction.fxml"));
+            root = fxmlLoader.load();
+
+            stage.setTitle("Create new auction");
+            stage.setScene(new Scene(root, WIDTH, HEIGHT));
+            //delete down
+         //   stage.setWidth(Screen.getPrimary().getVisualBounds().getWidth());
+          //  stage.setHeight(Screen.getPrimary().getVisualBounds().getHeight());
+
+            CreateAuctionController createAuctionController = fxmlLoader.getController();
+
+            createAuctionController.changeSellerUsername(this.username);
+
+            stage.show(); //display create auctions.
+
+            //hides current window.
+            ((Node) (event.getSource())).getScene().getWindow().hide();
+
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+    }
 
     /**
      * Displays profile page when clicked.
@@ -155,38 +187,7 @@ public class BrowseAuctionController implements Initializable {
         }
     }
 
-    /**
-     * Displays create auction when clicked.
-     * @param event event.
-     */
-    @FXML
-    void handleAuctionAction(ActionEvent event) {
-        Parent root;
-        Stage stage = new Stage();
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/CreateAuction.fxml"));
-            root = fxmlLoader.load();
 
-            stage.setTitle("Create new auction");
-            //stage.setScene(new Scene(root, WIDTH, HEIGHT));
-            //delete down
-            stage.setWidth(Screen.getPrimary().getVisualBounds().getWidth());
-            stage.setHeight(Screen.getPrimary().getVisualBounds().getHeight());
-
-            CreateAuctionController createAuctionController = fxmlLoader.getController();
-
-            createAuctionController.changeSellerUsername(this.username);
-
-            stage.show(); //display create auctions.
-
-            //hides current window.
-            ((Node) (event.getSource())).getScene().getWindow().hide();
-
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
-        }
-
-    }
 
     public String getUsername() {
         return username;
