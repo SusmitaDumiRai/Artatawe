@@ -1,0 +1,112 @@
+package co.uk.artatawe.controller;
+
+/**
+ * Created by 914937
+ */
+import co.uk.artatawe.database.UserDatabaseManager;
+import co.uk.artatawe.sample.User;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.image.*;
+import javafx.scene.image.Image;
+import javafx.scene.layout.TilePane;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
+
+import co.uk.artatawe.sample.User;
+import co.uk.artatawe.database.UserDatabaseManager;
+
+public class BrowseUsersController implements Initializable {
+
+    private String username; //logged in user.
+
+    @FXML
+    private TilePane tilePane;
+
+    @FXML
+    private ScrollPane scrollPane;
+
+    /**
+     * Sets username.
+     * @param username username of logged in user.
+     */
+    public BrowseUsersController(String username) {
+        this.username = username;
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        getUserProfiles();
+    }
+
+    public void getUserProfiles() {
+        Stage stage = new Stage();
+
+        UserDatabaseManager userDatabaseManager = new UserDatabaseManager();
+
+        String sqlSelect = "Select * from user, where user.username";
+
+        ArrayList<User> userArrayList = userDatabaseManager.getAllUsers(sqlSelect);
+
+        ArrayList<String> userIcon = new ArrayList<>();
+
+        Image[] icons = new Image[userArrayList.size()];
+        ImageView[] imageViews = new ImageView[userArrayList.size()];
+        VBox[] vBoxes = new VBox[userArrayList.size()];
+        Button heartButton = new Button();
+        Image heartIcon = new Image(String.valueOf(getClass().getResource("icons8-heart-40.png")));
+        heartButton.setGraphic(new ImageView(heartIcon));
+        heartButton.setStyle("-fx-background-color: transparent; -fx-text-fill: transparent; -fx-border-color: transparent");
+
+
+        scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
+        scrollPane.setFitToHeight(true);
+        scrollPane.setContent(tilePane);
+
+        for (User user: userArrayList) {
+            userIcon.add(user.getProfileImage());
+        }
+
+        String[] imageLocation = userIcon.toArray(new String[userArrayList.size()]);
+
+        for (int i = 0; i < imageLocation.length; i++) {
+
+            icons[i] = new Image(imageLocation[i], 150, 0, true, true);
+            imageViews[i] = new ImageView(icons[i]);
+            imageViews[i].setFitWidth(150);
+            imageViews[i].setFitHeight(stage.getHeight() - 10);
+            imageViews[i].setPreserveRatio(true);
+            imageViews[i].setSmooth(true);
+            imageViews[i].setCache(true);
+
+            vBoxes[i] = new VBox();
+            vBoxes[i].getChildren().addAll(imageViews[i]); //add vbox inside gridpane.
+
+            vBoxes[i].getChildren().add(heartButton);
+
+            Label userName = new Label();
+            userName.setText(username);
+            vBoxes[i].getChildren().add(userName);
+            tilePane.getChildren().add(vBoxes[i]); //add image to gridpane.
+        }
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+}
+
