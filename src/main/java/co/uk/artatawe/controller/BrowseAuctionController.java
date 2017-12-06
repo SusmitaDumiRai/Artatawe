@@ -28,7 +28,6 @@ import java.util.ResourceBundle;
 import co.uk.artatawe.artwork.Artwork;
 import co.uk.artatawe.database.ArtworkDatabaseManager;
 
-import javax.swing.*;
 
 /**
  * Controller class for browse auction.
@@ -79,23 +78,8 @@ public class BrowseAuctionController implements Initializable    {
      */
     public void getImages() {
 
-        EventHandler handler = new EventHandler<MouseEvent>() {
-            public void handle(MouseEvent event) {
-                System.out.println("Handling event " + event.getEventType());
-                event.consume();
-            }
-        };
 
-        /**
-         * img.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
 
-        @Override
-        public void handle(MouseEvent event) {
-        System.out.println("Tile pressed ");
-        event.consume();
-        }
-        });
-         */
 
 
         Stage stage = new Stage();
@@ -128,6 +112,7 @@ public class BrowseAuctionController implements Initializable    {
 
         for (int i = 0; i < imageLocation.length; i++) {
 
+            final int currentI = i;
             images[i] = new Image(imageLocation[i], 200, 0, true, true); //get image.
             imageViews[i] = new ImageView(images[i]); //add image to image view.
             imageViews[i].setFitWidth(200);
@@ -136,12 +121,37 @@ public class BrowseAuctionController implements Initializable    {
             imageViews[i].setSmooth(true);
             imageViews[i].setCache(true);
 
+            //Add event handler.
+            //Opens show auction when clicking on an auction for sale.
+            imageViews[i].setOnMouseClicked(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    System.out.println("Handling event " + event.getEventType());
+                    Parent root;
+                    try {
+                        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/ShowAuction.fxml"));
 
+                        //manually set controller.
+                        ShowAuctionController showAuctionController = new ShowAuctionController();
+                        showAuctionController.setUsername(getUsername());
+                        showAuctionController.setPhoto(imageLocation[currentI]); //photo location.
+                        fxmlLoader.setController(showAuctionController);
 
-            //add some i guess details here.
-            //imageViews[i].setViewport(viewportRect);//don't need this
+                        root = fxmlLoader.load();
 
-            imageViews[i].addEventHandler(MouseEvent.MOUSE_CLICKED, handler); //add event handler.
+                        Stage stage = new Stage();
+                        stage.setTitle("Show Auction");
+                        stage.setScene(new Scene(root, WIDTH, HEIGHT));
+                        stage.show();
+
+                        // Hide this current window
+                        ((Node) (event.getSource())).getScene().getWindow().hide();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    event.consume();
+                }
+            });
 
             vBoxes[i] = new VBox();
             vBoxes[i].getChildren().addAll(imageViews[i]); //add vbox inside gridpane.
@@ -152,6 +162,8 @@ public class BrowseAuctionController implements Initializable    {
 
 
     }
+
+
 
 
     /**
