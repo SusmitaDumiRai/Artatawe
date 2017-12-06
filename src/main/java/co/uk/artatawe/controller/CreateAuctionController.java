@@ -87,6 +87,11 @@ public class CreateAuctionController  implements Initializable {
     @FXML
     private Label depthX;
 
+    @FXML
+    private Label materialText;
+
+    @FXML
+    private Label extraPhotoText;
     /**
      * Hide textboxes not related to painting.
      * @param event
@@ -97,7 +102,8 @@ public class CreateAuctionController  implements Initializable {
         material.setVisible(false);
         extraPhoto.setVisible(false);
         depthX.setVisible(false);
-
+        materialText.setVisible(false);
+        extraPhotoText.setVisible(false);
     }
 
     /**
@@ -110,6 +116,8 @@ public class CreateAuctionController  implements Initializable {
         material.setVisible(true);
         extraPhoto.setVisible(true);
         depthX.setVisible(true);
+        materialText.setVisible(true);
+        extraPhotoText.setVisible(true);
     }
 
     /**
