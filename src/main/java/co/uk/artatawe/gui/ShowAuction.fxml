@@ -215,7 +215,7 @@
                               <Insets right="10.0" />
                            </HBox.margin>
                         </TextField>
-                        <Button fx:id="makeBidButton" mnemonicParsing="false" text="Make Bid" />
+                        <Button fx:id="makeBidButton" mnemonicParsing="false" onAction="#handleButtonAction" text="Make Bid" />
                      </children>
                   </HBox>
                </children>

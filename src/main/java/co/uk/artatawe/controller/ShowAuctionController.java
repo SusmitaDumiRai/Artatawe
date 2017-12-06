@@ -3,6 +3,9 @@ package co.uk.artatawe.controller;
 import co.uk.artatawe.artwork.Artwork;
 import co.uk.artatawe.artwork.Sculpture;
 import co.uk.artatawe.database.ArtworkDatabaseManager;
+import co.uk.artatawe.database.AuctionDatabaseManager;
+import co.uk.artatawe.main.Auction;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -10,6 +13,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Paint;
+import javafx.scene.shape.ArcTo;
+import sun.awt.geom.AreaOp;
 
 import java.awt.geom.Arc2D;
 import java.net.URL;
@@ -115,50 +121,116 @@ public class ShowAuctionController implements Initializable {
       //  String sql = "SELECT * from artwork where photo = 'co/uk/artatawe/artworkpictures/FLIGHTLESS BIRD FROM FAIRY TALE 1.jpg';";
 
         ArtworkDatabaseManager artworkDatabaseManager = new ArtworkDatabaseManager();
-        ArrayList<Artwork> artworkArrayList = artworkDatabaseManager.getAllArtworks(sql); //returns one artwork, photo = UNIQUE.
-
-        for (Artwork artwork : artworkArrayList) {
-
-            this.title.setText(artwork.getTitle());
-            this.description.setText(artwork.getDescription());
-            this.width.setText(Double.toString(artwork.getWidth()));
-            this.height.setText(Double.toString(artwork.getHeight()));
-            this.reservedPrice.setText(Double.toString(artwork.getReservedPrice()));
+        Artwork artwork = artworkDatabaseManager.getArtwork(sql); //returns one artwork
 
 
-           Image image = new Image(artwork.getPhoto());
-            this.imageViewPhoto.setImage(image);
 
-            if (artwork.getTypeOfArtwork().equals("sculpture")) {
-                Sculpture sculpture = (Sculpture) artwork;
-                this.xDepth.setVisible(true);
-                depth.setVisible(true);
-                material.setVisible(true);
-                materialLabel.setVisible(true);
+        this.title.setText(artwork.getTitle());
+        this.description.setText(artwork.getDescription());
+        this.width.setText(Double.toString(artwork.getWidth()));
+        this.height.setText(Double.toString(artwork.getHeight()));
+        this.reservedPrice.setText(Double.toString(artwork.getReservedPrice()));
 
-                depth.setText(Double.toString(sculpture.getDepth()));
-                material.setText(sculpture.getMainMaterial());
+        Image image = new Image(artwork.getPhoto());
+        this.imageViewPhoto.setImage(image);
 
-            }
+        if (artwork.getTypeOfArtwork().equals("sculpture")) {
+            Sculpture sculpture = (Sculpture) artwork;
+            this.xDepth.setVisible(true);
+            depth.setVisible(true);
+            material.setVisible(true);
+            materialLabel.setVisible(true);
 
+            depth.setText(Double.toString(sculpture.getDepth()));
+            material.setText(sculpture.getMainMaterial());
 
         }
 
+
+
+
     }
 
+    /**
+     * Get the username.
+     * @return username of logged in user.
+     */
     public String getUsername() {
         return username;
     }
 
+    /**
+     * Set username of logged in user.
+     * @param username username of logged in user.
+     */
     public void setUsername(String username) {
         this.username = username;
     }
 
+    /**
+     * Get file location for the auction's photo.
+     * @return file location of photo.
+     */
     public String getPhoto() {
         return photo;
     }
 
+    /**
+     * Set the location for the auction's photo.
+     * @param photo file location of photo.
+     */
     public void setPhoto(String photo) {
         this.photo = photo;
+    }
+
+    @FXML
+    void handleButtonAction(ActionEvent event) {
+
+    }
+
+    /**
+     * Validates bid.
+     * If it is a double and greater than the highest bid.
+     * @return
+     */
+    public boolean valMakeBid() {
+        ArtworkDatabaseManager artworkDatabaseManager = new ArtworkDatabaseManager();
+        AuctionDatabaseManager auctionDatabaseManager = new AuctionDatabaseManager();
+
+
+        String sqlSelectArtwork = "Select * from artwork where artwork.photo = '" + this.photo + "';";
+        Artwork artwork = artworkDatabaseManager.getArtwork(sqlSelectArtwork);
+
+        //String sql = "select * from auction where auctionid = " +  number + ";";
+
+        //String update = update auction set numofbidsleft = -1
+
+        /**
+         *   "auctionID INTEGER PRIMARY KEY not null,\n" +
+         "seller text not null," + //username of seller.
+         "winningBid int," + //winning bid id.
+         "numOfBidsLeft integer not null," +
+         "auctioncomp int not null," + //sqlite does not support boolean, but instead 0 and 1.
+         "highestbid real not null,"  + //originally the reserve price.
+         */
+
+
+        /*
+        "bidID INTEGER PRIMARY KEY not null," +
+                "auctionID integer not null," +
+                "buyer text not null," + //username of buyer.
+                " bidAmount real not null," +
+                " dateAndTime text not null," + //date and time of bid made.
+                */
+        try {
+            Float.parseFloat(bid.getText());
+            return true;
+        } catch (NumberFormatException ex) {
+            System.out.println("enter digits only please"); // needs to be cahnged.
+            //TODO display error message
+        }
+        return false;
+
+
     }
 }

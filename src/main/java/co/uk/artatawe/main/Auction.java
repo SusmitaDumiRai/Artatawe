@@ -18,19 +18,42 @@ public class Auction {
     private Artwork artwork;
     private User sellerUsername;
     private User winner;
-    private Bid highestBid;
-    private ArrayList<Bid> bidsOnArtwork;
+    private double highestBid;
+ //   private ArrayList<Bid> bidsOnArtwork;
+
 
     /**
-     * Constructor to construct an Auction
-     * @param user - user object
-     * @param artwork - artwork object
+     *
+     * @param numOfBidsLeft
+     * @param auctionComp
+     * @param artwork
+     * @param sellerUsername
+     * @param highestBid
      */
-    public Auction(User user, Artwork artwork) {
-        this.sellerUsername = user;
+    public Auction(int numOfBidsLeft, boolean auctionComp, Artwork artwork, User sellerUsername, double highestBid) {
+        this.numOfBidsLeft = numOfBidsLeft;
+        this.auctionComp = auctionComp;
         this.artwork = artwork;
-        this.highestBid = null;
-        this.bidsOnArtwork = new ArrayList<>();
+        this.sellerUsername = sellerUsername;
+        this.highestBid = highestBid;
+    }
+
+    /**
+     *
+     * @param numOfBidsLeft
+     * @param auctionComp
+     * @param artwork
+     * @param sellerUsername
+     * @param winner
+     * @param highestBid
+     */
+    public Auction(int numOfBidsLeft, boolean auctionComp, Artwork artwork, User sellerUsername, User winner, double highestBid) {
+        this.numOfBidsLeft = numOfBidsLeft;
+        this.auctionComp = auctionComp;
+        this.artwork = artwork;
+        this.sellerUsername = sellerUsername;
+        this.winner = winner;
+        this.highestBid = highestBid;
     }
 
     /**
@@ -44,10 +67,11 @@ public class Auction {
         }
     }
 
-    /**
+    /**TODO i think this is not needed anymore.
      * Method to add a new bid to the auction on an artwork
      * @param newBid - a new bid which is placed
      */
+    /*
     public void addBid(Bid newBid) {
     	if (this.bidsOnArtwork.size() == 0 && newBid.getBidAmount() > artwork.getReservedPrice()) {
     		this.bidsOnArtwork.add(newBid);
@@ -62,6 +86,7 @@ public class Auction {
     	    System.out.println("There was an error placing the following bid:" + newBid.toString());
     	}
     }
+    */
 
     /**
      * Method to get an artwork
@@ -88,6 +113,14 @@ public class Auction {
     }
 
     /**
+     * Method to set the winner.
+     * @param winner winner of this auction.
+     */
+    public void setWinner(User winner) {
+        this.winner = winner;
+    }
+
+    /**
      * Method to get the winning bids username
      * @return winner - winners username
      */
@@ -95,22 +128,27 @@ public class Auction {
         return winner;
     }
 
+
     /**
      * Method to get the highest current bid on the artwork
      * @return highestBid - highest bid placed
      */
+     /*
     public Bid getHighestBid() {
         return highestBid;
     }
 
+    */
     /**
      * Method to get the information of all bids placed on an artwork
      * @return bidsOnArtwork - ArrayList of bids
      */
+    /*
     public ArrayList<Bid> getBidsOnArtwork() {
         return bidsOnArtwork;
     }
 
+*/
     /**
      * Method to set the auction to completed
      */
@@ -140,9 +178,9 @@ public class Auction {
                 + getArtwork().getArtworkID() + "\nArtwork Name: "
                 + this.getArtwork().getTitle() + "\nSeller Username: "
                 + this.sellerUsername + "/nNumber of Bids Left: "
-                + numOfBidsLeft + "/nHighestBid: " + this.highestBid.toString()
-                + "/nHighest Bidder: "
-                + this.highestBid.getBuyer().getUserName();
+              //  + numOfBidsLeft + "/nHighestBid: " + this.highestBid.toString()
+                + "/nHighest Bidder: ";
+             //   + this.highestBid.getBuyer().getUserName();
         return output;
     }
 

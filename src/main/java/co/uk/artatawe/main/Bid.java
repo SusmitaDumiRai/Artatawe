@@ -14,6 +14,10 @@ public class Bid {
     private int auctionID;
 
 
+    public Bid() {
+
+    }
+
     /**
      * Constructor for bid.
      * @param buyer The user that placed the bid.

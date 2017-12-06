@@ -1,5 +1,7 @@
 package co.uk.artatawe.database;
 
+import co.uk.artatawe.main.Bid;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -59,4 +61,36 @@ public class BidDatabaseManager extends DatabaseManager {
 
 
     }
+
+    //TODO get winning bid.
+    /*
+    public Bid getBid(int bidID) {
+
+        String sqlSelectBid = "SELECT * FROM bid where bidID = " + bidID + "';";
+        Bid bid = new Bid();
+
+
+               this.buyer = buyer;
+        this.bidAmount = bidAmount;
+        this.dateAndTime = dateAndTime;
+        this.auctionID = auctionID;
+
+        try {
+            Connection connection = connect();
+            Statement statement = connection.createStatement();
+
+            ResultSet resultSet = statement.executeQuery(sqlSelectBid);
+            while (resultSet.next()) {
+                UserDatabaseManager userDatabaseManager = new UserDatabaseManager();
+
+                bid = new Bid()
+
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+
+    }
+    */
 }

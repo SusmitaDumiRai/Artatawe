@@ -78,10 +78,6 @@ public class BrowseAuctionController implements Initializable    {
      */
     public void getImages() {
 
-
-
-
-
         Stage stage = new Stage();
 
         ArtworkDatabaseManager artworkDatabaseManager = new ArtworkDatabaseManager();
