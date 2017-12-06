@@ -122,7 +122,7 @@
    <center>
       <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="258.0" fitWidth="283.0" layoutX="24.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imageViewPhoto" fitHeight="258.0" fitWidth="283.0" layoutX="24.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@Icons/icons8-love-filled-40.png" />
                </image>
@@ -132,7 +132,7 @@
                   <Label fx:id="title" alignment="CENTER" contentDisplay="CENTER" prefHeight="400.0" prefWidth="400.0" text="'Title'" />
                   <HBox prefHeight="400.0" prefWidth="400.0">
                      <children>
-                        <Label fx:id="creator" prefHeight="400.0" text="Creatore name">
+                        <Label fx:id="creator" prefHeight="400.0" text="Creator name">
                            <padding>
                               <Insets right="6.0" />
                            </padding>
@@ -234,7 +234,7 @@
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label prefHeight="400.0" text="Material: ">
+                        <Label fx:id="materialLabel" prefHeight="400.0" text="Material: ">
                            <HBox.margin>
                               <Insets right="10.0" />
                            </HBox.margin>

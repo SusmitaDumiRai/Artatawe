@@ -1,6 +1,6 @@
 package co.uk.artatawe.database;
 
-import co.uk.artatawe.sample.User;
+import co.uk.artatawe.main.User;
 
 import java.sql.*;
 import java.util.ArrayList;

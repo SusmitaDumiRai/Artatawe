@@ -44,7 +44,8 @@ public class ArtworkDatabaseManager extends DatabaseManager {
                 " width real not null," +
                 " height real not null," +
                 "depth real," +
-                "mainMaterial text," + "extraPhotos text);";
+                "mainMaterial text," + "extraPhotos text," +
+                "UNIQUE(title), UNIQUE(photo));";
 
         executeStatement(sqlCreateArtworkTable);
 
@@ -87,13 +88,13 @@ public class ArtworkDatabaseManager extends DatabaseManager {
             System.out.println(ex.getMessage());
         }
 
-        /*
+
 
         for (Artwork artwork : artworkArrayList) {
             System.out.println(artwork.toString());
         }
 
-         */
+
 
         return artworkArrayList;
 
