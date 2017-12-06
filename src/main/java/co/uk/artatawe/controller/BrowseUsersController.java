@@ -34,6 +34,10 @@ public class BrowseUsersController implements Initializable {
     @FXML
     private ScrollPane scrollPane;
 
+    public BrowseUsersController() {
+
+    }
+
     /**
      * Sets username.
      * @param username username of logged in user.
@@ -52,7 +56,7 @@ public class BrowseUsersController implements Initializable {
 
         UserDatabaseManager userDatabaseManager = new UserDatabaseManager();
 
-        String sqlSelect = "Select * from user, where user.username";
+        String sqlSelect = "Select * from user";
 
         ArrayList<User> userArrayList = userDatabaseManager.getAllUsers(sqlSelect);
 
@@ -94,7 +98,7 @@ public class BrowseUsersController implements Initializable {
             vBoxes[i].getChildren().add(heartButton);
 
             Label userName = new Label();
-            userName.setText(username);
+        //    userName.setText(username);
             vBoxes[i].getChildren().add(userName);
             tilePane.getChildren().add(vBoxes[i]); //add image to gridpane.
         }
