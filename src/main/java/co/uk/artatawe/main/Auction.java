@@ -18,6 +18,8 @@ public class Auction {
     private Artwork artwork;
     private User sellerUsername;
     private User winner;
+
+
     private double highestBid;
  //   private ArrayList<Bid> bidsOnArtwork;
 
@@ -175,6 +177,15 @@ public class Auction {
      */
     public Boolean getAuctionComp() {
         return auctionComp;
+    }
+
+
+    public double getHighestBid() {
+        return highestBid;
+    }
+
+    public void setHighestBid(double highestBid) {
+        this.highestBid = highestBid;
     }
 
     /**

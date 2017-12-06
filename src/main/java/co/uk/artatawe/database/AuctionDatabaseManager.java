@@ -88,18 +88,10 @@ public class AuctionDatabaseManager extends DatabaseManager {
                 Artwork artwork = artworkDatabaseManager.getArtwork(sqlSelectAuction);
 
                 if (resultSet.getInt("auctioncomp") == 0) { //ongoing auction.
-                    if (resultSet.getInt("numofbidsleft") != artwork.getBidsAllowed()) { //no bids placed yet, aka reserved price.
-
-                        auctionArrayList.add(new Auction(resultSet.getInt("numOfBidsLeft"), false, artwork, user, resultSet.getDouble("highestbid")));
-                    } else {
-                        //Get the highest bid.
-
-                        auctionArrayList.add(new Auction(resultSet.getInt("numOfBidsLeft"), false, artwork, user, bidDatabaseManager.getMaxBid(resultSet.getInt("auctionid"))));
-
-                    }
+                    auctionArrayList.add(new Auction(resultSet.getInt("numOfBidsLeft"), false, artwork, user,  bidDatabaseManager.getMaxBid(resultSet.getInt("auctionid"))));
 
                 } else { //completed auction
-                    // auctionArrayList.add(new Auction(resultSet.getInt("numOfBidsLeft"), true, artwork, user, bidDatabaseManager.getMaxBid(resultSet.getInt("auctionid"))));
+                    auctionArrayList.add(new Auction(resultSet.getInt("numOfBidsLeft"), true, artwork, user, bidDatabaseManager.getMaxBid(resultSet.getInt("auctionid"))));
                 }
 
             }
@@ -121,8 +113,8 @@ public class AuctionDatabaseManager extends DatabaseManager {
             ResultSet resultSet = statement.executeQuery(sqlSelect);
             while (resultSet.next()) {
                 UserDatabaseManager userDatabaseManager = new UserDatabaseManager();
+                BidDatabaseManager bidDatabaseManager = new BidDatabaseManager();
                 User user = userDatabaseManager.getUser(resultSet.getString("seller"));
-                System.out.println(user.toString());
 
 
                 ArtworkDatabaseManager artworkDatabaseManager = new ArtworkDatabaseManager();
@@ -132,9 +124,12 @@ public class AuctionDatabaseManager extends DatabaseManager {
                 Artwork artwork = artworkDatabaseManager.getArtwork(sqlSelectAuction);
 
                 if (resultSet.getInt("auctioncomp") == 0) {
-                    auction = (new Auction(resultSet.getInt("numOfBidsLeft"), false, artwork, user, resultSet.getDouble("highestbid")));
+
+                    //Get the highest bid.
+
+                    auction = new Auction(resultSet.getInt("numOfBidsLeft"), false, artwork, user, bidDatabaseManager.getMaxBid(resultSet.getInt("auctionid")));
                 } else {
-                    //     auctionArrayList.add(new Auction(resultSet.getInt("numOfBidsLeft"), true, artwork, user, , resultSet.getDouble("highestbid"))); TODO. UPDATE ONCE BID DATABASE MANAGER IS SORTED :sob:
+                       auction =  new Auction(resultSet.getInt("numOfBidsLeft"), true, artwork, user, bidDatabaseManager.getMaxBid(resultSet.getInt("auctionid")));
                 }
             }
         } catch (SQLException ex) {

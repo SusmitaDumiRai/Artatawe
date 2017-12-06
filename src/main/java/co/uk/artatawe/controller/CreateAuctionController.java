@@ -219,7 +219,7 @@ public class CreateAuctionController  implements Initializable {
      */
     public boolean valWidth() {
         try {
-            Float.parseFloat(width.getText());
+            Double.parseDouble(width.getText());
             return true;
         } catch (NumberFormatException ex) {
             System.out.println("enter digits only plz"); // needs to be cahnged.
@@ -235,7 +235,7 @@ public class CreateAuctionController  implements Initializable {
      */
     public boolean valHeight() {
         try {
-            Float.parseFloat(height.getText());
+            Double.parseDouble(height.getText());
             return true;
         } catch (NumberFormatException ex) {
             System.out.println("enter digits only plz"); // needs to be cahnged.
@@ -251,7 +251,7 @@ public class CreateAuctionController  implements Initializable {
      * */
     public boolean valDepth() {
         try {
-            Float.parseFloat(depth.getText());
+            Double.parseDouble(depth.getText());
             return true;
         } catch (NumberFormatException ex) {
             System.out.println("enter digits only plz"); // needs to be cahnged.
@@ -267,7 +267,7 @@ public class CreateAuctionController  implements Initializable {
      */
     public boolean valReservedPrice() {
         try {
-            Float.parseFloat(reservedPrice.getText());
+            Double.parseDouble(reservedPrice.getText());
             return true;
         } catch (NumberFormatException ex) {
             System.out.println("enter digits only please"); // needs to be cahnged.
