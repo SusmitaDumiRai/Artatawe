@@ -248,7 +248,8 @@ public class BrowseAuctionController implements Initializable    {
             System.out.println(ex.getMessage());
         }
     }
-    
+
+    @FXML
     public void sculpSelected(){
     	if (sculpRadioButton.isSelected()) {
     		

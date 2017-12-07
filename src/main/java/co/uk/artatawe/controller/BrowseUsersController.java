@@ -124,13 +124,16 @@ public class BrowseUsersController implements Initializable {
                 @Override public void handle(ActionEvent e) {
                     FavouriteUserDatabaseManager favouriteUserDatabaseManager = new FavouriteUserDatabaseManager();
 
-                   // String sqlInsert = "insert into favouriteuser(username1,username2) values (" +
-                    //        "'username'," + "'username');";
-                   // ArrayList<User> favouriteUsersArrayList = favouriteUserDatabaseManager.insertIntoTable(sqlInsert);
+                   String sqlInsert = "insert into favouriteuser(username1,username2) values (" +
+                            "'username'," + "'username');";
+                   favouriteUserDatabaseManager.executeStatement(sqlInsert);
+
 
                     Image fullHeart = new Image(("co/uk/artatawe/gui/Icons/icons8-love-50.png"));
                     heartButton.setGraphic(new ImageView(fullHeart));
                     System.out.println("added user");
+
+
 
                 }
             });
