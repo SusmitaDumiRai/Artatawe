@@ -19,7 +19,7 @@ import javafx.scene.paint.Paint;
  *
  * @author 908928
  */
-public class ProfilePageController implements Initializable {
+public class NewProfilePageController implements Initializable {
 
     private static String username; //logged in user's username.
 
@@ -50,7 +50,7 @@ public class ProfilePageController implements Initializable {
     /**
      * Empty constructor.
      */
-    public ProfilePageController() {
+    public NewProfilePageController() {
 
     }
 
@@ -58,7 +58,7 @@ public class ProfilePageController implements Initializable {
      * Constructor that takes in username.
      * @param username username of logged in user.
      */
-    public ProfilePageController(String username) {
+    public NewProfilePageController(String username) {
         this.username = username;
     }
 
@@ -68,7 +68,7 @@ public class ProfilePageController implements Initializable {
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        displayUserInfo();
+    	displayUserInfo();
 
     }
 
@@ -103,6 +103,7 @@ public class ProfilePageController implements Initializable {
         telephoneNumber.setText(user.getPhoneNumber());
         address.setText(user.getAddress());
         postcode.setText(user.getPostcode());
+
         try{
         Image image = new Image(user.getProfileImage());
         avatar.setImage(image);
