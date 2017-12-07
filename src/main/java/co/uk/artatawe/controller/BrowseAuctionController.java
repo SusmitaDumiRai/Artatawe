@@ -97,19 +97,38 @@ public class BrowseAuctionController implements Initializable    {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        getImages();
+      //  getImages();
+    		sculpRadioButton.setSelected(true);
     }
-
+    
+    @FXML
+    void allSelected(ActionEvent event) {
+    	allRadioButton.setSelected(true);
+    	getImages(FXCollections.observableArrayList(artworkArrayList));
+    }
+    
+    @FXML
+    void sculpSelected(ActionEvent event) {
+    	sculpRadioButton.setSelected(true);
+    	getImages(FXCollections.observableArrayList(sculptureArrayList));
+    }
+    
+    @FXML
+    void paintSelected(ActionEvent event) {
+    	paintRadioButton.setSelected(true);
+    	getImages(FXCollections.observableArrayList(paintingArrayList));
+    }
 
     /**
      * Gets all artworks currently in auction. Displays them.
      */
-    public void getImages() {
+    public void getImages(ObservableList<Artwork> oArray) {
 
         Stage stage = new Stage();
 
         ArrayList<String> artworkPhoto = new ArrayList<>();
         
+        /*
         if(sculpRadioButton.isSelected()){
         	observeArrayList = FXCollections.observableArrayList(sculptureArrayList);
         }
@@ -122,11 +141,11 @@ public class BrowseAuctionController implements Initializable    {
         else {
         	allRadioButton.setSelected(true);
         	observeArrayList = FXCollections.observableArrayList(artworkArrayList);
-        }
+        }*/
 
-        Image[] images = new Image[observeArrayList.size()];
-        ImageView[] imageViews = new ImageView[observeArrayList.size()];
-        VBox[] vBoxes = new VBox[observeArrayList.size()]; //vboxs to add in grid pane.
+        Image[] images = new Image[oArray.size()];
+        ImageView[] imageViews = new ImageView[oArray.size()];
+        VBox[] vBoxes = new VBox[oArray.size()]; //vboxs to add in grid pane.
 
 
         artworkScrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); //scroller can't move horizontally.
@@ -135,12 +154,12 @@ public class BrowseAuctionController implements Initializable    {
         artworkScrollPane.setContent(artworkTilePane);
 
         //Get location of artwork photos.
-        for (Artwork artwork : observeArrayList) {
+        for (Artwork artwork : oArray) {
             artworkPhoto.add(artwork.getPhoto());
         }
         //Rectangle2D viewportRect = new Rectangle2D(40, 35, 200, 200);//don't need this
 
-        String[] imageLocation = artworkPhoto.toArray(new String[observeArrayList.size()]); //convert array list to array.
+        String[] imageLocation = artworkPhoto.toArray(new String[oArray.size()]); //convert array list to array.
 
         for (int i = 0; i < imageLocation.length; i++) {
 
@@ -261,15 +280,6 @@ public class BrowseAuctionController implements Initializable    {
             System.out.println(ex.getMessage());
         }
     }
-    
-    @FXML
-    public void sculpSelected(){
-    	if (sculpRadioButton.isSelected()) {
-    		
-    	}
-    }
-
-
 
     public String getUsername() {
         return username;
