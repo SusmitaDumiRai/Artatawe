@@ -11,6 +11,7 @@ import co.uk.artatawe.database.FavouriteUserDatabaseManager;
 import co.uk.artatawe.database.UserDatabaseManager;
 import co.uk.artatawe.main.User;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -64,7 +65,6 @@ public class BrowseUsersController implements Initializable {
         Stage stage = new Stage();
 
         UserDatabaseManager userDatabaseManager = new UserDatabaseManager();
-        FavouriteUserDatabaseManager favouriteUserDatabaseManager = new FavouriteUserDatabaseManager();
 
         String sqlSelect = "Select * from user where username <> 'username'";
 
@@ -72,8 +72,6 @@ public class BrowseUsersController implements Initializable {
 
         ArrayList<String> userIcon = new ArrayList<>();
         ArrayList<String> allUsernames = new ArrayList<>();
-
-
 
         Image[] icons = new Image[userArrayList.size()];
         ImageView[] imageViews = new ImageView[userArrayList.size()];
@@ -118,13 +116,32 @@ public class BrowseUsersController implements Initializable {
 
             vBoxes[i].getChildren().add(heartButton);
             tilePane.getChildren().add(vBoxes[i]); //add image to gridpane.
+
+
+
+
+            heartButton.setOnAction(new EventHandler<ActionEvent>() {
+                @Override public void handle(ActionEvent e) {
+                    FavouriteUserDatabaseManager favouriteUserDatabaseManager = new FavouriteUserDatabaseManager();
+
+                   String sqlInsert = "insert into favouriteuser(username1,username2) values (" +
+                            "'username'," + "'username');";
+                   favouriteUserDatabaseManager.executeStatement(sqlInsert);
+
+
+                    Image fullHeart = new Image(("co/uk/artatawe/gui/Icons/icons8-love-50.png"));
+                    heartButton.setGraphic(new ImageView(fullHeart));
+                    System.out.println("added user");
+
+
+
+                }
+            });
+
+
         }
     }
 
-    @FXML
-    void handleHeartButtonAction(ActionEvent event) {
-
-    }
 
     /**
      * Gets logged in user's username.
