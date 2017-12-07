@@ -58,8 +58,6 @@ public class UserDatabaseManager extends  DatabaseManager {
                 userArrayList.add(new User(resultSet.getString("username"), resultSet.getString("firstname"), resultSet.getString("surname"),
                         resultSet.getString("phonenumber"), resultSet.getString("address"), resultSet.getString("postcode"),
                         resultSet.getString("lastlogin"), resultSet.getString("profileimage")));
-
-
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -88,16 +86,6 @@ public class UserDatabaseManager extends  DatabaseManager {
                 user = new User(resultSet.getString("username"), resultSet.getString("firstName"), resultSet.getString("surname"),
                         resultSet.getString("phonenumber"), resultSet.getString("address"), resultSet.getString("postcode"),
                         resultSet.getString("lastlogin"), resultSet.getString("profileImage"));
-                /*
-                System.out.println(resultSet.getString("username") + "\t" +
-                        resultSet.getString("firstname") + "\t" +
-                        resultSet.getString("surname") + "\t" +
-                        resultSet.getString("phonenumber") + "\t" +
-                        resultSet.getString("address") + "\t" +
-                        resultSet.getString("postcode") + "\t" +
-                        resultSet.getString("lastlogin") + "\t" +
-                        resultSet.getString("profileimage") + "\t");
-                        */
 
             }
         } catch (SQLException ex) {
@@ -126,40 +114,5 @@ public class UserDatabaseManager extends  DatabaseManager {
     }
 
 
-
-    /*
-    public void testUser() {
-        String sqlSelect = "SELECT username," +
-                "firstname," +
-                "surname," +
-                "phonenumber," +
-                "address," +
-                "postcode," +
-                "lastlogin," +
-                "profileimage FROM user;";
-
-        try {
-            Connection connection = connect();
-            Statement statement = connection.createStatement();
-
-            ResultSet resultSet = statement.executeQuery(sqlSelect);
-            while (resultSet.next()) {
-
-                System.out.println(resultSet.getString("username") + "\t" +
-                        resultSet.getString("firstname") + "\t" +
-                        resultSet.getString("surname") + "\t" +
-                        resultSet.getString("phonenumber") + "\t" +
-                        resultSet.getString("address") + "\t" +
-                        resultSet.getString("postcode") + "\t" +
-                        resultSet.getString("lastlogin") + "\t" +
-                        resultSet.getString("profileimage") + "\t");
-
-
-            }
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-    }
-    */
 
 }

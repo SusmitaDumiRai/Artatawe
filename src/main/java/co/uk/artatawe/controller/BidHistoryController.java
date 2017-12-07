@@ -150,7 +150,7 @@ public class BidHistoryController implements Initializable {
                     setText(null);
                 } else {
                     AuctionDatabaseManager auctionDatabaseManager = new AuctionDatabaseManager();
-                    String sqlSelect = "SELECT * FROM AUCTION WHERE AUCTIONID = " + bid.getAuctionID();
+                    String sqlSelect = "SELECT * FROM AUCTION WHERE AUCTIONID = " + bid.getAuction().getArtwork().getArtworkID();
                     Auction auction = auctionDatabaseManager.getAuction(sqlSelect);
 
                     setText("Artwork title: " + auction.getArtwork().getTitle() +

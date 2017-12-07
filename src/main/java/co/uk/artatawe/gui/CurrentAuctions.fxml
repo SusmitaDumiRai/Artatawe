@@ -124,7 +124,7 @@
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="600.0" prefWidth="578.0">
                <children>
-                  <TilePane layoutX="-2.0" prefHeight="600.0" prefWidth="581.0" />
+                  <TilePane fx:id="tilePane" layoutX="-2.0" prefHeight="600.0" prefWidth="581.0" />
                </children>
             </AnchorPane>
         </content>

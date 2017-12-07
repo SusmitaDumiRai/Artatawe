@@ -57,16 +57,13 @@ public class AuctionDatabaseManager extends DatabaseManager {
 
             ResultSet resultSet = statement.executeQuery(sqlSelect);
             while (resultSet.next()) {
-
-                UserDatabaseManager userDatabaseManager = new UserDatabaseManager();
                 BidDatabaseManager bidDatabaseManager = new BidDatabaseManager();
-                User user = userDatabaseManager.getUser(resultSet.getString("seller")); //get seller of auction.
 
-                ArtworkDatabaseManager artworkDatabaseManager = new ArtworkDatabaseManager();
+                User user = new UserDatabaseManager().getUser(resultSet.getString("seller")); //get seller of auction.
 
                 String sqlSelectAuction = "SELECT * FROM artwork where artworkid = " + resultSet.getInt("auctionid") + "';"; //get artwork related to auction.
 
-                Artwork artwork = artworkDatabaseManager.getArtwork(sqlSelectAuction);
+                Artwork artwork = new ArtworkDatabaseManager().getArtwork(sqlSelectAuction);
 
                 if (resultSet.getInt("auctioncomp") == 0) { //ongoing auction.
                     if (artwork.getBidsAllowed() == resultSet.getInt("numofbidsleft")) { //no bids placed yet.
@@ -103,17 +100,16 @@ public class AuctionDatabaseManager extends DatabaseManager {
 
             ResultSet resultSet = statement.executeQuery(sqlSelect);
             while (resultSet.next()) {
-                UserDatabaseManager userDatabaseManager = new UserDatabaseManager();
+
                 BidDatabaseManager bidDatabaseManager = new BidDatabaseManager();
-                ArtworkDatabaseManager artworkDatabaseManager = new ArtworkDatabaseManager();
 
                 //Gets seller of auction.
-                User user = userDatabaseManager.getUser(resultSet.getString("seller"));
+                User user = new UserDatabaseManager().getUser(resultSet.getString("seller"));
 
                 //Gets artwork related to auction.
                 String sqlSelectAuction = "SELECT * FROM artwork where artworkid = " + resultSet.getInt("auctionid") + ";";
 
-                Artwork artwork = artworkDatabaseManager.getArtwork(sqlSelectAuction);
+                Artwork artwork = new ArtworkDatabaseManager().getArtwork(sqlSelectAuction);
 
                 //Checks if auction is completed.
                 if (resultSet.getInt("auctioncomp") == 0) {
@@ -132,63 +128,5 @@ public class AuctionDatabaseManager extends DatabaseManager {
 
         return auction;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    /*
-
-    public  ArrayList<Artwork> getOngoingAuctions() {
-        String sqlSelect = "Select * from artwork, auction where auction.auctionid = artwork.artworkid;";
-        ArrayList<Artwork> onGoignArtworks = new ArrayList<>();
-
-        try {
-            Connection connection = connect();
-            Statement statement = connection.createStatement();
-
-            ResultSet resultSet = statement.executeQuery(sqlSelect);
-            while (resultSet.next()) {
-                if (resultSet.getString("typeofartwork").equals("painting")) { //add painting.
-                    onGoignArtworks.add(new Painting(resultSet.getInt("artworkid"), resultSet.getString("typeofartwork"), resultSet.getString("title"), resultSet.getString("description"),
-                            resultSet.getString("photo"), resultSet.getString("nameofcreator"), resultSet.getDouble("reservedprice"),
-                            resultSet.getString("dateentered"), resultSet.getInt("bidsallowed"), resultSet.getDouble("width"),
-                            resultSet.getDouble("height")));
-                } else { //add sculpture.
-                    onGoignArtworks.add(new Sculpture(resultSet.getInt("artworkid"), resultSet.getString("typeofartwork"), resultSet.getString("title"), resultSet.getString("description"),
-                            resultSet.getString("photo"), resultSet.getString("nameofcreator"), resultSet.getDouble("reservedprice"),
-                            resultSet.getString("dateentered"), resultSet.getInt("bidsallowed"), resultSet.getString("mainmaterial"),
-                            resultSet.getString("extraphotos"),
-                            resultSet.getDouble("width"), resultSet.getDouble("height"), resultSet.getDouble("depth")));
-                }
-
-            }
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-
-        return onGoignArtworks;
-    }
-    */
 
 }

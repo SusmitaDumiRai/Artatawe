@@ -1,11 +1,14 @@
 package co.uk.artatawe.controller;
 
-import co.uk.artatawe.database.ArtworkDatabaseManager;
-import co.uk.artatawe.database.AuctionDatabaseManager;
-import co.uk.artatawe.main.Auction;
+import co.uk.artatawe.database.BidDatabaseManager;
+import co.uk.artatawe.main.Bid;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
+import javafx.scene.layout.TilePane;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -19,7 +22,11 @@ import java.util.ResourceBundle;
  */
 public class CurrentAuctionController implements Initializable {
 
+
     private String username; //logged in user.
+
+    @FXML
+    private TilePane tilePane;
 
     /**
      * Empty constructor.
@@ -37,31 +44,47 @@ public class CurrentAuctionController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        populateSellingAuction();
+    }
 
-        getCurrentSellingAuctions();
+
+    /**
+     * Get all bids being placed on an auction being sold by user.
+     */
+    public ObservableList<Bid> getSellingAuctions() {
+       // String sqlSelect = "SELECT * from auction, bid where auction.auctionid = bid.auctionid and auctioncomp = 0 and seller = '" + this.username + "';";
+        String sqlSelect = "SELECT * from auction, bid where auction.auctionid = bid.auctionid and auctioncomp = 0 and seller = 'lolfan';";
+        return FXCollections.observableArrayList(new BidDatabaseManager().getAllBids(sqlSelect));
     }
 
     /**
-     * Displays all ongoing auctions being sold by logged in user.
+     * Display bid details for an ongoing auction.
      */
-    public ObservableList<Auction> getCurrentSellingAuctions() {
+    public void populateSellingAuction() {
+        ListView<Bid> auctionListView = new ListView<>(getSellingAuctions());
 
-       // String sqlSelect = "SELECT * from artwork, auction where artwork.artworkid = auction.auctionid and auctioncomp = 0 and seller = '" + this.username + "';";
-        String sqlSelect = "SELECT * from artwork, auction where artwork.artworkid = auction.auctionid and auctioncomp = 0 and seller = 'username';";
+        auctionListView.setCellFactory(param -> new ListCell<Bid>() {
+            @Override
+            protected void updateItem(Bid bid, boolean empty) {
+                super.updateItem(bid, empty);
 
-        return FXCollections.observableArrayList(new AuctionDatabaseManager().getAllAuctions(sqlSelect));
+                if (empty || bid == null || bid.getBuyer() == null) {
+                    setText(null);
+                } else {
+                    setText("Artwork title: " + bid.getAuction().getArtwork().getTitle() +
+                            "\nBidder: " + bid.getBuyer().getUserName() +
+                            "\nBid amount: " + bid.getBidAmount() +
+                            "\nBid date and time: " + bid.getDateAndTime());
+                }
+            }
+        });
 
-
-
-
+        //TODO make it look nice
+        auctionListView.setLayoutX(100);
+        auctionListView.setLayoutY(121);
+        tilePane.getChildren().add(auctionListView);
     }
 
-    /**
-     * Displays all bids logged in user has placed on an ongoing auction.
-     */
-    public void getCurrentBidsPlaced() {
-
-    }
     /**
      * Gets logged in username.
      * @return username of logged in user.

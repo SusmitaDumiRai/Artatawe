@@ -1,5 +1,6 @@
 package co.uk.artatawe.database;
 
+import co.uk.artatawe.main.Auction;
 import co.uk.artatawe.main.Bid;
 import co.uk.artatawe.main.User;
 
@@ -55,15 +56,11 @@ public class BidDatabaseManager extends DatabaseManager {
 
             ResultSet resultSet = statement.executeQuery(sqlSelect);
             while (resultSet.next()) {
-                /*
-                System.out.println(resultSet.getString("bidid") + "\t" +
-                        resultSet.getString("buyer") + "\t" +
-                        resultSet.getString("bidamount") + "\t" +
-                        resultSet.getString("dateandtime"));
-                        */
-                UserDatabaseManager userDatabaseManager = new UserDatabaseManager();
-                User user = userDatabaseManager.getUser(resultSet.getString("buyer"));
-                bidArrayList.add(new Bid(user, resultSet.getDouble("bidamount"), resultSet.getString("dateandtime"), resultSet.getInt("auctionid")));
+
+                User user = new UserDatabaseManager().getUser(resultSet.getString("buyer"));
+                String sqlGetAuction = "SELECT * FROM AUCTION WHERE AUCTIONID = " + resultSet.getInt("auctionid");
+                Auction auction = new AuctionDatabaseManager().getAuction(sqlGetAuction);
+                bidArrayList.add(new Bid(user, resultSet.getDouble("bidamount"), resultSet.getString("dateandtime"), auction));
 
             }
         } catch (SQLException ex) {
@@ -83,12 +80,6 @@ public class BidDatabaseManager extends DatabaseManager {
 
         Bid bid = new Bid();
 
-/*
-               this.buyer = buyer;
-        this.bidAmount = bidAmount;
-        this.dateAndTime = dateAndTime;
-        this.auctionID = auctionID;
-        */
 
         try {
             Connection connection = connect();
@@ -96,9 +87,11 @@ public class BidDatabaseManager extends DatabaseManager {
 
             ResultSet resultSet = statement.executeQuery(sqlSelectBid);
             while (resultSet.next()) {
-                UserDatabaseManager userDatabaseManager = new UserDatabaseManager();
-                User user = userDatabaseManager.getUser(resultSet.getString("buyer"));
-                bid = new Bid(user, resultSet.getDouble("bidamount"), resultSet.getString("dateandtime"), resultSet.getInt("auctionid"));
+                User user = new UserDatabaseManager().getUser(resultSet.getString("buyer"));
+
+                String sqlSelect = "SELECT * FROM AUCTION WHERE AUCTIONID = " + resultSet.getInt("auctionid");
+                Auction auction = new AuctionDatabaseManager().getAuction(sqlSelect);
+                bid = new Bid(user, resultSet.getDouble("bidamount"), resultSet.getString("dateandtime"), auction);
 
             }
         } catch (SQLException ex) {
