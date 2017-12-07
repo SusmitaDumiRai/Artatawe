@@ -97,32 +97,44 @@ public class BrowseAuctionController implements Initializable    {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        getImages();
+
+        getImages(FXCollections.observableArrayList(artworkArrayList));
+        allRadioButton.setSelected(true);
+
+      //  getImages();
+    		//sculpRadioButton.setSelected(true);
     }
+    
+
 
 
     /**
      * Gets all artworks currently in auction. Displays them.
      */
-    public void getImages() {
+
+    public void getImages(ObservableList<Artwork> observeArrayList) {
+
 
         Stage stage = new Stage();
 
         ArrayList<String> artworkPhoto = new ArrayList<>();
-        
+
+        /*
         if(sculpRadioButton.isSelected()){
+
         	observeArrayList = FXCollections.observableArrayList(sculptureArrayList);
-        }
-        else if(paintRadioButton.isSelected()){
+        } else if (paintRadioButton.isSelected()) {
         	observeArrayList = FXCollections.observableArrayList(paintingArrayList);
-        }
-        else if(allRadioButton.isSelected()){
+        } else if (allRadioButton.isSelected()) {
         	observeArrayList = FXCollections.observableArrayList(artworkArrayList);
-        }
-        else {
+        } else {
         	allRadioButton.setSelected(true);
         	observeArrayList = FXCollections.observableArrayList(artworkArrayList);
+
         }
+        */
+
+
 
         Image[] images = new Image[observeArrayList.size()];
         ImageView[] imageViews = new ImageView[observeArrayList.size()];
@@ -261,13 +273,43 @@ public class BrowseAuctionController implements Initializable    {
             System.out.println(ex.getMessage());
         }
     }
+
     
     @FXML
-    public void sculpSelected(){
-    	if (sculpRadioButton.isSelected()) {
-    		
-    	}
+    public void sculpSelected() {
+
+        artworkTilePane.getChildren().clear(); //delete all previous artworks.
+
+
+        getImages(FXCollections.observableArrayList(sculptureArrayList));
+
     }
+
+
+    @FXML
+    void paintSelected(ActionEvent event) {
+        artworkTilePane.getChildren().clear(); //delete all previous artworks.
+        getImages(FXCollections.observableArrayList(paintingArrayList));
+
+    }
+
+    @FXML
+    void favouriteSelected(ActionEvent event) {
+        artworkTilePane.getChildren().clear(); //delete all previous artworks.
+        System.out.println("favourite selected.");
+      //  getImages(FXCollections.observableArrayList()));
+
+
+    }
+
+    @FXML
+    void allSelected(ActionEvent event) {
+        artworkTilePane.getChildren().clear(); //delete all previous artworks.
+        getImages(FXCollections.observableArrayList(artworkArrayList));
+
+
+    }
+
 
 
 
