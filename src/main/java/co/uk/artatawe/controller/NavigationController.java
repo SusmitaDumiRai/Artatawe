@@ -88,34 +88,12 @@ public class NavigationController implements Initializable {
      */
     @FXML
     void handleProfileAction(ActionEvent event) throws IOException {
-    	
-   	 
-    	//for some reason it needs to have an existing scene in order to pass the username to it and then initialise the labels
-    	 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/ProfilePage.fxml"));
-         
-         centerPane.setCenter(fxmlLoader.load());
-    	 
-      
-       	//manually set controller.
-         ProfilePageController profilePageController = new ProfilePageController();
-         profilePageController.setUsername(this.username);
-         fxmlLoader.setController(profilePageController);
-	
-       	 
-    	 FXMLLoader fxmlLoader1 = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/ProfilePage.fxml"));
-         
-         centerPane.setCenter(fxmlLoader1.load());
-    	 
-      
-       	//manually set controller.
-         ProfilePageController profilePageController1 = new ProfilePageController();
-         profilePageController1.setUsername(this.username);
-         fxmlLoader.setController(profilePageController1);
-      
 
-        
-         
-         
+        ProfilePageController profilePageController = new ProfilePageController();
+        profilePageController.setUsername(this.username);
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/ProfilePage.fxml"));
+        centerPane.setCenter(fxmlLoader.load());
          
     }
 
