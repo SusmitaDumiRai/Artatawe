@@ -88,13 +88,16 @@ public class NavigationController implements Initializable {
      */
     @FXML
     void handleProfileAction(ActionEvent event) throws IOException {
-
+    	
+    	
         ProfilePageController profilePageController = new ProfilePageController();
         profilePageController.setUsername(this.username);
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/ProfilePage.fxml"));
+        
+        fxmlLoader.setController(profilePageController);
         centerPane.setCenter(fxmlLoader.load());
-         
+      
     }
 
     /**
@@ -115,7 +118,37 @@ public class NavigationController implements Initializable {
 
     	 centerPane.setCenter(fxmlLoader.load());
     }
+    
+    @FXML
+    void handleUsersAction(ActionEvent event) throws IOException {
+    	
+    }
+    
+    @FXML
+    void handleCreateAuctionAction(ActionEvent event) throws IOException {
+    	
+    	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/CreateAuction.fxml"));
+    	
+    	CreateAuctionController createAuctionController = new CreateAuctionController();
+    	createAuctionController.setUsername(this.username);
+    	fxmlLoader.setController(createAuctionController);
 
+   	 	centerPane.setCenter(fxmlLoader.load());
+    	
+    }
+    
+    @FXML
+    void handleMyAuctionsAction(ActionEvent event) throws IOException {
+    	
+    	
+    }
+    
+    @FXML
+    void handleBidAction(ActionEvent event) throws IOException {
+    	
+    	
+    }
+     
     public String getUsername() {
         return username;
     }

@@ -19,6 +19,8 @@ import java.util.ResourceBundle;
  * @author 908928
  */
 public class CreateAuctionController  implements Initializable {
+	
+	private String username; //logged in user
 
     @FXML
     private Label sellerName; //seller username.
@@ -130,6 +132,7 @@ public class CreateAuctionController  implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+    
 
     }
 
@@ -352,6 +355,13 @@ public class CreateAuctionController  implements Initializable {
         auctionDatabaseManager.executeStatement(sqlInsertAuction); // VERY DANGEROUS LINE OF CODE. ONLY UNCOMMENT WHEN FINALISED.
 
  //       System.out.println(sqlInsertAuction);
+    }
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
 
