@@ -10,7 +10,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.layout.Pane;
 
 import java.awt.event.ActionEvent;
 import java.net.URL;
@@ -21,12 +23,18 @@ import java.util.ResourceBundle;
 /**
  * Controller for bid history page.
  * @author James Finlayson 905234
+ * @author 908928
  */
 public class BidHistoryController implements Initializable {
 
     private String username; //logged in user.
     private final int WIDTH = 800; //size of window.
     private final int HEIGHT = 600; //size of window.
+
+    //Empty constructor.
+    public BidHistoryController() {
+
+    }
 
     /**
      * Sets username.
@@ -37,19 +45,39 @@ public class BidHistoryController implements Initializable {
     }
 
     @FXML
-    private Label Label1;
+    private Button buyingHistoryButton;
 
     @FXML
-    private Label Label2;
+    private Button sellingHistoryButton;
 
+    @FXML
+    private Label topLabel;
+
+    @FXML
+    private Button bidHistoryButton;
+
+    @FXML
+    private Label bottomLabel;
+
+    @FXML
+    private ListView<?> topList;
+
+    @FXML
+    private Button myActionsButton;
+
+    @FXML
+    private ListView<?> bottomList;
+
+    @FXML
+    private Pane pane;
+
+    /*
     @FXML
     private Button auctionButton;
 
     @FXML
     private Button bidHistoryButton;
 
-    @FXML
-    private Button Button;
 
     @FXML
     private Button buyingHistoryButton;
@@ -82,51 +110,62 @@ public class BidHistoryController implements Initializable {
 
     @FXML
     private Button profileButton;
+    */
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+    //    placedBidsList.setVisible(false);
+ //       wonAuctionsList.setVisible(false);
+     //   soldAuctionsList.setVisible(false);
+        topLabel.setText("Placed bids");
+        bottomLabel.setText("Won auctions");
+
+        populateWonAuction(); //display won auctions.
+        populateBidHistory(); //display past bids placed.
+
+
+        //Label1.setStyle("-fx-text-fill: transparent"); //or .setVisible(false);
+        //Label2.setStyle("-fx-text-fill: transparent"); //or .setVisible(false);
+    }
 
     /**
      * Gets list of won auctions for logged in user.
      */
-    public ArrayList getWonAuctions(){
-
+    public ObservableList<Auction> getWonAuctions() {
         AuctionDatabaseManager auctionDatabaseManager = new AuctionDatabaseManager();
 
-        Auction compAuction = new Auction();
-
-        String sqlSelect = "Select * from auction where auctionComp = 1";
-
-        ArrayList<Auction> wonAuctionArrayList = auctionDatabaseManager.getAllAuctions(sqlSelect);
-
-        String sqlSelect2 = "";
-
-        ArrayList<Auction> usersWonAuctionArrayList = auctionDatabaseManager.getAllAuctions(sqlSelect2);
-
-        return usersWonAuctionArrayList;
+        //TODO TESTING WHEN POSSIBLE.
+        String sqlSelect = "Select * from auction, bid where auctionComp = 1 and auction.auctionid = bid.auctionid and buyer = '" + this.username + "';";
+        return  FXCollections.observableArrayList(auctionDatabaseManager.getAllAuctions(sqlSelect));
 
     }
 
     /**
      * Gets list of placed bids for logged in user.
      */
-    public ArrayList getPlacedBids(){
+    public ObservableList<Bid> getPlacedBids() {
 
         BidDatabaseManager bidDatabaseManager = new BidDatabaseManager();
 
         String sqlSelect = "Select * from bid where buyer = '" + this.username + "';";
 
-        ArrayList<Bid> placedBidsArrayList = bidDatabaseManager.getAllBids(sqlSelect);
+     //   String sqlSelect = "Select * from bid where buyer = 'username';";
 
-        return placedBidsArrayList;
+        return FXCollections.observableArrayList(bidDatabaseManager.getAllBids(sqlSelect));
 
     }
 
     /**
      * Gets list of sold auctions for logged in user.
      */
-    public ArrayList getSoldAuctions(){
+    public ArrayList getSoldAuctions() {
 
         AuctionDatabaseManager auctionDatabaseManager = new AuctionDatabaseManager();
 
         String sqlSelect = "Select * from auction where auctioncomp = true and seller = '" + this.username + "';";
+
+
+       // String sqlSelect = "Select * from auction where auctioncomp = true and seller = 'username';";
 
         ArrayList<Auction> soldAuctionsArrayList = auctionDatabaseManager.getAllAuctions(sqlSelect);
 
@@ -134,28 +173,54 @@ public class BidHistoryController implements Initializable {
 
     }
 
-    @FXML
-    void handleBuyingHistoryButton(ActionEvent event){
-        placedBidsList.setVisible(true);
-        wonAuctionsList.setVisible(true);
+    /**
+     * Gets all auctions won by logged in user.
+     * Displays all won auctions.
+     */
+    public void populateWonAuction() {
+        ListView<Auction> auctionListView = new ListView<>(getWonAuctions());
 
+        auctionListView.setCellFactory(param -> new ListCell<Auction>() {
+            @Override
+            protected void updateItem(Auction auction, boolean empty) {
+                super.updateItem(auction, empty);
+
+                if (empty || auction == null || auction.getArtwork() == null) {
+                    setText(null);
+                } else {
+                    setText(Integer.toString(auction.getArtwork().getArtworkID()));
+                }
+            }
+        });
+
+        pane.getChildren().add(auctionListView);
     }
 
-    @FXML
-    void handleSellingHistoryButton(ActionEvent event){
-        soldAuctionsList.setVisible(true);
-        Label1.setText("Sold artwork");
-        Label2.setStyle("-fx-text-fill: transparent");//or .setVisible(false);
+    /**
+     * 
+     */
+    public void populateBidHistory() {
+        ListView<Bid> bidListView = new ListView<>(getPlacedBids());
 
+        bidListView.setCellFactory(param -> new ListCell<Bid>() {
+            @Override
+            protected void updateItem(Bid bid, boolean empty) {
+                super.updateItem(bid, empty);
+
+                if (empty || bid == null || bid.getBuyer() == null) {
+                    setText(null);
+                } else {
+                    setText("Auction ID: " + Integer.toString(bid.getAuctionID()) +
+                            "\nBid amount: " + Double.toString(bid.getBidAmount()) +
+                            "\nBid date and time: " + bid.getDateAndTime());
+                }
+            }
+        });
+
+        pane.getChildren().add(bidListView);
     }
 
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        placedBidsList.setVisible(false);
-        wonAuctionsList.setVisible(false);
-        soldAuctionsList.setVisible(false);
-        Label1.setStyle("-fx-text-fill: transparent");//or .setVisible(false);
-        Label2.setStyle("-fx-text-fill: transparent");//or .setVisible(false);
-    }
+
+
 }

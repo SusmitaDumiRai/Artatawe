@@ -85,6 +85,8 @@ public class Main extends Application {
         //   artworkDatabaseManager.getAllArtworks(sqlSelect);
     //    auctionDatabaseManager.getAllAuctions();
 
+        String username = "username";
+        System.out.println( "Select * from auction, bid where auctionComp = 1 and auction.auctionid = bid.auctionid and buyer = '" + username + "';");
     }
 
 

@@ -66,7 +66,7 @@
                   <Insets bottom="6.0" left="6.0" right="6.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="Button" contentDisplay="TOP" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #ca3a5e;" text="Browse Artwork" textFill="WHITE">
+            <Button contentDisplay="TOP" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #ca3a5e;" text="Browse Artwork" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                      <effect>
@@ -130,15 +130,15 @@
       </VBox>
    </left>
    <center>
-      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <Pane fx:id="pane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
             <ListView fx:id="soldAuctionsList" layoutX="100.0" layoutY="121.0" prefHeight="449.0" prefWidth="421.0" />
-            <Button fx:id="buyingHistoryButton" layoutX="133.0" layoutY="43.0" mnemonicParsing="false" onAction="#handleBuyingHistoryButton" text="Buying history" />
-            <Button fx:id="sellingHistoryButton" layoutX="375.0" layoutY="43.0" mnemonicParsing="false" onAction="#handleSellingHistoryButton" onMouseClicked="#handleBuyingHistoryButton" text="Selling history" />
-            <ListView fx:id="placedBidsList" layoutX="100.0" layoutY="121.0" prefHeight="200.0" prefWidth="421.0" />
-            <Label fx:id="Label1" layoutX="98.0" layoutY="93.0" text="Placed bids" />
-            <Label fx:id="Label2" layoutX="100.0" layoutY="341.0" text="Won auctions" />
-            <ListView fx:id="wonAuctionsList" layoutX="100.0" layoutY="369.0" prefHeight="200.0" prefWidth="421.0" />
+            <Button fx:id="buyingHistoryButton" layoutX="133.0" layoutY="43.0" mnemonicParsing="false" text="Buying history" />
+            <Button fx:id="sellingHistoryButton" layoutX="375.0" layoutY="43.0" mnemonicParsing="false" text="Selling history" />
+            <ListView fx:id="topList" layoutX="100.0" layoutY="121.0" prefHeight="200.0" prefWidth="421.0" />
+            <Label fx:id="topLabel" layoutX="98.0" layoutY="93.0" text="Placed bids" />
+            <Label fx:id="bottomLabel" layoutX="100.0" layoutY="341.0" text="Won auctions" />
+            <ListView fx:id="bottomList" layoutX="100.0" layoutY="369.0" prefHeight="200.0" prefWidth="421.0" />
          </children>
       </Pane>
    </center>
