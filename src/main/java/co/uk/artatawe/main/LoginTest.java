@@ -1,4 +1,4 @@
-package co.uk.artatawe.sample;
+package co.uk.artatawe.main;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

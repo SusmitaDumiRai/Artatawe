@@ -9,6 +9,7 @@ import javafx.scene.image.Image;
  * @version 1.0
  */
 public enum PresetImage {
+	//Preset images taken from "https://www.vecteezy.com/vector-art/96013-cute-animal-avatars".
 	IMAGE_BEAR("PresetImage_Bear.jpg"),	//A preset profile image of a bear.	
 	IMAGE_CAT("PresetImage_Cat.jpg"),	//A preset profile image of a cat.
 	IMAGE_DOG("PresetImage_Dog.jpg"),	//A preset profile image of a dog.

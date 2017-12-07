@@ -1,6 +1,6 @@
 package co.uk.artatawe.database;
 
-import co.uk.artatawe.sample.User;
+import co.uk.artatawe.main.User;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -74,11 +74,6 @@ public class UserDatabaseManager extends  DatabaseManager {
      * @return user info.
      */
     public User getUser(String username) {
-
-        /*
-        String userName, String firstName, String surname,
-              String phoneNumber, String address, String postcode
-         */
         User user = new User();
 
         String selectUser = "SELECT * FROM user where username = '" + username + "'";

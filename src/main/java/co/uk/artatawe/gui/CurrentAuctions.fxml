@@ -10,82 +10,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
-   <center>
-      <GridPane BorderPane.alignment="CENTER">
-         <children>
-            <ImageView fitHeight="183.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
-               <image>
-                  <Image url="@Icons/icons8-love-filled-40.png" />
-               </image>
-               <GridPane.margin>
-                  <Insets left="60.0" right="60.0" />
-               </GridPane.margin>
-            </ImageView>
-            <ImageView fitHeight="183.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
-               <image>
-                  <Image url="@Icons/icons8-love-filled-40.png" />
-               </image>
-               <GridPane.margin>
-                  <Insets left="60.0" right="60.0" />
-               </GridPane.margin>
-            </ImageView>
-            <ImageView fitHeight="183.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="4">
-               <image>
-                  <Image url="@Icons/icons8-love-filled-40.png" />
-               </image>
-               <GridPane.margin>
-                  <Insets left="60.0" right="60.0" />
-               </GridPane.margin>
-            </ImageView>
-            <ImageView fitHeight="183.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="4">
-               <image>
-                  <Image url="@Icons/icons8-love-filled-40.png" />
-               </image>
-               <GridPane.margin>
-                  <Insets left="60.0" right="60.0" />
-               </GridPane.margin>
-            </ImageView>
-            <ImageView fitHeight="183.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="3">
-               <image>
-                  <Image url="@Icons/icons8-love-filled-40.png" />
-               </image>
-               <GridPane.margin>
-                  <Insets left="60.0" right="60.0" />
-               </GridPane.margin>
-            </ImageView>
-            <ImageView fitHeight="183.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
-               <image>
-                  <Image url="@Icons/icons8-love-filled-40.png" />
-               </image>
-               <GridPane.margin>
-                  <Insets left="60.0" right="60.0" />
-               </GridPane.margin>
-            </ImageView>
-            <Label text="Your Auctions:">
-               <GridPane.margin>
-                  <Insets left="100.0" />
-               </GridPane.margin>
-            </Label>
-            <Label text="You have bidded for:" GridPane.rowIndex="2">
-               <GridPane.margin>
-                  <Insets left="100.0" />
-               </GridPane.margin>
-            </Label>
-         </children>
-         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints maxHeight="145.0" minHeight="0.0" prefHeight="29.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="380.0" minHeight="10.0" prefHeight="186.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="349.0" minHeight="10.0" prefHeight="44.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="250.0" minHeight="10.0" prefHeight="172.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="229.0" minHeight="10.0" prefHeight="177.0" vgrow="SOMETIMES" />
-         </rowConstraints>
-      </GridPane>
-   </center>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.uk.artatawe.controller.CurrentAuctionController">
    <left>
       <VBox prefHeight="600.0" prefWidth="201.0" BorderPane.alignment="CENTER">
          <children>
@@ -101,7 +26,7 @@
                   <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
                </VBox.margin>
             </AnchorPane>
-            <Button fx:id="profile" contentDisplay="TOP" mnemonicParsing="false" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #23112a;" text="My Profile" textFill="WHITE">
+            <Button fx:id="profileButton" contentDisplay="TOP" mnemonicParsing="false" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #23112a;" text="My Profile" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                      <effect>
@@ -116,7 +41,7 @@
                   <Insets bottom="6.0" left="6.0" right="6.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="users" contentDisplay="TOP" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #492976;" text="Browse Users" textFill="WHITE">
+            <Button fx:id="usersButton" contentDisplay="TOP" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #492976;" text="Browse Users" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                      <effect>
@@ -131,7 +56,7 @@
                   <Insets bottom="6.0" left="6.0" right="6.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="artwork" contentDisplay="TOP" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #ca3a5e;" text="Browse Artwork" textFill="WHITE">
+            <Button fx:id="artworkButton" contentDisplay="TOP" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #ca3a5e;" text="Browse Artwork" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                      <effect>
@@ -146,7 +71,7 @@
                   <Insets bottom="6.0" left="6.0" right="6.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="auction" contentDisplay="TOP" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #f58071;" text="Create an Auction" textFill="WHITE">
+            <Button fx:id="auctionButton" contentDisplay="TOP" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #f58071;" text="Create an Auction" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                      <effect>
@@ -161,7 +86,7 @@
                   <Insets bottom="6.0" left="6.0" right="6.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="myActions" contentDisplay="TOP" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #361949;" text="My Auctions" textFill="WHITE">
+            <Button fx:id="myActionsButton" contentDisplay="TOP" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #361949;" text="My Auctions" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="15040.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                      <effect>
@@ -176,7 +101,7 @@
                   <Insets bottom="6.0" left="6.0" right="6.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="bidHistory" contentDisplay="TOP" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #23112a;" text="My Bid History" textFill="WHITE">
+            <Button fx:id="bidHistoryButton" contentDisplay="TOP" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #23112a;" text="My History" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                      <effect>
@@ -194,7 +119,15 @@
          </children>
       </VBox>
    </left>
-   <right>
-      <ScrollBar orientation="VERTICAL" prefHeight="590.0" prefWidth="18.0" BorderPane.alignment="CENTER" />
-   </right>
+   <center>
+      <ScrollPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="600.0" prefWidth="578.0">
+               <children>
+                  <TilePane layoutX="-2.0" prefHeight="600.0" prefWidth="581.0" />
+               </children>
+            </AnchorPane>
+        </content>
+      </ScrollPane>
+   </center>
 </BorderPane>

@@ -1,9 +1,15 @@
 package co.uk.artatawe.database;
 
+import co.uk.artatawe.artwork.Artwork;
+import co.uk.artatawe.main.Auction;
+import co.uk.artatawe.main.Bid;
+import co.uk.artatawe.main.User;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 /**
  * Handles communication to auction table in database.
@@ -42,25 +48,121 @@ public class AuctionDatabaseManager extends DatabaseManager {
     /**
      * Displays all auction info.
      */
-    public void getAllAuctions(String sqlSelect) {
+    public ArrayList<Auction> getAllAuctions(String sqlSelect) {
+
+        ArrayList<Auction> auctionArrayList = new ArrayList<>();
         try {
             Connection connection = connect();
             Statement statement = connection.createStatement();
 
             ResultSet resultSet = statement.executeQuery(sqlSelect);
             while (resultSet.next()) {
+/*
                 System.out.println(resultSet.getInt("auctionid") + "\t" +
                         resultSet.getString("seller") + "\t" +
                         resultSet.getString("winningbid") + "\t" +
                         resultSet.getInt("auctioncomp") + "\t" +
-                        resultSet.getDouble("highestbid"));
+                        resultSet.getDouble("highestbid") + "\t" +
+                        resultSet.getInt("numOfBidsLeft"));
                         //TODO WINNER.
+                        */
+
+                /**
+                 *
+                 * @param numOfBidsLeft
+                 * @param auctionComp
+                 * @param artwork
+                 * @param sellerUsername
+                 * @param winner
+                 * @param highestBid*/
+
+
+                UserDatabaseManager userDatabaseManager = new UserDatabaseManager();
+                BidDatabaseManager bidDatabaseManager = new BidDatabaseManager();
+                User user = userDatabaseManager.getUser(resultSet.getString("seller"));
+
+                ArtworkDatabaseManager artworkDatabaseManager = new ArtworkDatabaseManager();
+
+                String sqlSelectAuction = "SELECT * FROM artwork where artworkid = " + resultSet.getInt("auctionid") + "';";
+
+                Artwork artwork = artworkDatabaseManager.getArtwork(sqlSelectAuction);
+
+                if (resultSet.getInt("auctioncomp") == 0) { //ongoing auction.
+                    auctionArrayList.add(new Auction(resultSet.getInt("numOfBidsLeft"), false, artwork, user,  bidDatabaseManager.getMaxBid(resultSet.getInt("auctionid"))));
+
+                } else { //completed auction
+                    auctionArrayList.add(new Auction(resultSet.getInt("numOfBidsLeft"), true, artwork, user, bidDatabaseManager.getMaxBid(resultSet.getInt("auctionid"))));
+                }
+
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
 
+
+        return auctionArrayList;
     }
+
+    public Auction getAuction(String sqlSelect) {
+
+        Auction auction = new Auction();
+        try {
+            Connection connection = connect();
+            Statement statement = connection.createStatement();
+
+            ResultSet resultSet = statement.executeQuery(sqlSelect);
+            while (resultSet.next()) {
+                UserDatabaseManager userDatabaseManager = new UserDatabaseManager();
+                BidDatabaseManager bidDatabaseManager = new BidDatabaseManager();
+                User user = userDatabaseManager.getUser(resultSet.getString("seller"));
+
+
+                ArtworkDatabaseManager artworkDatabaseManager = new ArtworkDatabaseManager();
+
+                String sqlSelectAuction = "SELECT * FROM artwork where artworkid = " + resultSet.getInt("auctionid") + ";";
+
+                Artwork artwork = artworkDatabaseManager.getArtwork(sqlSelectAuction);
+
+                if (resultSet.getInt("auctioncomp") == 0) {
+
+                    //Get the highest bid.
+
+                    auction = new Auction(resultSet.getInt("numOfBidsLeft"), false, artwork, user, bidDatabaseManager.getMaxBid(resultSet.getInt("auctionid")));
+                } else {
+                       auction =  new Auction(resultSet.getInt("numOfBidsLeft"), true, artwork, user, bidDatabaseManager.getMaxBid(resultSet.getInt("auctionid")));
+                }
+            }
+        } catch (SQLException ex) {
+
+        }
+
+        return auction;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     /*
 
     public  ArrayList<Artwork> getOngoingAuctions() {

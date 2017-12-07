@@ -1,4 +1,4 @@
-package co.uk.artatawe.sample;
+package co.uk.artatawe.main;
 
 
 /**
@@ -13,6 +13,10 @@ public class Bid {
     private int bidID;
     private int auctionID;
 
+
+    public Bid() {
+
+    }
 
     /**
      * Constructor for bid.
