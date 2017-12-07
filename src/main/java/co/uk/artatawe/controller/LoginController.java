@@ -51,7 +51,16 @@ public class LoginController implements Initializable {
      */
     @FXML
     void signInUser(ActionEvent event) {
-        if (validateUsername()) {
+      signIn(event);
+    }
+    
+    @FXML
+    void onEnter(ActionEvent event) {
+      signIn(event);
+    }
+    
+    private void signIn(ActionEvent event) {
+    	if (validateUsername()) {
             Parent root;
             try {
 
