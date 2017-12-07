@@ -10,7 +10,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import co.uk.artatawe.database.UserDatabaseManager;
-import co.uk.artatawe.sample.User;
+import co.uk.artatawe.main.User;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
 

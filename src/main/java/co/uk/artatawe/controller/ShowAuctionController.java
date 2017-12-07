@@ -16,7 +16,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.ArcTo;
-import sun.awt.geom.AreaOp;
+//import sun.awt.geom.AreaOp;
 
 import java.awt.geom.Arc2D;
 import java.net.URL;

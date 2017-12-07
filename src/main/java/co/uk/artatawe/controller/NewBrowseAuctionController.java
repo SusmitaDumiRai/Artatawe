@@ -32,8 +32,6 @@ import co.uk.artatawe.database.ArtworkDatabaseManager;
 public class NewBrowseAuctionController implements Initializable {
 
     private String username; //logged in user.
-    private final int WIDTH = 800; //size of window.
-    private final int HEIGHT = 600; //size of window.
 
     @FXML
     private TilePane artworkTilePane;
