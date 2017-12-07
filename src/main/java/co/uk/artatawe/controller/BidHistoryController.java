@@ -135,7 +135,8 @@ public class BidHistoryController implements Initializable {
         AuctionDatabaseManager auctionDatabaseManager = new AuctionDatabaseManager();
 
         //TODO TESTING WHEN POSSIBLE.
-        String sqlSelect = "Select * from auction, bid where auctionComp = 1 and auction.auctionid = bid.auctionid and buyer = '" + this.username + "';";
+      //  String sqlSelect = "Select * from auction, bid where auctionComp = 1 and auction.auctionid = bid.auctionid and buyer = '" + this.username + "';";
+        String sqlSelect = "Select * from auction, bid where auctionComp = 1 and auction.auctionid = bid.auctionid and buyer = 'username';";
         return  FXCollections.observableArrayList(auctionDatabaseManager.getAllAuctions(sqlSelect));
 
     }
@@ -147,9 +148,9 @@ public class BidHistoryController implements Initializable {
 
         BidDatabaseManager bidDatabaseManager = new BidDatabaseManager();
 
-        String sqlSelect = "Select * from bid where buyer = '" + this.username + "';";
+      //  String sqlSelect = "Select * from bid where buyer = '" + this.username + "';";
 
-     //   String sqlSelect = "Select * from bid where buyer = 'username';";
+        String sqlSelect = "Select * from bid where buyer = 'username';";
 
         return FXCollections.observableArrayList(bidDatabaseManager.getAllBids(sqlSelect));
 
@@ -162,10 +163,10 @@ public class BidHistoryController implements Initializable {
 
         AuctionDatabaseManager auctionDatabaseManager = new AuctionDatabaseManager();
 
-        String sqlSelect = "Select * from auction where auctioncomp = true and seller = '" + this.username + "';";
+   //     String sqlSelect = "Select * from auction where auctioncomp = 1 and seller = '" + this.username + "';";
 
 
-       // String sqlSelect = "Select * from auction where auctioncomp = true and seller = 'username';";
+       String sqlSelect = "Select * from auction where auctioncomp = true and seller = 'username';";
 
         ArrayList<Auction> soldAuctionsArrayList = auctionDatabaseManager.getAllAuctions(sqlSelect);
 
@@ -193,11 +194,14 @@ public class BidHistoryController implements Initializable {
             }
         });
 
+        //TODO make it look nice
+        auctionListView.setLayoutX(100);
+        auctionListView.setLayoutY(369);
         pane.getChildren().add(auctionListView);
     }
 
     /**
-     * 
+     *
      */
     public void populateBidHistory() {
         ListView<Bid> bidListView = new ListView<>(getPlacedBids());
@@ -217,9 +221,23 @@ public class BidHistoryController implements Initializable {
             }
         });
 
+
+        //TODO FOR YOU TO MAKE IT LOOK NICE LENI
+        bidListView.setLayoutX(100);
+       bidListView.setLayoutY(120);
         pane.getChildren().add(bidListView);
     }
 
+
+    @FXML
+    void boughtHistoryAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void soldHistoryAction(ActionEvent event) {
+
+    }
 
 
 
