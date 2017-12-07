@@ -97,32 +97,30 @@ public class BrowseAuctionController implements Initializable    {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        getImages();
+        getImages(FXCollections.observableArrayList(artworkArrayList));
     }
 
 
     /**
      * Gets all artworks currently in auction. Displays them.
      */
-    public void getImages() {
+    public void getImages(ObservableList<Artwork> observeArrayList) {
 
         Stage stage = new Stage();
 
         ArrayList<String> artworkPhoto = new ArrayList<>();
-        
-        if(sculpRadioButton.isSelected()){
+        /*
+        if (sculpRadioButton.isSelected()) {
         	observeArrayList = FXCollections.observableArrayList(sculptureArrayList);
-        }
-        else if(paintRadioButton.isSelected()){
+        } else if (paintRadioButton.isSelected()) {
         	observeArrayList = FXCollections.observableArrayList(paintingArrayList);
-        }
-        else if(allRadioButton.isSelected()){
+        } else if (allRadioButton.isSelected()) {
         	observeArrayList = FXCollections.observableArrayList(artworkArrayList);
-        }
-        else {
+        } else {
         	allRadioButton.setSelected(true);
         	observeArrayList = FXCollections.observableArrayList(artworkArrayList);
         }
+        */
 
         Image[] images = new Image[observeArrayList.size()];
         ImageView[] imageViews = new ImageView[observeArrayList.size()];
@@ -263,10 +261,27 @@ public class BrowseAuctionController implements Initializable    {
     }
     
     @FXML
-    public void sculpSelected(){
-    	if (sculpRadioButton.isSelected()) {
-    		
-    	}
+    public void sculpSelected() {
+
+        System.out.println("sculp selected");
+
+        //getImages(FXCollections.observableArrayList(sculptureArrayList));
+
+    }
+
+
+    @FXML
+    void paintSelected(ActionEvent event) {
+    }
+
+    @FXML
+    void favouriteSelected(ActionEvent event) {
+
+    }
+
+    @FXML
+    void allSelected(ActionEvent event) {
+
     }
 
 

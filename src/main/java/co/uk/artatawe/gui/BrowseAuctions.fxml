@@ -52,17 +52,17 @@
                   <Insets left="150.0" right="40.0" />
                </HBox.margin>
             </RadioButton>
-            <RadioButton fx:id="paintRadioButton" mnemonicParsing="false" text="paintings" toggleGroup="$typeOfArtwork">
+            <RadioButton fx:id="paintRadioButton" mnemonicParsing="false" onAction="#paintSelected" text="paintings" toggleGroup="$typeOfArtwork">
                <HBox.margin>
                   <Insets right="40.0" />
                </HBox.margin>
             </RadioButton>
-            <RadioButton mnemonicParsing="false" text="user favorites" toggleGroup="$typeOfArtwork">
+            <RadioButton fx:id="favouriteRadioButton" mnemonicParsing="false" onAction="#favouriteSelected" text="user favorites" toggleGroup="$typeOfArtwork">
                <HBox.margin>
                   <Insets right="40.0" />
                </HBox.margin>
             </RadioButton>
-            <RadioButton fx:id="allRadioButton" mnemonicParsing="false" prefHeight="21.0" prefWidth="49.0" text="all" toggleGroup="$typeOfArtwork">
+            <RadioButton fx:id="allRadioButton" mnemonicParsing="false" onAction="#allSelected" prefHeight="21.0" prefWidth="49.0" text="all" toggleGroup="$typeOfArtwork">
                <HBox.margin>
                   <Insets right="40.0" />
                </HBox.margin>

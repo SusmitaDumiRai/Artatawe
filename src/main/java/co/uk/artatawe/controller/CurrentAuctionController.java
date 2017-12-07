@@ -7,7 +7,11 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
- * Created by Susi on 06/12/2017.
+ * Handles current auction fxml file.
+ * Displays all current auctions being sold and bids being placed
+ * on ongoing auctions.
+ *
+ * @author 908928
  */
 public class CurrentAuctionController implements Initializable {
 

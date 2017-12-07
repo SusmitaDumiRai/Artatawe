@@ -32,7 +32,7 @@ import co.uk.artatawe.database.ArtworkDatabaseManager;
  */
 public class NavigationController implements Initializable {
 
-    private static String username; //logged in user.
+    private String username; //logged in user.
     
     
     private final int WIDTH = 800; //size of window.
