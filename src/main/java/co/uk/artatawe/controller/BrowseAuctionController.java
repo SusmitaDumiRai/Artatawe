@@ -97,20 +97,30 @@ public class BrowseAuctionController implements Initializable    {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
         getImages(FXCollections.observableArrayList(artworkArrayList));
+
+      //  getImages();
+    		//sculpRadioButton.setSelected(true);
     }
+    
+
 
 
     /**
      * Gets all artworks currently in auction. Displays them.
      */
+
     public void getImages(ObservableList<Artwork> observeArrayList) {
+
 
         Stage stage = new Stage();
 
         ArrayList<String> artworkPhoto = new ArrayList<>();
+
         /*
-        if (sculpRadioButton.isSelected()) {
+        if(sculpRadioButton.isSelected()){
+
         	observeArrayList = FXCollections.observableArrayList(sculptureArrayList);
         } else if (paintRadioButton.isSelected()) {
         	observeArrayList = FXCollections.observableArrayList(paintingArrayList);
@@ -119,8 +129,11 @@ public class BrowseAuctionController implements Initializable    {
         } else {
         	allRadioButton.setSelected(true);
         	observeArrayList = FXCollections.observableArrayList(artworkArrayList);
+
         }
         */
+
+
 
         Image[] images = new Image[observeArrayList.size()];
         ImageView[] imageViews = new ImageView[observeArrayList.size()];
@@ -259,6 +272,7 @@ public class BrowseAuctionController implements Initializable    {
             System.out.println(ex.getMessage());
         }
     }
+
     
     @FXML
     public void sculpSelected() {
@@ -283,6 +297,7 @@ public class BrowseAuctionController implements Initializable    {
     void allSelected(ActionEvent event) {
 
     }
+
 
 
 
