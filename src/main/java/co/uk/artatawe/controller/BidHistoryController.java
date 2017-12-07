@@ -37,6 +37,12 @@ public class BidHistoryController implements Initializable {
     }
 
     @FXML
+    private Label Label1;
+
+    @FXML
+    private Label Label2;
+
+    @FXML
     private Button auctionButton;
 
     @FXML
@@ -56,7 +62,6 @@ public class BidHistoryController implements Initializable {
 
     @FXML
     private ListView<Auction> wonAuctionsList;
-
     ObservableList<Auction> wonAuctions = FXCollections.observableArrayList(getWonAuctions());
 
     @FXML
@@ -85,11 +90,17 @@ public class BidHistoryController implements Initializable {
 
         AuctionDatabaseManager auctionDatabaseManager = new AuctionDatabaseManager();
 
-        String sqlSelect = "Select * from auction where auctionComp = 1 and winningBid = '" + this.username + "';";
+        Auction compAuction = new Auction();
+
+        String sqlSelect = "Select * from auction where auctionComp = 1";
 
         ArrayList<Auction> wonAuctionArrayList = auctionDatabaseManager.getAllAuctions(sqlSelect);
 
-        return wonAuctionArrayList;
+        String sqlSelect2 = "";
+
+        ArrayList<Auction> usersWonAuctionArrayList = auctionDatabaseManager.getAllAuctions(sqlSelect2);
+
+        return usersWonAuctionArrayList;
 
     }
 
@@ -133,6 +144,8 @@ public class BidHistoryController implements Initializable {
     @FXML
     void handleSellingHistoryButton(ActionEvent event){
         soldAuctionsList.setVisible(true);
+        Label1.setText("Sold artwork");
+        Label2.setStyle("-fx-text-fill: transparent");//or .setVisible(false);
 
     }
 
@@ -142,5 +155,7 @@ public class BidHistoryController implements Initializable {
         placedBidsList.setVisible(false);
         wonAuctionsList.setVisible(false);
         soldAuctionsList.setVisible(false);
+        Label1.setStyle("-fx-text-fill: transparent");//or .setVisible(false);
+        Label2.setStyle("-fx-text-fill: transparent");//or .setVisible(false);
     }
 }
