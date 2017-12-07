@@ -152,7 +152,7 @@
    <top>
       <HBox alignment="CENTER" prefHeight="23.0" prefWidth="591.0" BorderPane.alignment="CENTER">
          <children>
-            <RadioButton mnemonicParsing="false" text="sculptures">
+            <RadioButton fx:id="sculpRadioButton" mnemonicParsing="false" onAction="#sculpSelected" text="sculptures">
                <toggleGroup>
                   <ToggleGroup fx:id="typeOfArtwork" />
                </toggleGroup>

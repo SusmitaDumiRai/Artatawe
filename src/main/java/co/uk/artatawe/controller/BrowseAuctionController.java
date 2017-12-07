@@ -1,5 +1,7 @@
 package co.uk.artatawe.controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -11,6 +13,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -26,6 +29,8 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import co.uk.artatawe.artwork.Artwork;
+import co.uk.artatawe.artwork.Painting;
+import co.uk.artatawe.artwork.Sculpture;
 import co.uk.artatawe.database.ArtworkDatabaseManager;
 
 
@@ -40,6 +45,20 @@ public class BrowseAuctionController implements Initializable    {
     private String username; //logged in user.
     private final int WIDTH = 800; //size of window.
     private final int HEIGHT = 600; //size of window.
+    
+    private ArtworkDatabaseManager artworkDatabaseManager = new ArtworkDatabaseManager();
+    
+    private ObservableList<Artwork> observeArrayList;
+
+    private String sqlSelect = "Select * from artwork, auction where auction.auctionid = artwork.artworkid and auctioncomp = 0;";
+    private String sqlSelect1 = "Select * from artwork, auction where auction.auctionid = artwork.artworkid and auctioncomp = 0 and artwork.typeOfArtwork = 'painting';";
+    private String sqlSelect2 = "Select * from artwork, auction where auction.auctionid = artwork.artworkid and auctioncomp = 0 and artwork.typeOfArtwork = 'sculpture';";
+       
+    
+    private ArrayList<Artwork> artworkArrayList = artworkDatabaseManager.getAllArtworks(sqlSelect); //get ongoing artworks.
+    private ArrayList<Artwork> paintingArrayList = artworkDatabaseManager.getAllArtworks(sqlSelect1);
+    private ArrayList<Artwork> sculptureArrayList = artworkDatabaseManager.getAllArtworks(sqlSelect2);
+    
 
     @FXML
     private TilePane artworkTilePane;
@@ -49,6 +68,9 @@ public class BrowseAuctionController implements Initializable    {
 
     @FXML
     private ImageView imv;
+    
+    @FXML
+    private RadioButton sculpRadioButton;
 
 
 
@@ -80,17 +102,18 @@ public class BrowseAuctionController implements Initializable    {
 
         Stage stage = new Stage();
 
-        ArtworkDatabaseManager artworkDatabaseManager = new ArtworkDatabaseManager();
-
-        String sqlSelect = "Select * from artwork, auction where auction.auctionid = artwork.artworkid and auctioncomp = 0;";
-
-        ArrayList<Artwork> artworkArrayList = artworkDatabaseManager.getAllArtworks(sqlSelect); //get ongoing artworks.
-
         ArrayList<String> artworkPhoto = new ArrayList<>();
+        
+        if(sculpRadioButton.isSelected()){
+        	observeArrayList = FXCollections.observableArrayList(sculptureArrayList);
+        }
+        else if(!sculpRadioButton.isSelected()){
+        	observeArrayList = FXCollections.observableArrayList(sculptureArrayList);
+        }
 
-        Image[] images = new Image[artworkArrayList.size()];
-        ImageView[] imageViews = new ImageView[artworkArrayList.size()];
-        VBox[] vBoxes = new VBox[artworkArrayList.size()]; //vboxs to add in grid pane.
+        Image[] images = new Image[observeArrayList.size()];
+        ImageView[] imageViews = new ImageView[observeArrayList.size()];
+        VBox[] vBoxes = new VBox[observeArrayList.size()]; //vboxs to add in grid pane.
 
 
         artworkScrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); //scroller can't move horizontally.
@@ -99,12 +122,12 @@ public class BrowseAuctionController implements Initializable    {
         artworkScrollPane.setContent(artworkTilePane);
 
         //Get location of artwork photos.
-        for (Artwork artwork : artworkArrayList) {
+        for (Artwork artwork : observeArrayList) {
             artworkPhoto.add(artwork.getPhoto());
         }
         //Rectangle2D viewportRect = new Rectangle2D(40, 35, 200, 200);//don't need this
 
-        String[] imageLocation = artworkPhoto.toArray(new String[artworkArrayList.size()]); //convert array list to array.
+        String[] imageLocation = artworkPhoto.toArray(new String[observeArrayList.size()]); //convert array list to array.
 
         for (int i = 0; i < imageLocation.length; i++) {
 
@@ -158,9 +181,7 @@ public class BrowseAuctionController implements Initializable    {
 
 
     }
-
-
-
+   
 
     /**
      * Displays create auction when clicked.
@@ -226,6 +247,12 @@ public class BrowseAuctionController implements Initializable    {
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
+    }
+    
+    public void sculpSelected(){
+    	if (sculpRadioButton.isSelected()) {
+    		
+    	}
     }
 
 
