@@ -1,6 +1,10 @@
 package co.uk.artatawe.controller;
 
 import co.uk.artatawe.database.ArtworkDatabaseManager;
+import co.uk.artatawe.database.AuctionDatabaseManager;
+import co.uk.artatawe.main.Auction;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
 
 import java.net.URL;
@@ -40,13 +44,12 @@ public class CurrentAuctionController implements Initializable {
     /**
      * Displays all ongoing auctions being sold by logged in user.
      */
-    public void getCurrentSellingAuctions() {
+    public ObservableList<Auction> getCurrentSellingAuctions() {
 
        // String sqlSelect = "SELECT * from artwork, auction where artwork.artworkid = auction.auctionid and auctioncomp = 0 and seller = '" + this.username + "';";
         String sqlSelect = "SELECT * from artwork, auction where artwork.artworkid = auction.auctionid and auctioncomp = 0 and seller = 'username';";
 
-        ArtworkDatabaseManager artworkDatabaseManager = new ArtworkDatabaseManager();
-        artworkDatabaseManager.getAllArtworks(sqlSelect);
+        return FXCollections.observableArrayList(new AuctionDatabaseManager().getAllAuctions(sqlSelect));
 
 
 
