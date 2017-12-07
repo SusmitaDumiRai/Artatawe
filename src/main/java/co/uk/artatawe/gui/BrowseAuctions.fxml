@@ -42,14 +42,14 @@
       </ScrollPane>
    </center>
    <top>
-      <HBox alignment="CENTER" prefHeight="23.0" prefWidth="591.0" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER_LEFT" prefHeight="23.0" prefWidth="591.0" BorderPane.alignment="CENTER">
          <children>
             <RadioButton fx:id="sculpRadioButton" mnemonicParsing="false" onAction="#sculpSelected" text="sculptures">
                <toggleGroup>
                   <ToggleGroup fx:id="typeOfArtwork" />
                </toggleGroup>
                <HBox.margin>
-                  <Insets left="150.0" right="40.0" />
+                  <Insets right="40.0" />
                </HBox.margin>
             </RadioButton>
             <RadioButton fx:id="paintRadioButton" mnemonicParsing="false" text="paintings" toggleGroup="$typeOfArtwork">
