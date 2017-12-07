@@ -145,6 +145,13 @@ public class NavigationController implements Initializable {
     
     @FXML
     void handleBidAction(ActionEvent event) throws IOException {
+    	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/BidHistory.fxml"));
+    	
+    	BidHistoryController bidHistoryController = new BidHistoryController();
+    	bidHistoryController.setUsername(this.username);
+    	fxmlLoader.setController(bidHistoryController);
+
+   	 	centerPane.setCenter(fxmlLoader.load());
     	
     	
     }

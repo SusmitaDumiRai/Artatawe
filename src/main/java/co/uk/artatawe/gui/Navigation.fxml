@@ -101,7 +101,7 @@
                   <Insets bottom="6.0" left="6.0" right="6.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="bidHistoryButton" contentDisplay="TOP" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #23112a;" text="My Bid History" textFill="WHITE">
+            <Button fx:id="bidHistoryButton" contentDisplay="TOP" onAction="#handleBidAction" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #23112a;" text="My Bid History" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                      <effect>
