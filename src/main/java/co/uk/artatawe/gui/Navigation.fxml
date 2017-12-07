@@ -86,7 +86,7 @@
                   <Insets bottom="6.0" left="6.0" right="6.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="myActionsButton" contentDisplay="TOP" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #361949;" text="My Auctions" textFill="WHITE">
+            <Button fx:id="myActionsButton" contentDisplay="TOP" onAction="#handleMyAuctionsAction" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #361949;" text="My Auctions" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="15040.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                      <effect>

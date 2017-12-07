@@ -146,6 +146,13 @@ public class NavigationController implements Initializable {
     
     @FXML
     void handleMyAuctionsAction(ActionEvent event) throws IOException {
+    	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/CurrentAuctions.fxml"));
+    	
+    	CurrentAuctionController currentAuctionController = new CurrentAuctionController();
+    	currentAuctionController.setUsername(this.username);
+    	fxmlLoader.setController(currentAuctionController);
+
+   	 	centerPane.setCenter(fxmlLoader.load());
     	
     	
     }
