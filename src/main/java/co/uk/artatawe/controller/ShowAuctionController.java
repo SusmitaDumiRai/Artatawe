@@ -98,6 +98,9 @@ public class ShowAuctionController implements Initializable {
     @FXML
     private Label errorMessage;
 
+    @FXML
+    private Label numOfBidLeft;
+
 
     /**
      * Empty constructor.
@@ -138,6 +141,7 @@ public class ShowAuctionController implements Initializable {
         auction = auctionDatabaseManager.getAuction(sqlSelectAuction);
 
 
+        //Display all information in the GUI.
         this.title.setText(artwork.getTitle());
         this.description.setText(artwork.getDescription());
         this.width.setText(Double.toString(artwork.getWidth()));
@@ -146,12 +150,15 @@ public class ShowAuctionController implements Initializable {
         this.date.setText(artwork.getDateEntered());
         this.creator.setText(artwork.getNameOfCreator());
         this.sellerName.setText(auction.getSeller().getUserName());
+        this.numOfBidLeft.setText(Integer.toString(auction.getNumOfBidsLeft()));
 
 
+        //Display image.
         Image image = new Image(artwork.getPhoto());
         this.imageViewPhoto.setImage(image);
 
-        if (artwork.getTypeOfArtwork().equals("sculpture")) {
+        if (artwork.getTypeOfArtwork().equals("sculpture")) { //if sculpture display more info.
+            //TODO EXTRA PHOTO.
             Sculpture sculpture = (Sculpture) artwork;
             this.xDepth.setVisible(true);
             depth.setVisible(true);
@@ -221,9 +228,16 @@ public class ShowAuctionController implements Initializable {
             //Decrease bid amount.
             if (auction.getNumOfBidsLeft() > 1) {
                 sqlUpdateBidAmount = "Update auction set numofbidsleft = " + (auction.getNumOfBidsLeft() - 1) + " where auctionid = " + this.artwork.getArtworkID() + ";";
-            } else { //make it completed.
+
+            } else { //complete auction.
                 sqlUpdateBidAmount = "Update auction set numofbidsleft = " + (auction.getNumOfBidsLeft() - 1) + ", auctioncomp = 1 where auctionid = " + this.artwork.getArtworkID() + ";";
+                makeBidButton.setDisable(true);
             }
+
+            numOfBidLeft.setText(Integer.toString(auction.getNumOfBidsLeft() - 1)); //update num of bids left in GUI.
+            reservedPrice.setText(bid.getText());
+
+
             auctionDatabaseManager.updateStatement(sqlUpdateBidAmount);
 
         }

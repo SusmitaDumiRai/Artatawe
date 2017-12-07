@@ -59,11 +59,13 @@ public class NavigationController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-    	
-    	
-    	
+
+        BrowseAuctionController browseAuctionController = new BrowseAuctionController();
+        browseAuctionController.setUsername(this.username);
+
     	 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/BrowseAuctions.fxml"));
 
+    	 fxmlLoader.setController(browseAuctionController);
          try {
 			centerPane.setCenter(fxmlLoader.load());
 		} catch (IOException e) {
@@ -128,14 +130,12 @@ public class NavigationController implements Initializable {
     	
     	 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/BrowseAuctions.fxml"));
 
-         try {
-			centerPane.setCenter(fxmlLoader.load());
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} 
-		
-   
+    	 BrowseAuctionController browseAuctionController = new BrowseAuctionController();
+    	 browseAuctionController.setUsername(this.username);
+
+    	 fxmlLoader.setController(browseAuctionController);
+
+    	 centerPane.setCenter(fxmlLoader.load());
     }
 
     public String getUsername() {

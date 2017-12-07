@@ -50,15 +50,10 @@ public class BrowseAuctionController implements Initializable    {
     
     private ObservableList<Artwork> observeArrayList;
 
-    private String sqlSelect = "Select * from artwork, auction where auction.auctionid = artwork.artworkid and auctioncomp = 0;";
-    private String sqlSelect1 = "Select * from artwork, auction where auction.auctionid = artwork.artworkid and auctioncomp = 0 and artwork.typeOfArtwork = 'painting';";
-    private String sqlSelect2 = "Select * from artwork, auction where auction.auctionid = artwork.artworkid and auctioncomp = 0 and artwork.typeOfArtwork = 'sculpture';";
-       
-    
-    private ArrayList<Artwork> artworkArrayList = artworkDatabaseManager.getAllArtworks(sqlSelect); //get ongoing artworks.
-    private ArrayList<Artwork> paintingArrayList = artworkDatabaseManager.getAllArtworks(sqlSelect1);
-    private ArrayList<Artwork> sculptureArrayList = artworkDatabaseManager.getAllArtworks(sqlSelect2);
-    
+    /*
+
+
+    */
 
     @FXML
     private TilePane artworkTilePane;
@@ -97,12 +92,10 @@ public class BrowseAuctionController implements Initializable    {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
-        getImages(FXCollections.observableArrayList(artworkArrayList));
+        //gets all auctions being sold that is not by you.
+        String sqlSelect = "Select * from artwork, auction where auction.auctionid = artwork.artworkid and auctioncomp = 0 and auction.seller <> '" + this.username + "';";
+        getImages(FXCollections.observableArrayList(artworkDatabaseManager.getAllArtworks(sqlSelect)));
         allRadioButton.setSelected(true);
-
-      //  getImages();
-    		//sculpRadioButton.setSelected(true);
     }
     
 
@@ -113,6 +106,8 @@ public class BrowseAuctionController implements Initializable    {
      */
 
     public void getImages(ObservableList<Artwork> observeArrayList) {
+
+
 
 
         Stage stage = new Stage();
@@ -278,23 +273,33 @@ public class BrowseAuctionController implements Initializable    {
     @FXML
     public void sculpSelected() {
 
+
+        String sqlSelect = "Select * from artwork, auction where auction.auctionid = artwork.artworkid and auctioncomp = 0 and artwork.typeOfArtwork = 'sculpture' and auction.seller <> '" +
+                 this.username + "';";
+
         artworkTilePane.getChildren().clear(); //delete all previous artworks.
 
 
-        getImages(FXCollections.observableArrayList(sculptureArrayList));
+        getImages(FXCollections.observableArrayList(artworkDatabaseManager.getAllArtworks(sqlSelect)));
 
     }
 
 
     @FXML
     void paintSelected(ActionEvent event) {
+
+        String sqlSelect = "Select * from artwork, auction where auction.auctionid = artwork.artworkid and auctioncomp = 0 and artwork.typeOfArtwork = 'painting' and auction.seller <> '"
+                + this.username + "';";
+
         artworkTilePane.getChildren().clear(); //delete all previous artworks.
-        getImages(FXCollections.observableArrayList(paintingArrayList));
+        getImages(FXCollections.observableArrayList(artworkDatabaseManager.getAllArtworks(sqlSelect)));
 
     }
 
     @FXML
     void favouriteSelected(ActionEvent event) {
+        //TODO
+
         artworkTilePane.getChildren().clear(); //delete all previous artworks.
         System.out.println("favourite selected.");
       //  getImages(FXCollections.observableArrayList()));
@@ -304,8 +309,9 @@ public class BrowseAuctionController implements Initializable    {
 
     @FXML
     void allSelected(ActionEvent event) {
+        String sqlSelect = "Select * from artwork, auction where auction.auctionid = artwork.artworkid and auctioncomp = 0 and auction.seller <> '" + this.username + "';";
         artworkTilePane.getChildren().clear(); //delete all previous artworks.
-        getImages(FXCollections.observableArrayList(artworkArrayList));
+        getImages(FXCollections.observableArrayList(artworkDatabaseManager.getAllArtworks(sqlSelect)));
 
 
     }

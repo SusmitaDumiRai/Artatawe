@@ -55,7 +55,12 @@ public class LoginController implements Initializable {
             Parent root;
             try {
 
+                NavigationController navigationController = new NavigationController();
+                navigationController.setUsername(username.getText());
+
+
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/Navigation.fxml"));
+                fxmlLoader.setController(navigationController);
 
                 root = fxmlLoader.load();
 
@@ -63,10 +68,6 @@ public class LoginController implements Initializable {
                 Stage stage = new Stage();
                 stage.setTitle("Artatawe");
                 stage.setScene(new Scene(root, WIDTH, HEIGHT));
-                
-
-                NavigationController navigationController = fxmlLoader.<NavigationController>getController();
-                navigationController.setUsername(username.getText()); //parse username.
 
                 stage.show(); //display browse auctions.
 
