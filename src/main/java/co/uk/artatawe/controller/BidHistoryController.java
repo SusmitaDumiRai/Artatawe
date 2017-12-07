@@ -188,7 +188,7 @@ public class BidHistoryController implements Initializable {
                     setText(null);
                 } else {
                     setText("Artwork title: " + auction.getArtwork().getTitle() +
-                            "\nBid amount: " + auction.getHighestBid()); //TODO more auction info.
+                            "\nBid amount: " + auction.getHighestBid());
                 }
             }
         });
@@ -200,7 +200,8 @@ public class BidHistoryController implements Initializable {
     }
 
     /**
-     *
+     * Displays entire bid history of user,
+     * in order chronological order.
      */
     public void populateBidHistory() {
         ListView<Bid> bidListView = new ListView<>(getPlacedBids());
@@ -219,7 +220,7 @@ public class BidHistoryController implements Initializable {
 
                     setText("Artwork title: " + auction.getArtwork().getTitle() +
                             "\nBid amount: " + Double.toString(bid.getBidAmount()) +
-                            "\nBid date and time: " + bid.getDateAndTime()); 
+                            "\nBid date and time: " + bid.getDateAndTime());
                 }
             }
         });
@@ -231,19 +232,44 @@ public class BidHistoryController implements Initializable {
         pane.getChildren().add(bidListView);
     }
 
+    /**
+     * Gets all auctions sold by the logged in user.
+     */
     public void populateSoldAuction() {
+        ListView<Auction> auctionListView = new ListView<>(getWonAuctions());
 
+        auctionListView.setCellFactory(param -> new ListCell<Auction>() {
+            @Override
+            protected void updateItem(Auction auction, boolean empty) {
+                super.updateItem(auction, empty);
+
+                if (empty || auction == null || auction.getArtwork() == null) {
+                    setText(null);
+                } else {
+                    setText("Artwork title: " + auction.getArtwork().getTitle() +
+                            "\nWinner username: " + auction.getWinner().getUserName() +
+                            "\nBid amount: " + auction.getHighestBid());
+                }
+            }
+        });
+
+        //TODO make it look nice
+        auctionListView.setLayoutX(100);
+        auctionListView.setLayoutY(121);
+        pane.getChildren().add(auctionListView);
     }
 
     @FXML
     void boughtHistoryAction(ActionEvent event) {
+      //  pane.getChildren().clear(); //remove old details.
         populateBidHistory();
         populateWonAuction();
     }
 
     @FXML
     void soldHistoryAction(ActionEvent event) {
-
+    //    pane.getChildren().clear(); //remove old details.
+        populateSoldAuction();
     }
 
 
