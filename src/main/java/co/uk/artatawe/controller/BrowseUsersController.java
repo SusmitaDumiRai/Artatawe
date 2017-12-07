@@ -71,11 +71,13 @@ public class BrowseUsersController implements Initializable {
             }
         }
 
-       // for (String username: favouriteUserNames) {
-        //    if () {
+        /*
+        for (String username: favouriteUserNames) {
+           if () {
 
-          //  }
-        //}
+            }
+        }
+        */
     }
 
     /**
