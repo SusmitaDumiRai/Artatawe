@@ -169,6 +169,7 @@ public class NavigationController implements Initializable {
     	
     	
     }
+    
      
     public String getUsername() {
         return username;
@@ -177,5 +178,10 @@ public class NavigationController implements Initializable {
     public void setUsername(String username) {
         this.username = username;
     }
+
+	public static void setCenterPane(Object load) {
+		//centerPane = (BorderPane) load;
+		
+	}
         
 }

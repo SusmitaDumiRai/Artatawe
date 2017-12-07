@@ -10,7 +10,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #DCDCDC;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
@@ -238,7 +238,7 @@
                   </HBox>
                </children>
             </VBox>
-            <Button fx:id="submitButton" layoutX="506.0" layoutY="527.0" mnemonicParsing="false" onAction="#handleSubmitAction" text="Submit" />
+            <Button fx:id="submitButton" layoutX="506.0" layoutY="527.0" mnemonicParsing="false" onAction="#handleSubmitAction" style="-fx-background-color: #87CEEB;" text="Submit" />
          </children>
       </Pane>
    </center>

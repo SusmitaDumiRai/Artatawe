@@ -11,7 +11,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.uk.artatawe.controller.LoginController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="500.0" style="-fx-background-color: #DCDCDC;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.uk.artatawe.controller.LoginController">
    <top>
       <Pane prefHeight="200.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
@@ -34,8 +34,8 @@
    <center>
       <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <TextField fx:id="username" layoutX="157.0" layoutY="-8.0" promptText="Type in user name" />
-            <Button fx:id="signInButton" layoutX="276.0" layoutY="29.0" mnemonicParsing="false" onAction="#signInUser" opacity="0.9" prefHeight="25.0" prefWidth="67.0" text="Sign in" />
+            <TextField fx:id="username" layoutX="157.0" layoutY="-8.0" onAction="#onEnter" promptText="Type in user name" />
+            <Button fx:id="signInButton" layoutX="276.0" layoutY="29.0" mnemonicParsing="false" onAction="#signInUser" opacity="0.9" prefHeight="25.0" prefWidth="67.0" style="-fx-background-color: #87CEEB;" text="Sign in" />
             <Label fx:id="errorMessage" layoutX="276.0" layoutY="60.0" style="-fx-text-fill: transparent;" text="'Please use a valid username'" />
          </children>
       </Pane>

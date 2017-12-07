@@ -25,49 +25,53 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #DCDCDC;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <center>
-      <ScrollPane fx:id="artworkScrollPane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <content>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="597.0" prefWidth="579.0">
+      <BorderPane fx:id="centerPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #DCDCDC;" BorderPane.alignment="CENTER">
+         <center>
+            <ScrollPane fx:id="artworkScrollPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #DCDCDC;" BorderPane.alignment="CENTER">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="597.0" prefWidth="579.0" style="-fx-background-color: #DCDCDC;">
+                     <children>
+                        <TilePane fx:id="artworkTilePane" hgap="15.0" layoutX="14.0" layoutY="23.0" prefHeight="574.0" prefWidth="579.0" style="-fx-background-color: #DCDCDC;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="23.0">
+                           <padding>
+                              <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                           </padding>
+                        </TilePane>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </ScrollPane>
+         </center>
+         <top>
+            <HBox alignment="CENTER_LEFT" prefHeight="23.0" prefWidth="591.0" style="-fx-background-color: #DCDCDC;" BorderPane.alignment="CENTER">
                <children>
-                  <TilePane fx:id="artworkTilePane" hgap="15.0" layoutX="14.0" layoutY="23.0" prefHeight="574.0" prefWidth="579.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="23.0">
-                     <padding>
-                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
-                     </padding>
-                  </TilePane>
+                  <RadioButton fx:id="sculpRadioButton" mnemonicParsing="false" onAction="#sculpSelected" text="sculptures">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="typeOfArtwork" />
+                     </toggleGroup>
+                     <HBox.margin>
+                        <Insets right="40.0" />
+                     </HBox.margin>
+                  </RadioButton>
+                  <RadioButton fx:id="paintRadioButton" mnemonicParsing="false" onAction="#paintSelected" text="paintings" toggleGroup="$typeOfArtwork">
+                     <HBox.margin>
+                        <Insets right="40.0" />
+                     </HBox.margin>
+                  </RadioButton>
+                  <RadioButton fx:id="favouriteRadioButton" mnemonicParsing="false" onAction="#favouriteSelected" text="user favorites" toggleGroup="$typeOfArtwork">
+                     <HBox.margin>
+                        <Insets right="40.0" />
+                     </HBox.margin>
+                  </RadioButton>
+                  <RadioButton fx:id="allRadioButton" mnemonicParsing="false" onAction="#allSelected" prefHeight="21.0" prefWidth="49.0" text="all" toggleGroup="$typeOfArtwork">
+                     <HBox.margin>
+                        <Insets right="40.0" />
+                     </HBox.margin>
+                  </RadioButton>
                </children>
-            </AnchorPane>
-         </content>
-      </ScrollPane>
+            </HBox>
+         </top>
+      </BorderPane>
    </center>
-   <top>
-      <HBox alignment="CENTER_LEFT" prefHeight="23.0" prefWidth="591.0" BorderPane.alignment="CENTER">
-         <children>
-            <RadioButton fx:id="sculpRadioButton" mnemonicParsing="false" onAction="#sculpSelected" text="sculptures">
-               <toggleGroup>
-                  <ToggleGroup fx:id="typeOfArtwork" />
-               </toggleGroup>
-               <HBox.margin>
-                  <Insets right="40.0" />
-               </HBox.margin>
-            </RadioButton>
-            <RadioButton fx:id="paintRadioButton" mnemonicParsing="false" onAction="#paintSelected" text="paintings" toggleGroup="$typeOfArtwork">
-               <HBox.margin>
-                  <Insets right="40.0" />
-               </HBox.margin>
-            </RadioButton>
-            <RadioButton fx:id="favouriteRadioButton" mnemonicParsing="false" onAction="#favouriteSelected" text="user favorites" toggleGroup="$typeOfArtwork">
-               <HBox.margin>
-                  <Insets right="40.0" />
-               </HBox.margin>
-            </RadioButton>
-            <RadioButton fx:id="allRadioButton" mnemonicParsing="false" onAction="#allSelected" prefHeight="21.0" prefWidth="49.0" text="all" toggleGroup="$typeOfArtwork">
-               <HBox.margin>
-                  <Insets right="40.0" />
-               </HBox.margin>
-            </RadioButton>
-         </children>
-      </HBox>
-   </top>
 </BorderPane>
