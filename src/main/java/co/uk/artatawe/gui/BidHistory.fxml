@@ -1,16 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
-<?import javafx.scene.text.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.uk.artatawe.controller.BidHistoryController">
    <left>
       <VBox prefHeight="600.0" prefWidth="201.0" BorderPane.alignment="CENTER">
          <children>
@@ -56,7 +66,7 @@
                   <Insets bottom="6.0" left="6.0" right="6.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="artworkButton" contentDisplay="TOP" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #ca3a5e;" text="Browse Artwork" textFill="WHITE">
+            <Button fx:id="Button" contentDisplay="TOP" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #ca3a5e;" text="Browse Artwork" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                      <effect>
@@ -122,11 +132,12 @@
    <center>
       <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="buyingHistoryButton" layoutX="133.0" layoutY="43.0" mnemonicParsing="false" text="Buying history" />
-            <Button fx:id="sellingHistoryButton" layoutX="375.0" layoutY="43.0" mnemonicParsing="false" text="Selling history" />
+            <ListView fx:id="soldAuctionsList" layoutX="100.0" layoutY="121.0" prefHeight="449.0" prefWidth="421.0" />
+            <Button fx:id="buyingHistoryButton" layoutX="133.0" layoutY="43.0" mnemonicParsing="false" onAction="#handleBuyingHistoryButton" text="Buying history" />
+            <Button fx:id="sellingHistoryButton" layoutX="375.0" layoutY="43.0" mnemonicParsing="false" onAction="#handleSellingHistoryButton" onMouseClicked="#handleBuyingHistoryButton" text="Selling history" />
             <ListView fx:id="placedBidsList" layoutX="100.0" layoutY="121.0" prefHeight="200.0" prefWidth="421.0" />
-            <Label layoutX="98.0" layoutY="93.0" text="Placed bids" />
-            <Label layoutX="100.0" layoutY="341.0" text="Won auctions" />
+            <Label fx:id="Label1" layoutX="98.0" layoutY="93.0" text="Placed bids" />
+            <Label fx:id="Label2" layoutX="100.0" layoutY="341.0" text="Won auctions" />
             <ListView fx:id="wonAuctionsList" layoutX="100.0" layoutY="369.0" prefHeight="200.0" prefWidth="421.0" />
          </children>
       </Pane>

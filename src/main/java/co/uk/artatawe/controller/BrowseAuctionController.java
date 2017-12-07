@@ -71,6 +71,12 @@ public class BrowseAuctionController implements Initializable    {
     
     @FXML
     private RadioButton sculpRadioButton;
+    
+    @FXML 
+    private RadioButton paintRadioButton;
+    
+    @FXML 
+    private RadioButton allRadioButton;
 
 
 
@@ -107,8 +113,15 @@ public class BrowseAuctionController implements Initializable    {
         if(sculpRadioButton.isSelected()){
         	observeArrayList = FXCollections.observableArrayList(sculptureArrayList);
         }
-        else if(!sculpRadioButton.isSelected()){
-        	observeArrayList = FXCollections.observableArrayList(sculptureArrayList);
+        else if(paintRadioButton.isSelected()){
+        	observeArrayList = FXCollections.observableArrayList(paintingArrayList);
+        }
+        else if(allRadioButton.isSelected()){
+        	observeArrayList = FXCollections.observableArrayList(artworkArrayList);
+        }
+        else {
+        	allRadioButton.setSelected(true);
+        	observeArrayList = FXCollections.observableArrayList(artworkArrayList);
         }
 
         Image[] images = new Image[observeArrayList.size()];
@@ -248,7 +261,7 @@ public class BrowseAuctionController implements Initializable    {
             System.out.println(ex.getMessage());
         }
     }
-
+    
     @FXML
     public void sculpSelected(){
     	if (sculpRadioButton.isSelected()) {
