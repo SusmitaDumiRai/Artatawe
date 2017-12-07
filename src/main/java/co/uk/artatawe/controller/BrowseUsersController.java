@@ -38,8 +38,6 @@ public class BrowseUsersController implements Initializable {
     @FXML
     private ScrollPane scrollPane;
 
-    ArrayList<String> favouriteUserNames = new ArrayList<>();
-
     /**
      * Empty constructor
      */
@@ -55,29 +53,36 @@ public class BrowseUsersController implements Initializable {
         this.username = username;
     }
 
-    public ArrayList<FavouriteUsers> getAllFavouriteUsers() {
+    public ArrayList<User> getAllFavouriteUsers() {
 
         FavouriteUserDatabaseManager favouriteUserDatabaseManager = new FavouriteUserDatabaseManager();
         String sqlSelect = "select * from favouriteuser;";
-        return favouriteUserDatabaseManager.getFavouriteUsers(sqlSelect); //create an array of favourite users
+        ArrayList<User> favs = new ArrayList<>();
+
+        for (FavouriteUsers favouriteUsers : favouriteUserDatabaseManager.getFavouriteUsers(sqlSelect)) {
+            if (favouriteUsers.getUser1().getUserName().equals(this.username)) {
+                favs.add(favouriteUsers.getUser2());
+            }
+        }
+
+        return favs;
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        this.username = "username";
         getUserProfiles();
-        for (FavouriteUsers favouriteUsers: getAllFavouriteUsers()) {
-            if (favouriteUsers.getUser1().getUserName().equals(this.username)) {
-                favouriteUserNames.add(favouriteUsers.getUser2().getUserName());
+    }
+
+    private boolean isFavouriteOf(User user)
+    {
+        for (User fav : getAllFavouriteUsers()) {
+            if (fav.getUserName().equals(user.getUserName())) {
+                return true;
             }
         }
 
-        /*
-        for (String username: favouriteUserNames) {
-           if () {
-
-            }
-        }
-        */
+        return false;
     }
 
     /**
@@ -92,15 +97,6 @@ public class BrowseUsersController implements Initializable {
      //   String sqlSelect = "Select * from user where username <> '" + this.username + "'";";
         String sqlSelect = "Select * from user where username <> 'username';";
 
-        ArrayList<User> userArrayList = userDatabaseManager.getAllUsers(sqlSelect);
-
-        ArrayList<String> userIcon = new ArrayList<>();
-        ArrayList<String> allUsernames = new ArrayList<>();
-
-        Image[] icons = new Image[userArrayList.size()];
-        ImageView[] imageViews = new ImageView[userArrayList.size()];
-        VBox[] vBoxes = new VBox[userArrayList.size()];
-
         scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
         scrollPane.setFitToHeight(true);
@@ -109,76 +105,62 @@ public class BrowseUsersController implements Initializable {
         tilePane.setVgap(10);
 
         //gets all usernames and profile images
-        for (User user: userArrayList) {
-            userIcon.add(user.getProfileImage());
-            allUsernames.add(user.getUserName());
-        }
+        for (User user : userDatabaseManager.getAllUsers(sqlSelect)) {
 
-        String[] usernameArray = allUsernames.toArray(new String[userArrayList.size()]);
-        String[] imageLocation = userIcon.toArray(new String[userArrayList.size()]);
-
-        //Display in GUI.
-        for (int i = 0; i < imageLocation.length; i++) {
-
-            icons[i] = new Image(imageLocation[i], 150, 0, true, true);
-            imageViews[i] = new ImageView(icons[i]);
-            imageViews[i].setFitWidth(150);
-            imageViews[i].setFitHeight(stage.getHeight() - 10);
-            imageViews[i].setPreserveRatio(true);
-            imageViews[i].setSmooth(true);
-            imageViews[i].setCache(true);
+            Image icon = new Image(user.getProfileImage(), 150, 0, true, true);
+            ImageView imageView = new ImageView(icon);
+            imageView.setFitWidth(150);
+            imageView.setFitHeight(stage.getHeight() - 10);
+            imageView.setPreserveRatio(true);
+            imageView.setSmooth(true);
+            imageView.setCache(true);
 
             Button heartButton = new Button();
+
             Image heartIcon = new Image(("co/uk/artatawe/gui/Icons/icons8-heart-40.png"));
+
+            if (isFavouriteOf(user)) {
+                heartIcon = new Image("co/uk/artatawe/gui/Icons/icons8-love-50.png");
+            }
+
             heartButton.setGraphic(new ImageView(heartIcon));
             heartButton.setStyle("-fx-background-color: transparent; -fx-text-fill: black; -fx-border-color: transparent");
 
-            vBoxes[i] = new VBox();
+            VBox vBox = new VBox();
 
-            vBoxes[i].getChildren().addAll(imageViews[i]);
-            heartButton.setText(usernameArray[i]);
+            vBox.getChildren().addAll(imageView);
+            heartButton.setText(user.getUserName());
 
-            vBoxes[i].getChildren().add(heartButton);
-            tilePane.getChildren().add(vBoxes[i]); //add image to gridpane.
-
-            final int currentI = i;
-
+            vBox.getChildren().add(heartButton);
+            tilePane.getChildren().add(vBox); //add image to gridpane.
 
             heartButton.setOnAction(new EventHandler<ActionEvent>() {
                 @Override public void handle(ActionEvent e) {
 
                     FavouriteUserDatabaseManager favouriteUserDatabaseManager = new FavouriteUserDatabaseManager();
 
-                    String sqlInsert = "insert into favouriteuser(username1,username2) values (" +
-                    "'username'," + "'" + usernameArray[currentI] + "');";
+                    if (isFavouriteOf(user)) {
+                        String sqlDelete = "delete from favouriteuser where username1 = '" + username
+                                + "' and username2 = '" + user.getUserName() + "';";
 
-                    System.out.println(sqlInsert);
+                        favouriteUserDatabaseManager.executeStatement(sqlDelete);
+                        System.out.println(sqlDelete);
 
-                    /*
-                    username = " + this.username +"
-                    String sqlInsert = "insert into favouriteuser(username1,username2) values (" +
-                    "'username'," + "'username');";
-                    favouriteUserDatabaseManager.executeStatement(sqlInsert);
-                    */
-
-                    Image fullHeart = new Image(("co/uk/artatawe/gui/Icons/icons8-love-50.png"));
-                    heartButton.setGraphic(new ImageView(fullHeart));
-
-                    String sqlSelect = "select * from favouriteuser;";
-                    ArrayList<FavouriteUsers> favouriteUserArrayList = favouriteUserDatabaseManager.getFavouriteUsers(sqlSelect); //create an array of favourite users
-                    User user1 = userDatabaseManager.getUser("username");
-                    User user2 = userDatabaseManager.getUser("uglybackpack");
-
-                    FavouriteUsers favouriteUser = new FavouriteUsers(user1, user2 );
-
-                    if(favouriteUserArrayList.contains(favouriteUser)) {
-
+                        Image fullHeart = new Image(("co/uk/artatawe/gui/Icons/icons8-heart-40.png"));
+                        heartButton.setGraphic(new ImageView(fullHeart));
                     }
+                    else {
+                        String sqlInsert = "insert into favouriteuser(username1,username2) values ('" +
+                                username + "', '" + user.getUserName() + "');";
 
+                        favouriteUserDatabaseManager.executeStatement(sqlInsert);
+                        System.out.println(sqlInsert);
+
+                        Image fullHeart = new Image(("co/uk/artatawe/gui/Icons/icons8-love-50.png"));
+                        heartButton.setGraphic(new ImageView(fullHeart));
+                    }
                 }
             });
-
-
         }
     }
 
