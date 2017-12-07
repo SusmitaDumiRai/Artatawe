@@ -6,6 +6,7 @@ import co.uk.artatawe.main.Auction;
 import co.uk.artatawe.main.Bid;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -14,9 +15,8 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.Pane;
 
-import java.awt.event.ActionEvent;
+
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 
@@ -159,18 +159,16 @@ public class BidHistoryController implements Initializable {
     /**
      * Gets list of sold auctions for logged in user.
      */
-    public ArrayList getSoldAuctions() {
+    public ObservableList<Auction> getSoldAuctions() {
 
         AuctionDatabaseManager auctionDatabaseManager = new AuctionDatabaseManager();
 
-   //     String sqlSelect = "Select * from auction where auctioncomp = 1 and seller = '" + this.username + "';";
+   //   String sqlSelect = "Select * from auction where auctioncomp = 1 and seller = '" + this.username + "';";
+
+        String sqlSelect = "Select * from auction where auctioncomp = true and seller = 'username';";
+        return FXCollections.observableArrayList(auctionDatabaseManager.getAllAuctions(sqlSelect));
 
 
-       String sqlSelect = "Select * from auction where auctioncomp = true and seller = 'username';";
-
-        ArrayList<Auction> soldAuctionsArrayList = auctionDatabaseManager.getAllAuctions(sqlSelect);
-
-        return soldAuctionsArrayList;
 
     }
 
@@ -189,7 +187,8 @@ public class BidHistoryController implements Initializable {
                 if (empty || auction == null || auction.getArtwork() == null) {
                     setText(null);
                 } else {
-                    setText(Integer.toString(auction.getArtwork().getArtworkID()));
+                    setText("Artwork title: " + auction.getArtwork().getTitle() +
+                            "\nBid amount: " + auction.getHighestBid()); //TODO more auction info.
                 }
             }
         });
@@ -214,9 +213,13 @@ public class BidHistoryController implements Initializable {
                 if (empty || bid == null || bid.getBuyer() == null) {
                     setText(null);
                 } else {
-                    setText("Auction ID: " + Integer.toString(bid.getAuctionID()) +
+                    AuctionDatabaseManager auctionDatabaseManager = new AuctionDatabaseManager();
+                    String sqlSelect = "SELECT * FROM AUCTION WHERE AUCTIONID = " + bid.getAuctionID();
+                    Auction auction = auctionDatabaseManager.getAuction(sqlSelect);
+
+                    setText("Artwork title: " + auction.getArtwork().getTitle() +
                             "\nBid amount: " + Double.toString(bid.getBidAmount()) +
-                            "\nBid date and time: " + bid.getDateAndTime());
+                            "\nBid date and time: " + bid.getDateAndTime()); 
                 }
             }
         });
@@ -228,10 +231,14 @@ public class BidHistoryController implements Initializable {
         pane.getChildren().add(bidListView);
     }
 
+    public void populateSoldAuction() {
+
+    }
 
     @FXML
     void boughtHistoryAction(ActionEvent event) {
-
+        populateBidHistory();
+        populateWonAuction();
     }
 
     @FXML
