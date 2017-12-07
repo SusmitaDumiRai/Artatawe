@@ -56,7 +56,7 @@
                   <Insets bottom="6.0" left="6.0" right="6.0" />
                </VBox.margin>
             </AnchorPane>
-            <Button fx:id="profile" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleProfileAction" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #23112a;" text="My Profile" textFill="WHITE">
+            <Button fx:id="profileButton" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleProfileAction" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #23112a;" text="My Profile" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                      <effect>
@@ -71,7 +71,7 @@
                   <Insets bottom="6.0" left="6.0" right="6.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="favorites" contentDisplay="TOP" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #492976;" text="Browse Users" textFill="WHITE">
+            <Button fx:id="favoritesButton" contentDisplay="TOP" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #492976;" text="Browse Users" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                      <effect>
@@ -86,7 +86,7 @@
                   <Insets bottom="6.0" left="6.0" right="6.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="artwork" contentDisplay="TOP" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #ca3a5e;" text="Browse Artwork" textFill="WHITE">
+            <Button fx:id="artworkButton" contentDisplay="TOP" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #ca3a5e;" text="Browse Artwork" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                      <effect>
@@ -101,7 +101,7 @@
                   <Insets bottom="6.0" left="6.0" right="6.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="auction" contentDisplay="TOP" onAction="#handleAuctionAction" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #f58071;" text="Create an Auction" textFill="WHITE">
+            <Button fx:id="auctionButton" contentDisplay="TOP" onAction="#handleAuctionAction" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #f58071;" text="Create an Auction" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                      <effect>
@@ -116,7 +116,7 @@
                   <Insets bottom="6.0" left="6.0" right="6.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="myActions" contentDisplay="TOP" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #361949;" text="My Auctions" textFill="WHITE">
+            <Button fx:id="myActionsButton" contentDisplay="TOP" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #361949;" text="My Auctions" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="15040.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                      <effect>
@@ -131,7 +131,7 @@
                   <Insets bottom="6.0" left="6.0" right="6.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="bidHistory" contentDisplay="TOP" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #23112a;" text="My History" textFill="WHITE">
+            <Button fx:id="bidHistoryButton" contentDisplay="TOP" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #23112a;" text="My History" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                      <effect>
