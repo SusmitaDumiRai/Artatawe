@@ -99,6 +99,7 @@ public class BrowseAuctionController implements Initializable    {
     public void initialize(URL location, ResourceBundle resources) {
 
         getImages(FXCollections.observableArrayList(artworkArrayList));
+        allRadioButton.setSelected(true);
 
       //  getImages();
     		//sculpRadioButton.setSelected(true);
@@ -277,24 +278,35 @@ public class BrowseAuctionController implements Initializable    {
     @FXML
     public void sculpSelected() {
 
-        System.out.println("sculp selected");
+        artworkTilePane.getChildren().clear(); //delete all previous artworks.
 
-        //getImages(FXCollections.observableArrayList(sculptureArrayList));
+
+        getImages(FXCollections.observableArrayList(sculptureArrayList));
 
     }
 
 
     @FXML
     void paintSelected(ActionEvent event) {
+        artworkTilePane.getChildren().clear(); //delete all previous artworks.
+        getImages(FXCollections.observableArrayList(paintingArrayList));
+
     }
 
     @FXML
     void favouriteSelected(ActionEvent event) {
+        artworkTilePane.getChildren().clear(); //delete all previous artworks.
+        System.out.println("favourite selected.");
+      //  getImages(FXCollections.observableArrayList()));
+
 
     }
 
     @FXML
     void allSelected(ActionEvent event) {
+        artworkTilePane.getChildren().clear(); //delete all previous artworks.
+        getImages(FXCollections.observableArrayList(artworkArrayList));
+
 
     }
 
