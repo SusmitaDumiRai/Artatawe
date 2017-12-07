@@ -121,6 +121,13 @@ public class NavigationController implements Initializable {
     
     @FXML
     void handleUsersAction(ActionEvent event) throws IOException {
+    	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/BrowseUsers.fxml"));
+    	
+    	BrowseUsersController browseUsersController = new BrowseUsersController();
+    	browseUsersController.setUsername(this.username);
+    	fxmlLoader.setController(browseUsersController);
+
+   	 	centerPane.setCenter(fxmlLoader.load());
     	
     }
     
