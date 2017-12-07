@@ -20,12 +20,12 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #DCDCDC;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <Pane fx:id="pane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="buyingHistoryButton" layoutX="133.0" layoutY="43.0" mnemonicParsing="false" onAction="#boughtHistoryAction" text="Bought history" />
-            <Button fx:id="sellingHistoryButton" layoutX="375.0" layoutY="43.0" mnemonicParsing="false" onAction="#soldHistoryAction" text="Sold history" />
+            <Button fx:id="buyingHistoryButton" layoutX="133.0" layoutY="43.0" mnemonicParsing="false" onAction="#boughtHistoryAction" style="-fx-background-color: #87CEEB;" text="Bought history" />
+            <Button fx:id="sellingHistoryButton" layoutX="375.0" layoutY="43.0" mnemonicParsing="false" onAction="#soldHistoryAction" style="-fx-background-color: #87CEEB;" text="Sold history" />
             <Label fx:id="topLabel" layoutX="98.0" layoutY="93.0" text="Placed bids" />
             <Label fx:id="bottomLabel" layoutX="100.0" layoutY="341.0" text="Won auctions" />
          </children>
