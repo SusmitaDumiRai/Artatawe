@@ -40,9 +40,6 @@ public class NavigationController implements Initializable {
 
     @FXML
     private BorderPane centerPane;
-    
-    @FXML 
-    private Label usernameLabel;
 
 
     /**
@@ -62,7 +59,8 @@ public class NavigationController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-    	System.out.println(usernameLabel.getText());
+    	
+    	
     	
     	 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/NewBrowseAuctions.fxml"));
 
@@ -72,6 +70,7 @@ public class NavigationController implements Initializable {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
+		
     	 
     	
        
@@ -89,20 +88,30 @@ public class NavigationController implements Initializable {
     void handleProfileAction(ActionEvent event) throws IOException {
     	
    	 
+    	//for some reason it needs to have an existing scene in order to pass the username to it and then initialise the labels
     	 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/NewProfilePage.fxml"));
-
-         centerPane.setCenter(fxmlLoader.load()); 
+         
+         centerPane.setCenter(fxmlLoader.load());
     	 
-
-       //manually set controller.
+      
+       	//manually set controller.
          NewProfilePageController newProfilePageController = new NewProfilePageController();
          newProfilePageController.setUsername(this.username);
          fxmlLoader.setController(newProfilePageController);
-
+	
+       	 
+    	 FXMLLoader fxmlLoader1 = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/NewProfilePage.fxml"));
+         
+         centerPane.setCenter(fxmlLoader1.load());
+    	 
+      
+       	//manually set controller.
+         NewProfilePageController newProfilePageController1 = new NewProfilePageController();
+         newProfilePageController1.setUsername(this.username);
+         fxmlLoader.setController(newProfilePageController1);
+      
 
         
-         newProfilePageController.setUsername(username); //parse username.
-         
          
          
          
@@ -111,34 +120,22 @@ public class NavigationController implements Initializable {
     /**
      * Displays create auction when clicked.
      * @param event event.
+     * @throws IOException 
      */
     @FXML
-    void handleAuctionAction(ActionEvent event) {
-        Parent root;
-        Stage stage = new Stage();
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/CreateAuction.fxml"));
-            root = fxmlLoader.load();
+    void handleAuctionAction(ActionEvent event) throws IOException {
+    
+    	
+    	 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/NewBrowseAuctions.fxml"));
 
-            stage.setTitle("Create new auction");
-            //stage.setScene(new Scene(root, WIDTH, HEIGHT));
-            //delete down
-            stage.setWidth(Screen.getPrimary().getVisualBounds().getWidth());
-            stage.setHeight(Screen.getPrimary().getVisualBounds().getHeight());
-
-            CreateAuctionController createAuctionController = fxmlLoader.getController();
-
-            createAuctionController.changeSellerUsername(this.username);
-
-            stage.show(); //display create auctions.
-
-            //hides current window.
-            ((Node) (event.getSource())).getScene().getWindow().hide();
-
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
-        }
-
+         try {
+			centerPane.setCenter(fxmlLoader.load());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		
+   
     }
 
     public String getUsername() {
@@ -147,6 +144,6 @@ public class NavigationController implements Initializable {
 
     public void setUsername(String username) {
         this.username = username;
-        usernameLabel.setText(username);
     }
+        
 }

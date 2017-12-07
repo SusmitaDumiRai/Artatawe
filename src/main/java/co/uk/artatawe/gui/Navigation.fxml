@@ -10,7 +10,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.uk.artatawe.controller.NavigationController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.uk.artatawe.controller.NavigationController">
    <left>
       <VBox prefHeight="600.0" prefWidth="201.0" BorderPane.alignment="CENTER">
          <children>
@@ -56,7 +56,7 @@
                   <Insets bottom="6.0" left="6.0" right="6.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="artworkButton" contentDisplay="TOP" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #ca3a5e;" text="Browse Artwork" textFill="WHITE">
+            <Button fx:id="artworkButton" contentDisplay="TOP" onAction="#handleAuctionAction" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #ca3a5e;" text="Browse Artwork" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                      <effect>

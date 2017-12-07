@@ -12,6 +12,7 @@ import java.util.ResourceBundle;
 import co.uk.artatawe.database.UserDatabaseManager;
 import co.uk.artatawe.sample.User;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Paint;
 
 /**
  * Controller class created for profile page.
@@ -67,9 +68,7 @@ public class NewProfilePageController implements Initializable {
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-    	System.out.println(username);
-    	 userName.setText(this.username);
-      // displayUserInfo();
+    	displayUserInfo();
 
     }
 
@@ -105,8 +104,12 @@ public class NewProfilePageController implements Initializable {
         address.setText(user.getAddress());
         postcode.setText(user.getPostcode());
 
+        try{
         Image image = new Image(user.getProfileImage());
         avatar.setImage(image);
+        } catch (Exception ex) {
+            //do nothing so when username=null it doesnt crashes
+        }
     }
 
 
