@@ -118,7 +118,7 @@ public class UserDatabaseManager extends  DatabaseManager {
         ArrayList<String> usernameArrayList = new ArrayList<>();
 
         for (User user :  getAllUsers(sqlSelect)) {
-            usernameArrayList.add(user.getUserName().toLowerCase());
+            usernameArrayList.add(user.getUserName());
         }
 
         return usernameArrayList;
