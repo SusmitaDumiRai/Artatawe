@@ -6,12 +6,20 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
-import javafx.scene.layout.TilePane;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Paint;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+
 
 /**
  * Handles current auction fxml file.
@@ -26,7 +34,7 @@ public class CurrentAuctionController implements Initializable {
     private String username; //logged in user.
 
     @FXML
-    private TilePane tilePane;
+    private Pane pane;
 
     /**
      * Empty constructor.
@@ -80,9 +88,16 @@ public class CurrentAuctionController implements Initializable {
         });
 
         //TODO make it look nice
-        auctionListView.setLayoutX(100);
-        auctionListView.setLayoutY(121);
-        tilePane.getChildren().add(auctionListView);
+        Label informationText = new Label();
+        informationText.setText("You have bidded for:");
+        informationText.setFont(Font.font("Verdana",FontWeight.BOLD,15));
+        informationText.setAlignment(Pos.TOP_LEFT);
+
+        auctionListView.setPrefSize(600,500);
+        auctionListView.setLayoutY(25);
+
+        pane.getChildren().add(informationText);
+        pane.getChildren().add(auctionListView);
     }
 
     /**

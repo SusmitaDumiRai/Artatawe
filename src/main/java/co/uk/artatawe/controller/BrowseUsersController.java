@@ -148,8 +148,7 @@ public class BrowseUsersController implements Initializable {
 
                         Image fullHeart = new Image(("co/uk/artatawe/gui/Icons/icons8-heart-40.png"));
                         heartButton.setGraphic(new ImageView(fullHeart));
-                    }
-                    else {
+                    } else {
                         String sqlInsert = "insert into favouriteuser(username1,username2) values ('" +
                                 username + "', '" + user.getUserName() + "');";
 
