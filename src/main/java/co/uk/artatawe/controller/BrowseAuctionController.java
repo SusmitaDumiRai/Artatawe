@@ -72,6 +72,9 @@ public class BrowseAuctionController implements Initializable    {
     
     @FXML 
     private RadioButton allRadioButton;
+    
+    @FXML
+    private BorderPane centerPane;
 
 
 
@@ -165,30 +168,25 @@ public class BrowseAuctionController implements Initializable    {
             imageViews[i].setOnMouseClicked(new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent event) {
-
-                    Parent root;
-                    try {
-                        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/ShowAuction.fxml"));
-
-                        //manually set controller.
-                        ShowAuctionController showAuctionController = new ShowAuctionController();
-                        showAuctionController.setUsername(getUsername());
-                        showAuctionController.setPhoto(imageLocation[currentI]); //photo location.
-                        fxmlLoader.setController(showAuctionController);
-
-                        root = fxmlLoader.load();
-
-                        Stage stage = new Stage();
-                        stage.setTitle("Show Auction");
-                        stage.setScene(new Scene(root, WIDTH, HEIGHT));
-                        stage.show();
-
-                        // Hide this current window
-                        ((Node) (event.getSource())).getScene().getWindow().hide();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    event.consume();
+                	
+                	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/ShowAuction.fxml"));
+                	
+                	
+                	ShowAuctionController showAuctionController = new ShowAuctionController();
+                	
+                	showAuctionController.setUsername(getUsername());
+                	
+                	showAuctionController.setPhoto(imageLocation[currentI]); //photo location.
+                	
+                	fxmlLoader.setController(showAuctionController);
+					
+               	 
+            			try {
+            				centerPane.setCenter(fxmlLoader.load());
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
                 }
             });
 
