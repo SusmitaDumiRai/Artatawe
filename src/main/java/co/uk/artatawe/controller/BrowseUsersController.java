@@ -9,6 +9,7 @@ package co.uk.artatawe.controller;
  */
 import co.uk.artatawe.database.FavouriteUserDatabaseManager;
 import co.uk.artatawe.database.UserDatabaseManager;
+import co.uk.artatawe.main.FavouriteUsers;
 import co.uk.artatawe.main.User;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -37,6 +38,8 @@ public class BrowseUsersController implements Initializable {
     @FXML
     private ScrollPane scrollPane;
 
+    ArrayList<String> favouriteUserNames = new ArrayList<>();
+
     /**
      * Empty constructor
      */
@@ -52,9 +55,27 @@ public class BrowseUsersController implements Initializable {
         this.username = username;
     }
 
+    public ArrayList<FavouriteUsers> getAllFavouriteUsers() {
+
+        FavouriteUserDatabaseManager favouriteUserDatabaseManager = new FavouriteUserDatabaseManager();
+        String sqlSelect = "select * from favouriteuser;";
+        return favouriteUserDatabaseManager.getFavouriteUsers(sqlSelect); //create an array of favourite users
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         getUserProfiles();
+        for (FavouriteUsers favouriteUsers: getAllFavouriteUsers()) {
+            if (favouriteUsers.getUser1().getUserName().equals(this.username)) {
+                favouriteUserNames.add(favouriteUsers.getUser2().getUserName());
+            }
+        }
+
+       // for (String username: favouriteUserNames) {
+        //    if () {
+
+          //  }
+        //}
     }
 
     /**
@@ -66,7 +87,8 @@ public class BrowseUsersController implements Initializable {
 
         UserDatabaseManager userDatabaseManager = new UserDatabaseManager();
 
-        String sqlSelect = "Select * from user where username <> 'username'";
+     //   String sqlSelect = "Select * from user where username <> '" + this.username + "'";";
+        String sqlSelect = "Select * from user where username <> 'username';";
 
         ArrayList<User> userArrayList = userDatabaseManager.getAllUsers(sqlSelect);
 
@@ -117,23 +139,39 @@ public class BrowseUsersController implements Initializable {
             vBoxes[i].getChildren().add(heartButton);
             tilePane.getChildren().add(vBoxes[i]); //add image to gridpane.
 
-
+            final int currentI = i;
 
 
             heartButton.setOnAction(new EventHandler<ActionEvent>() {
                 @Override public void handle(ActionEvent e) {
+
                     FavouriteUserDatabaseManager favouriteUserDatabaseManager = new FavouriteUserDatabaseManager();
 
-                   String sqlInsert = "insert into favouriteuser(username1,username2) values (" +
-                            "'username'," + "'username');";
-                   favouriteUserDatabaseManager.executeStatement(sqlInsert);
+                    String sqlInsert = "insert into favouriteuser(username1,username2) values (" +
+                    "'username'," + "'" + usernameArray[currentI] + "');";
 
+                    System.out.println(sqlInsert);
+
+                    /*
+                    username = " + this.username +"
+                    String sqlInsert = "insert into favouriteuser(username1,username2) values (" +
+                    "'username'," + "'username');";
+                    favouriteUserDatabaseManager.executeStatement(sqlInsert);
+                    */
 
                     Image fullHeart = new Image(("co/uk/artatawe/gui/Icons/icons8-love-50.png"));
                     heartButton.setGraphic(new ImageView(fullHeart));
-                    System.out.println("added user");
 
+                    String sqlSelect = "select * from favouriteuser;";
+                    ArrayList<FavouriteUsers> favouriteUserArrayList = favouriteUserDatabaseManager.getFavouriteUsers(sqlSelect); //create an array of favourite users
+                    User user1 = userDatabaseManager.getUser("username");
+                    User user2 = userDatabaseManager.getUser("uglybackpack");
 
+                    FavouriteUsers favouriteUser = new FavouriteUsers(user1, user2 );
+
+                    if(favouriteUserArrayList.contains(favouriteUser)) {
+
+                    }
 
                 }
             });
