@@ -12,6 +12,7 @@ import java.util.ResourceBundle;
 import co.uk.artatawe.database.UserDatabaseManager;
 import co.uk.artatawe.main.User;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Paint;
 
 /**
  * Controller class created for profile page.
@@ -20,7 +21,7 @@ import javafx.scene.layout.VBox;
  */
 public class ProfilePageController implements Initializable {
 
-    private String username; //logged in user's username.
+    private static String username; //logged in user's username.
 
     @FXML
     private Label userName;
@@ -102,9 +103,12 @@ public class ProfilePageController implements Initializable {
         telephoneNumber.setText(user.getPhoneNumber());
         address.setText(user.getAddress());
         postcode.setText(user.getPostcode());
-
+        try{
         Image image = new Image(user.getProfileImage());
         avatar.setImage(image);
+        } catch (Exception ex) {
+            //do nothing so when username=null it doesnt crashes
+        }
     }
 
 
