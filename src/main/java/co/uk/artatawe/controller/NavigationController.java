@@ -104,7 +104,7 @@ public class NavigationController implements Initializable {
     }
 
     /**
-     * Displays create auction when clicked.
+     * Displays Browse Auctions page when clicked.
      * @param event event.
      * @throws IOException 
      */
@@ -123,6 +123,11 @@ public class NavigationController implements Initializable {
           centerPane.getChildren().add(fxmlLoader.load());
     }
     
+    /**
+     * Displays Browse Users page when clicked.
+     * @param event event.
+     * @throws IOException 
+     */
     @FXML
     void handleUsersAction(ActionEvent event) throws IOException {
     	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/BrowseUsers.fxml"));
@@ -136,6 +141,11 @@ public class NavigationController implements Initializable {
     	
     }
     
+    /**
+     * Displays Create Auction page when clicked.
+     * @param event event.
+     * @throws IOException 
+     */
     @FXML
     void handleCreateAuctionAction(ActionEvent event) throws IOException {
     	//creates a new controller
@@ -151,6 +161,11 @@ public class NavigationController implements Initializable {
     	
     }
     
+    /**
+     * Displays Current Auctions page when clicked which is page of auctions that are currently auctioned by the user.
+     * @param event event.
+     * @throws IOException 
+     */
     @FXML
     void handleMyAuctionsAction(ActionEvent event) throws IOException {
     	//creates a new controller
@@ -165,6 +180,11 @@ public class NavigationController implements Initializable {
     	
     }
     
+    /**
+     * Displays Bid History page when clicked.
+     * @param event event.
+     * @throws IOException 
+     */
     @FXML
     void handleBidAction(ActionEvent event) throws IOException {
     	//creates a new controller
@@ -179,11 +199,17 @@ public class NavigationController implements Initializable {
     	
     }
     
-     
+     /**
+      * Returns the username of the user that is log in.
+      * @return username
+      */
     public String getUsername() {
         return username;
     }
-
+    /**
+     * Sets the username of the user that is log in.
+     * @param username
+     */
     public void setUsername(String username) {
         this.username = username;
     }

@@ -174,18 +174,18 @@ public class BrowseAuctionController implements Initializable    {
                 	
                 	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/ShowAuction.fxml"));
                 	
-                	
+                	//creates new controller
                 	ShowAuctionController showAuctionController = new ShowAuctionController();
                 	
                 	showAuctionController.setUsername(getUsername());
                 	
                 	showAuctionController.setPhoto(imageLocation[currentI]); //photo location.
-                	
+                	//set controller manually
                 	fxmlLoader.setController(showAuctionController);
 					
                	 
             			try {
-            				centerPane.setCenter(fxmlLoader.load());
+            				centerPane.setCenter(fxmlLoader.load()); //set the center of the pane to show auction scene
 						} catch (IOException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -254,11 +254,18 @@ public class BrowseAuctionController implements Initializable    {
 
 
 
-
+    /**
+     * Returns the username of the user that is log in.
+     * @return username
+     */
     public String getUsername() {
         return username;
     }
 
+    /**
+     * Sets the username of the user that is log in.
+     * @param username
+     */
     public void setUsername(String username) {
         this.username = username;
     }
