@@ -21,7 +21,6 @@
             </ImageView>
             <VBox layoutX="290.0" layoutY="88.0" prefHeight="305.0" prefWidth="362.0">
                <children>
-                  <Label fx:id="numOfBidLeft" text="Label" />
                   <Label fx:id="title" contentDisplay="CENTER" prefHeight="400.0" prefWidth="400.0" text="'Title'">
                      <font>
                         <Font name="System Bold" size="15.0" />
@@ -106,6 +105,16 @@
                               <Insets left="15.0" top="10.0" />
                            </HBox.margin>
                         </Label>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="400.0">
+                     <children>
+                        <Label prefHeight="400.0" text="Number of bids left:">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label fx:id="numOfBidLeft" prefHeight="400.0" text="Label" />
                      </children>
                   </HBox>
                   <HBox prefHeight="400.0" prefWidth="273.0">
