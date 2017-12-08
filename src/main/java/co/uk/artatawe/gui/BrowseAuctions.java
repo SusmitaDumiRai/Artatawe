@@ -1,12 +1,9 @@
 package co.uk.artatawe.gui;
 
-import co.uk.artatawe.sample.Main;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;

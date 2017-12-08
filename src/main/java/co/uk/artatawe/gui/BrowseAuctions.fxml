@@ -25,157 +25,55 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.uk.artatawe.controller.BrowseAuctionController">
-   <center>
-      <ScrollPane fx:id="artworkScrollPane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <content>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="597.0" prefWidth="579.0">
-               <children>
-                  <TilePane fx:id="artworkTilePane" hgap="15.0" layoutX="14.0" layoutY="23.0" prefHeight="574.0" prefWidth="579.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="23.0">
-                     <padding>
-                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
-                     </padding>
-                  </TilePane>
-               </children>
-            </AnchorPane>
-         </content>
-      </ScrollPane>
-   </center>
-   <left>
-      <VBox prefHeight="610.0" prefWidth="201.0" BorderPane.alignment="CENTER">
-         <children>
-            <AnchorPane prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #ca3a5e;">
-               <children>
-                  <Label fx:id="welcomeText" alignment="CENTER" contentDisplay="TOP" prefHeight="76.0" prefWidth="211.0" text="Welcome Back!" textFill="WHITE" textOverrun="CENTER_ELLIPSIS" underline="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Label>
-               </children>
-               <VBox.margin>
-                  <Insets bottom="6.0" left="6.0" right="6.0" />
-               </VBox.margin>
-            </AnchorPane>
-            <Button fx:id="profile" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleProfileAction" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #23112a;" text="My Profile" textFill="WHITE">
-               <graphic>
-                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                     <effect>
-                        <ColorAdjust brightness="1.0" />
-                     </effect>
-                     <image>
-                        <Image url="@Icons/icons8-customer-filled-40.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <VBox.margin>
-                  <Insets bottom="6.0" left="6.0" right="6.0" />
-               </VBox.margin>
-            </Button>
-            <Button fx:id="favorites" contentDisplay="TOP" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #492976;" text="Browse Users" textFill="WHITE">
-               <graphic>
-                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                     <effect>
-                        <ColorAdjust brightness="1.0" />
-                     </effect>
-                     <image>
-                        <Image url="@Icons/icons8-find-user-male-filled-40.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <VBox.margin>
-                  <Insets bottom="6.0" left="6.0" right="6.0" />
-               </VBox.margin>
-            </Button>
-            <Button fx:id="artwork" contentDisplay="TOP" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #ca3a5e;" text="Browse Artwork" textFill="WHITE">
-               <graphic>
-                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                     <effect>
-                        <ColorAdjust brightness="1.0" />
-                     </effect>
-                     <image>
-                        <Image url="@Icons/binoculars.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <VBox.margin>
-                  <Insets bottom="6.0" left="6.0" right="6.0" />
-               </VBox.margin>
-            </Button>
-            <Button fx:id="auction" contentDisplay="TOP" onAction="#handleAuctionAction" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #f58071;" text="Create an Auction" textFill="WHITE">
-               <graphic>
-                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                     <effect>
-                        <ColorAdjust brightness="1.0" />
-                     </effect>
-                     <image>
-                        <Image url="@Icons/icons8-add-filled-40.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <VBox.margin>
-                  <Insets bottom="6.0" left="6.0" right="6.0" />
-               </VBox.margin>
-            </Button>
-            <Button fx:id="myActions" contentDisplay="TOP" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #361949;" text="My Auctions" textFill="WHITE">
-               <graphic>
-                  <ImageView fitHeight="15040.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                     <effect>
-                        <ColorAdjust brightness="1.0" />
-                     </effect>
-                     <image>
-                        <Image url="@Icons/icons8-bust-filled-40.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <VBox.margin>
-                  <Insets bottom="6.0" left="6.0" right="6.0" />
-               </VBox.margin>
-            </Button>
-            <Button fx:id="bidHistory" contentDisplay="TOP" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #23112a;" text="My Bid History" textFill="WHITE">
-               <graphic>
-                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                     <effect>
-                        <ColorAdjust brightness="1.0" />
-                     </effect>
-                     <image>
-                        <Image url="@Icons/sandtimer.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <VBox.margin>
-                  <Insets bottom="6.0" left="6.0" right="6.0" />
-               </VBox.margin>
-            </Button>
-         </children>
-      </VBox>
-   </left>
-   <top>
-      <HBox alignment="CENTER" prefHeight="23.0" prefWidth="591.0" BorderPane.alignment="CENTER">
-         <children>
-            <RadioButton mnemonicParsing="false" text="sculptures">
-               <toggleGroup>
-                  <ToggleGroup fx:id="typeOfArtwork" />
-               </toggleGroup>
-               <HBox.margin>
-                  <Insets left="150.0" right="40.0" />
-               </HBox.margin>
-            </RadioButton>
-            <RadioButton mnemonicParsing="false" text="paintings" toggleGroup="$typeOfArtwork">
-               <HBox.margin>
-                  <Insets right="40.0" />
-               </HBox.margin>
-            </RadioButton>
-            <RadioButton mnemonicParsing="false" text="user favorites" toggleGroup="$typeOfArtwork">
-               <HBox.margin>
-                  <Insets right="40.0" />
-               </HBox.margin>
-            </RadioButton>
-            <RadioButton mnemonicParsing="false" prefHeight="21.0" prefWidth="49.0" text="all" toggleGroup="$typeOfArtwork">
-               <HBox.margin>
-                  <Insets right="40.0" />
-               </HBox.margin>
-            </RadioButton>
-         </children>
-      </HBox>
-   </top>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #DCDCDC;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <BorderPane fx:id="centerPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #DCDCDC;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+	   <center>
+	      <BorderPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #DCDCDC;" BorderPane.alignment="CENTER">
+	         <center>
+	            <ScrollPane fx:id="artworkScrollPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #DCDCDC;" BorderPane.alignment="CENTER">
+	               <content>
+	                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="597.0" prefWidth="579.0" style="-fx-background-color: #DCDCDC;">
+	                     <children>
+	                        <TilePane fx:id="artworkTilePane" hgap="15.0" layoutX="14.0" layoutY="23.0" prefHeight="574.0" prefWidth="579.0" style="-fx-background-color: #DCDCDC;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="23.0">
+	                           <padding>
+	                              <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+	                           </padding>
+	                        </TilePane>
+	                     </children>
+	                  </AnchorPane>
+	               </content>
+	            </ScrollPane>
+	         </center>
+	         <top>
+	            <HBox alignment="CENTER_LEFT" prefHeight="23.0" prefWidth="591.0" style="-fx-background-color: #DCDCDC;" BorderPane.alignment="CENTER">
+	               <children>
+	                  <RadioButton fx:id="sculpRadioButton" mnemonicParsing="false" onAction="#sculpSelected" text="sculptures">
+	                     <toggleGroup>
+	                        <ToggleGroup fx:id="typeOfArtwork" />
+	                     </toggleGroup>
+	                     <HBox.margin>
+	                        <Insets right="40.0" />
+	                     </HBox.margin>
+	                  </RadioButton>
+	                  <RadioButton fx:id="paintRadioButton" mnemonicParsing="false" onAction="#paintSelected" text="paintings" toggleGroup="$typeOfArtwork">
+	                     <HBox.margin>
+	                        <Insets right="40.0" />
+	                     </HBox.margin>
+	                  </RadioButton>
+	                  <RadioButton fx:id="favouriteRadioButton" mnemonicParsing="false" onAction="#favouriteSelected" text="user favorites" toggleGroup="$typeOfArtwork">
+	                     <HBox.margin>
+	                        <Insets right="40.0" />
+	                     </HBox.margin>
+	                  </RadioButton>
+	                  <RadioButton fx:id="allRadioButton" mnemonicParsing="false" onAction="#allSelected" prefHeight="21.0" prefWidth="49.0" text="all" toggleGroup="$typeOfArtwork">
+	                     <HBox.margin>
+	                        <Insets right="40.0" />
+	                     </HBox.margin>
+	                  </RadioButton>
+	               </children>
+	            </HBox>
+	         </top>
+	      </BorderPane>
+	   </center>
+	  </BorderPane>
 </BorderPane>

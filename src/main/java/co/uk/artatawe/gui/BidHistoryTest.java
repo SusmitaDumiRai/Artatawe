@@ -1,4 +1,4 @@
-package co.uk.artatawe.sample;
+package co.uk.artatawe.gui;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -7,24 +7,18 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
- * Created by Plamena on 3.12.2017 г..
+ * Created by Susi on 07/12/2017.
  */
-public class LoginTest extends Application {
-
-
+public class BidHistoryTest extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("../gui/Login.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("BidHistory.fxml"));
 
         Scene scene = new Scene(root);
-
-
 
         primaryStage.setTitle("Login Test");
         primaryStage.setScene(scene);
         primaryStage.show();
-
-
     }
 
 

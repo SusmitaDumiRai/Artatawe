@@ -51,21 +51,32 @@ public class LoginController implements Initializable {
      */
     @FXML
     void signInUser(ActionEvent event) {
-        if (validateUsername()) {
+      signIn(event);
+    }
+    
+    @FXML
+    void onEnter(ActionEvent event) {
+      signIn(event);
+    }
+    
+    private void signIn(ActionEvent event) {
+    	if (validateUsername()) {
             Parent root;
             try {
 
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/BrowseAuctions.fxml"));
+                NavigationController navigationController = new NavigationController();
+                navigationController.setUsername(username.getText());
 
-               root = fxmlLoader.load();
+
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/Navigation.fxml"));
+                fxmlLoader.setController(navigationController);
+
+                root = fxmlLoader.load();
 
 
-                BrowseAuctionController browseAuctionController = fxmlLoader.getController();
                 Stage stage = new Stage();
-                stage.setTitle("Browsing artworks");
+                stage.setTitle("Artatawe");
                 stage.setScene(new Scene(root, WIDTH, HEIGHT));
-
-                browseAuctionController.setUsername(username.getText()); //parse username.
 
                 stage.show(); //display browse auctions.
 

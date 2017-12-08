@@ -10,129 +10,24 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.uk.artatawe.controller.ShowAuctionController">
-   <left>
-      <VBox prefHeight="600.0" prefWidth="201.0" BorderPane.alignment="CENTER">
-         <children>
-            <AnchorPane prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #ca3a5e;">
-               <children>
-                  <Label fx:id="welcomeText" alignment="CENTER" contentDisplay="TOP" prefHeight="76.0" prefWidth="211.0" text="Welcome Back!" textFill="WHITE" textOverrun="CENTER_ELLIPSIS" underline="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Label>
-               </children>
-               <VBox.margin>
-                  <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
-               </VBox.margin>
-            </AnchorPane>
-            <Button fx:id="profileButton" contentDisplay="TOP" mnemonicParsing="false" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #23112a;" text="My Profile" textFill="WHITE">
-               <graphic>
-                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                     <effect>
-                        <ColorAdjust brightness="1.0" />
-                     </effect>
-                     <image>
-                        <Image url="@Icons/icons8-customer-filled-40.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <VBox.margin>
-                  <Insets bottom="6.0" left="6.0" right="6.0" />
-               </VBox.margin>
-            </Button>
-            <Button fx:id="usersButton" contentDisplay="TOP" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #492976;" text="Browse Users" textFill="WHITE">
-               <graphic>
-                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                     <effect>
-                        <ColorAdjust brightness="1.0" />
-                     </effect>
-                     <image>
-                        <Image url="@Icons/icons8-find-user-male-filled-40.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <VBox.margin>
-                  <Insets bottom="6.0" left="6.0" right="6.0" />
-               </VBox.margin>
-            </Button>
-            <Button fx:id="artworkButton" contentDisplay="TOP" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #ca3a5e;" text="Browse Artwork" textFill="WHITE">
-               <graphic>
-                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                     <effect>
-                        <ColorAdjust brightness="1.0" />
-                     </effect>
-                     <image>
-                        <Image url="@Icons/binoculars.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <VBox.margin>
-                  <Insets bottom="6.0" left="6.0" right="6.0" />
-               </VBox.margin>
-            </Button>
-            <Button fx:id="auctionButton" contentDisplay="TOP" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #f58071;" text="Create an Auction" textFill="WHITE">
-               <graphic>
-                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                     <effect>
-                        <ColorAdjust brightness="1.0" />
-                     </effect>
-                     <image>
-                        <Image url="@Icons/icons8-add-filled-40.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <VBox.margin>
-                  <Insets bottom="6.0" left="6.0" right="6.0" />
-               </VBox.margin>
-            </Button>
-            <Button fx:id="myActionsButton" contentDisplay="TOP" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #361949;" text="My Auctions" textFill="WHITE">
-               <graphic>
-                  <ImageView fitHeight="15040.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                     <effect>
-                        <ColorAdjust brightness="1.0" />
-                     </effect>
-                     <image>
-                        <Image url="@Icons/icons8-bust-filled-40.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <VBox.margin>
-                  <Insets bottom="6.0" left="6.0" right="6.0" />
-               </VBox.margin>
-            </Button>
-            <Button fx:id="bidHistoryButton" contentDisplay="TOP" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #23112a;" text="My Bid History" textFill="WHITE">
-               <graphic>
-                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                     <effect>
-                        <ColorAdjust brightness="1.0" />
-                     </effect>
-                     <image>
-                        <Image url="@Icons/sandtimer.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <VBox.margin>
-                  <Insets bottom="6.0" left="6.0" right="6.0" />
-               </VBox.margin>
-            </Button>
-         </children>
-      </VBox>
-   </left>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #DCDCDC;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="258.0" fitWidth="283.0" layoutX="24.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imageViewPhoto" fitHeight="258.0" fitWidth="283.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@Icons/icons8-love-filled-40.png" />
                </image>
             </ImageView>
-            <VBox layoutX="312.0" layoutY="88.0" prefHeight="305.0" prefWidth="273.0">
+            <VBox layoutX="290.0" layoutY="88.0" prefHeight="305.0" prefWidth="362.0">
                <children>
-                  <Label fx:id="title" alignment="CENTER" contentDisplay="CENTER" prefHeight="400.0" prefWidth="400.0" text="'Title'" />
+                  <Label fx:id="title" contentDisplay="CENTER" prefHeight="400.0" prefWidth="400.0" text="'Title'">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font></Label>
                   <HBox prefHeight="400.0" prefWidth="400.0">
                      <children>
-                        <Label fx:id="creator" prefHeight="400.0" text="Creatore name">
+                        <Label fx:id="creator" prefHeight="400.0" text="Creator name">
                            <padding>
                               <Insets right="6.0" />
                            </padding>
@@ -140,7 +35,6 @@
                               <Insets right="10.0" />
                            </HBox.margin>
                         </Label>
-                        <Label fx:id="year" prefHeight="400.0" text="Year" />
                      </children>
                   </HBox>
                   <HBox prefHeight="400.0" prefWidth="400.0">
@@ -172,9 +66,9 @@
                               <Insets right="10.0" />
                            </HBox.margin>
                         </Label>
-                        <Label fx:id="date" prefHeight="400.0" text="14/02/2017">
+                        <Label fx:id="date" maxWidth="188.0" prefHeight="44.0" text="14/02/2017">
                            <HBox.margin>
-                              <Insets right="10.0" />
+                              <Insets />
                            </HBox.margin>
                         </Label>
                      </children>
@@ -200,41 +94,63 @@
                   </HBox>
                   <HBox prefHeight="400.0">
                      <children>
-                        <Label prefHeight="400.0" text="Reserved Price:">
+                        <Label prefHeight="400.0" text="Highest bid:">
                            <HBox.margin>
                               <Insets right="10.0" />
                            </HBox.margin>
                         </Label>
                         <Label fx:id="reservedPrice" prefHeight="400.0" text="400$" />
+                        <Label fx:id="errorMessage" style="-fx-text-fill: transparent;" text="Label">
+                           <HBox.margin>
+                              <Insets left="15.0" top="10.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="400.0">
+                     <children>
+                        <Label prefHeight="400.0" text="Number of bids left:">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label fx:id="numOfBidLeft" prefHeight="400.0" text="Label" />
                      </children>
                   </HBox>
                   <HBox prefHeight="400.0" prefWidth="273.0">
                      <children>
-                        <TextField fx:id="bid" prefHeight="31.0" prefWidth="154.0">
+                        <TextField fx:id="bid" prefHeight="31.0" prefWidth="154.0" promptText="Enter a bid">
                            <HBox.margin>
                               <Insets right="10.0" />
                            </HBox.margin>
                         </TextField>
-                        <Button fx:id="makeBidButton" mnemonicParsing="false" text="Make Bid" />
+                        <Button fx:id="makeBidButton" mnemonicParsing="false" onAction="#handleButtonAction" style="-fx-background-color: #87CEEB;" text="Make Bid" />
                      </children>
                   </HBox>
                </children>
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
             </VBox>
             <VBox layoutX="24.0" layoutY="393.0" prefHeight="133.0" prefWidth="535.0">
                <children>
-                  <HBox prefHeight="61.0" prefWidth="535.0">
+                  <HBox prefHeight="110.0" prefWidth="535.0">
                      <children>
                         <Label alignment="TOP_LEFT" prefHeight="400.0" text="Description:">
                            <HBox.margin>
                               <Insets right="10.0" />
                            </HBox.margin>
                         </Label>
-                        <Label fx:id="description" alignment="TOP_LEFT" prefHeight="400.0" text="description" textAlignment="JUSTIFY" />
+                        <ScrollPane prefHeight="60.0" prefViewportHeight="47.0" prefViewportWidth="74.0" prefWidth="445.0">
+                           <content>
+                              <Label fx:id="description" alignment="TOP_LEFT" text="description" textAlignment="JUSTIFY" />
+                           </content>
+                        </ScrollPane>
                      </children>
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label prefHeight="400.0" text="Material: ">
+                        <Label fx:id="materialLabel" prefHeight="400.0" text="Material: ">
                            <HBox.margin>
                               <Insets right="10.0" />
                            </HBox.margin>

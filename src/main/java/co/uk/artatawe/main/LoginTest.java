@@ -1,37 +1,35 @@
-package co.uk.artatawe.gui;
+package co.uk.artatawe.main;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
-import static javafx.application.Application.launch;
-
 /**
- * Created by Susi on 05/12/2017.
+ * Created by Plamena on 3.12.2017 г..
  */
-public class CurrentAuctionTest extends Application {
+public class LoginTest extends Application {
+
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("CurrentAuctions.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../gui/Login.fxml"));
 
         Scene scene = new Scene(root);
 
-        primaryStage.setTitle("Current auctions test");
+
+
+        primaryStage.setTitle("Login Test");
         primaryStage.setScene(scene);
         primaryStage.show();
+
+
     }
+
 
     public static void main(String[] args) {
         launch(args);
 
     }
-
-
 }

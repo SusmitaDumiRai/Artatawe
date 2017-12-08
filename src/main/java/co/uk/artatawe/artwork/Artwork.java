@@ -26,16 +26,16 @@ public class Artwork {
 
     /**
      * constructor that creates an artwork object.
-     * @param typeOfArtwork the type of an artwork, can be either a painting or a sculpture
-     * @param title         title of the artwork
-     * @param description   description of the artwork
-     * @param photo         photo of the artwork
-     * @param nameOfCreator name of the person who made the artwork
-     * @param reservedPrice reserved price of the artwork
-     * @param dateEntered   date of when the artwork has been put to auction
-     * @param bidsAllowed   amount of the bids allowed for the artwork
-     * @param width         width of the artwork
-     * @param height        height of the artwork
+     * @param typeOfArtwork the type of an artwork, can be either a painting or a sculpture.
+     * @param title         title of the artwork.
+     * @param description   description of the artwork.
+     * @param photo         photo of the artwork.
+     * @param nameOfCreator name of the person who made the artwork.
+     * @param reservedPrice reserved price of the artwork set by the seller.
+     * @param dateEntered   date of when the artwork has been put to auction.
+     * @param bidsAllowed   amount of the bids allowed for the artwork.
+     * @param width         width of the artwork.
+     * @param height        height of the artwork.
      */
     public Artwork(String typeOfArtwork, String title, String description, String photo,
                    String nameOfCreator, double reservedPrice, String dateEntered, int bidsAllowed, double width, double height) {
@@ -53,17 +53,17 @@ public class Artwork {
 
     /**
      * constructor that creates an artwork object.
-     * @param artworkID     an ID for an artwork
-     * @param typeOfArtwork the type of an artwork, can be either a painting or a sculpture
-     * @param title         title of the artwork
-     * @param description   description of the artwork
-     * @param photo         photo of the artwork
-     * @param nameOfCreator name of the person who made the artwork
-     * @param reservedPrice reserved price of the artwork
-     * @param dateEntered   date of when the artwork has been put to auction
-     * @param bidsAllowed   amount of the bids allowed for the artwork
-     * @param width         width of the artwork
-     * @param height        height of the artwork
+     * @param artworkID     an ID for an artwork.
+     * @param typeOfArtwork the type of an artwork, can be either a painting or a sculpture.
+     * @param title         title of the artwork.
+     * @param description   description of the artwork.
+     * @param photo         photo of the artwork.
+     * @param nameOfCreator name of the person who made the artwork.
+     * @param reservedPrice reserved price of the artwork set by the seller.
+     * @param dateEntered   date of when the artwork has been put to auction.
+     * @param bidsAllowed   amount of the bids allowed for the artwork.
+     * @param width         width of the artwork.
+     * @param height        height of the artwork.
      */
     public Artwork(int artworkID, String typeOfArtwork, String title, String description, String photo,
                    String nameOfCreator, double reservedPrice, String dateEntered, int bidsAllowed, double width, double height) {
@@ -88,7 +88,7 @@ public class Artwork {
 
     /**
      * method that gets the title of an artwork.
-     * @return the title of an artwork
+     * @return the title of an artwork.
      */
     public String getTitle() {
         return title;
@@ -96,7 +96,7 @@ public class Artwork {
 
     /**
      * method that sets title of an artwork.
-     * @param title title of an artwork
+     * @param title title of an artwork.
      */
     public void setTitle(String title) {
         this.title = title;
@@ -104,7 +104,7 @@ public class Artwork {
 
     /**
      * method that gets description of an artwork.
-     * @return the description of an artwork
+     * @return the description of an artwork.
      */
     public String getDescription() {
         return description;
@@ -112,7 +112,7 @@ public class Artwork {
 
     /**
      * method that sets the description of an artwork.
-     * @param description description of an artwork
+     * @param description description of an artwork.
      */
     public void setDescription(String description) {
         this.description = description;
@@ -120,7 +120,7 @@ public class Artwork {
 
     /**
      * method that gets photo of an artwork.
-     * @return a photo of the artwork
+     * @return a photo of the artwork.
      */
     public String getPhoto() {
         return photo;
@@ -128,7 +128,7 @@ public class Artwork {
 
     /**
      * method that sets the photo of an artwork.
-     * @param photo a photo of the artwork
+     * @param photo a photo of the artwork.
      */
     public void setPhoto(String photo) {
         this.photo = photo;
@@ -136,7 +136,7 @@ public class Artwork {
 
     /**
      * method that gets the name of the creator of the artwork.
-     * @return the name of the person who has made the artwork
+     * @return the name of the person who has made the artwork.
      */
     public String getNameOfCreator() {
         return nameOfCreator;
@@ -144,7 +144,7 @@ public class Artwork {
 
     /**
      * method that sets the name of the creator.
-     * @param nameOfCreator the name of the person who created the artwork
+     * @param nameOfCreator the name of the person who created the artwork.
      */
     public void setNameOfCreator(String nameOfCreator) {
         this.nameOfCreator = nameOfCreator;
@@ -152,7 +152,7 @@ public class Artwork {
 
     /**
      * method that gets the reserved price for an artwork.
-     * @return the reserved price of an artwork
+     * @return the reserved price of an artwork.
      */
     public double getReservedPrice() {
         return reservedPrice;
@@ -160,7 +160,7 @@ public class Artwork {
 
     /**
      * method that sets the reserved price of an artwork.
-     * @param reservedPrice the reserved price for an artwork
+     * @param reservedPrice the reserved price for an artwork.
      */
     public void setReservedPrice(double reservedPrice) {
         this.reservedPrice = reservedPrice;
@@ -168,7 +168,7 @@ public class Artwork {
 
     /**
      * method that gets the date of when the artwork has been put for auction.
-     * @return the date of when the artwork has been entered for auction
+     * @return the date of when the artwork has been entered for auction.
      */
     public String getDateEntered() {
         return dateEntered;
@@ -176,7 +176,7 @@ public class Artwork {
 
     /**
      * method that sets the date of when an artwork has been set for auction.
-     * @param dateEntered the date when an artwork has been put for an auction
+     * @param dateEntered the date when an artwork has been put for an auction.
      */
     public void setDateEntered(String dateEntered) {
         this.dateEntered = dateEntered;
@@ -184,7 +184,7 @@ public class Artwork {
 
     /**
      * method that gets the amount of bids allowed for an artwork.
-     * @return the amount of bids allowed on an artwork
+     * @return the amount of bids allowed on an artwork.
      */
     public int getBidsAllowed() {
         return bidsAllowed;
@@ -192,7 +192,7 @@ public class Artwork {
 
     /**
      * method that sets the amount of bids allowed on an artwork.
-     * @param bidsAllowed the amount of bids allowed on an artwork
+     * @param bidsAllowed the amount of bids allowed on an artwork.
      */
     public void setBidsAllowed(int bidsAllowed) {
         this.bidsAllowed = bidsAllowed;
@@ -200,7 +200,7 @@ public class Artwork {
 
     /**
      * method that gets the ID of an artwork.
-     * @return the ID of an artwork
+     * @return the ID of an artwork.
      */
     public int getArtworkID() {
         return artworkID;
@@ -208,7 +208,7 @@ public class Artwork {
 
     /**
      * method that sets the ID of an artwork.
-     * @param artworkID the ID of an artwork
+     * @param artworkID the ID of an artwork.
      */
     public void setArtworkID(int artworkID) {
         this.artworkID = artworkID;
@@ -216,7 +216,7 @@ public class Artwork {
 
     /**
      * method that gets the previous ID of the artwork.
-     * @return the previous ID of the artwork
+     * @return the previous ID of the artwork.
      */
     public static int getPreviousArtworkID() {
         return previousArtworkID;
@@ -224,7 +224,7 @@ public class Artwork {
 
     /**
      * method that sets the previous ID of an artwork.
-     * @param previousArtworkID the previous ID of an artwork
+     * @param previousArtworkID the previous ID of an artwork.
      */
     public static void setPreviousArtworkID(int previousArtworkID) {
         Artwork.previousArtworkID = previousArtworkID;
@@ -232,7 +232,7 @@ public class Artwork {
 
     /**
      * method that gets type of the artwork.
-     * @return the type of the artwork
+     * @return the type of the artwork.
      */
     public String getTypeOfArtwork() {
         return typeOfArtwork;
@@ -240,7 +240,7 @@ public class Artwork {
 
     /**
      * method that sets the type of the artwork.
-     * @param typeOfArtwork the type of an artwork
+     * @param typeOfArtwork the type of an artwork.
      */
     public void setTypeOfArtwork(String typeOfArtwork) {
         this.typeOfArtwork = typeOfArtwork;
@@ -248,7 +248,7 @@ public class Artwork {
 
     /**
      * method that gets the width of the artwork.
-     * @return the width of the artwork
+     * @return the width of the artwork.
      */
     public double getWidth() {
         return width;
@@ -256,7 +256,7 @@ public class Artwork {
 
     /**
      * method that sets the width of the artwork.
-     * @param width the width of the artwork
+     * @param width the width of the artwork.
      */
     public void setWidth(double width) {
         this.width = width;
@@ -264,7 +264,7 @@ public class Artwork {
 
     /**
      * method that gets the height of the artwork.
-     * @return the heighr of the artwork
+     * @return the heighr of the artwork.
      */
     public double getHeight() {
         return height;
@@ -272,11 +272,12 @@ public class Artwork {
 
     /**
      * method that sets the height of the artwork.
-     * @param height the height of the artwork
+     * @param height the height of the artwork.
      */
     public void setHeight(double height) {
         this.height = height;
     }
+
 
     @Override
     public String toString() {

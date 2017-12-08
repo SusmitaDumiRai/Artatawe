@@ -1,20 +1,13 @@
-package co.uk.artatawe.sample;
+package co.uk.artatawe.main;
 
-import co.uk.artatawe.artwork.Artwork;
 import co.uk.artatawe.database.*;
 
 
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 
 public class Main extends Application {
@@ -71,15 +64,29 @@ public class Main extends Application {
         FavouriteUserDatabaseManager favouriteUserDatabaseManager = new FavouriteUserDatabaseManager();
 
 
+     //   System.out.println(bidDatabaseManager.getMaxBid(4));
+    //   String sql = "UPDATE auction set numofbidsleft = 18 where auctionid = 4";
 
 
-     // String sql = "update from artwork set artworkid = 10 where title = 'Giraffe'; ";
-       //userDatabaseManager.updateStatement(sql);
+
+     //String sql = "update artwork set description = 'An unique handmade sculpture made from bright chamotte clay. Coated with glaze.' where title = 'FLIGHTLESS BIRD FROM FAIRY TALE'; ";
+      //artworkDatabaseManager.updateStatement(sql);
 
      //   String sqlSelect = "Select * from artwork, auction where auction.auctionid = artwork.artworkid and auctioncomp = 0;";
-       // artworkDatabaseManager.getAllArtworks(sqlSelect);
+
+//      String sqlSelect = "SELECT * FROM ARTWORK;";
+
+      //  String sql = "update bid set buyer = 'uglybackpack' where bidid = 4;";
+
+    //    bidDatabaseManager.updateStatement(sql);
+
+    //    auctionDatabaseManager.updateStatement(sql);
+    //    auctionDatabaseManager.getAllAuctions("select * from auction;");
+        //   artworkDatabaseManager.getAllArtworks(sqlSelect);
     //    auctionDatabaseManager.getAllAuctions();
 
+        String username = "username";
+        System.out.println( "Select * from auction, bid where auctionComp = 1 and auction.auctionid = bid.auctionid and buyer = '" + username + "';");
     }
 
 

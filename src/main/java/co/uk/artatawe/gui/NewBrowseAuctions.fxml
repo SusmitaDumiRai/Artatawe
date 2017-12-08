@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollBar?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.uk.artatawe.controller.NewBrowseAuctionController">
+   <center>
+      <ScrollPane fx:id="artworkScrollPane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="597.0" prefWidth="579.0">
+               <children>
+                  <TilePane fx:id="artworkTilePane" hgap="15.0" layoutX="14.0" layoutY="23.0" prefHeight="574.0" prefWidth="579.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="23.0">
+                     <padding>
+                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                     </padding>
+                  </TilePane>
+               </children>
+            </AnchorPane>
+         </content>
+      </ScrollPane>
+   </center>
+   <top>
+      <HBox alignment="CENTER" prefHeight="23.0" prefWidth="591.0" BorderPane.alignment="CENTER">
+         <children>
+            <RadioButton fx:id="sculpRadioButton" mnemonicParsing="false" onAction="#sculpSelected" text="sculptures">
+               <toggleGroup>
+                  <ToggleGroup fx:id="typeOfArtwork" />
+               </toggleGroup>
+               <HBox.margin>
+                  <Insets left="150.0" right="40.0" />
+               </HBox.margin>
+            </RadioButton>
+            <RadioButton fx:id="paintRadioButton" mnemonicParsing="false" text="paintings" toggleGroup="$typeOfArtwork">
+               <HBox.margin>
+                  <Insets right="40.0" />
+               </HBox.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="user favorites" toggleGroup="$typeOfArtwork">
+               <HBox.margin>
+                  <Insets right="40.0" />
+               </HBox.margin>
+            </RadioButton>
+            <RadioButton fx:id="allRadioButton" mnemonicParsing="false" prefHeight="21.0" prefWidth="49.0" text="all" toggleGroup="$typeOfArtwork">
+               <HBox.margin>
+                  <Insets right="40.0" />
+               </HBox.margin>
+            </RadioButton>
+         </children>
+      </HBox>
+   </top>
+</BorderPane>
