@@ -14,7 +14,7 @@
    <center>
       <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <VBox alignment="CENTER" layoutX="128.0" layoutY="2.0" prefHeight="391.0" prefWidth="572.0">
+            <VBox alignment="CENTER" layoutX="14.0" prefHeight="391.0" prefWidth="572.0">
                <children>
                   <HBox prefHeight="400.0" prefWidth="200.0">
                      <children>
@@ -210,25 +210,21 @@
                   <Insets bottom="10.0" top="15.0" />
                </padding>
             </VBox>
-            <VBox layoutX="24.0" layoutY="409.0" prefHeight="133.0" prefWidth="562.0">
+            <VBox layoutX="14.0" layoutY="410.0" prefHeight="133.0" prefWidth="548.0">
                <children>
                   <HBox prefHeight="61.0" prefWidth="600.0">
                      <children>
-                        <Label alignment="TOP_LEFT" prefHeight="400.0" text="Description:">
+                        <Label alignment="TOP_LEFT" prefHeight="54.0" prefWidth="145.0" text="Description:">
                            <HBox.margin>
-                              <Insets right="10.0" />
+                              <Insets />
                            </HBox.margin>
                         </Label>
                         <TextArea fx:id="description" prefHeight="61.0" prefWidth="474.0" />
                      </children>
                   </HBox>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
+                  <HBox prefHeight="86.0" prefWidth="528.0">
                      <children>
-                        <Label fx:id="materialText" prefHeight="71.0" prefWidth="68.0" text="Material:">
-                           <padding>
-                              <Insets right="10.0" />
-                           </padding>
-                        </Label>
+                        <Label fx:id="materialText" prefHeight="71.0" prefWidth="90.0" text="Material:" />
                         <TextField fx:id="material" prefHeight="28.0">
                            <HBox.margin>
                               <Insets left="20.0" top="20.0" />
@@ -238,7 +234,7 @@
                   </HBox>
                </children>
             </VBox>
-            <Button fx:id="submitButton" layoutX="506.0" layoutY="527.0" mnemonicParsing="false" onAction="#handleSubmitAction" style="-fx-background-color: #87CEEB;" text="Submit" />
+            <Button fx:id="submitButton" layoutX="495.0" layoutY="528.0" mnemonicParsing="false" onAction="#handleSubmitAction" style="-fx-background-color: #87CEEB;" text="Submit" />
          </children>
       </Pane>
    </center>
