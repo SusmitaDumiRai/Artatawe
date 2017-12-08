@@ -68,7 +68,6 @@ public class ArtworkDatabaseManager extends DatabaseManager {
             ResultSet resultSet = statement.executeQuery(sqlSelect);
             while (resultSet.next()) {
                if (resultSet.getString("typeofartwork").equals("painting")) { //add painting.
-
                    artworkArrayList.add(new Painting(resultSet.getInt("artworkid"), resultSet.getString("typeofartwork"), resultSet.getString("title"), resultSet.getString("description"),
                            resultSet.getString("photo"), resultSet.getString("nameofcreator"), resultSet.getDouble("reservedprice"),
                            resultSet.getString("dateentered"), resultSet.getInt("bidsallowed"), resultSet.getDouble("width"),

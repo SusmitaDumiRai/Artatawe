@@ -234,9 +234,20 @@ public class BrowseAuctionController implements Initializable    {
     @FXML
     void favouriteSelected(ActionEvent event) {
         //TODO
-        String sqlSelect = "Select * from auction, artwork, favouriteuser where auction.auctionid = artwork.artworkid and auction.seller in (select username2 from favouriteuser where username1 = '"
+        String sqlSelect = "Select distinct artworkid, typeofartwork, title, description, photo, nameofcreator, reservedprice, dateentered," +
+                "bidsallowed, mainmaterial, extraphotos, width, height, depth " +
+                "from auction, artwork, favouriteuser where auction.auctionid = artwork.artworkid " +
+                "and auction.seller in (select username2 from favouriteuser where username1 = '"
                 + this.username + "');";
 
+        /*
+          artworkArrayList.add(new Sculpture(resultSet.getInt("artworkid"), resultSet.getString("typeofartwork"), resultSet.getString("title"), resultSet.getString("description"),
+                           resultSet.getString("photo"), resultSet.getString("nameofcreator"), resultSet.getDouble("reservedprice"),
+                           resultSet.getString("dateentered"), resultSet.getInt("bidsallowed"), resultSet.getString("mainmaterial"),
+                           resultSet.getString("extraphotos"),
+                           resultSet.getDouble("width"),
+                           resultSet.getDouble("height"), resultSet.getDouble("depth")));
+         */
         artworkTilePane.getChildren().clear(); //delete all previous artworks.
         getImages(FXCollections.observableArrayList(artworkDatabaseManager.getAllArtworks(sqlSelect)));
 
