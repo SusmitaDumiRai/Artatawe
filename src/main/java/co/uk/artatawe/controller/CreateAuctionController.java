@@ -132,6 +132,7 @@ public class CreateAuctionController  implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        sellerName.setText(username);
     
 
     }
@@ -323,16 +324,17 @@ public class CreateAuctionController  implements Initializable {
 
         if (isPainting) {
              sqlInsertArtwork =  "INSERT INTO ARTWORK (title, description, photo, nameofcreator, reservedprice, dateentered," +
-                    "bidsallowed, typeofartwork, width, height) values ('" + title.getText() + "', '" + description.getText() + "'," +
-                    "'" + photo.getText() + "'," + "'" + creatorName.getText() + "'," +  reservedPrice.getText() + "," +
-                    "'" + dateFormat.format(date) + "','" + allowedBids.getText() + "','painting', '" + width.getText() + "','" + height.getText() + "');";
+                    "bidsallowed, typeofartwork, width, height) values ('" + title.getText().replaceAll("'", "''") + "', '" + description.getText().replaceAll("'", "''") + "'," +
+                    "'" + photo.getText().replaceAll("'", "''") + "'," + "'" + creatorName.getText().replaceAll("'", "''") + "'," +  reservedPrice.getText() + "," +
+                    "'" + dateFormat.format(date) + "','" + allowedBids.getText() + "','painting', '" + width.getText() + "','" +
+                     height.getText() + "');";
 
         } else {
             sqlInsertArtwork = "INSERT INTO ARTWORK (title, description, photo, nameofcreator, reservedprice, dateentered," +
-                    "bidsallowed, typeofartwork, width, height, depth, mainmaterial, extraphotos) values ('" + title.getText() + "', '" + description.getText() + "'," +
-                    "'" +  photo.getText() + "'," + "'" + creatorName.getText() + "'," +  reservedPrice.getText() + "," +
+                    "bidsallowed, typeofartwork, width, height, depth, mainmaterial, extraphotos) values ('" + title.getText().replaceAll("'", "''") + "', '" + description.getText().replaceAll("'", "''") +
+                    "'," + "'" +  photo.getText().replaceAll("'", "''") + "'," + "'" + creatorName.getText().replaceAll("'", "''") + "'," +  reservedPrice.getText() + "," +
                     "'" + dateFormat.format(date) + "','" + allowedBids.getText() + "','sculpture', '" + width.getText() + "','" + height.getText() + "','" +
-                    depth.getText() + "','" + material.getText() + "','"  + extraPhoto.getText() + "');";
+                    depth.getText() + "','" + material.getText().replaceAll("'", "''") + "','"  + extraPhoto.getText().replaceAll("'", "''") + "');";
         }
 
         //System.out.println(sqlInsertArtwork);

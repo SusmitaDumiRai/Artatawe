@@ -202,78 +202,12 @@ public class BrowseAuctionController implements Initializable    {
 
 
     }
-   
 
-    /**
-     * Displays create auction when clicked.
-     * @param event event.
-     */
-    @FXML
-    void handleAuctionAction(ActionEvent event) {
-        Parent root;
-        Stage stage = new Stage();
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/CreateAuction.fxml"));
-            root = fxmlLoader.load();
 
-            stage.setTitle("Create new auction");
-            stage.setScene(new Scene(root, WIDTH, HEIGHT));
-            //delete down
-         //   stage.setWidth(Screen.getPrimary().getVisualBounds().getWidth());
-          //  stage.setHeight(Screen.getPrimary().getVisualBounds().getHeight());
-
-            CreateAuctionController createAuctionController = fxmlLoader.getController();
-
-            createAuctionController.changeSellerUsername(this.username);
-
-            stage.show(); //display create auctions.
-
-            //hides current window.
-            ((Node) (event.getSource())).getScene().getWindow().hide();
-
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
-        }
-
-    }
-
-    /**
-     * Displays profile page when clicked.
-     * @param event event.
-     */
-    @FXML
-    void handleProfileAction(ActionEvent event) {
-        Parent root;
-        try {
-
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/ProfilePage.fxml"));
-
-            //manually set controller.
-            ProfilePageController profilePageController = new ProfilePageController();
-            profilePageController.setUsername(this.username);
-            fxmlLoader.setController(profilePageController);
-
-            root = fxmlLoader.load();
-
-            Stage stage = new Stage();
-            stage.setTitle("My profile");
-            stage.setScene(new Scene(root, WIDTH, HEIGHT));
-
-            profilePageController.setUsername(this.username); //parse username.
-
-            stage.show(); //display profile page.
-
-            //hides current window.
-            ((Node) (event.getSource())).getScene().getWindow().hide();
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-        }
-    }
 
     
     @FXML
     public void sculpSelected() {
-
 
         String sqlSelect = "Select * from artwork, auction where auction.auctionid = artwork.artworkid and auctioncomp = 0 and artwork.typeOfArtwork = 'sculpture' and auction.seller <> '" +
                  this.username + "';";

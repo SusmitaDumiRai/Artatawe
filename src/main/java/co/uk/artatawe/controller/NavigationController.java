@@ -138,11 +138,11 @@ public class NavigationController implements Initializable {
     
     @FXML
     void handleCreateAuctionAction(ActionEvent event) throws IOException {
-    	
+
+        CreateAuctionController createAuctionController = new CreateAuctionController();
+        createAuctionController.setUsername(this.username);
     	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/CreateAuction.fxml"));
-    	
-    	CreateAuctionController createAuctionController = new CreateAuctionController();
-    	createAuctionController.setUsername(this.username);
+
     	fxmlLoader.setController(createAuctionController);
 
    	 	//centerPane.setCenter(fxmlLoader.load());
@@ -152,10 +152,10 @@ public class NavigationController implements Initializable {
     
     @FXML
     void handleMyAuctionsAction(ActionEvent event) throws IOException {
+        CurrentAuctionController currentAuctionController = new CurrentAuctionController();
+        currentAuctionController.setUsername(this.username);
     	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/CurrentAuctions.fxml"));
-    	
-    	CurrentAuctionController currentAuctionController = new CurrentAuctionController();
-    	currentAuctionController.setUsername(this.username);
+
     	fxmlLoader.setController(currentAuctionController);
 
    	 	//centerPane.setCenter(fxmlLoader.load());
@@ -165,10 +165,10 @@ public class NavigationController implements Initializable {
     
     @FXML
     void handleBidAction(ActionEvent event) throws IOException {
+        BidHistoryController bidHistoryController = new BidHistoryController();
+        bidHistoryController.setUsername(this.username);
     	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/BidHistory.fxml"));
-    	
-    	BidHistoryController bidHistoryController = new BidHistoryController();
-    	bidHistoryController.setUsername(this.username);
+
     	fxmlLoader.setController(bidHistoryController);
 
    	 	//centerPane.setCenter(fxmlLoader.load());
@@ -185,9 +185,5 @@ public class NavigationController implements Initializable {
         this.username = username;
     }
 
-	public static void setCenterPane(Object load) {
-		//centerPane = (BorderPane) load;
-		
-	}
         
 }
