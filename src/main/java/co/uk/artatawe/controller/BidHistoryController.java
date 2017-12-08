@@ -75,7 +75,7 @@ public class BidHistoryController implements Initializable {
      * Gets list of won auctions for logged in user.
      */
     public ObservableList<Auction> getWonAuctions() {
-        String sqlSelect = "Select distinct auction.auctionid, numofbidsleft, seller, highestbid, auctioncomp from auction, bid " +
+        String sqlSelect = "Select distinct auction.auctionid, numofbidsleft, seller, highestbid, auctioncomp, winningbid from auction, bid " +
                 "where auctionComp = 1 and auction.auctionid = bid.auctionid and buyer = '" + this.username + "';";
         return  FXCollections.observableArrayList(new AuctionDatabaseManager().getAllAuctions(sqlSelect));
 
