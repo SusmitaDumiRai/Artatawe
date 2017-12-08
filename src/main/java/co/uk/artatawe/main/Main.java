@@ -21,7 +21,7 @@ public class Main extends Application {
             ImageView imageView = new ImageView(imagePath);
 
 
-        //   Image image = new Image("//co//uk//artatawe//artworkpictures//Lion 1.jpg");
+
          //   ImageView imageView = new ImageView(image);
             root.getChildren().add(imageView);
         } catch (Exception ex) {

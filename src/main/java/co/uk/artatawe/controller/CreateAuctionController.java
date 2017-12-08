@@ -5,9 +5,13 @@ import co.uk.artatawe.database.AuctionDatabaseManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.layout.HBox;
 import javafx.scene.paint.Paint;
+import javafx.stage.FileChooser;
 
+import java.io.File;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -20,13 +24,16 @@ import java.util.ResourceBundle;
  */
 public class CreateAuctionController  implements Initializable {
 	
-	private String username; //logged in user
-
-    @FXML
-    private Label sellerName; //seller username.
+    private String username; //logged in user
 
     @FXML
     private Button submitButton;
+
+    @FXML
+    private Button imageBtn;
+
+    @FXML
+    private Button imageExtraPhotoBtn;
 
     @FXML
     private RadioButton paintingRadioButton;
@@ -42,7 +49,6 @@ public class CreateAuctionController  implements Initializable {
 
     @FXML
     private TextField year; //year created by creator.
-
 
     @FXML
     private TextField width;
@@ -66,10 +72,7 @@ public class CreateAuctionController  implements Initializable {
     private TextField material;
 
     @FXML
-    private TextField photo;
-
-    @FXML
-    private TextField extraPhoto;
+    private Label sellerName; //seller username.
 
     @FXML
     private Label radioButtonError;
@@ -90,19 +93,36 @@ public class CreateAuctionController  implements Initializable {
     private Label depthX;
 
     @FXML
+    private Label extraPhotoText;
+
+    @FXML
     private Label materialText;
 
     @FXML
-    private Label extraPhotoText;
+    private HBox extraPhotoHBox;
+
+    @FXML
+    private HBox photoHBox;
+
+    private FileChooser fileChooser = new FileChooser();
+
+
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        sellerName.setText(username);
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg")); //only allows png or jpg.
+    }
+
     /**
      * Hide textboxes not related to painting.
-     * @param event
+     * @param event event.
      */
     @FXML
     void handlePaintingRadioAction(ActionEvent event) {
         depth.setVisible(false);
         material.setVisible(false);
-        extraPhoto.setVisible(false);
+        imageExtraPhotoBtn.setVisible(false);
         depthX.setVisible(false);
         materialText.setVisible(false);
         extraPhotoText.setVisible(false);
@@ -110,16 +130,43 @@ public class CreateAuctionController  implements Initializable {
 
     /**
      * Display textboxes related to sculpture.
-     * @param event
+     * @param event event.
      */
     @FXML
     void handleSculptureRadioAction(ActionEvent event) {
         depth.setVisible(true);
         material.setVisible(true);
-        extraPhoto.setVisible(true);
+        imageExtraPhotoBtn.setVisible(true);
         depthX.setVisible(true);
         materialText.setVisible(true);
         extraPhotoText.setVisible(true);
+    }
+
+
+    /**
+     * Get file location of image.
+     * @param event
+     */
+    @FXML
+    void handleImageButtonAction(ActionEvent event) {
+        Node node = (Node) event.getSource();
+        File file = fileChooser.showOpenDialog(node.getScene().getWindow());
+        if (file != null) {
+            imageBtn.setText(file.getAbsolutePath()); //gets absolute path. Images will no longer be relative.
+        }
+    }
+
+    /**
+     * Get file location of extra image.
+     * @param event
+     */
+    @FXML
+    void handleImageExtraPhotoBtn(ActionEvent event) {
+        Node node = (Node) event.getSource();
+        File file = fileChooser.showOpenDialog(node.getScene().getWindow());
+        if (file != null) {
+            imageBtn.setText(file.getAbsolutePath()); //gets absolute path. Images will no longer be relative.
+        }
     }
 
     /**
@@ -130,16 +177,13 @@ public class CreateAuctionController  implements Initializable {
         sellerName.setText(username);
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        sellerName.setText(username);
-    
 
-    }
-
+    /**
+     * Validates and create auction when pressing submit.
+     * @param event event.
+     */
     @FXML
     void handleSubmitAction(ActionEvent event) {
-
         createAuction();
     }
 
@@ -163,8 +207,6 @@ public class CreateAuctionController  implements Initializable {
                 }
             }
         }
-
-
     }
 
     /**
@@ -309,7 +351,7 @@ public class CreateAuctionController  implements Initializable {
     }
 
     public boolean valPhoto() {
-        return !(photo.getText().isEmpty()); //return false is empty.
+        return !(imageBtn.getText().equals("Select image")); //return false if standard message.
     }
     /**
      * Insert artwork into artworks table.
@@ -325,19 +367,17 @@ public class CreateAuctionController  implements Initializable {
         if (isPainting) {
              sqlInsertArtwork =  "INSERT INTO ARTWORK (title, description, photo, nameofcreator, reservedprice, dateentered," +
                     "bidsallowed, typeofartwork, width, height) values ('" + title.getText().replaceAll("'", "''") + "', '" + description.getText().replaceAll("'", "''") + "'," +
-                    "'" + photo.getText().replaceAll("'", "''") + "'," + "'" + creatorName.getText().replaceAll("'", "''") + "'," +  reservedPrice.getText() + "," +
+                    "'" + imageBtn.getText().replaceAll("'", "''") + "'," + "'" + creatorName.getText().replaceAll("'", "''") + "'," +  reservedPrice.getText() + "," +
                     "'" + dateFormat.format(date) + "','" + allowedBids.getText() + "','painting', '" + width.getText() + "','" +
                      height.getText() + "');";
 
         } else {
             sqlInsertArtwork = "INSERT INTO ARTWORK (title, description, photo, nameofcreator, reservedprice, dateentered," +
                     "bidsallowed, typeofartwork, width, height, depth, mainmaterial, extraphotos) values ('" + title.getText().replaceAll("'", "''") + "', '" + description.getText().replaceAll("'", "''") +
-                    "'," + "'" +  photo.getText().replaceAll("'", "''") + "'," + "'" + creatorName.getText().replaceAll("'", "''") + "'," +  reservedPrice.getText() + "," +
+                    "'," + "'" +  imageBtn.getText().replaceAll("'", "''") + "'," + "'" + creatorName.getText().replaceAll("'", "''") + "'," +  reservedPrice.getText() + "," +
                     "'" + dateFormat.format(date) + "','" + allowedBids.getText() + "','sculpture', '" + width.getText() + "','" + height.getText() + "','" +
-                    depth.getText() + "','" + material.getText().replaceAll("'", "''") + "','"  + extraPhoto.getText().replaceAll("'", "''") + "');";
+                    depth.getText() + "','" + material.getText().replaceAll("'", "''") + "','"  + imageExtraPhotoBtn.getText().replaceAll("'", "''") + "');";
         }
-
-        //System.out.println(sqlInsertArtwork);
 
         artworkDatabaseManager.executeStatement(sqlInsertArtwork); //VERY DANGEROUS LINE OF CODE. ONLY UNCOMMENT WHEN FINALISED.
 
@@ -355,13 +395,20 @@ public class CreateAuctionController  implements Initializable {
                 "','"  +  sellerName.getText() + "','" + allowedBids.getText()  + "','0','" +  reservedPrice.getText() + "');";
 
         auctionDatabaseManager.executeStatement(sqlInsertAuction); // VERY DANGEROUS LINE OF CODE. ONLY UNCOMMENT WHEN FINALISED.
-
- //       System.out.println(sqlInsertAuction);
     }
+
+    /**
+     * Get username.
+     * @return username.
+     */
     public String getUsername() {
         return username;
     }
 
+    /**
+     * Set username.
+     * @param username userame.
+     */
     public void setUsername(String username) {
         this.username = username;
     }

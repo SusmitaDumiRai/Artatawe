@@ -214,7 +214,6 @@ public class ShowAuctionController implements Initializable {
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         Date date = new Date();
 
-        //TODO REFRESH WHEN PLACING NEW BID.
         //Insert into bid.
         if (valMakeBid()) {
             String sqlInsert = "INSERT INTO BID (auctionid, buyer, bidamount, dateandtime) values (" + artwork.getArtworkID() + ", '" +
