@@ -89,7 +89,7 @@ public class CurrentAuctionController implements Initializable {
 
         //TODO make it look nice
         Label informationText = new Label();
-        informationText.setText("You have bidded for:");
+        informationText.setText("People who have placed bids on your ongoing auction");
         informationText.setFont(Font.font("Verdana",FontWeight.BOLD,15));
         informationText.setAlignment(Pos.TOP_LEFT);
 

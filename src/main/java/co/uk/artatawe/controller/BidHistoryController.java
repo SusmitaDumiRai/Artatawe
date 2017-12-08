@@ -9,6 +9,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
@@ -28,8 +29,8 @@ import java.util.ResourceBundle;
 public class BidHistoryController implements Initializable {
 
     private String username; //logged in user.
-    private final int WIDTH = 800; //size of window.
-    private final int HEIGHT = 600; //size of window.
+    private final int WIDTH = 520; //size of window.
+    private final int HEIGHT = 220; //size of window.
 
 
 
@@ -41,6 +42,15 @@ public class BidHistoryController implements Initializable {
 
     @FXML
     private Pane pane;
+
+    @FXML
+    private ListView<Bid> bidListView;
+
+    @FXML
+    private ListView<Auction> auctionListView;
+
+    @FXML
+    private ListView<Auction> soldAuctionListView;
 
     //Empty constructor.
     public BidHistoryController() {
@@ -57,8 +67,6 @@ public class BidHistoryController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        topLabel.setText("Placed bids");
-        bottomLabel.setText("Won auctions");
 
         populateWonAuction(); //display won auctions.
         populateBidHistory(); //display past bids placed.
@@ -112,7 +120,7 @@ public class BidHistoryController implements Initializable {
      * Displays all won auctions.
      */
     public void populateWonAuction() {
-        ListView<Auction> auctionListView = new ListView<>(getWonAuctions());
+        auctionListView = new ListView<>(getWonAuctions());
 
         auctionListView.setCellFactory(param -> new ListCell<Auction>() {
             @Override
@@ -129,7 +137,8 @@ public class BidHistoryController implements Initializable {
         });
 
         //TODO make it look nice
-        auctionListView.setLayoutX(100);
+        topLabel.setText("Placed Bids");
+        auctionListView.setPrefSize(WIDTH,HEIGHT);
         auctionListView.setLayoutY(369);
         pane.getChildren().add(auctionListView);
     }
@@ -139,7 +148,7 @@ public class BidHistoryController implements Initializable {
      * in order chronological order.
      */
     public void populateBidHistory() {
-        ListView<Bid> bidListView = new ListView<>(getPlacedBids());
+        bidListView = new ListView<>(getPlacedBids());
 
         bidListView.setCellFactory(param -> new ListCell<Bid>() {
             @Override
@@ -162,8 +171,10 @@ public class BidHistoryController implements Initializable {
 
 
         //TODO FOR YOU TO MAKE IT LOOK NICE LENI
-        bidListView.setLayoutX(100);
-       bidListView.setLayoutY(120);
+        bottomLabel.setText("Won auctions");
+        bottomLabel.setVisible(true);
+        bidListView.setPrefSize(WIDTH,HEIGHT);
+        bidListView.setLayoutY(120);
         pane.getChildren().add(bidListView);
     }
 
@@ -171,9 +182,9 @@ public class BidHistoryController implements Initializable {
      * Gets all auctions sold by the logged in user.
      */
     public void populateSoldAuction() {
-        ListView<Auction> auctionListView = new ListView<>(getWonAuctions());
+        soldAuctionListView = new ListView<>(getWonAuctions());
 
-        auctionListView.setCellFactory(param -> new ListCell<Auction>() {
+        soldAuctionListView.setCellFactory(param -> new ListCell<Auction>() {
             @Override
             protected void updateItem(Auction auction, boolean empty) {
                 super.updateItem(auction, empty);
@@ -189,9 +200,13 @@ public class BidHistoryController implements Initializable {
         });
 
         //TODO make it look nice
-        auctionListView.setLayoutX(100);
-        auctionListView.setLayoutY(121);
-        pane.getChildren().add(auctionListView);
+        bidListView.setVisible(false);
+        auctionListView.setVisible(false);
+        bottomLabel.setVisible(false);
+        topLabel.setText("Sold auctions");
+        soldAuctionListView.setPrefSize(WIDTH,HEIGHT);
+        soldAuctionListView.setLayoutY(121);
+        pane.getChildren().add(soldAuctionListView);
     }
 
     @FXML
