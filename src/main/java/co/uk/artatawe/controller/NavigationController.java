@@ -199,6 +199,28 @@ public class NavigationController implements Initializable {
     	
     }
     
+    /**
+     * Displays Log in page when clicked.
+     * @param event event.
+     * @throws IOException 
+     */
+    @FXML
+    void handleLogOutAction(ActionEvent event) throws IOException {
+    	//builds a new stage
+    	Stage primaryStage = new Stage();
+    	
+    	Parent root = FXMLLoader.load(getClass().getResource("../gui/Login.fxml"));
+
+        Scene scene = new Scene(root);
+
+        primaryStage.setTitle("Login");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+        
+        // Hides the old window
+        ((Node) (event.getSource())).getScene().getWindow().hide();
+        
+    }
      /**
       * Returns the username of the user that is log in.
       * @return username

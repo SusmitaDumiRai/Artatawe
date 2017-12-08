@@ -17,7 +17,7 @@ import javafx.scene.paint.Paint;
 /**
  * Controller class created for profile page.
  *
- * @author 908928
+ * @author Tihomir Trendafilov
  */
 public class ProfilePageController implements Initializable {
 
