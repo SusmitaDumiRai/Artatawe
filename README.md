@@ -2,16 +2,13 @@
 
 Software Engineering Team 02 - Swansea University.
 
-Ebay-like system for auctioning artwork on a standalone device.
-
-Allows registration of new users, creating, bidding and viewing past/present auctions for registered users. 
-
+Ebay-like system for auctioning artwork on a standalone device. Allows registration of new users, creating, bidding and viewing past/present auctions for registered users. 
+***
 ### Understanding this project
 To the software engineering group that will get this project next semester, all the best from SE02. 
 
-All data in this project is handled by SQL queries. All data is stored in the database.
-
 #### Database tables and their schema
+##### All data in this project is handled by SQL queries. All data is stored in the database.
 * **Artwork** - ArtworkID (PK), Title, Description, Photo, NameOfCreator, ReservedPrice, DateEntered, BidsAllowed, TypeOfArtwork, Width, Height, Depth, MainMaterial, ExtraPhoto
   - Title and photo are unique.
 * **User** - Username (PK), FirstName, Surname, PhoneNumber, Address, PostCode, LastLogin, ProfileImage
@@ -39,7 +36,7 @@ Currently there are 6 default registered users. These usernames allows access to
 * lolfan
 *** 
 ### Maven
-This project uses maven. I do not have much experience in this however this allows easy distribution of frameworks as you do not have to manually download relavent dependencies (e.g. sqlite). You can add more frameworks in pom.xml, simply google frameworkName maven dependency. 
+This project uses maven. This allows easy distribution of frameworks as you do not have to manually download relavent dependencies (e.g. sqlite). You can add more frameworks in pom.xml, simply google frameworkName maven dependency. 
 
 When you first load this project up please allow maven to download. IDE will do all this for you. It has already been tested across NetBeans, IntelliJ and Eclipse. 
 
@@ -49,7 +46,7 @@ When you first load this project up please allow maven to download. IDE will do 
 * [Java](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 ***
 ### Compiling
-Instructions to compile this project in command line - video demo also provided.
+Instructions to compile this project in command line
 1. Add new systems variable called **JAVA_HOME** which points to your JDK e.g. D:\User\Documents\jdk1.8.0_121
 2. [Install and extract maven](http://maven.apache.org/download.cgi)
 3. Add maven to PATH.
