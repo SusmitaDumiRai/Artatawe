@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -39,7 +40,7 @@ public class NavigationController implements Initializable {
     private final int HEIGHT = 600; //size of window.
 
     @FXML
-    private BorderPane centerPane;
+    private Pane centerPane;
 
 
     /**
@@ -59,7 +60,7 @@ public class NavigationController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        
         BrowseAuctionController browseAuctionController = new BrowseAuctionController();
         browseAuctionController.setUsername(this.username);
 
@@ -67,7 +68,8 @@ public class NavigationController implements Initializable {
 
     	 fxmlLoader.setController(browseAuctionController);
          try {
-			centerPane.setCenter(fxmlLoader.load());
+             centerPane.getChildren().add(fxmlLoader.load());
+			//centerPane.setCenter(fxmlLoader.load());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -96,7 +98,8 @@ public class NavigationController implements Initializable {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/ProfilePage.fxml"));
         
         fxmlLoader.setController(profilePageController);
-        centerPane.setCenter(fxmlLoader.load());
+        centerPane.getChildren().add(fxmlLoader.load());
+        //centerPane.setCenter(fxmlLoader.load());
       
     }
 
@@ -116,7 +119,8 @@ public class NavigationController implements Initializable {
 
     	 fxmlLoader.setController(browseAuctionController);
 
-    	 centerPane.setCenter(fxmlLoader.load());
+    	 //centerPane.setCenter(fxmlLoader.load());
+          centerPane.getChildren().add(fxmlLoader.load());
     }
     
     @FXML
@@ -127,7 +131,8 @@ public class NavigationController implements Initializable {
     	browseUsersController.setUsername(this.username);
     	fxmlLoader.setController(browseUsersController);
 
-   	 	centerPane.setCenter(fxmlLoader.load());
+   	 	//centerPane.setCenter(fxmlLoader.load());
+        centerPane.getChildren().add(fxmlLoader.load());
     	
     }
     
@@ -140,7 +145,8 @@ public class NavigationController implements Initializable {
     	createAuctionController.setUsername(this.username);
     	fxmlLoader.setController(createAuctionController);
 
-   	 	centerPane.setCenter(fxmlLoader.load());
+   	 	//centerPane.setCenter(fxmlLoader.load());
+        centerPane.getChildren().add(fxmlLoader.load());
     	
     }
     
@@ -152,8 +158,8 @@ public class NavigationController implements Initializable {
     	currentAuctionController.setUsername(this.username);
     	fxmlLoader.setController(currentAuctionController);
 
-   	 	centerPane.setCenter(fxmlLoader.load());
-    	
+   	 	//centerPane.setCenter(fxmlLoader.load());
+        centerPane.getChildren().add(fxmlLoader.load());
     	
     }
     
@@ -165,8 +171,8 @@ public class NavigationController implements Initializable {
     	bidHistoryController.setUsername(this.username);
     	fxmlLoader.setController(bidHistoryController);
 
-   	 	centerPane.setCenter(fxmlLoader.load());
-    	
+   	 	//centerPane.setCenter(fxmlLoader.load());
+        centerPane.getChildren().add(fxmlLoader.load());
     	
     }
     

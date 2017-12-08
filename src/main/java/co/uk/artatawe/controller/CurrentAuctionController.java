@@ -30,6 +30,9 @@ import java.util.ResourceBundle;
  */
 public class CurrentAuctionController implements Initializable {
 
+    private final int TEXT = 15; //size of text.
+    private final int WIDTH = 500; //size of list.
+    private final int HEIGHT = 500; //size of list.
 
     private String username; //logged in user.
 
@@ -90,10 +93,10 @@ public class CurrentAuctionController implements Initializable {
         //TODO make it look nice
         Label informationText = new Label();
         informationText.setText("People who have placed bids on your ongoing auction");
-        informationText.setFont(Font.font("Verdana",FontWeight.BOLD,15));
+        informationText.setFont(Font.font("Verdana",FontWeight.BOLD,TEXT));
         informationText.setAlignment(Pos.TOP_LEFT);
 
-        auctionListView.setPrefSize(600,500);
+        auctionListView.setPrefSize(WIDTH,HEIGHT);
         auctionListView.setLayoutY(25);
 
         pane.getChildren().add(informationText);
