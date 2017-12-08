@@ -131,6 +131,19 @@
                   </MenuButton>
                </children>
             </VBox>
+            <Label layoutX="105.0" layoutY="501.0" text="Go back to login page" />
+            <Button layoutX="14.0" layoutY="474.0" mnemonicParsing="false" style="-fx-background-color: ca3a5e;">
+               <graphic>
+                  <ImageView fitHeight="64.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Icons/icons8-left-3-filled-50.png" />
+                     </image>
+                     <effect>
+                        <ColorAdjust brightness="1.0" />
+                     </effect>
+                  </ImageView>
+               </graphic>
+            </Button>
          </children>
       </Pane>
    </center>
