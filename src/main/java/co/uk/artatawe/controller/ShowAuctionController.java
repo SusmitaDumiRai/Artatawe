@@ -2,12 +2,13 @@ package co.uk.artatawe.controller;
 
 import co.uk.artatawe.artwork.Artwork;
 import co.uk.artatawe.artwork.Sculpture;
-import co.uk.artatawe.database.ArtworkDatabaseManager;
-import co.uk.artatawe.database.AuctionDatabaseManager;
-import co.uk.artatawe.database.BidDatabaseManager;
+import co.uk.artatawe.database.*;
 import co.uk.artatawe.main.Auction;
 import co.uk.artatawe.main.Bid;
+import co.uk.artatawe.main.FavouriteUsers;
+import co.uk.artatawe.main.User;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -19,7 +20,6 @@ import javafx.scene.paint.Paint;
 import javafx.scene.shape.ArcTo;
 //import sun.awt.geom.AreaOp;
 
-import java.awt.geom.Arc2D;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -27,6 +27,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.DoubleSummaryStatistics;
 import java.util.ResourceBundle;
+
+import co.uk.artatawe.controller.BrowseUsersController;
 
 /**
  * Handles show auction fxml file.
@@ -170,6 +172,34 @@ public class ShowAuctionController implements Initializable {
             material.setText(sculpture.getMainMaterial());
 
         }
+
+        //check whether the given seller is in user's favourites
+        FavouriteUserDatabaseManager favouriteUserDatabaseManager = new FavouriteUserDatabaseManager();
+
+        String sqlSelect = "Select * from favouriteuser, auction where favouriteuser.username2 = '" + sellerName.getText() + "' " +
+                "and favouriteuser.username1 =  '" + this.username + "' ";
+
+        Image heartIcon = new Image(("co/uk/artatawe/gui/Icons/icons8-heart-48.png"));
+
+        for (FavouriteUsers favs : favouriteUserDatabaseManager.getFavouriteUsers(sqlSelect)) {
+            if (isFavouriteOf(favs)) {
+                heartIcon = new Image("co/uk/artatawe/gui/Icons/icons8-love-50.png");
+            }
+            heartButton.setGraphic(new ImageView(heartIcon));
+        }
+    }
+
+    /**
+     * method that checks whether a seller is a favourite user of the current user.
+     * @param favouriteUsers favourite user object.
+     * @return true if the seller is from the list of favourites of the loged in user.
+     */
+    private boolean isFavouriteOf(FavouriteUsers favouriteUsers) {
+            if (favouriteUsers.getUser1().getUserName().equals(this.username)) {
+                return true;
+            }
+
+        return false;
     }
 
     /**
@@ -270,6 +300,13 @@ public class ShowAuctionController implements Initializable {
             errorMessage.setTextFill(Paint.valueOf("RED"));
         }
         return false;
+
+
+    }
+
+
+    @FXML
+    void handleHeartAction(ActionEvent event) {
 
 
     }

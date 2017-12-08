@@ -118,7 +118,7 @@ public class BrowseUsersController implements Initializable {
 
             Button heartButton = new Button();
 
-            Image heartIcon = new Image(("co/uk/artatawe/gui/Icons/icons8-heart-40.png"));
+            Image heartIcon = new Image(("co/uk/artatawe/gui/Icons/icons8-heart-48.png"));
 
             if (isFavouriteOf(user)) {
                 heartIcon = new Image("co/uk/artatawe/gui/Icons/icons8-love-50.png");
@@ -146,8 +146,8 @@ public class BrowseUsersController implements Initializable {
 
                         favouriteUserDatabaseManager.executeStatement(sqlDelete);
 
-                        Image fullHeart = new Image(("co/uk/artatawe/gui/Icons/icons8-heart-40.png"));
-                        heartButton.setGraphic(new ImageView(fullHeart));
+                        Image emptyHeart = new Image(("co/uk/artatawe/gui/Icons/icons8-heart-48.png"));
+                        heartButton.setGraphic(new ImageView(emptyHeart));
                     } else {
                         String sqlInsert = "insert into favouriteuser(username1,username2) values ('" +
                                 username + "', '" + user.getUserName() + "');";
