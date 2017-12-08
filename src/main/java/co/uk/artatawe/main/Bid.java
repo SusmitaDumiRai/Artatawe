@@ -34,6 +34,22 @@ public class Bid {
     }
 
     /**
+     * Constructor for bid.
+     * @param bidID ID of bid.
+     * @param buyer The user that placed the bid.
+     * @param bidAmount The amount that the user bid.
+     * @param dateAndTime The date and time that the bid was placed.
+     * @param auction The ID of the auction that the bid is made on.
+     */
+    public Bid(int bidID, User buyer, double bidAmount, String dateAndTime, Auction auction) {
+        this.buyer = buyer;
+        this.bidAmount = bidAmount;
+        this.dateAndTime = dateAndTime;
+        this.bidID = bidID;
+        this.auction = auction;
+    }
+
+    /**
      * Gets the user that placed the bid.
      * @return buyer
      */

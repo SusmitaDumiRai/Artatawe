@@ -6,6 +6,7 @@ import co.uk.artatawe.database.ArtworkDatabaseManager;
 import co.uk.artatawe.database.AuctionDatabaseManager;
 import co.uk.artatawe.database.BidDatabaseManager;
 import co.uk.artatawe.main.Auction;
+import co.uk.artatawe.main.Bid;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -169,10 +170,6 @@ public class ShowAuctionController implements Initializable {
             material.setText(sculpture.getMainMaterial());
 
         }
-
-
-
-
     }
 
     /**
@@ -229,7 +226,14 @@ public class ShowAuctionController implements Initializable {
                 sqlUpdateBidAmount = "Update auction set numofbidsleft = " + (auction.getNumOfBidsLeft() - 1) + " where auctionid = " + this.artwork.getArtworkID() + ";";
 
             } else { //complete auction.
-                sqlUpdateBidAmount = "Update auction set numofbidsleft = " + (auction.getNumOfBidsLeft() - 1) + ", auctioncomp = 1 where auctionid = " + this.artwork.getArtworkID() + ";";
+                //get id of winning bid.
+                String sqlSelectBid = "SELECT * FROM BID WHERE bidamount = " + bidDatabaseManager.getMaxBid(artwork.getArtworkID()); //get highest bid for this auction.
+                Bid bid = bidDatabaseManager.getBid(sqlSelectBid);
+
+                //update auction info.
+                sqlUpdateBidAmount = "Update auction set numofbidsleft = " + (auction.getNumOfBidsLeft() - 1) + ", auctioncomp = 1, " +
+                        "winningBid = " + bid.getBidID()  + " where auctionid = " + this.artwork.getArtworkID() +
+                        ";";
                 makeBidButton.setDisable(true);
             }
 

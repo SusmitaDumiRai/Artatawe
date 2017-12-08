@@ -61,7 +61,7 @@ public class AuctionDatabaseManager extends DatabaseManager {
 
                 User user = new UserDatabaseManager().getUser(resultSet.getString("seller")); //get seller of auction.
 
-                String sqlSelectAuction = "SELECT * FROM artwork where artworkid = " + resultSet.getInt("auctionid") + "';"; //get artwork related to auction.
+                String sqlSelectAuction = "SELECT * FROM artwork where artworkid = " + resultSet.getInt("auctionid") + ";"; //get artwork related to auction.
 
                 Artwork artwork = new ArtworkDatabaseManager().getArtwork(sqlSelectAuction);
 
