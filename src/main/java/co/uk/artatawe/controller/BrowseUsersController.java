@@ -30,6 +30,8 @@ import java.util.ResourceBundle;
 
 public class BrowseUsersController implements Initializable {
 
+    private final int IMAGE_WIDTH = 150;
+    private final int GAP = 10;
     private String username; //logged in user.
 
     @FXML
@@ -100,15 +102,15 @@ public class BrowseUsersController implements Initializable {
         scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
         scrollPane.setFitToHeight(true);
         scrollPane.setContent(tilePane);
-        tilePane.setHgap(10);
-        tilePane.setVgap(10);
+        tilePane.setHgap(GAP);
+        tilePane.setVgap(GAP);
 
         //gets all usernames and profile images
         for (User user : userDatabaseManager.getAllUsers(sqlSelect)) {
 
-            Image icon = new Image(user.getProfileImage(), 150, 0, true, true);
+            Image icon = new Image(user.getProfileImage(), IMAGE_WIDTH, 0, true, true);
             ImageView imageView = new ImageView(icon);
-            imageView.setFitWidth(150);
+            imageView.setFitWidth(IMAGE_WIDTH);
             imageView.setFitHeight(stage.getHeight() - 10);
             imageView.setPreserveRatio(true);
             imageView.setSmooth(true);

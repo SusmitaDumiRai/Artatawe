@@ -46,6 +46,7 @@ public class BrowseAuctionController implements Initializable    {
     private final int WIDTH = 800; //size of window.
     private final int HEIGHT = 600; //size of window.
     private final int IMAGE_WIDTH = 200;
+    private final int GAP = 10;
     
     private ArtworkDatabaseManager artworkDatabaseManager = new ArtworkDatabaseManager();
     
@@ -144,12 +145,13 @@ public class BrowseAuctionController implements Initializable    {
         artworkScrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED); //scroller can move vertically.
         artworkScrollPane.setFitToHeight(true);
         artworkScrollPane.setContent(artworkTilePane);
+        artworkTilePane.setHgap(GAP);
+        artworkTilePane.setVgap(GAP);
 
         //Get location of artwork photos.
         for (Artwork artwork : observeArrayList) {
             artworkPhoto.add(artwork.getPhoto());
         }
-        //Rectangle2D viewportRect = new Rectangle2D(40, 35, 200, 200);//don't need this
 
         String[] imageLocation = artworkPhoto.toArray(new String[observeArrayList.size()]); //convert array list to array.
 
