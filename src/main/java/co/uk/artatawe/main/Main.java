@@ -83,6 +83,7 @@ public class Main extends Application {
     //    auctionDatabaseManager.getAllAuctions("select * from auction;");
         //   artworkDatabaseManager.getAllArtworks(sqlSelect);
     //    auctionDatabaseManager.getAllAuctions();
+        System.out.println("hello");
 
     }
 

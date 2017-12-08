@@ -1,7 +1,78 @@
 # Artatawe
 
-Swansea university project for software engineering team 02. 
-Ebay-like system for auctioning artworks.
+Software Engineering Team 02 - Swansea University.
+
+Ebay-like system for auctioning artwork on a standalone device.
+
+Allows registration of new users, creating, bidding and viewing past/present auctions for registered users. 
+
+### Understanding this project
+To the software engineering group that will get this project next semester, all the best from SE02. 
+
+All data in this project is handled by SQL queries. All data is stored in the database.
+
+#### Database tables and their schema
+* **Artwork** - ArtworkID (PK), Title, Description, Photo, NameOfCreator, ReservedPrice, DateEntered, BidsAllowed, TypeOfArtwork, Width, Height, Depth, MainMaterial, ExtraPhoto
+  - Title and photo are unique.
+* **User** - Username (PK), FirstName, Surname, PhoneNumber, Address, PostCode, LastLogin, ProfileImage
+* **Auction** - AuctionID (PK, FK - Artwork), Seller (FK - User), WinningBid (FK - Bid), NumOfBidsLeft, AuctionComp, HighestBid
+  - AuctionComp: 0 = false, 1 = true. SQLite sadly does not support boolean.
+* **Bid** - BidID (PK), AuctionID (FK - Auction), Buyer (FK - User), BidAmount, DateAndTime
+* **FavouriteUser** - (Username1 (FK - User), Username2 (FK - User)) PK
+  - Username1 favourites Username2.
 
 
-Date time format : dd/MM/yyyy HH:mm:ss
+
+#### Random facts
+* Date and time is saved in this format: dd/MM/yyyy HH:mm:ss
+* All (except login) fxml files load in the same window.
+
+
+
+#### Logging onto the system
+Currently there are 6 default registered users. These usernames allows access to the system, case senstitive.
+* username
+* buygymmem
+* uglybackpack
+* yaytesting
+* finzfinz
+* lolfan
+*** 
+### Maven
+This project uses maven. I do not have much experience in this however this allows easy distribution of frameworks as you do not have to manually download relavent dependencies (e.g. sqlite). You can add more frameworks in pom.xml, simply google frameworkName maven dependency. 
+
+When you first load this project up please allow maven to download. IDE will do all this for you. It has already been tested across NetBeans, IntelliJ and Eclipse. 
+
+*** 
+### Dependencies and JDK
+* [SQLite](https://mvnrepository.com/artifact/org.xerial/sqlite-jdbc/3.21.0)
+* [Java](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+***
+### Compiling
+Instructions to compile this project in command line - video demo also provided.
+1. Add new systems variable called **JAVA_HOME** which points to your JDK e.g. D:\User\Documents\jdk1.8.0_121
+2. [Install and extract maven](http://maven.apache.org/download.cgi)
+3. Add maven to PATH.
+4. Perform verification test - ```mvn --verify```
+5. Compile and run - ```mvn exec:java```
+
+### Useful links
+* [Database](https://sqliteonline.com/) - Open the database and you can see all its content + perform SQL queries.
+* Gary's lecture notes from CS-250
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
