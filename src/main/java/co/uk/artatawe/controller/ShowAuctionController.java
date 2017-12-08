@@ -6,9 +6,7 @@ import co.uk.artatawe.database.*;
 import co.uk.artatawe.main.Auction;
 import co.uk.artatawe.main.Bid;
 import co.uk.artatawe.main.FavouriteUsers;
-import co.uk.artatawe.main.User;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -17,18 +15,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Paint;
-import javafx.scene.shape.ArcTo;
-//import sun.awt.geom.AreaOp;
 
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.DoubleSummaryStatistics;
 import java.util.ResourceBundle;
-
-import co.uk.artatawe.controller.BrowseUsersController;
 
 /**
  * Handles show auction fxml file.
@@ -131,8 +123,6 @@ public class ShowAuctionController implements Initializable {
     }
 
     public void getArtwork() {
-       String sql = "SELECT * from artwork where photo = '" + this.photo + "';";
-     //   String sql = "SELECT * from artwork where photo = 'co/uk/artatawe/artworkpictures/FLIGHTLESS BIRD FROM FAIRY TALE 1.jpg';";
 
         ArtworkDatabaseManager artworkDatabaseManager = new ArtworkDatabaseManager();
         AuctionDatabaseManager auctionDatabaseManager = new AuctionDatabaseManager();

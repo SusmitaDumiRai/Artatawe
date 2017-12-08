@@ -132,7 +132,7 @@
                   <Insets left="5.0" />
                </padding>
             </VBox>
-            <VBox layoutX="24.0" layoutY="393.0" prefHeight="133.0" prefWidth="535.0">
+            <VBox layoutY="415.0" prefHeight="133.0" prefWidth="539.0">
                <children>
                   <HBox prefHeight="110.0" prefWidth="535.0">
                      <children>
@@ -141,7 +141,7 @@
                               <Insets right="10.0" />
                            </HBox.margin>
                         </Label>
-                        <ScrollPane prefHeight="60.0" prefViewportHeight="47.0" prefViewportWidth="74.0" prefWidth="445.0">
+                        <ScrollPane prefHeight="72.0" prefViewportHeight="47.0" prefViewportWidth="74.0" prefWidth="450.0">
                            <content>
                               <Label fx:id="description" alignment="TOP_LEFT" text="description" textAlignment="JUSTIFY" />
                            </content>
