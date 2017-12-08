@@ -52,10 +52,6 @@ public class BrowseAuctionController implements Initializable    {
     
     private ObservableList<Artwork> observeArrayList;
 
-    /*
-
-
-    */
 
     @FXML
     private TilePane artworkTilePane;
@@ -112,28 +108,9 @@ public class BrowseAuctionController implements Initializable    {
 
     public void getImages(ObservableList<Artwork> observeArrayList) {
 
-
-
-
         Stage stage = new Stage();
 
         ArrayList<String> artworkPhoto = new ArrayList<>();
-
-        /*
-        if(sculpRadioButton.isSelected()){
-
-        	observeArrayList = FXCollections.observableArrayList(sculptureArrayList);
-        } else if (paintRadioButton.isSelected()) {
-        	observeArrayList = FXCollections.observableArrayList(paintingArrayList);
-        } else if (allRadioButton.isSelected()) {
-        	observeArrayList = FXCollections.observableArrayList(artworkArrayList);
-        } else {
-        	allRadioButton.setSelected(true);
-        	observeArrayList = FXCollections.observableArrayList(artworkArrayList);
-
-        }
-        */
-
 
 
         Image[] images = new Image[observeArrayList.size()];
@@ -209,6 +186,7 @@ public class BrowseAuctionController implements Initializable    {
     @FXML
     public void sculpSelected() {
 
+        //Gets all sculpture artworks not being sold by you.
         String sqlSelect = "Select * from artwork, auction where auction.auctionid = artwork.artworkid and auctioncomp = 0 and artwork.typeOfArtwork = 'sculpture' and auction.seller <> '" +
                  this.username + "';";
 
@@ -223,6 +201,7 @@ public class BrowseAuctionController implements Initializable    {
     @FXML
     void paintSelected(ActionEvent event) {
 
+        //Gets all paintings not being sold by you.
         String sqlSelect = "Select * from artwork, auction where auction.auctionid = artwork.artworkid and auctioncomp = 0 and artwork.typeOfArtwork = 'painting' and auction.seller <> '"
                 + this.username + "';";
 
@@ -248,6 +227,7 @@ public class BrowseAuctionController implements Initializable    {
 
     @FXML
     void allSelected(ActionEvent event) {
+        //Gets all auctions not being sold by you.
         String sqlSelect = "Select * from artwork, auction where auction.auctionid = artwork.artworkid and auctioncomp = 0 and auction.seller <> '" + this.username + "';";
         artworkTilePane.getChildren().clear(); //delete all previous artworks.
         getImages(FXCollections.observableArrayList(artworkDatabaseManager.getAllArtworks(sqlSelect)));
