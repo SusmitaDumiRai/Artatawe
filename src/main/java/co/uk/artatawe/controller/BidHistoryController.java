@@ -9,8 +9,6 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Pos;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
@@ -31,8 +29,6 @@ public class BidHistoryController implements Initializable {
     private String username; //logged in user.
     private final int WIDTH = 520; //size of window.
     private final int HEIGHT = 220; //size of window.
-
-
 
     @FXML
     private Label topLabel;
