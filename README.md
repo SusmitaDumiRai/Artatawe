@@ -46,12 +46,12 @@ When you first load this project up please allow maven to download. IDE will do 
 * [Java](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 ***
 ### Compiling
-Instructions to compile this project in command line
+Instructions to compile this project in command line - video demo will be provided.
 1. Add new systems variable called **JAVA_HOME** which points to your JDK e.g. D:\User\Documents\jdk1.8.0_121
 2. [Install and extract maven](http://maven.apache.org/download.cgi)
 3. Add maven to PATH.
-4. Perform verification test - ```mvn --verify```
-5. Compile and run - ```mvn exec:java```
+4. Perform verification test - ```mvn --version```
+5. Compile and run in directory - ```mvn exec:java```
 
 ### Useful links
 * [Database](https://sqliteonline.com/) - Open the database and you can see all its content + perform SQL queries.
