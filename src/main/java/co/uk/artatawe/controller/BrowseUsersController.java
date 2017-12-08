@@ -70,7 +70,7 @@ public class BrowseUsersController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        this.username = "username";
+        this.username = username;
         getUserProfiles();
     }
 
@@ -93,8 +93,8 @@ public class BrowseUsersController implements Initializable {
 
         UserDatabaseManager userDatabaseManager = new UserDatabaseManager();
 
-     //   String sqlSelect = "Select * from user where username <> '" + this.username + "'";";
-        String sqlSelect = "Select * from user where username <> 'username';";
+       String sqlSelect = "Select * from user where username <> '" + this.username + "';";
+        //String sqlSelect = "Select * from user where username <> 'username';";
 
         scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
