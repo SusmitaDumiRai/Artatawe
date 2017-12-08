@@ -67,7 +67,6 @@ public class BidHistoryController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
         populateWonAuction(); //display won auctions.
         populateBidHistory(); //display past bids placed.
     }
@@ -76,11 +75,8 @@ public class BidHistoryController implements Initializable {
      * Gets list of won auctions for logged in user.
      */
     public ObservableList<Auction> getWonAuctions() {
-
-
         //TODO TESTING WHEN POSSIBLE.
-      //  String sqlSelect = "Select * from auction, bid where auctionComp = 1 and auction.auctionid = bid.auctionid and buyer = '" + this.username + "';";
-        String sqlSelect = "Select * from auction, bid where auctionComp = 1 and auction.auctionid = bid.auctionid and buyer = 'username';";
+        String sqlSelect = "Select * from auction, bid where auctionComp = 1 and auction.auctionid = bid.auctionid and buyer = '" + this.username + "';";
         return  FXCollections.observableArrayList(new AuctionDatabaseManager().getAllAuctions(sqlSelect));
 
     }
@@ -90,11 +86,7 @@ public class BidHistoryController implements Initializable {
      */
     public ObservableList<Bid> getPlacedBids() {
 
-
-      //  String sqlSelect = "Select * from bid where buyer = '" + this.username + "';";
-
-        String sqlSelect = "Select * from bid where buyer = 'username';";
-
+        String sqlSelect = "Select * from bid where buyer = '" + this.username + "';";
         return FXCollections.observableArrayList(new BidDatabaseManager().getAllBids(sqlSelect));
 
     }
@@ -104,11 +96,7 @@ public class BidHistoryController implements Initializable {
      */
     public ObservableList<Auction> getSoldAuctions() {
 
-        AuctionDatabaseManager auctionDatabaseManager = new AuctionDatabaseManager();
-
-   //   String sqlSelect = "Select * from auction where auctioncomp = 1 and seller = '" + this.username + "';";
-
-        String sqlSelect = "Select * from auction where auctioncomp = true and seller = 'username';";
+        String sqlSelect = "Select * from auction where auctioncomp = 1 and seller = '" + this.username + "';";
         return FXCollections.observableArrayList(new AuctionDatabaseManager().getAllAuctions(sqlSelect));
 
 

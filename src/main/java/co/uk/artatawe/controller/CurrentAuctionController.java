@@ -63,8 +63,7 @@ public class CurrentAuctionController implements Initializable {
      * Get all bids being placed on an auction being sold by user.
      */
     public ObservableList<Bid> getSellingAuctions() {
-       // String sqlSelect = "SELECT * from auction, bid where auction.auctionid = bid.auctionid and auctioncomp = 0 and seller = '" + this.username + "';";
-        String sqlSelect = "SELECT * from auction, bid where auction.auctionid = bid.auctionid and auctioncomp = 0 and seller = 'lolfan';";
+        String sqlSelect = "SELECT * from auction, bid where auction.auctionid = bid.auctionid and auctioncomp = 0 and seller = '" + this.username + "';";
         return FXCollections.observableArrayList(new BidDatabaseManager().getAllBids(sqlSelect));
     }
 
