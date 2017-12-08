@@ -1,7 +1,9 @@
 package co.uk.artatawe.profileImage;
 
+import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 
 /**
  * The attributes and behaviours of a circle.
@@ -10,7 +12,7 @@ import javafx.scene.paint.Color;
  * @version 1.0
  */
 public class Circle extends ProfileImageComponent {
-	private int radius; //The radius of the circle, from the starting point.
+	private double radius; //The radius of the circle, from the starting point.
 	
 	/**
 	 * Creates a circle.
@@ -19,8 +21,8 @@ public class Circle extends ProfileImageComponent {
 	 * @param colour The colour of the circle.
 	 * @param radius The radius of the circle.
 	 */
-	public Circle(int xStartPosition, int yStartPosition, Color colour, 
-			int radius) {
+	public Circle(double xStartPosition, double yStartPosition, Color colour, 
+			double radius) {
 		super(xStartPosition, yStartPosition, colour);
 		this.radius = radius;
 	}
@@ -29,7 +31,7 @@ public class Circle extends ProfileImageComponent {
 	 * Gets the radius of the circle.
 	 * @return The radius of the circle.
 	 */
-	public int getRadius() {
+	public double getRadius() {
 		return radius;
 	}
 
@@ -37,13 +39,16 @@ public class Circle extends ProfileImageComponent {
 	 * Resets the radius of the circle.
 	 * @param radius The radius of the circle.
 	 */
-	public void setRadius(int radius) {
+	public void setRadius(double radius) {
 		this.radius = radius;
 	}
 
 	@Override
-	public void displayComponent(GraphicsContext g) {
-		// TODO Auto-generated method stub
-
+	public void displayComponent(Canvas canvas) {
+		GraphicsContext graphicsContext = canvas.getGraphicsContext2D();
+		graphicsContext.setFill(getColour());
+		graphicsContext.fillOval(getXStartPosition(), getYStartPosition(), 
+				getRadius(), getRadius());
 	}
 }
+

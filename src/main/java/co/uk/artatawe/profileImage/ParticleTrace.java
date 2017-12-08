@@ -2,6 +2,7 @@ package co.uk.artatawe.profileImage;
 
 import java.util.LinkedList;
 
+import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
@@ -20,7 +21,7 @@ public class ParticleTrace extends ProfileImageComponent {
 	 * @param yStartPosition The y position at which the component starts.
 	 * @param colour The colour of the component.
 	 */
-	public ParticleTrace(int xStartPosition, int yStartPosition, Color colour) {
+	public ParticleTrace(double xStartPosition, double yStartPosition, Color colour) {
 		super(xStartPosition, yStartPosition, colour);
 		particleTrace = new LinkedList<Circle>();
 	}
@@ -34,7 +35,6 @@ public class ParticleTrace extends ProfileImageComponent {
 	}
 	
 	@Override
-	public void displayComponent(GraphicsContext g) {
+	public void displayComponent(Canvas canvas) {
 	}
-
 }

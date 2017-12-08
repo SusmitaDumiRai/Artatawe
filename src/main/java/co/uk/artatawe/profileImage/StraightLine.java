@@ -1,5 +1,6 @@
 package co.uk.artatawe.profileImage;
 
+import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
@@ -10,7 +11,7 @@ import javafx.scene.paint.Color;
  * @version 1.0
  */
 public class StraightLine extends ProfileImageComponent {
-	private int[] finishPosition; //The point at which the straight line finishes.
+	private double[] finishPosition; //The point at which the straight line finishes.
 	
 	/**
 	 * Creates a straight line.
@@ -24,9 +25,10 @@ public class StraightLine extends ProfileImageComponent {
 	 * line finishes.
 	 * @param colour The colour of the straight line.
 	 */
-	public StraightLine(int xStartPosition, int yStartPosition, 
-			int xFinishPosition, int yFinishPosition, Color colour) {
+	public StraightLine(double xStartPosition, double yStartPosition, 
+			double xFinishPosition, double yFinishPosition, Color colour) {
 		super(xStartPosition, yStartPosition, colour);
+		finishPosition = new double[NO_OF_DIMENSIONS];
 		this.finishPosition[X_INDEX] = xFinishPosition;
 		this.finishPosition[Y_INDEX] = yFinishPosition;
 	}
@@ -35,7 +37,7 @@ public class StraightLine extends ProfileImageComponent {
 	 * Gets the x position at which the straight line finishes.
 	 * @return The x position at which the straight line finishes.
 	 */
-	public int getXFinishPosition() {
+	public double getXFinishPosition() {
 		return finishPosition[X_INDEX];
 	}
 
@@ -43,7 +45,7 @@ public class StraightLine extends ProfileImageComponent {
 	 * Gets the y position at which the straight line finishes.
 	 * @return The y position at which the straight line finishes.
 	 */
-	public int getYFinishPosition() {
+	public double getYFinishPosition() {
 		return finishPosition[Y_INDEX];
 	}
 	
@@ -52,7 +54,7 @@ public class StraightLine extends ProfileImageComponent {
 	 * @param xFinishPosition The x position at which the straight 
 	 * line finishes.
 	 */
-	public void setXFinishPosition(int xFinishPosition) {
+	public void setXFinishPosition(double xFinishPosition) {
 		this.finishPosition[X_INDEX] = xFinishPosition;
 	}
 	
@@ -61,7 +63,7 @@ public class StraightLine extends ProfileImageComponent {
 	 * @param yFinishPosition The y position at which the straight 
 	 * line finishes.
 	 */
-	public void setYFinishPosition(int yFinishPosition) {
+	public void setYFinishPosition(double yFinishPosition) {
 		this.finishPosition[Y_INDEX] = yFinishPosition;
 	}
 	
@@ -77,9 +79,13 @@ public class StraightLine extends ProfileImageComponent {
 	}
 	
 	@Override
-	public void displayComponent(GraphicsContext g) {
-		// TODO Auto-generated method stub
-		g.strokeLine(getXStartPosition(), getYStartPosition(), getXFinishPosition(), getYFinishPosition());
+	public void displayComponent(Canvas canvas) {
+		GraphicsContext graphicsContext = canvas.getGraphicsContext2D();
+		graphicsContext.setLineWidth(2);
+		graphicsContext.setFill(getColour());
+		graphicsContext.setStroke(getColour());
+		graphicsContext.strokeLine(getXStartPosition(), getYStartPosition(), 
+				getXFinishPosition(), getYFinishPosition());
 	}
 
 }

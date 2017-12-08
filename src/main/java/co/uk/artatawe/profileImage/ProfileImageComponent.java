@@ -1,5 +1,6 @@
 package co.uk.artatawe.profileImage;
 
+import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
@@ -10,9 +11,10 @@ import javafx.scene.paint.Color;
  * @version 1.0
  */
 public abstract class ProfileImageComponent {
+	public static final int NO_OF_DIMENSIONS = 2; 	
 	public static final int X_INDEX = 0; //The index of x in an array.
 	public static final int Y_INDEX = 1; //The index of y in an array.
-	private int[] startPosition; //The point at which the component starts.
+	private double[] startPosition; //The point at which the component starts.
 	private Color colour; //The colour of the component.
 	
 	/**
@@ -21,7 +23,8 @@ public abstract class ProfileImageComponent {
 	 * @param yStartPosition The y position at which the component starts.
 	 * @param colour The colour of the component.
 	 */
-	public ProfileImageComponent(int xStartPosition, int yStartPosition, Color colour) {
+	public ProfileImageComponent(double xStartPosition, double yStartPosition, Color colour) {
+		startPosition = new double[NO_OF_DIMENSIONS];
 		this.startPosition[X_INDEX] = xStartPosition;
 		this.startPosition[Y_INDEX] = yStartPosition;
 		this.colour = colour;
@@ -31,7 +34,7 @@ public abstract class ProfileImageComponent {
 	 * Gets the x position at which the component starts.
 	 * @param xStartPosition The x position at which the component starts.
 	 */
-	public int getXStartPosition() {
+	public double getXStartPosition() {
 		return startPosition[X_INDEX];
 	}
 
@@ -39,7 +42,7 @@ public abstract class ProfileImageComponent {
 	 * Gets the y position at which the component starts.
 	 * @param yStartPosition The y position at which the component starts.
 	 */
-	public int getYStartPosition() {
+	public double getYStartPosition() {
 		return startPosition[Y_INDEX];
 	}
 	
@@ -55,7 +58,7 @@ public abstract class ProfileImageComponent {
 	 * Resets the x position at which the component starts.
 	 * @return The x position at which the component starts.
 	 */
-	public void setXStartPosition(int xStartPosition) {
+	public void setXStartPosition(double xStartPosition) {
 		this.startPosition[X_INDEX] = xStartPosition;
 	}
 	
@@ -63,7 +66,7 @@ public abstract class ProfileImageComponent {
 	 * Resets the y position at which the component starts.
 	 * @return The y position at which the component starts.
 	 */
-	public void setYStartPosition(int yStartPosition) {
+	public void setYStartPosition(double yStartPosition) {
 		this.startPosition[Y_INDEX] = yStartPosition;
 	}
 	
@@ -87,5 +90,5 @@ public abstract class ProfileImageComponent {
 	}
 	
 	//Unsure on implementation
-	public abstract void displayComponent(GraphicsContext g);
+	public abstract void displayComponent(Canvas canvas);
 }
