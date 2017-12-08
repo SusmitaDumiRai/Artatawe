@@ -304,7 +304,6 @@ public class BrowseAuctionController implements Initializable    {
                 + this.username + "');";
 
         artworkTilePane.getChildren().clear(); //delete all previous artworks.
-        System.out.println("favourite selected.");
         getImages(FXCollections.observableArrayList(artworkDatabaseManager.getAllArtworks(sqlSelect)));
 
 

@@ -145,7 +145,6 @@ public class BrowseUsersController implements Initializable {
                                 + "' and username2 = '" + user.getUserName() + "';";
 
                         favouriteUserDatabaseManager.executeStatement(sqlDelete);
-                        System.out.println(sqlDelete);
 
                         Image fullHeart = new Image(("co/uk/artatawe/gui/Icons/icons8-heart-40.png"));
                         heartButton.setGraphic(new ImageView(fullHeart));
@@ -154,7 +153,6 @@ public class BrowseUsersController implements Initializable {
                                 username + "', '" + user.getUserName() + "');";
 
                         favouriteUserDatabaseManager.executeStatement(sqlInsert);
-                        System.out.println(sqlInsert);
 
                         Image fullHeart = new Image(("co/uk/artatawe/gui/Icons/icons8-love-50.png"));
                         heartButton.setGraphic(new ImageView(fullHeart));

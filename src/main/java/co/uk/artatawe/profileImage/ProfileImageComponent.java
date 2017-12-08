@@ -32,7 +32,6 @@ public abstract class ProfileImageComponent {
 
 	/**
 	 * Gets the x position at which the component starts.
-	 * @param xStartPosition The x position at which the component starts.
 	 */
 	public double getXStartPosition() {
 		return startPosition[X_INDEX];
@@ -40,7 +39,6 @@ public abstract class ProfileImageComponent {
 
 	/**
 	 * Gets the y position at which the component starts.
-	 * @param yStartPosition The y position at which the component starts.
 	 */
 	public double getYStartPosition() {
 		return startPosition[Y_INDEX];

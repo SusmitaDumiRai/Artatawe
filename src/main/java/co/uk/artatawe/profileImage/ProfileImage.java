@@ -56,7 +56,7 @@ public abstract class ProfileImage {
 	
 	/**
 	 * Resets the size of the profile image.
-	 * @param width The size of the profile image.
+	 * @param size The size of the profile image.
 	 */
 	public void setSize(double size) {
 		this.size = size;

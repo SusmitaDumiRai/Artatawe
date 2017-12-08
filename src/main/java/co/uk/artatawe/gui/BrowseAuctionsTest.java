@@ -8,9 +8,11 @@ import javafx.stage.Stage;
 
 
 /**
- * Created by Susi on 05/12/2017.
+ * Allows execution of program.
+ *
+ * @author 908928
  */
-public class BrowseAuctions2 extends Application {
+public class BrowseAuctionsTest extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
