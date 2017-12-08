@@ -26,21 +26,17 @@ import co.uk.artatawe.artwork.Artwork;
 import co.uk.artatawe.database.ArtworkDatabaseManager;
 
 /**
- * Controller class for browse auction.
+ * Controller class for the navigation.
  *
- * @author 908928
- * @author Plamena Tseneva
+ * @author Tihomir Trendafilov
  */
 public class NavigationController implements Initializable {
 
     private String username; //logged in user.
     
-    
-    private final int WIDTH = 800; //size of window.
-    private final int HEIGHT = 600; //size of window.
 
     @FXML
-    private Pane centerPane;
+    private Pane centerPane; //a pane in the center of the main pane
 
 
     /**
@@ -58,18 +54,23 @@ public class NavigationController implements Initializable {
 
     }
 
+    /**
+     * When loading the scene loads browse auction scene in the center of the page.
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         
+    	//creates a new controller
         BrowseAuctionController browseAuctionController = new BrowseAuctionController();
         browseAuctionController.setUsername(this.username);
 
     	 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/BrowseAuctions.fxml"));
-
+    	 
+    	 //sets the controller manually
     	 fxmlLoader.setController(browseAuctionController);
          try {
-             centerPane.getChildren().add(fxmlLoader.load());
-			//centerPane.setCenter(fxmlLoader.load());
+             centerPane.getChildren().add(fxmlLoader.load()); //sets the center of the pane to browse auction scene
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -91,15 +92,14 @@ public class NavigationController implements Initializable {
     @FXML
     void handleProfileAction(ActionEvent event) throws IOException {
     	
-    	
+    	//creates a new controller
         ProfilePageController profilePageController = new ProfilePageController();
         profilePageController.setUsername(this.username);
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/ProfilePage.fxml"));
-        
+        //sets the controller manually
         fxmlLoader.setController(profilePageController);
-        centerPane.getChildren().add(fxmlLoader.load());
-        //centerPane.setCenter(fxmlLoader.load());
+        centerPane.getChildren().add(fxmlLoader.load()); //sets the center of the pane to Profile Page scene
       
     }
 
@@ -113,65 +113,68 @@ public class NavigationController implements Initializable {
     
     	
     	 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/BrowseAuctions.fxml"));
-
+    	//creates a new controller
     	 BrowseAuctionController browseAuctionController = new BrowseAuctionController();
     	 browseAuctionController.setUsername(this.username);
-
+    	//sets the controller manually
     	 fxmlLoader.setController(browseAuctionController);
 
-    	 //centerPane.setCenter(fxmlLoader.load());
+    	//sets the center of the pane to browse auction scene
           centerPane.getChildren().add(fxmlLoader.load());
     }
     
     @FXML
     void handleUsersAction(ActionEvent event) throws IOException {
     	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/BrowseUsers.fxml"));
-    	
+    	//creates a new controller
     	BrowseUsersController browseUsersController = new BrowseUsersController();
     	browseUsersController.setUsername(this.username);
-    	fxmlLoader.setController(browseUsersController);
+    	fxmlLoader.setController(browseUsersController); //sets the controller manually
 
-   	 	//centerPane.setCenter(fxmlLoader.load());
+    	//sets the center of the pane to browse Users scene
         centerPane.getChildren().add(fxmlLoader.load());
     	
     }
     
     @FXML
     void handleCreateAuctionAction(ActionEvent event) throws IOException {
-
+    	//creates a new controller
         CreateAuctionController createAuctionController = new CreateAuctionController();
         createAuctionController.setUsername(this.username);
     	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/CreateAuction.fxml"));
 
-    	fxmlLoader.setController(createAuctionController);
+    	fxmlLoader.setController(createAuctionController); //sets the controller manually
 
-   	 	//centerPane.setCenter(fxmlLoader.load());
+
+    	//sets the center of the pane to Create Auction scene
         centerPane.getChildren().add(fxmlLoader.load());
     	
     }
     
     @FXML
     void handleMyAuctionsAction(ActionEvent event) throws IOException {
+    	//creates a new controller
         CurrentAuctionController currentAuctionController = new CurrentAuctionController();
         currentAuctionController.setUsername(this.username);
     	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/CurrentAuctions.fxml"));
 
-    	fxmlLoader.setController(currentAuctionController);
+    	fxmlLoader.setController(currentAuctionController); //sets the controller manually
 
-   	 	//centerPane.setCenter(fxmlLoader.load());
+    	//sets the center of the pane to Current Auctions scene
         centerPane.getChildren().add(fxmlLoader.load());
     	
     }
     
     @FXML
     void handleBidAction(ActionEvent event) throws IOException {
+    	//creates a new controller
         BidHistoryController bidHistoryController = new BidHistoryController();
         bidHistoryController.setUsername(this.username);
     	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/BidHistory.fxml"));
 
-    	fxmlLoader.setController(bidHistoryController);
+    	fxmlLoader.setController(bidHistoryController); //sets the controller manually
 
-   	 	//centerPane.setCenter(fxmlLoader.load());
+    	//sets the center of the pane to Bid History scene
         centerPane.getChildren().add(fxmlLoader.load());
     	
     }
