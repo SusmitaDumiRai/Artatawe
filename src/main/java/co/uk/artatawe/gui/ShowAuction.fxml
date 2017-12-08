@@ -115,7 +115,7 @@
                               <Insets right="10.0" />
                            </HBox.margin>
                         </TextField>
-                        <Button fx:id="makeBidButton" mnemonicParsing="false" onAction="#handleButtonAction" text="Make Bid" />
+                        <Button fx:id="makeBidButton" mnemonicParsing="false" onAction="#handleButtonAction" style="-fx-background-color: #87CEEB;" text="Make Bid" />
                      </children>
                   </HBox>
                </children>
