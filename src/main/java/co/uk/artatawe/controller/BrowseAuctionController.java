@@ -45,6 +45,7 @@ public class BrowseAuctionController implements Initializable    {
     private String username; //logged in user.
     private final int WIDTH = 800; //size of window.
     private final int HEIGHT = 600; //size of window.
+    private final int IMAGE_WIDTH = 200;
     
     private ArtworkDatabaseManager artworkDatabaseManager = new ArtworkDatabaseManager();
     
@@ -155,9 +156,9 @@ public class BrowseAuctionController implements Initializable    {
         for (int i = 0; i < imageLocation.length; i++) {
 
             final int currentI = i;
-            images[i] = new Image(imageLocation[i], 200, 0, true, true); //get image.
+            images[i] = new Image(imageLocation[i], IMAGE_WIDTH, 0, true, true); //get image.
             imageViews[i] = new ImageView(images[i]); //add image to image view.
-            imageViews[i].setFitWidth(200);
+            imageViews[i].setFitWidth(IMAGE_WIDTH);
             imageViews[i].setFitHeight(stage.getHeight() - 10);
             imageViews[i].setPreserveRatio(true);
             imageViews[i].setSmooth(true);
@@ -297,10 +298,12 @@ public class BrowseAuctionController implements Initializable    {
     @FXML
     void favouriteSelected(ActionEvent event) {
         //TODO
+        String sqlSelect = "Select * from auction, artwork, favouriteuser where auction.auctionid = artwork.artworkid and auction.seller in (select username2 from favouriteuser where username1 = '"
+                + this.username + "');";
 
         artworkTilePane.getChildren().clear(); //delete all previous artworks.
         System.out.println("favourite selected.");
-      //  getImages(FXCollections.observableArrayList()));
+        getImages(FXCollections.observableArrayList(artworkDatabaseManager.getAllArtworks(sqlSelect)));
 
 
     }
