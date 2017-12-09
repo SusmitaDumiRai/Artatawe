@@ -13,6 +13,7 @@ import javax.imageio.ImageIO;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
+import javafx.stage.Stage;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -31,7 +32,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import co.uk.artatawe.main.Main;
+import co.uk.artatawe.main.User;
 import co.uk.artatawe.profileImage.Circle;
+import co.uk.artatawe.profileImage.CustomProfileImage;
 import co.uk.artatawe.profileImage.StraightLine;
 
 public class CustomProfileImagePageController  implements Initializable{
@@ -67,7 +70,18 @@ public class CustomProfileImagePageController  implements Initializable{
 
     @FXML
     private Button saveImage;
+    
+    private static Stage primaryStage;
+    
+    private User user;
+    
+    private CustomProfileImage customProfileImage;
 	
+	public CustomProfileImagePageController(User user) {
+		this.user = user;
+		customProfileImage = new CustomProfileImage(0, 0, 0);
+	}
+
 	@Override
     public void initialize(URL location, ResourceBundle resources) {
 		mouseX = -1;
@@ -114,7 +128,7 @@ public class CustomProfileImagePageController  implements Initializable{
     	fileChooser.setInitialDirectory(new File(directory.getAbsolutePath() 
     			+ "/target/classes/co/uk/artatawe/profileImage/SavedProfileImages"));
     	
-    	File file = fileChooser.showSaveDialog(Main.getPrimaryStage());
+    	File file = fileChooser.showSaveDialog(getPrimaryStage());
     	
     	if (!(file == null)) {
     		try {
@@ -146,6 +160,14 @@ public class CustomProfileImagePageController  implements Initializable{
 		Color lineColour = Color.BLACK;
 		Circle c = new Circle(event.getX(), event.getY(), lineColour, 5);
 		c.displayComponent(canvas);
+	}
+
+	public static Stage getPrimaryStage() {
+		return primaryStage;
+	}
+
+	public static void setPrimaryStage(Stage primaryStage) {
+		CustomProfileImagePageController.primaryStage = primaryStage;
 	}
 }
 

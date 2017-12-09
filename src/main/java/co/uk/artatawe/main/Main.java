@@ -1,5 +1,6 @@
 package co.uk.artatawe.main;
 
+import co.uk.artatawe.controller.CustomProfileImagePageController;
 import co.uk.artatawe.database.*;
 
 
@@ -33,7 +34,8 @@ public class Main extends Application {
        /* String imagePath = "co/uk/artatawe/artworkpictures/Giraffe.png";
         ImageView imageView = new ImageView(imagePath);*/
 
-
+        CustomProfileImagePageController.setPrimaryStage(primaryStage);
+        
         // Display image on screen
 
 

@@ -95,7 +95,8 @@ public class NavigationController implements Initializable {
     	//creates a new controller
         ProfilePageController profilePageController = new ProfilePageController();
         profilePageController.setUsername(this.username);
-
+        profilePageController.setRootPane(centerPane);
+        
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/ProfilePage.fxml"));
         //sets the controller manually
         fxmlLoader.setController(profilePageController);

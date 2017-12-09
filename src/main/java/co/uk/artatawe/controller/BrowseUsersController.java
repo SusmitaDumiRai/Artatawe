@@ -108,8 +108,8 @@ public class BrowseUsersController implements Initializable {
         //gets all usernames and profile images
         for (User user : userDatabaseManager.getAllUsers(sqlSelect)) {
 
-            Image icon = new Image(user.getProfileImage(), IMAGE_WIDTH, 0, true, true);
-            ImageView imageView = new ImageView(icon);
+            ImageView imageView = new ImageView();
+            user.getProfileImage().displayProfileImage(imageView);
             imageView.setFitWidth(IMAGE_WIDTH);
             imageView.setFitHeight(stage.getHeight() - 10);
             imageView.setPreserveRatio(true);

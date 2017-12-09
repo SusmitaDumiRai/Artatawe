@@ -14,6 +14,11 @@ import javafx.scene.layout.Pane;
 public class SavedProfileImage extends ProfileImage {
 	private Image profileImage; //The saved profile image, as JavaFX image.
 	
+	public SavedProfileImage(String fileName) {
+		super(400, 0, 0);
+		this.profileImage = new Image(fileName);
+	}
+	
 	/**
 	 * Creates a saved profile image.
 	 * @param size The size of the profile image, which is square.
@@ -58,14 +63,12 @@ public class SavedProfileImage extends ProfileImage {
 	 * @param p The pane scene object the image is being displayed on.
 	 */
 	@Override
-    public void displayProfileImage(Pane p) {
-		ImageView presetImageView = new ImageView();
-		presetImageView.setImage(getProfileImage());
-		presetImageView.setTranslateX(getXPosition());
-		presetImageView.setTranslateY(getYPosition());
-		presetImageView.setFitWidth(getSize());
-		presetImageView.setFitHeight(getSize());
-		presetImageView.setPreserveRatio(true);
-		p.getChildren().add(presetImageView);
+    public void displayProfileImage(ImageView imageView) {
+		imageView.setImage(getProfileImage());
+		imageView.setTranslateX(getXPosition());
+		imageView.setTranslateY(getYPosition());
+		imageView.setFitWidth(getSize());
+		imageView.setFitHeight(getSize());
+		imageView.setPreserveRatio(true);
     }
 }

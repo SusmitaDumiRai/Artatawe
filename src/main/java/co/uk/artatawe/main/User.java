@@ -2,6 +2,8 @@ package co.uk.artatawe.main;
 
 import java.util.ArrayList;
 
+import co.uk.artatawe.profileImage.ProfileImage;
+
 
 /**
  * The class handles information about a user.
@@ -21,7 +23,7 @@ public class User {
   private String postcode;
   private String lastLogin;
   private ArrayList<User> favouriteUsers = new ArrayList<>();
-  private String profileImage;
+  private ProfileImage profileImage;
 
 
   /**
@@ -35,7 +37,7 @@ public class User {
    * @param lastLogin date time of user's last login.
   */
   public User(String userName, String firstName, String surname,
-              String phoneNumber, String address, String postcode, String lastLogin, String profileImage) {
+              String phoneNumber, String address, String postcode, String lastLogin, ProfileImage profileImage) {
     this.userName = userName;
     this.firstName = firstName;
     this.surname = surname;
@@ -138,7 +140,7 @@ public class User {
    * Returns the profile image a user has chosen for their profile.
    * @return a user's profile image
   */
-  public String getProfileImage() {
+  public ProfileImage getProfileImage() {
     return profileImage;
   }
 

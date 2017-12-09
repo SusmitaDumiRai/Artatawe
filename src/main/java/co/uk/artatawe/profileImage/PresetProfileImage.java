@@ -67,14 +67,12 @@ public class PresetProfileImage extends ProfileImage {
 	 * @param p The pane scene object the image is being displayed on.
 	 */
 	@Override
-    public void displayProfileImage(Pane p) {
-		ImageView presetImageView = new ImageView();
-		presetImageView.setImage(getImage());
-		presetImageView.setTranslateX(getXPosition());
-		presetImageView.setTranslateY(getYPosition());
-		presetImageView.setFitWidth(getSize());
-		presetImageView.setFitHeight(getSize());
-		presetImageView.setPreserveRatio(true);
-		p.getChildren().add(presetImageView);
+    public void displayProfileImage(ImageView imageView) {
+		imageView.setImage(getImage());
+		imageView.setTranslateX(getXPosition());
+		imageView.setTranslateY(getYPosition());
+		imageView.setFitWidth(getSize());
+		imageView.setFitHeight(getSize());
+		imageView.setPreserveRatio(true);
     }
 }

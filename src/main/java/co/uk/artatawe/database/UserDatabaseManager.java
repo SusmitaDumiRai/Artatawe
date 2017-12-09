@@ -1,6 +1,7 @@
 package co.uk.artatawe.database;
 
 import co.uk.artatawe.main.User;
+import co.uk.artatawe.profileImage.SavedProfileImage;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -57,7 +58,7 @@ public class UserDatabaseManager extends  DatabaseManager {
 
                 userArrayList.add(new User(resultSet.getString("username"), resultSet.getString("firstname"), resultSet.getString("surname"),
                         resultSet.getString("phonenumber"), resultSet.getString("address"), resultSet.getString("postcode"),
-                        resultSet.getString("lastlogin"), resultSet.getString("profileimage")));
+                        resultSet.getString("lastlogin"), new SavedProfileImage(resultSet.getString("profileImage"))));
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -85,7 +86,7 @@ public class UserDatabaseManager extends  DatabaseManager {
 
                 user = new User(resultSet.getString("username"), resultSet.getString("firstName"), resultSet.getString("surname"),
                         resultSet.getString("phonenumber"), resultSet.getString("address"), resultSet.getString("postcode"),
-                        resultSet.getString("lastlogin"), resultSet.getString("profileImage"));
+                        resultSet.getString("lastlogin"), new SavedProfileImage(resultSet.getString("profileImage")));
 
             }
         } catch (SQLException ex) {

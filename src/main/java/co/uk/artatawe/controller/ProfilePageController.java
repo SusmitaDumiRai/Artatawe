@@ -17,6 +17,7 @@ import java.util.ResourceBundle;
 
 import co.uk.artatawe.database.UserDatabaseManager;
 import co.uk.artatawe.main.User;
+import co.uk.artatawe.profileImage.SavedProfileImage;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -28,8 +29,9 @@ import javafx.scene.paint.Paint;
  * @author Tihomir Trendafilov
  */
 public class ProfilePageController implements Initializable {
-
-    private static String username; //logged in user's username.
+	private static final double AVATAR_SIZE = 237;
+    
+	private static String username; //logged in user's username.
 
     @FXML
     private BorderPane boarderPane;
@@ -97,23 +99,28 @@ public class ProfilePageController implements Initializable {
 	@FXML
     public void onChangeUserIconAction(ActionEvent event) throws IOException {
 		if (changeUserIcon.getText() == useCustomIcon.getText()) {
-	        CustomProfileImagePageController customProfileImagePageController = new CustomProfileImagePageController();
+	       // CustomProfileImagePageController customProfileImagePageController = new CustomProfileImagePageController();
 
 	        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/CustomProfileImagePage.fxml"));
 	        
-	        fxmlLoader.setController(customProfileImagePageController);
+	      //  fxmlLoader.setController(customProfileImagePageController);
 	        rootPane.getChildren().add(fxmlLoader.load());
 		}
     }
 	
 	@FXML
     public void onUseCustomIconAction(ActionEvent event) throws IOException {
-	        CustomProfileImagePageController customProfileImagePageController = new CustomProfileImagePageController();
+		UserDatabaseManager userDatabaseManager = new UserDatabaseManager();
 
-	        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/CustomProfileImagePage.fxml"));
-	        System.out.println(rootPane);
-	        fxmlLoader.setController(customProfileImagePageController);
-	        rootPane.getChildren().add(fxmlLoader.load());
+	    User user = userDatabaseManager.getUser(this.username);
+	
+		CustomProfileImagePageController customProfileImagePageController 
+        	= new CustomProfileImagePageController(user);
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/CustomProfileImagePage.fxml"));
+        System.out.println(rootPane);
+        fxmlLoader.setController(customProfileImagePageController);
+        rootPane.getChildren().add(fxmlLoader.load());
     }
 
     /**
@@ -147,8 +154,11 @@ public class ProfilePageController implements Initializable {
         address.setText(user.getAddress());
         postcode.setText(user.getPostcode());
         try{
-        Image image = new Image(user.getProfileImage());
-        avatar.setImage(image);
+        //Image image = new Image(user.getProfileImage().getImage());
+        //avatar.setImage(image);
+        user.getProfileImage().displayProfileImage(avatar);
+        avatar.setFitHeight(AVATAR_SIZE);
+        avatar.setFitWidth(AVATAR_SIZE);
         } catch (Exception ex) {
             //do nothing so when username=null it doesnt crashes
         }

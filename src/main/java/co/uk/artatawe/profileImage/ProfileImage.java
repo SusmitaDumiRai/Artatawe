@@ -1,6 +1,7 @@
 package co.uk.artatawe.profileImage;
 
 import javafx.scene.Parent;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
 /**
@@ -90,6 +91,6 @@ public abstract class ProfileImage {
 	}
 	
 	//Unsure on the type of graphics input.
-	public abstract void displayProfileImage(Pane p);
+	public abstract void displayProfileImage(ImageView imageView);
 }
 

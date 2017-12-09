@@ -1,5 +1,6 @@
 package co.uk.artatawe.main;
 
+import co.uk.artatawe.controller.CustomProfileImagePageController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -18,7 +19,7 @@ public class LoginTest extends Application {
 
         Scene scene = new Scene(root);
 
-
+        CustomProfileImagePageController.setPrimaryStage(primaryStage);
 
         primaryStage.setTitle("Login Test");
         primaryStage.setScene(scene);

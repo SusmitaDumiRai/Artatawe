@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import javafx.scene.Parent;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
 /**
@@ -44,7 +45,7 @@ public class CustomProfileImage extends ProfileImage {
     }
     
     @Override
-    public void displayProfileImage(Pane p) {
+    public void displayProfileImage(ImageView imageView) {
 
 
     }  
