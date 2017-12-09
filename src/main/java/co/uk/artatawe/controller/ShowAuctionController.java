@@ -116,28 +116,27 @@ public class ShowAuctionController implements Initializable {
         this.username = username;
     }
 
-    public ArrayList<Watching> getAllWatchedAuctions() {
-        WatchingDatabaseManager watchingDatabaseManager = new WatchingDatabaseManager();
-        ArrayList<Watching> watchedAuctions = new ArrayList<>();
-        String sqlSelect = "select * from watching;";
 
-        for (Watching watchers: watchingDatabaseManager.getAllWatching(sqlSelect)) {
-            if (watchers.getUsername().equals(this.username) ) {
-                watchedAuctions.add(new Watching(watchers.getAuctionID(), watchers.getUsername()));
+    public ArrayList<Watching> getWatching() {
+        WatchingDatabaseManager watchingDatabaseManager = new WatchingDatabaseManager();
+        String sqlSelect = "select * from watching;";
+        ArrayList<Watching> watchingUsers = new ArrayList<>();
+
+        for (Watching watching: watchingDatabaseManager.getAllWatching(sqlSelect)) {
+            if (watching.getUsername().equals(this.username)) {
+                watchingUsers.add(new Watching(watching.getAuctionID(), watching.getUsername()));
             }
         }
-
-        return watchedAuctions;
+        return watchingUsers;
     }
 
-    private boolean isWatching(Watching watchedAuction) {
-        for (Watching watching : getAllWatchedAuctions()) {
-            if (watching.getAuctionID() == watchedAuction.getAuctionID()) {
+    private boolean isWatching(User user) {
+        for (Watching watcher: getWatching()) {
+            if (watcher.getUsername().equals(user.getUserName())) {
                 return true;
             }
         }
-
-        return false;
+        return  false;
     }
 
     /**
@@ -220,14 +219,7 @@ public class ShowAuctionController implements Initializable {
 
 
         //check wathchers in database
-        WatchingDatabaseManager watchingDatabaseManager = new WatchingDatabaseManager();
-        String sqlSelectWatcher = "Select * from watching, auction where watching.auctionid = auction.auctionid " +
-                "and watching.username =  '" + this.username + "'; ";
-        for (Watching watching: watchingDatabaseManager.getAllWatching(sqlSelect)) {
-            if (isWatching(watching)) {
-                watchIcon.setImage(new Image("co/uk/artatawe/gui/Icons/full-eye.png"));
-            }
-        }
+
     }
 
 
@@ -342,24 +334,27 @@ public class ShowAuctionController implements Initializable {
     }
     @FXML
     void watchAction(ActionEvent event) {
+        UserDatabaseManager userDatabaseManager = new UserDatabaseManager();
         WatchingDatabaseManager watchingDatabaseManager = new WatchingDatabaseManager();
-        String sqlSelect = "Select * from watching;";
-
-        for (Watching auction: watchingDatabaseManager.getAllWatching(sqlSelect)) {
-            if (isWatching(auction)) {
-                String sqlDelete = "delete from watching where auctionid = '" + auction.getAuctionID()
+        String sqlSelectWatch = "Select * from user where username = '" + this.username + "';";
+        ArrayList<User> numOfWatching = new ArrayList<>();
+        for (User user : userDatabaseManager.getAllUsers(sqlSelectWatch)) {
+            if (isWatching(user)) {
+                String sqlDelete = "delete from watching where auctionid = '" + this.auction
                         + "' and username = '" + this.username + "';";
 
                 watchIcon.setImage(new Image("co/uk/artatawe/gui/Icons/icons8-eye-40.png"));
                 watchingDatabaseManager.executeStatement(sqlDelete);
-                //numWatchers.setText(String.valueOf(auctionWatched.size()));
+                numOfWatching.removeIf(user1-> user.getUserName().contains(username));
+                numWatchers.setText(String.valueOf(numOfWatching.size()));
             } else {
-                String sqlInsert = "insert into watching where auctionid = '" + auction.getAuctionID()
+                String sqlInsert = "insert into watching where auctionid = '" + this.auction
                         + "' and username = '" + this.username + "';";
 
                 watchingDatabaseManager.executeStatement(sqlInsert);
                 watchIcon.setImage(new Image("co/uk/artatawe/gui/Icons/full-eye.png"));
-                //numWatchers.setText(String.valueOf(auctionWatched.size()));
+                numOfWatching.add(user);
+                numWatchers.setText(String.valueOf(numOfWatching.size()));
             }
         }
     }

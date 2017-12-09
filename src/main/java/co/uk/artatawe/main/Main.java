@@ -65,6 +65,9 @@ public class Main extends Application {
         FavouriteUserDatabaseManager favouriteUserDatabaseManager = new FavouriteUserDatabaseManager();
 
 
+       // WatchingDatabaseManager watchingDatabaseManager = new WatchingDatabaseManager();
+       // watchingDatabaseManager.createWatchingTable();
+
      //   System.out.println(bidDatabaseManager.getMaxBid(4));
    // String sql = "UPDATE auction set winningbid = 24 where auctionid = 4";
    // bidDatabaseManager.updateStatement(sql);
@@ -85,6 +88,7 @@ public class Main extends Application {
         //   artworkDatabaseManager.getAllArtworks(sqlSelect);
     //    auctionDatabaseManager.getAllAuctions();
         System.out.println("hello");
+
 
     }
 
