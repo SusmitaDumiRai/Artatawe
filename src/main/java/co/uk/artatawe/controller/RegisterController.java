@@ -1,6 +1,7 @@
 
 package co.uk.artatawe.controller;
 
+import co.uk.artatawe.database.AuctionDatabaseManager;
 /**
  * Controller for register page.
  *
@@ -29,13 +30,7 @@ import java.util.ResourceBundle;
 public class RegisterController implements Initializable {
 	
 	private final int WIDTH_NAVIGATION = 800; //WIDTH size for navigation window.
-    private final int HEIGHT_NAVIGATION = 600; //HEIGHT size for navigation window
-
-    //private final String ERROR = "Wrong username";
-	
-	
-    
-    
+    private final int HEIGHT_NAVIGATION = 600; //HEIGHT size for navigation window.
     
     
      @FXML
@@ -118,23 +113,64 @@ public class RegisterController implements Initializable {
      */
     @FXML
     void createAccount(ActionEvent event) {
+    	
+    	//if any text field is invalid display error message under it.
     	if (validateUsername()) {
-    		if(validateFirstName()) {
-    			if(validateLastName()) {
-    				if(validatePhoneNumber()) {
-    					if(validateAddess()) {
-    						if(validatePostcde()) {
-    								createAccountAuction(event); 
-    						} else postcodeErrorMessage.setTextFill(Paint.valueOf("RED"));
-    					} else addressErrorMessage.setTextFill(Paint.valueOf("RED"));
-    				} else phoneNumErrorMessage.setTextFill(Paint.valueOf("RED"));
-    			} else lastNameErrorMessage.setTextFill(Paint.valueOf("RED"));
-    		} else firstNameErrorMessage.setTextFill(Paint.valueOf("RED"));
-    	} else usernameErrorMessage.setTextFill(Paint.valueOf("RED"));
-        
+    		usernameErrorMessage.setTextFill(Paint.valueOf("transparent"));
+    	} else {
+    		usernameErrorMessage.setTextFill(Paint.valueOf("RED"));
+    	}
+    	
+    	if (validateFirstName()) {
+    		firstNameErrorMessage.setTextFill(Paint.valueOf("transparent"));
+    	} else {
+    		firstNameErrorMessage.setTextFill(Paint.valueOf("RED"));
+    	}
+    	
+    	if (validateLastName()) {
+    		lastNameErrorMessage.setTextFill(Paint.valueOf("transparent"));
+    	} else {
+    		lastNameErrorMessage.setTextFill(Paint.valueOf("RED"));
+    	}
+    	
+    	if (validatePhoneNumber()) {
+    		phoneNumErrorMessage.setTextFill(Paint.valueOf("transparent"));
+    	} else {
+    		phoneNumErrorMessage.setTextFill(Paint.valueOf("RED"));
+    	}
+    	
+    	if (validateAddess()) {
+    		addressErrorMessage.setTextFill(Paint.valueOf("transparent"));
+    	} else {
+    		addressErrorMessage.setTextFill(Paint.valueOf("RED"));
+    	}
+    	
+    	if (validatePostcde()) {
+    		postcodeErrorMessage.setTextFill(Paint.valueOf("transparent"));
+    	} else {
+    		postcodeErrorMessage.setTextFill(Paint.valueOf("RED"));
+    	}
+    	
+    	//if all text fields are valid create account.
+    	if (validateUsername() && validateFirstName() && validateLastName() && validatePhoneNumber()
+    			&& validateAddess() && validatePostcde()) {
+    		createAccountAuction(event); 
+    	}
+    	
     }
     
     private void createAccountAuction(ActionEvent event) {
+    	
+    	//creating a new user and inserting into the system
+    	UserDatabaseManager userDatabaseManager = new UserDatabaseManager();
+    	
+    	String sqlInsertUser = "INSERT INTO user (username, firstname,  surname, phonenumber, address, postcode, lastlogin, profileimage)  values ("
+    			+ "'" + username.getText().replaceAll("'", "''") + "','"  + firstName.getText().replaceAll("'", "''") +
+    			"','" + lastName.getText().replaceAll("'", "''")  + "','"  + telephoneNumber.getText() + "','"  +
+    			address.getText().replaceAll("'", "''") + "','"  + postcode.getText().replaceAll("'", "''") +  "','"  +
+    			"2017-02-20T09:12:13" +  "','"  + "co/uk/artatawe/profileImage/SavedProfileImages/PresetImage_Bear.jpg" +  "');";
+    	
+    	userDatabaseManager.executeStatement(sqlInsertUser);
     
     	Parent root;
         try {
@@ -172,10 +208,29 @@ public class RegisterController implements Initializable {
     public boolean validateUsername() {
         String usernameText = username.getText();
         
-        if(usernameText.length()>30 || usernameText.length()<=0 ){
+        if (usernameText.length() > 30 || usernameText.length() <= 0 || validateExistingUsers()) {
+        	
         	return false;
+        } else return true;
+    }
+    
+    /**
+     * Validates if the username entered is already taken.
+     * @return true of username is valid.
+     */
+    public boolean validateExistingUsers() {
+        String usernameText = username.getText();
+        UserDatabaseManager userDatabaseManager = new UserDatabaseManager();
+
+        if (!usernameText.isEmpty()) {
+            for (String username1 : userDatabaseManager.getAllUsernames()) {
+                if (usernameText.equals(username1)) {
+                    return true;
+
+                }
+            }
         }
-        else return true;
+        return false;
     }
    
     /**
@@ -185,10 +240,9 @@ public class RegisterController implements Initializable {
     public boolean validateFirstName() {
         String firstNameText = firstName.getText();
         
-        if(firstNameText.length()>30 || firstNameText.length()<=0 ){
+        if (firstNameText.length() > 30 || firstNameText.length() <= 0) {
         	return false;
-        }
-        else return true;
+        } else return true;
     }
     
     /**
@@ -198,10 +252,9 @@ public class RegisterController implements Initializable {
     public boolean validateLastName() {
         String lastNameText = lastName.getText();
         
-        if(lastNameText.length()>30 || lastNameText.length()<=0 ){
+        if (lastNameText.length() > 30 || lastNameText.length() <= 0) {
         	return false;
-        }
-        else return true;
+        } else return true;
     }
     
     /**
@@ -211,15 +264,13 @@ public class RegisterController implements Initializable {
     public boolean validatePhoneNumber() {
         String phoneNumText = telephoneNumber.getText();
         
-        if(phoneNumText.length()>11 || phoneNumText.length()<11 || !isNumeric(phoneNumText)){
+        if (phoneNumText.length() > 11 || phoneNumText.length() < 11 || !isNumeric(phoneNumText)) {
         	return false;
-        }
-        else return true;
+        } else return true;
     }
     
     //checks if a string is made of numbers
-    private boolean isNumeric(String str)
-    {
+    private boolean isNumeric(String str) {
       return str.matches(".*\\d+.*");
     }
     
@@ -230,10 +281,9 @@ public class RegisterController implements Initializable {
     public boolean validateAddess() {
         String addressText = address.getText();
         
-        if(addressText.length()>30 || addressText.length()<=0 ){
+        if (addressText.length() > 30 || addressText.length() <= 0) {
         	return false;
-        }
-        else return true;
+        } else return true;
     }
    
     /**
@@ -243,10 +293,9 @@ public class RegisterController implements Initializable {
     public boolean validatePostcde() {
         String usernameText = postcode.getText();
         
-        if(usernameText.length()>6 || usernameText.length()<=5 ){
+        if (usernameText.length() > 6 || usernameText.length() <= 5) {
         	return false;
-        }
-        else return true;
+        } else return true;
     }
     
 
