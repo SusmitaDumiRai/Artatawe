@@ -65,7 +65,9 @@ public class Main extends Application {
         FavouriteUserDatabaseManager favouriteUserDatabaseManager = new FavouriteUserDatabaseManager();
 
 
-       // WatchingDatabaseManager watchingDatabaseManager = new WatchingDatabaseManager();
+        //WatchingDatabaseManager watchingDatabaseManager = new WatchingDatabaseManager();
+       // String sql = "update watching set username = 'username' where username = ' username';";
+        //watchingDatabaseManager.updateStatement(sql);
        // watchingDatabaseManager.createWatchingTable();
 
      //   System.out.println(bidDatabaseManager.getMaxBid(4));

@@ -33,6 +33,7 @@ public class ShowAuctionController implements Initializable {
     private String photo; //selected artwork.
     private Artwork artwork;
     private Auction auction;
+    private int numPeaopleWatching;
 
     @FXML
     private Label date;
@@ -110,6 +111,7 @@ public class ShowAuctionController implements Initializable {
 
     /**
      * Creates controller object.
+     *
      * @param username username of logged in user.
      */
     public ShowAuctionController(String username, String photo) {
@@ -122,7 +124,7 @@ public class ShowAuctionController implements Initializable {
         String sqlSelect = "select * from watching;";
         ArrayList<Watching> watchingUsers = new ArrayList<>();
 
-        for (Watching watching: watchingDatabaseManager.getAllWatching(sqlSelect)) {
+        for (Watching watching : watchingDatabaseManager.getAllWatching(sqlSelect)) {
             if (watching.getUsername().equals(this.username)) {
                 watchingUsers.add(new Watching(watching.getAuctionID(), watching.getUsername()));
             }
@@ -131,16 +133,17 @@ public class ShowAuctionController implements Initializable {
     }
 
     private boolean isWatching(User user) {
-        for (Watching watcher: getWatching()) {
+        for (Watching watcher : getWatching()) {
             if (watcher.getUsername().equals(user.getUserName())) {
                 return true;
             }
         }
-        return  false;
+        return false;
     }
 
     /**
      * method that checks whether a seller is a favourite user of the current user.
+     *
      * @param favouriteUsers favourite user object.
      * @return true if the seller is from the list of favourites of the loged in user.
      */
@@ -152,6 +155,12 @@ public class ShowAuctionController implements Initializable {
         return false;
     }
 
+    public void getNumOfPeopleWatching() {
+        String sqlSelect = "Select * from watching where auctionid = " + this.auction.getArtwork().getArtworkID() + ";";
+        ArrayList<Watching> watchings = new WatchingDatabaseManager().getAllWatching(sqlSelect);
+        numPeaopleWatching = watchings.size();
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         xDepth.setVisible(false);
@@ -160,7 +169,8 @@ public class ShowAuctionController implements Initializable {
         materialLabel.setVisible(false);
 
         getArtwork();
-
+        getNumOfPeopleWatching();
+        numWatchers.setText(Integer.toString(numPeaopleWatching));
     }
 
     public void getArtwork() {
@@ -171,7 +181,7 @@ public class ShowAuctionController implements Initializable {
         String sqlSelectArtwork = "Select * from artwork where artwork.photo = '" + this.photo + "';";
         artwork = artworkDatabaseManager.getArtwork(sqlSelectArtwork);
 
-        String sqlSelectAuction = "select * from auction where auctionid = " +  artwork.getArtworkID() + ";";
+        String sqlSelectAuction = "select * from auction where auctionid = " + artwork.getArtworkID() + ";";
         auction = auctionDatabaseManager.getAuction(sqlSelectAuction);
 
 
@@ -219,13 +229,21 @@ public class ShowAuctionController implements Initializable {
 
 
         //check wathchers in database
+        UserDatabaseManager userDatabaseManager = new UserDatabaseManager();
+        String sqlSelectWatching = "select * from user,watching where user.username = watching.username " +
+                " and auctionid = '" + artwork.getArtworkID() + "';";
+        for (User user : userDatabaseManager.getAllUsers(sqlSelectWatching)) {
+            if (isWatching(user)) {
+                watchIcon.setImage(new Image("co/uk/artatawe/gui/Icons/full-eye.png"));
+            }
+        }
 
     }
 
 
-
     /**
      * Get the username.
+     *
      * @return username of logged in user.
      */
     public String getUsername() {
@@ -234,6 +252,7 @@ public class ShowAuctionController implements Initializable {
 
     /**
      * Set username of logged in user.
+     *
      * @param username username of logged in user.
      */
     public void setUsername(String username) {
@@ -242,6 +261,7 @@ public class ShowAuctionController implements Initializable {
 
     /**
      * Get file location for the auction's photo.
+     *
      * @return file location of photo.
      */
     public String getPhoto() {
@@ -250,6 +270,7 @@ public class ShowAuctionController implements Initializable {
 
     /**
      * Set the location for the auction's photo.
+     *
      * @param photo file location of photo.
      */
     public void setPhoto(String photo) {
@@ -284,7 +305,7 @@ public class ShowAuctionController implements Initializable {
 
                 //update auction info.
                 sqlUpdateBidAmount = "Update auction set numofbidsleft = " + (auction.getNumOfBidsLeft() - 1) + ", auctioncomp = 1, " +
-                        "winningBid = " + bid.getBidID()  + " where auctionid = " + this.artwork.getArtworkID() +
+                        "winningBid = " + bid.getBidID() + " where auctionid = " + this.artwork.getArtworkID() +
                         ";";
                 makeBidButton.setDisable(true);
             }
@@ -301,6 +322,7 @@ public class ShowAuctionController implements Initializable {
     /**
      * Validates bid.
      * If it is a double and greater than the highest bid.
+     *
      * @return
      */
     public boolean valMakeBid() {
@@ -312,7 +334,7 @@ public class ShowAuctionController implements Initializable {
                 System.out.println("bid price too low"); //TODO ERROR MESAGE.
                 errorMessage.setText("'Bid is too low'");
                 errorMessage.setTextFill(Paint.valueOf("RED"));
-                return  false;
+                return false;
             }
 
         } catch (NumberFormatException ex) {
@@ -332,30 +354,31 @@ public class ShowAuctionController implements Initializable {
 
 
     }
+
     @FXML
     void watchAction(ActionEvent event) {
         UserDatabaseManager userDatabaseManager = new UserDatabaseManager();
         WatchingDatabaseManager watchingDatabaseManager = new WatchingDatabaseManager();
-        String sqlSelectWatch = "Select * from user where username = '" + this.username + "';";
-        ArrayList<User> numOfWatching = new ArrayList<>();
-        for (User user : userDatabaseManager.getAllUsers(sqlSelectWatch)) {
-            if (isWatching(user)) {
-                String sqlDelete = "delete from watching where auctionid = '" + this.auction
-                        + "' and username = '" + this.username + "';";
+        String sqlSelectWatch = "Select * from watching where username = '" + this.username + "' and auctionid = " + this.auction.getArtwork().getArtworkID() + ";";
+        ArrayList<Watching> numOfWatching = new WatchingDatabaseManager().getAllWatching(sqlSelectWatch);
 
-                watchIcon.setImage(new Image("co/uk/artatawe/gui/Icons/icons8-eye-40.png"));
-                watchingDatabaseManager.executeStatement(sqlDelete);
-                numOfWatching.removeIf(user1-> user.getUserName().contains(username));
-                numWatchers.setText(String.valueOf(numOfWatching.size()));
-            } else {
-                String sqlInsert = "insert into watching where auctionid = '" + this.auction
-                        + "' and username = '" + this.username + "';";
 
-                watchingDatabaseManager.executeStatement(sqlInsert);
-                watchIcon.setImage(new Image("co/uk/artatawe/gui/Icons/full-eye.png"));
-                numOfWatching.add(user);
-                numWatchers.setText(String.valueOf(numOfWatching.size()));
-            }
+        if (numOfWatching.size() > 0) {
+            String sqlDelete = "delete from watching where auctionid = '" + this.auction.getArtwork().getArtworkID()
+                    + "' and username = '" + this.username + "';";
+
+            watchIcon.setImage(new Image("co/uk/artatawe/gui/Icons/icons8-eye-40.png"));
+            watchingDatabaseManager.executeStatement(sqlDelete);
+            numPeaopleWatching--;
+            numWatchers.setText(Integer.toString(numPeaopleWatching));
+        } else {
+            String sqlInsert = "insert into watching values (" + this.auction.getArtwork().getArtworkID() + ",'" + this.username + "');";
+
+            watchingDatabaseManager.executeStatement(sqlInsert);
+            watchIcon.setImage(new Image("co/uk/artatawe/gui/Icons/full-eye.png"));
+            numPeaopleWatching++;
+            numWatchers.setText(Integer.toString(numPeaopleWatching));
         }
+
     }
 }
