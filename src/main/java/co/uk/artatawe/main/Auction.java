@@ -8,6 +8,7 @@ import co.uk.artatawe.artwork.Artwork;
  * The Auction class creates an auction and stores information about an auction.
  * This includes data such as a user selling and buying an artwork, an artwork
  * related to a auction and bids on an artwork.
+ *
  * @author Robyn Smillie - 916927
  */
 public class Auction {
@@ -27,12 +28,13 @@ public class Auction {
     }
 
     /**
+     * Constructor for auction.
      *
-     * @param numOfBidsLeft
-     * @param auctionComp
-     * @param artwork
-     * @param sellerUsername
-     * @param highestBid
+     * @param numOfBidsLeft number of bids left.
+     * @param auctionComp whether auction completed or not.
+     * @param artwork artwork associated.
+     * @param sellerUsername username of seller.
+     * @param highestBid highest bid for auction.
      */
     public Auction(int numOfBidsLeft, boolean auctionComp, Artwork artwork, User sellerUsername, double highestBid) {
         this.numOfBidsLeft = numOfBidsLeft;
@@ -41,16 +43,17 @@ public class Auction {
         this.sellerUsername = sellerUsername;
         this.highestBid = highestBid;
     }
-    
+
 
     /**
+     * Constructor for auction.
      *
-     * @param numOfBidsLeft
-     * @param auctionComp
-     * @param artwork
-     * @param sellerUsername
-     * @param winner
-     * @param highestBid
+     * @param numOfBidsLeft number of bids left.
+     * @param auctionComp whether auction completed or not.
+     * @param artwork artwork associated.
+     * @param sellerUsername username of seller.
+     * @param winner username of winner of auction.
+     * @param highestBid highest bif for auction.
      */
     public Auction(int numOfBidsLeft, boolean auctionComp, Artwork artwork, User sellerUsername, double highestBid, User winner) {
         this.numOfBidsLeft = numOfBidsLeft;
@@ -64,6 +67,7 @@ public class Auction {
 
     /**
      * Method to get an artwork
+     *
      * @return artwork - artwork object
      */
     public Artwork getArtwork() {
@@ -72,6 +76,7 @@ public class Auction {
 
     /**
      * Method to get the number of bids left on an artwork at auction
+     *
      * @return numOfBidsLeft - bids left on an item
      */
     public int getNumOfBidsLeft() {
@@ -80,6 +85,7 @@ public class Auction {
 
     /**
      * Method to get the seller of an artwork at auction
+     *
      * @return sellerUsername - username of the seller from User class
      */
     public User getSeller() {
@@ -88,15 +94,17 @@ public class Auction {
 
     /**
      * Method to set the winner.
+     *
      * @param winner winner of this auction.
      */
     public void setWinner(User winner) {
         this.winner = winner;
     }
 
-    
+
     /**
      * Method to get the winning bids username
+     *
      * @return winner - winners username
      */
     public User getWinner() {
@@ -106,8 +114,9 @@ public class Auction {
 
     /**
      * Method to get the status of the auction
+     *
      * @return auctionComp - boolean to state whether the auction has completed
-     *  or not
+     * or not
      */
     public Boolean getAuctionComp() {
         return auctionComp;
@@ -129,10 +138,7 @@ public class Auction {
         String output = "Auction details \nArtwork ID: "
                 + getArtwork().getArtworkID() + "\nArtwork Name: "
                 + this.getArtwork().getTitle() + "\nSeller Username: "
-                + this.sellerUsername.toString() + "/nNumber of Bids Left: "
-              //  + numOfBidsLeft + "/nHighestBid: " + this.highestBid.toString()
-                + "/nHighest Bidder: ";
-             //   + this.highestBid.getBuyer().getUserName();
+                + this.sellerUsername.toString() + "/nNumber of Bids Left: ";
         return output;
     }
 

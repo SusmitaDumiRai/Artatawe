@@ -7,6 +7,7 @@ package co.uk.artatawe.controller;
  * @author Plamena Tseneva
  * @author 908928
  */
+
 import co.uk.artatawe.database.FavouriteUserDatabaseManager;
 import co.uk.artatawe.database.UserDatabaseManager;
 import co.uk.artatawe.main.FavouriteUsers;
@@ -49,6 +50,7 @@ public class BrowseUsersController implements Initializable {
 
     /**
      * Sets username.
+     *
      * @param username username of logged in user.
      */
     public BrowseUsersController(String username) {
@@ -95,7 +97,7 @@ public class BrowseUsersController implements Initializable {
 
         UserDatabaseManager userDatabaseManager = new UserDatabaseManager();
 
-       String sqlSelect = "Select * from user where username <> '" + this.username + "';";
+        String sqlSelect = "Select * from user where username <> '" + this.username + "';";
         //String sqlSelect = "Select * from user where username <> 'username';";
 
         scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
@@ -136,7 +138,8 @@ public class BrowseUsersController implements Initializable {
             tilePane.getChildren().add(vBox); //add image to gridpane.
 
             heartButton.setOnAction(new EventHandler<ActionEvent>() {
-                @Override public void handle(ActionEvent e) {
+                @Override
+                public void handle(ActionEvent e) {
 
                     FavouriteUserDatabaseManager favouriteUserDatabaseManager = new FavouriteUserDatabaseManager();
 
@@ -165,6 +168,7 @@ public class BrowseUsersController implements Initializable {
 
     /**
      * Gets logged in user's username.
+     *
      * @return username of logged in user.
      */
     public String getUsername() {
@@ -173,6 +177,7 @@ public class BrowseUsersController implements Initializable {
 
     /**
      * Sets logged in user's username.
+     *
      * @param username username of logged in user.
      */
     public void setUsername(String username) {

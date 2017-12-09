@@ -40,16 +40,16 @@ import co.uk.artatawe.database.ArtworkDatabaseManager;
  * @author 908928
  * @author Plamena Tseneva
  */
-public class BrowseAuctionController implements Initializable    {
+public class BrowseAuctionController implements Initializable {
 
     private String username; //logged in user.
     private final int WIDTH = 800; //size of window.
     private final int HEIGHT = 600; //size of window.
     private final int IMAGE_WIDTH = 200;
     private final int GAP = 10;
-    
+
     private ArtworkDatabaseManager artworkDatabaseManager = new ArtworkDatabaseManager();
-    
+
     private ObservableList<Artwork> observeArrayList; //an empty observable list that is backed by an arraylist
 
 
@@ -61,22 +61,21 @@ public class BrowseAuctionController implements Initializable    {
 
     @FXML
     private ImageView imv;
-    
+
     @FXML
     private RadioButton sculpRadioButton;
-    
-    @FXML 
+
+    @FXML
     private RadioButton paintRadioButton;
-    
-    @FXML 
+
+    @FXML
     private RadioButton allRadioButton;
-    
-    @FXML 
+
+    @FXML
     private RadioButton favouriteRadioButton;
-    
+
     @FXML
     private BorderPane centerPane;
-
 
 
     /**
@@ -85,16 +84,17 @@ public class BrowseAuctionController implements Initializable    {
     public BrowseAuctionController() {
     }
 
-    
+
     /**
      * Sets username.
+     *
      * @param username username of logged in user.
      */
     public BrowseAuctionController(String username) {
         this.username = username;
     }
 
-    
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //gets all auctions being sold that is not by you.
@@ -103,7 +103,7 @@ public class BrowseAuctionController implements Initializable    {
         allRadioButton.setSelected(true);
     }
 
-    
+
     /**
      * Gets all artworks currently in auction. Displays them.
      */
@@ -118,7 +118,7 @@ public class BrowseAuctionController implements Initializable    {
         ImageView[] imageViews = new ImageView[observeArrayList.size()]; //imageViews to add into grid pane.
         VBox[] vBoxes = new VBox[observeArrayList.size()]; //vboxs to add in grid pane.
 
-        
+
         artworkScrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); //scroller can't move horizontally.
         artworkScrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED); //scroller can move vertically.
         artworkScrollPane.setFitToHeight(true);
@@ -144,30 +144,30 @@ public class BrowseAuctionController implements Initializable    {
             imageViews[i].setSmooth(true);
             imageViews[i].setCache(true);
 
-            
+
             //Add event handler.
             //Opens show auction when clicking on an auction for sale.
             imageViews[i].setOnMouseClicked(new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent event) {
-                	
-                	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/ShowAuction.fxml"));
-                	
-                	//creates new controller
-                	ShowAuctionController showAuctionController = new ShowAuctionController();
-                	
-                	showAuctionController.setUsername(getUsername());
-                	
-                	showAuctionController.setPhoto(imageLocation[currentI]); //photo location.
-                	//set controller manually
-                	fxmlLoader.setController(showAuctionController);
-               	 
-            			try {
-            				centerPane.setCenter(fxmlLoader.load()); //set the center of the pane to show auction scene
-						} catch (IOException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
+
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/ShowAuction.fxml"));
+
+                    //creates new controller
+                    ShowAuctionController showAuctionController = new ShowAuctionController();
+
+                    showAuctionController.setUsername(getUsername());
+
+                    showAuctionController.setPhoto(imageLocation[currentI]); //photo location.
+                    //set controller manually
+                    fxmlLoader.setController(showAuctionController);
+
+                    try {
+                        centerPane.setCenter(fxmlLoader.load()); //set the center of the pane to show auction scene
+                    } catch (IOException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
                 }
             });
 
@@ -178,10 +178,11 @@ public class BrowseAuctionController implements Initializable    {
         }
     }
 
-    
+
     /**
-     * Method for if the sculpRadioButton is selected. 
+     * Method for if the sculpRadioButton is selected.
      * Output all auctions which the artwork is a sculpture type.
+     *
      * @param sqlSelect - SQL Statement to pull information from the Database
      */
     @FXML
@@ -189,16 +190,17 @@ public class BrowseAuctionController implements Initializable    {
 
         //Gets all sculpture artworks not being sold by you.
         String sqlSelect = "Select * from artwork, auction where auction.auctionid = artwork.artworkid and auctioncomp = 0 and artwork.typeOfArtwork = 'sculpture' and auction.seller <> '" +
-                 this.username + "';";
-        
+                this.username + "';";
+
         artworkTilePane.getChildren().clear(); //delete all previous artworks.
         getImages(FXCollections.observableArrayList(artworkDatabaseManager.getAllArtworks(sqlSelect)));
     }
-    
+
 
     /**
-     * Method for if the paintRadioButton is selected. 
+     * Method for if the paintRadioButton is selected.
      * Output all artworks which are of the type painting.
+     *
      * @param sqlSelect - SQL Statement to pull information from the Database
      */
     @FXML
@@ -211,11 +213,12 @@ public class BrowseAuctionController implements Initializable    {
         artworkTilePane.getChildren().clear(); //delete all previous artworks.
         getImages(FXCollections.observableArrayList(artworkDatabaseManager.getAllArtworks(sqlSelect)));
     }
-    
+
 
     /**
-     * Method for if the favouriteRadioButton is selected. 
+     * Method for if the favouriteRadioButton is selected.
      * Outputs all auctions which are artworks of favourited users.
+     *
      * @param sqlSelect - SQL Statement to pull information from the Database
      */
     @FXML
@@ -230,11 +233,12 @@ public class BrowseAuctionController implements Initializable    {
         artworkTilePane.getChildren().clear(); //delete all previous artworks.
         getImages(FXCollections.observableArrayList(artworkDatabaseManager.getAllArtworks(sqlSelect)));
     }
-    
+
 
     /**
-     * Method for if the allRadioButton is selected. 
+     * Method for if the allRadioButton is selected.
      * Outputs all auctions which are not completed.
+     *
      * @param sqlSelect - SQL Statement to pull information from the Database
      */
     @FXML
@@ -248,15 +252,17 @@ public class BrowseAuctionController implements Initializable    {
 
     /**
      * Returns the username of the user that is log in.
+     *
      * @return username
      */
     public String getUsername() {
         return username;
     }
 
-    
+
     /**
      * Sets the username of the user that is log in.
+     *
      * @param username
      */
     public void setUsername(String username) {

@@ -23,18 +23,13 @@ public class Main extends Application {
             ImageView imageView = new ImageView(imagePath);
 
 
-
-         //   ImageView imageView = new ImageView(image);
+            //   ImageView imageView = new ImageView(image);
             root.getChildren().add(imageView);
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
 
 
-
-       /* String imagePath = "co/uk/artatawe/artworkpictures/Giraffe.png";
-        ImageView imageView = new ImageView(imagePath);*/
-        
         // Display image on screen
 
 
@@ -55,8 +50,6 @@ public class Main extends Application {
     */
 
 
-
-
     public static void main(String[] args) {
         UserDatabaseManager userDatabaseManager = new UserDatabaseManager();
         ArtworkDatabaseManager artworkDatabaseManager = new ArtworkDatabaseManager();
@@ -65,33 +58,32 @@ public class Main extends Application {
         FavouriteUserDatabaseManager favouriteUserDatabaseManager = new FavouriteUserDatabaseManager();
 
 
-       // WatchingDatabaseManager watchingDatabaseManager = new WatchingDatabaseManager();
-       // watchingDatabaseManager.createWatchingTable();
+        // WatchingDatabaseManager watchingDatabaseManager = new WatchingDatabaseManager();
+        // watchingDatabaseManager.createWatchingTable();
 
-     //   System.out.println(bidDatabaseManager.getMaxBid(4));
-   // String sql = "UPDATE auction set winningbid = 24 where auctionid = 4";
-   // bidDatabaseManager.updateStatement(sql);
+        //   System.out.println(bidDatabaseManager.getMaxBid(4));
+        // String sql = "UPDATE auction set winningbid = 24 where auctionid = 4";
+        // bidDatabaseManager.updateStatement(sql);
 
-     //String sql = "update artwork set description = 'An unique handmade sculpture made from bright chamotte clay. Coated with glaze.' where title = 'FLIGHTLESS BIRD FROM FAIRY TALE'; ";
-      //artworkDatabaseManager.updateStatement(sql);
+        //String sql = "update artwork set description = 'An unique handmade sculpture made from bright chamotte clay. Coated with glaze.' where title = 'FLIGHTLESS BIRD FROM FAIRY TALE'; ";
+        //artworkDatabaseManager.updateStatement(sql);
 
-     //   String sqlSelect = "Select * from artwork, auction where auction.auctionid = artwork.artworkid and auctioncomp = 0;";
+        //   String sqlSelect = "Select * from artwork, auction where auction.auctionid = artwork.artworkid and auctioncomp = 0;";
 
 //      String sqlSelect = "SELECT * FROM ARTWORK;";
 
-      //  String sql = "update bid set buyer = 'uglybackpack' where bidid = 4;";
+        //  String sql = "update bid set buyer = 'uglybackpack' where bidid = 4;";
 
-    //    bidDatabaseManager.updateStatement(sql);
+        //    bidDatabaseManager.updateStatement(sql);
 
-    //    auctionDatabaseManager.updateStatement(sql);
-    //    auctionDatabaseManager.getAllAuctions("select * from auction;");
+        //    auctionDatabaseManager.updateStatement(sql);
+        //    auctionDatabaseManager.getAllAuctions("select * from auction;");
         //   artworkDatabaseManager.getAllArtworks(sqlSelect);
-    //    auctionDatabaseManager.getAllAuctions();
+        //    auctionDatabaseManager.getAllAuctions();
         System.out.println("hello");
 
 
     }
-
 
 
 }

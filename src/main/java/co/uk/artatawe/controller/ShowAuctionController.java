@@ -110,6 +110,7 @@ public class ShowAuctionController implements Initializable {
 
     /**
      * Creates controller object.
+     *
      * @param username username of logged in user.
      */
     public ShowAuctionController(String username, String photo) {
@@ -122,7 +123,7 @@ public class ShowAuctionController implements Initializable {
         String sqlSelect = "select * from watching;";
         ArrayList<Watching> watchingUsers = new ArrayList<>();
 
-        for (Watching watching: watchingDatabaseManager.getAllWatching(sqlSelect)) {
+        for (Watching watching : watchingDatabaseManager.getAllWatching(sqlSelect)) {
             if (watching.getUsername().equals(this.username)) {
                 watchingUsers.add(new Watching(watching.getAuctionID(), watching.getUsername()));
             }
@@ -131,16 +132,17 @@ public class ShowAuctionController implements Initializable {
     }
 
     private boolean isWatching(User user) {
-        for (Watching watcher: getWatching()) {
+        for (Watching watcher : getWatching()) {
             if (watcher.getUsername().equals(user.getUserName())) {
                 return true;
             }
         }
-        return  false;
+        return false;
     }
 
     /**
      * method that checks whether a seller is a favourite user of the current user.
+     *
      * @param favouriteUsers favourite user object.
      * @return true if the seller is from the list of favourites of the loged in user.
      */
@@ -171,7 +173,7 @@ public class ShowAuctionController implements Initializable {
         String sqlSelectArtwork = "Select * from artwork where artwork.photo = '" + this.photo + "';";
         artwork = artworkDatabaseManager.getArtwork(sqlSelectArtwork);
 
-        String sqlSelectAuction = "select * from auction where auctionid = " +  artwork.getArtworkID() + ";";
+        String sqlSelectAuction = "select * from auction where auctionid = " + artwork.getArtworkID() + ";";
         auction = auctionDatabaseManager.getAuction(sqlSelectAuction);
 
 
@@ -223,9 +225,9 @@ public class ShowAuctionController implements Initializable {
     }
 
 
-
     /**
      * Get the username.
+     *
      * @return username of logged in user.
      */
     public String getUsername() {
@@ -234,6 +236,7 @@ public class ShowAuctionController implements Initializable {
 
     /**
      * Set username of logged in user.
+     *
      * @param username username of logged in user.
      */
     public void setUsername(String username) {
@@ -242,6 +245,7 @@ public class ShowAuctionController implements Initializable {
 
     /**
      * Get file location for the auction's photo.
+     *
      * @return file location of photo.
      */
     public String getPhoto() {
@@ -250,6 +254,7 @@ public class ShowAuctionController implements Initializable {
 
     /**
      * Set the location for the auction's photo.
+     *
      * @param photo file location of photo.
      */
     public void setPhoto(String photo) {
@@ -284,7 +289,7 @@ public class ShowAuctionController implements Initializable {
 
                 //update auction info.
                 sqlUpdateBidAmount = "Update auction set numofbidsleft = " + (auction.getNumOfBidsLeft() - 1) + ", auctioncomp = 1, " +
-                        "winningBid = " + bid.getBidID()  + " where auctionid = " + this.artwork.getArtworkID() +
+                        "winningBid = " + bid.getBidID() + " where auctionid = " + this.artwork.getArtworkID() +
                         ";";
                 makeBidButton.setDisable(true);
             }
@@ -301,6 +306,7 @@ public class ShowAuctionController implements Initializable {
     /**
      * Validates bid.
      * If it is a double and greater than the highest bid.
+     *
      * @return
      */
     public boolean valMakeBid() {
@@ -312,7 +318,7 @@ public class ShowAuctionController implements Initializable {
                 System.out.println("bid price too low"); //TODO ERROR MESAGE.
                 errorMessage.setText("'Bid is too low'");
                 errorMessage.setTextFill(Paint.valueOf("RED"));
-                return  false;
+                return false;
             }
 
         } catch (NumberFormatException ex) {
@@ -332,6 +338,7 @@ public class ShowAuctionController implements Initializable {
 
 
     }
+
     @FXML
     void watchAction(ActionEvent event) {
         UserDatabaseManager userDatabaseManager = new UserDatabaseManager();
@@ -345,7 +352,7 @@ public class ShowAuctionController implements Initializable {
 
                 watchIcon.setImage(new Image("co/uk/artatawe/gui/Icons/icons8-eye-40.png"));
                 watchingDatabaseManager.executeStatement(sqlDelete);
-                numOfWatching.removeIf(user1-> user.getUserName().contains(username));
+                numOfWatching.removeIf(user1 -> user.getUserName().contains(username));
                 numWatchers.setText(String.valueOf(numOfWatching.size()));
             } else {
                 String sqlInsert = "insert into watching where auctionid = '" + this.auction

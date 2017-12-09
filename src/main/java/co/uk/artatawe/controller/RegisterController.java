@@ -328,31 +328,7 @@ public class RegisterController implements Initializable {
 
     @FXML
     void customDrawingAction(ActionEvent event) throws IOException {
-        //builds a new stage
-
-        Stage primaryStage = new Stage();
-
         CustomProfileImagePageController customProfileImagePageController = new CustomProfileImagePageController();
-
-        /*
-        //creates a new controller
-        BrowseAuctionController browseAuctionController = new BrowseAuctionController();
-        browseAuctionController.setUsername(this.username);
-
-    	 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/BrowseAuctions.fxml"));
-
-    	 //sets the controller manually
-    	 fxmlLoader.setController(browseAuctionController);
-         try {
-             centerPane.getChildren().add(fxmlLoader.load()); //sets the center of the pane to browse auction scene
-
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-
-         */
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/CustomProfileImagePage.fxml"));
         fxmlLoader.setController(customProfileImagePageController);
@@ -362,17 +338,6 @@ public class RegisterController implements Initializable {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-
-        /*
-        Scene scene = new Scene(root);
-        primaryStage.setTitle("Login");
-        primaryStage.setScene(scene);
-        primaryStage.show();
-
-        // Hides the old window
-        ((Node) (event.getSource())).getScene().getWindow().hide();
-        */
-
 
 
     }
