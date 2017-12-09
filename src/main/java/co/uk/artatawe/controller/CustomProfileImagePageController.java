@@ -262,6 +262,7 @@ public class CustomProfileImagePageController implements Initializable {
         //Sets the controller manually.
         fxmlLoader.setController(profilePageController);
         //Puts the custom profile image page scene on the root pane.
+        rootPane.getChildren().clear();//clears the old scene
         rootPane.getChildren().add(fxmlLoader.load());
     }
 
