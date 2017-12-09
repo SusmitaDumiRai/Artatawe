@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="577.0" style="-fx-background-color: #DCDCDC;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <BorderPane fx:id="centerPane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <top>
+            <Label prefHeight="24.0" prefWidth="140.0" text="Choose an Icon" BorderPane.alignment="CENTER">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </top>
+         <center>
+            <TilePane fx:id="tilePane" prefHeight="600.0" prefWidth="550.0" style="-fx-background-color: #DCDCDC;" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="dog1Button" mnemonicParsing="false" onAction="#chooseDog1Auction" prefHeight="143.0" prefWidth="142.0">
+                     <graphic>
+                        <ImageView fx:id="dog1" fitHeight="150.0" fitWidth="329.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../profileImage/SavedProfileImages/PresetImage_Bear.jpg" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <TilePane.margin>
+                        <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                     </TilePane.margin>
+                  </Button>
+                  <Button fx:id="catButton" mnemonicParsing="false" onAction="#chooseCatAuction">
+                     <graphic>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../profileImage/SavedProfileImages/PresetImage_Cat.jpg" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="dog2Button" mnemonicParsing="false" onAction="#chooseDog2Auction">
+                     <graphic>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../profileImage/SavedProfileImages/PresetImage_Dog.jpg" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="bearButton" mnemonicParsing="false" onAction="#chooseBearAuction">
+                     <graphic>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../profileImage/SavedProfileImages/PresetImage_Lion.jpg" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="penguinButton" mnemonicParsing="false" onAction="#choosePenguinAuction">
+                     <graphic>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../profileImage/SavedProfileImages/PresetImage_Penguin.jpg" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </TilePane>
+         </center>
+      </BorderPane>
+   </center>
+</BorderPane>

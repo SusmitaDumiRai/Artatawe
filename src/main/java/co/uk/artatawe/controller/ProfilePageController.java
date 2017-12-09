@@ -106,6 +106,10 @@ public class ProfilePageController implements Initializable {
 	        
 	      //  fxmlLoader.setController(customProfileImagePageController);
 	        rootPane.getChildren().add(fxmlLoader.load());
+		} else if(changeUserIcon.getText() == useAppIcons.getText()) {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/CooseIcon.fxml"));
+			
+			rootPane.getChildren().add(fxmlLoader.load());
 		}
     }
 	
@@ -120,6 +124,20 @@ public class ProfilePageController implements Initializable {
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/CustomProfileImagePage.fxml"));
         fxmlLoader.setController(customProfileImagePageController);
+        rootPane.getChildren().add(fxmlLoader.load());
+    }
+	
+	@FXML
+    public void onUseAppIconAction(ActionEvent event) throws IOException {
+		UserDatabaseManager userDatabaseManager = new UserDatabaseManager();
+
+	    User user = userDatabaseManager.getUser(this.username);
+
+		ChooseIconController chooseIconController 
+        	= new ChooseIconController(user);
+		chooseIconController.setUsername(this.username);
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/ChooseIcon.fxml"));
+        fxmlLoader.setController(chooseIconController);
         rootPane.getChildren().add(fxmlLoader.load());
     }
 
