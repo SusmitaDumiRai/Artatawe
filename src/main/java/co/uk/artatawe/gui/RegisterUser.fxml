@@ -12,7 +12,7 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="590.0" style="-fx-background-color: #DCDCDC;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <center>
-      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <Pane fx:id="pane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
             <VBox alignment="CENTER_LEFT" layoutX="299.0" layoutY="59.0" prefHeight="355.0" prefWidth="413.0">
                <children>
@@ -135,7 +135,7 @@
                   <MenuButton alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="31.0" prefWidth="276.0" text="Choose Avatar">
                     <items>
                       <MenuItem mnemonicParsing="false" text="Predefined" />
-                      <MenuItem mnemonicParsing="false" text="Custom drawing" />
+                      <MenuItem fx:id="customMenuItem" mnemonicParsing="false" onAction="#customDrawingAction" text="Custom drawing" />
                     </items>
                   </MenuButton>
                </children>
