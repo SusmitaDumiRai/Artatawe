@@ -113,20 +113,49 @@ public class RegisterController implements Initializable {
      */
     @FXML
     void createAccount(ActionEvent event) {
+    	
+    	//if any text field is invalid display error message under it.
     	if (validateUsername()) {
-    		if(validateFirstName()) {
-    			if(validateLastName()) {
-    				if(validatePhoneNumber()) {
-    					if(validateAddess()) {
-    						if(validatePostcde()) {
-    								createAccountAuction(event); 
-    						} else postcodeErrorMessage.setTextFill(Paint.valueOf("RED"));
-    					} else addressErrorMessage.setTextFill(Paint.valueOf("RED"));
-    				} else phoneNumErrorMessage.setTextFill(Paint.valueOf("RED"));
-    			} else lastNameErrorMessage.setTextFill(Paint.valueOf("RED"));
-    		} else firstNameErrorMessage.setTextFill(Paint.valueOf("RED"));
-    	} else usernameErrorMessage.setTextFill(Paint.valueOf("RED"));
-        
+    		usernameErrorMessage.setTextFill(Paint.valueOf("transparent"));
+    	}else {
+    		usernameErrorMessage.setTextFill(Paint.valueOf("RED"));
+    	}
+    	
+    	if (validateFirstName()) {
+    		firstNameErrorMessage.setTextFill(Paint.valueOf("transparent"));
+    	}else {
+    		firstNameErrorMessage.setTextFill(Paint.valueOf("RED"));
+    	}
+    	
+    	if (validateLastName()) {
+    		lastNameErrorMessage.setTextFill(Paint.valueOf("transparent"));
+    	}else {
+    		lastNameErrorMessage.setTextFill(Paint.valueOf("RED"));
+    	}
+    	
+    	if (validatePhoneNumber()) {
+    		phoneNumErrorMessage.setTextFill(Paint.valueOf("transparent"));
+    	}else {
+    		phoneNumErrorMessage.setTextFill(Paint.valueOf("RED"));
+    	}
+    	
+    	if (validateAddess()) {
+    		addressErrorMessage.setTextFill(Paint.valueOf("transparent"));
+    	}else {
+    		addressErrorMessage.setTextFill(Paint.valueOf("RED"));
+    	}
+    	
+    	if (validatePostcde()) {
+    		postcodeErrorMessage.setTextFill(Paint.valueOf("transparent"));
+    	}else {
+    		postcodeErrorMessage.setTextFill(Paint.valueOf("RED"));
+    	}
+    	
+    	//if all text fields are valid create account.
+    	if(validateUsername() && validateFirstName() && validateLastName() && validatePhoneNumber() && validateAddess() && validatePostcde()){
+    		createAccountAuction(event); 
+    	}
+    	
     }
     
     private void createAccountAuction(ActionEvent event) {
@@ -179,6 +208,7 @@ public class RegisterController implements Initializable {
         String usernameText = username.getText();
         
         if(usernameText.length()>30 || usernameText.length()<=0 || validateExistingUsers()){
+        	
         	return false;
         }
         else return true;
