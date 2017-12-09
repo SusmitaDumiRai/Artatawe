@@ -8,7 +8,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
- * Created by Plamena on 3.12.2017 г..
+ * Main class used for testing.
  */
 public class LoginTest extends Application {
 

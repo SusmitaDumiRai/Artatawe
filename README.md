@@ -18,13 +18,11 @@ To the software engineering group that will get this project next semester, all 
 * **FavouriteUser** - (Username1 (FK - User), Username2 (FK - User)) PK
   - Username1 favourites Username2.
 
-
-
 #### Random facts
-* Date and time is saved in this format: dd/MM/yyyy HH:mm:ss
+* Date and time is saved in this format: dd/MM/yyyy HH:mm:ss.
 * All (except login) fxml files load in the same window.
-
-
+* SQLite will create the database if it cannot find the one. However it will be empty.
+* Errors where it cannot find FXML Files - make sure they are in the target folder as well.
 
 #### Logging onto the system
 Currently there are 6 default registered users. These usernames allows access to the system, case senstitive.
@@ -53,9 +51,11 @@ Instructions to compile this project in command line - video demo will be provid
 4. Perform verification test - ```mvn --version```
 5. Compile and run in directory - ```mvn exec:java```
 
+***
 ### Useful links
 * [Database](https://sqliteonline.com/) - Open the database and you can see all its content + perform SQL queries.
 * Gary's lecture notes from CS-250
+* [SQLite tutorial](http://www.sqlitetutorial.net/)
 
 
 

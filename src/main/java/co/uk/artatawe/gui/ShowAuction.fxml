@@ -162,17 +162,21 @@
             </VBox>
             <HBox layoutX="24.0" layoutY="48.0" prefHeight="40.0" prefWidth="266.0">
                <children>
-                  <ImageView fitHeight="40.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@Icons/icons8-eye-40.png" />
-                     </image>
-                  </ImageView>
+                  <Button fx:id="watchButton" mnemonicParsing="false" onAction="#watchAction" style="-fx-background-color: transparent; -fx-border-color: transparent;">
+                     <graphic>
+                        <ImageView fx:id="watchIcon" fitHeight="40.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Icons/icons8-eye-40.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
                   <Label prefHeight="100.0" text="Watching: ">
                      <padding>
                         <Insets left="5.0" right="10.0" />
                      </padding>
                   </Label>
-                  <Label prefHeight="100.0" text="10" />
+                  <Label fx:id="numWatchers" prefHeight="100.0" />
                </children>
             </HBox>
          </children>

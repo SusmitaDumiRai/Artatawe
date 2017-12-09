@@ -2,6 +2,8 @@ package co.uk.artatawe.artwork;
 
 /**
  * Painting class inherits from Artwork class, creates painting object.
+ *
+ * @author Plamena Tseneva
  */
 public class Painting extends Artwork {
 

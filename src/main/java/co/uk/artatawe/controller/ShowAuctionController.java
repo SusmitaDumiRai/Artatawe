@@ -3,9 +3,7 @@ package co.uk.artatawe.controller;
 import co.uk.artatawe.artwork.Artwork;
 import co.uk.artatawe.artwork.Sculpture;
 import co.uk.artatawe.database.*;
-import co.uk.artatawe.main.Auction;
-import co.uk.artatawe.main.Bid;
-import co.uk.artatawe.main.FavouriteUsers;
+import co.uk.artatawe.main.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -19,6 +17,7 @@ import javafx.scene.paint.Paint;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
 
@@ -96,6 +95,12 @@ public class ShowAuctionController implements Initializable {
     @FXML
     private Label numOfBidLeft;
 
+    @FXML
+    private Label numWatchers;
+
+    @FXML
+    private ImageView watchIcon;
+
 
     /**
      * Empty constructor.
@@ -109,6 +114,43 @@ public class ShowAuctionController implements Initializable {
      */
     public ShowAuctionController(String username, String photo) {
         this.username = username;
+    }
+
+    public ArrayList<Watching> getAllWatchedAuctions() {
+        WatchingDatabaseManager watchingDatabaseManager = new WatchingDatabaseManager();
+        ArrayList<Watching> watchedAuctions = new ArrayList<>();
+        String sqlSelect = "select * from watching;";
+
+        for (Watching watchers: watchingDatabaseManager.getAllWatching(sqlSelect)) {
+            if (watchers.getUsername().equals(this.username) ) {
+                watchedAuctions.add(new Watching(watchers.getAuctionID(), watchers.getUsername()));
+            }
+        }
+
+        return watchedAuctions;
+    }
+
+    private boolean isWatching(Watching watchedAuction) {
+        for (Watching watching : getAllWatchedAuctions()) {
+            if (watching.getAuctionID() == watchedAuction.getAuctionID()) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * method that checks whether a seller is a favourite user of the current user.
+     * @param favouriteUsers favourite user object.
+     * @return true if the seller is from the list of favourites of the loged in user.
+     */
+    private boolean isFavouriteOf(FavouriteUsers favouriteUsers) {
+        if (favouriteUsers.getUser1().getUserName().equals(this.username)) {
+            return true;
+        }
+
+        return false;
     }
 
     @Override
@@ -165,10 +207,8 @@ public class ShowAuctionController implements Initializable {
 
         //check whether the given seller is in user's favourites
         FavouriteUserDatabaseManager favouriteUserDatabaseManager = new FavouriteUserDatabaseManager();
-
         String sqlSelect = "Select * from favouriteuser, auction where favouriteuser.username2 = '" + sellerName.getText() + "' " +
-                "and favouriteuser.username1 =  '" + this.username + "' ";
-
+                "and favouriteuser.username1 =  '" + this.username + "';";
         Image heartIcon = new Image(("co/uk/artatawe/gui/Icons/icons8-heart-48.png"));
 
         for (FavouriteUsers favs : favouriteUserDatabaseManager.getFavouriteUsers(sqlSelect)) {
@@ -177,20 +217,20 @@ public class ShowAuctionController implements Initializable {
             }
             heartButton.setGraphic(new ImageView(heartIcon));
         }
-    }
 
-    /**
-     * method that checks whether a seller is a favourite user of the current user.
-     * @param favouriteUsers favourite user object.
-     * @return true if the seller is from the list of favourites of the loged in user.
-     */
-    private boolean isFavouriteOf(FavouriteUsers favouriteUsers) {
-            if (favouriteUsers.getUser1().getUserName().equals(this.username)) {
-                return true;
+
+        //check wathchers in database
+        WatchingDatabaseManager watchingDatabaseManager = new WatchingDatabaseManager();
+        String sqlSelectWatcher = "Select * from watching, auction where watching.auctionid = auction.auctionid " +
+                "and watching.username =  '" + this.username + "'; ";
+        for (Watching watching: watchingDatabaseManager.getAllWatching(sqlSelect)) {
+            if (isWatching(watching)) {
+                watchIcon.setImage(new Image("co/uk/artatawe/gui/Icons/full-eye.png"));
             }
-
-        return false;
+        }
     }
+
+
 
     /**
      * Get the username.
@@ -299,5 +339,28 @@ public class ShowAuctionController implements Initializable {
     void handleHeartAction(ActionEvent event) {
 
 
+    }
+    @FXML
+    void watchAction(ActionEvent event) {
+        WatchingDatabaseManager watchingDatabaseManager = new WatchingDatabaseManager();
+        String sqlSelect = "Select * from watching;";
+
+        for (Watching auction: watchingDatabaseManager.getAllWatching(sqlSelect)) {
+            if (isWatching(auction)) {
+                String sqlDelete = "delete from watching where auctionid = '" + auction.getAuctionID()
+                        + "' and username = '" + this.username + "';";
+
+                watchIcon.setImage(new Image("co/uk/artatawe/gui/Icons/icons8-eye-40.png"));
+                watchingDatabaseManager.executeStatement(sqlDelete);
+                //numWatchers.setText(String.valueOf(auctionWatched.size()));
+            } else {
+                String sqlInsert = "insert into watching where auctionid = '" + auction.getAuctionID()
+                        + "' and username = '" + this.username + "';";
+
+                watchingDatabaseManager.executeStatement(sqlInsert);
+                watchIcon.setImage(new Image("co/uk/artatawe/gui/Icons/full-eye.png"));
+                //numWatchers.setText(String.valueOf(auctionWatched.size()));
+            }
+        }
     }
 }

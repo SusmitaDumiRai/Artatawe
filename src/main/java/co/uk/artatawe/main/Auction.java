@@ -2,7 +2,6 @@ package co.uk.artatawe.main;
 
 
 import co.uk.artatawe.artwork.Artwork;
-import java.util.*;
 
 
 /**
@@ -20,6 +19,9 @@ public class Auction {
     private User winner;
     private double highestBid;
 
+    /**
+     * Empty constructor
+     */
     public Auction() {
 
     }
@@ -39,9 +41,7 @@ public class Auction {
         this.sellerUsername = sellerUsername;
         this.highestBid = highestBid;
     }
-
-
-
+    
 
     /**
      *
@@ -94,6 +94,7 @@ public class Auction {
         this.winner = winner;
     }
 
+    
     /**
      * Method to get the winning bids username
      * @return winner - winners username
@@ -101,7 +102,6 @@ public class Auction {
     public User getWinner() {
         return winner;
     }
-
 
 
     /**

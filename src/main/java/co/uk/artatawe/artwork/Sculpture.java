@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 /**
  * Sculpture class inherits from Artwork class, creates sculpture object.
+ *
+ * @author Plamena Tseneva
  */
 public class Sculpture extends Artwork {
 

@@ -14,7 +14,7 @@
    <center>
       <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <VBox alignment="CENTER" layoutX="299.0" layoutY="59.0" prefHeight="296.0" prefWidth="413.0">
+            <VBox alignment="CENTER_LEFT" layoutX="299.0" layoutY="59.0" prefHeight="355.0" prefWidth="413.0">
                <children>
                   <HBox prefHeight="22.0" prefWidth="413.0">
                      <children>
@@ -26,9 +26,10 @@
                         <TextField fx:id="username" prefHeight="31.0" prefWidth="172.0" />
                      </children>
                      <VBox.margin>
-                        <Insets bottom="10.0" />
+                        <Insets />
                      </VBox.margin>
                   </HBox>
+                  <Label fx:id="usernameErrorMessage" prefHeight="32.0" prefWidth="153.0" style="-fx-text-fill: transparent;" text="'Please use a valid username'" />
                   <HBox prefHeight="4.0" prefWidth="413.0">
                      <children>
                         <Label prefHeight="35.0" prefWidth="73.0" text="First name:">
@@ -42,9 +43,10 @@
                         <Insets bottom="5.0" />
                      </padding>
                      <VBox.margin>
-                        <Insets bottom="10.0" />
+                        <Insets top="10.0" />
                      </VBox.margin>
                   </HBox>
+                  <Label fx:id="firstNameErrorMessage" layoutX="140.0" layoutY="60.0" style="-fx-text-fill: transparent;" text="'Please use a valid First name'" />
                   <HBox prefHeight="16.0" prefWidth="413.0">
                      <children>
                         <Label prefHeight="37.0" prefWidth="71.0" text="Last name:">
@@ -58,9 +60,10 @@
                         <Insets bottom="5.0" />
                      </padding>
                      <VBox.margin>
-                        <Insets bottom="10.0" />
+                        <Insets top="10.0" />
                      </VBox.margin>
                   </HBox>
+                  <Label fx:id="lastNameErrorMessage" layoutX="140.0" layoutY="117.0" style="-fx-text-fill: transparent;" text="'Please use a valid Last name'" />
                   <HBox prefHeight="100.0" prefWidth="413.0">
                      <children>
                         <Label prefHeight="52.0" prefWidth="72.0" text="Telephone&#10;number:">
@@ -75,9 +78,10 @@
                         </TextField>
                      </children>
                      <VBox.margin>
-                        <Insets />
+                        <Insets top="10.0" />
                      </VBox.margin>
                   </HBox>
+                  <Label fx:id="phoneNumErrorMessage" prefHeight="17.0" prefWidth="236.0" style="-fx-text-fill: transparent;" text="'Please use a valid Telephone number'" />
                   <HBox prefHeight="12.0" prefWidth="413.0">
                      <children>
                         <Label prefHeight="30.0" prefWidth="63.0" text="Address:">
@@ -91,9 +95,10 @@
                         <TextField fx:id="address" prefWidth="172.0" />
                      </children>
                      <VBox.margin>
-                        <Insets bottom="10.0" />
+                        <Insets top="10.0" />
                      </VBox.margin>
                   </HBox>
+                  <Label fx:id="addressErrorMessage" layoutX="140.0" layoutY="174.0" style="-fx-text-fill: transparent;" text="'Please use a valid address'" />
                   <HBox prefHeight="22.0" prefWidth="413.0">
                      <children>
                         <Label prefHeight="28.0" prefWidth="66.0" text="Postcode:">
@@ -111,9 +116,10 @@
                         <Insets bottom="5.0" />
                      </padding>
                      <VBox.margin>
-                        <Insets bottom="10.0" />
+                        <Insets top="10.0" />
                      </VBox.margin>
                   </HBox>
+                  <Label fx:id="postcodeErrorMessage" layoutX="140.0" layoutY="279.0" style="-fx-text-fill: transparent;" text="'Please use a valid postcode'" />
                </children>
                <padding>
                   <Insets bottom="10.0" top="15.0" />
