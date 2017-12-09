@@ -73,9 +73,10 @@ public class BidDatabaseManager extends DatabaseManager {
 
     /**
      * Get bid from sql select statement.
-     * @param sqlSelectBid
+     * @param sqlSelectBid sql statement to be executed.
      * @return
      */
+
     public Bid getBid(String sqlSelectBid) {
 
         Bid bid = new Bid();
@@ -91,7 +92,7 @@ public class BidDatabaseManager extends DatabaseManager {
 
                 String sqlSelect = "SELECT * FROM AUCTION WHERE AUCTIONID = " + resultSet.getInt("auctionid");
                 Auction auction = new AuctionDatabaseManager().getAuction(sqlSelect);
-                bid = new Bid(user, resultSet.getDouble("bidamount"), resultSet.getString("dateandtime"), auction);
+                bid = new Bid(resultSet.getInt("bidid"), user, resultSet.getDouble("bidamount"), resultSet.getString("dateandtime"), auction);
 
             }
         } catch (SQLException ex) {
@@ -100,6 +101,8 @@ public class BidDatabaseManager extends DatabaseManager {
 
         return bid;
     }
+
+
 
     public double getMaxBid(int auctionID) {
         String sqlSelect = "SELECT max(bidAmount) as maxBid from bid where auctionid = " + auctionID + ";";

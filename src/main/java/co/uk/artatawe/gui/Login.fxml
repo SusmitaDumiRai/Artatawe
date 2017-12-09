@@ -37,7 +37,7 @@
             <TextField fx:id="username" layoutX="157.0" layoutY="-8.0" onAction="#onEnter" promptText="Type in user name" />
             <Button fx:id="signInButton" layoutX="276.0" layoutY="29.0" mnemonicParsing="false" onAction="#signInUser" opacity="0.9" prefHeight="25.0" prefWidth="67.0" style="-fx-background-color: #87CEEB;" text="Sign in" />
             <Label fx:id="errorMessage" layoutX="276.0" layoutY="60.0" style="-fx-text-fill: transparent;" text="'Please use a valid username'" />
-            <Button layoutX="188.0" layoutY="29.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="74.0" style="-fx-background-color: #87CEEB;" text="Register" />
+            <Button fx:id="regiserButton" layoutX="188.0" layoutY="29.0" mnemonicParsing="false" onAction="#handleRegisterAction" prefHeight="25.0" prefWidth="67.0" style="-fx-background-color: #87CEEB;" text="Register" />
          </children>
       </Pane>
    </center>

@@ -58,23 +58,27 @@ public class AuctionDatabaseManager extends DatabaseManager {
             ResultSet resultSet = statement.executeQuery(sqlSelect);
             while (resultSet.next()) {
                 BidDatabaseManager bidDatabaseManager = new BidDatabaseManager();
+                UserDatabaseManager userDatabaseManager = new UserDatabaseManager();
 
-                User user = new UserDatabaseManager().getUser(resultSet.getString("seller")); //get seller of auction.
+                User seller = userDatabaseManager.getUser(resultSet.getString("seller")); //get seller of auction.
 
-                String sqlSelectAuction = "SELECT * FROM artwork where artworkid = " + resultSet.getInt("auctionid") + "';"; //get artwork related to auction.
+                String sqlSelectAuction = "SELECT * FROM artwork where artworkid = " + resultSet.getInt("auctionid") + ";"; //get artwork related to auction.
 
                 Artwork artwork = new ArtworkDatabaseManager().getArtwork(sqlSelectAuction);
 
                 if (resultSet.getInt("auctioncomp") == 0) { //ongoing auction.
                     if (artwork.getBidsAllowed() == resultSet.getInt("numofbidsleft")) { //no bids placed yet.
-                        auctionArrayList.add(new Auction(resultSet.getInt("numOfBidsLeft"), false, artwork, user, resultSet.getInt("highestbid")));
+                        auctionArrayList.add(new Auction(resultSet.getInt("numOfBidsLeft"), false, artwork, seller, resultSet.getInt("highestbid")));
                     } else {
-                        auctionArrayList.add(new Auction(resultSet.getInt("numOfBidsLeft"), false, artwork, user,  bidDatabaseManager.getMaxBid(resultSet.getInt("auctionid"))));
+                        auctionArrayList.add(new Auction(resultSet.getInt("numOfBidsLeft"), false, artwork, seller,  bidDatabaseManager.getMaxBid(resultSet.getInt("auctionid"))));
                     }
 
 
                 } else { //completed auction
-                    auctionArrayList.add(new Auction(resultSet.getInt("numOfBidsLeft"), true, artwork, user, bidDatabaseManager.getMaxBid(resultSet.getInt("auctionid"))));
+                    String getWinningBid = "select * from bid where bidid = " + resultSet.getInt("winningbid");
+
+                    auctionArrayList.add(new Auction(resultSet.getInt("numOfBidsLeft"), true, artwork, seller,
+                            bidDatabaseManager.getMaxBid(resultSet.getInt("auctionid")), bidDatabaseManager.getBid(getWinningBid).getBuyer()));
                 }
 
             }

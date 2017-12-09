@@ -9,8 +9,6 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Pos;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
@@ -31,8 +29,6 @@ public class BidHistoryController implements Initializable {
     private String username; //logged in user.
     private final int WIDTH = 520; //size of window.
     private final int HEIGHT = 220; //size of window.
-
-
 
     @FXML
     private Label topLabel;
@@ -67,7 +63,6 @@ public class BidHistoryController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
         populateWonAuction(); //display won auctions.
         populateBidHistory(); //display past bids placed.
     }
@@ -76,11 +71,8 @@ public class BidHistoryController implements Initializable {
      * Gets list of won auctions for logged in user.
      */
     public ObservableList<Auction> getWonAuctions() {
-
-
-        //TODO TESTING WHEN POSSIBLE.
-      //  String sqlSelect = "Select * from auction, bid where auctionComp = 1 and auction.auctionid = bid.auctionid and buyer = '" + this.username + "';";
-        String sqlSelect = "Select * from auction, bid where auctionComp = 1 and auction.auctionid = bid.auctionid and buyer = 'username';";
+        String sqlSelect = "Select distinct auction.auctionid, numofbidsleft, seller, highestbid, auctioncomp, winningbid from auction, bid " +
+                "where auctionComp = 1 and auction.auctionid = bid.auctionid and buyer = '" + this.username + "';";
         return  FXCollections.observableArrayList(new AuctionDatabaseManager().getAllAuctions(sqlSelect));
 
     }
@@ -90,11 +82,7 @@ public class BidHistoryController implements Initializable {
      */
     public ObservableList<Bid> getPlacedBids() {
 
-
-      //  String sqlSelect = "Select * from bid where buyer = '" + this.username + "';";
-
-        String sqlSelect = "Select * from bid where buyer = 'username';";
-
+        String sqlSelect = "Select * from bid where buyer = '" + this.username + "';";
         return FXCollections.observableArrayList(new BidDatabaseManager().getAllBids(sqlSelect));
 
     }
@@ -103,15 +91,8 @@ public class BidHistoryController implements Initializable {
      * Gets list of sold auctions for logged in user.
      */
     public ObservableList<Auction> getSoldAuctions() {
-
-        AuctionDatabaseManager auctionDatabaseManager = new AuctionDatabaseManager();
-
-   //   String sqlSelect = "Select * from auction where auctioncomp = 1 and seller = '" + this.username + "';";
-
-        String sqlSelect = "Select * from auction where auctioncomp = true and seller = 'username';";
+        String sqlSelect = "Select * from auction where auctioncomp = 1 and seller = '" + this.username + "';";
         return FXCollections.observableArrayList(new AuctionDatabaseManager().getAllAuctions(sqlSelect));
-
-
 
     }
 
@@ -138,7 +119,7 @@ public class BidHistoryController implements Initializable {
 
         //TODO make it look nice
         topLabel.setText("Placed Bids");
-        auctionListView.setPrefSize(WIDTH,HEIGHT);
+        auctionListView.setPrefSize(WIDTH, HEIGHT);
         auctionListView.setLayoutY(369);
         pane.getChildren().add(auctionListView);
     }
@@ -182,7 +163,7 @@ public class BidHistoryController implements Initializable {
      * Gets all auctions sold by the logged in user.
      */
     public void populateSoldAuction() {
-        soldAuctionListView = new ListView<>(getWonAuctions());
+        soldAuctionListView = new ListView<>(getSoldAuctions());
 
         soldAuctionListView.setCellFactory(param -> new ListCell<Auction>() {
             @Override

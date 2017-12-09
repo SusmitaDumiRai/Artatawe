@@ -10,7 +10,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="1100.0" style="-fx-background-color: #DCDCDC;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1100.0" style="-fx-background-color: #DCDCDC;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <left>
       <VBox prefHeight="600.0" prefWidth="201.0" BorderPane.alignment="CENTER">
          <children>
@@ -109,6 +109,21 @@
                      </effect>
                      <image>
                         <Image url="@Icons/sandtimer.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <VBox.margin>
+                  <Insets bottom="6.0" left="6.0" right="6.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="logOutButton" contentDisplay="TOP" layoutX="16.0" layoutY="482.0" onAction="#handleLogOutAction" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #660066;" text="Log Out" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <effect>
+                        <ColorAdjust brightness="1.0" />
+                     </effect>
+                     <image>
+                        <Image url="@Icons/logout.png" />
                      </image>
                   </ImageView>
                </graphic>

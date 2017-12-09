@@ -22,13 +22,17 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #DCDCDC;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <center>
-      <Pane fx:id="pane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <children>
-            <Button fx:id="buyingHistoryButton" layoutX="55.0" layoutY="43.0" mnemonicParsing="false" onAction="#boughtHistoryAction" style="-fx-background-color: #87CEEB;" text="Bought history" />
-            <Button fx:id="sellingHistoryButton" layoutX="287.0" layoutY="43.0" mnemonicParsing="false" onAction="#soldHistoryAction" style="-fx-background-color: #87CEEB;" text="Sold history" />
-            <Label fx:id="topLabel" layoutX="55.0" layoutY="95.0" text="Placed bids" />
-            <Label fx:id="bottomLabel" layoutX="55.0" layoutY="344.0" text="Won auctions" />
-         </children>
-      </Pane>
+      <ScrollPane prefViewportHeight="600.0" prefViewportWidth="800.0">
+         <content>
+            <Pane fx:id="pane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="buyingHistoryButton" layoutX="55.0" layoutY="43.0" mnemonicParsing="false" onAction="#boughtHistoryAction" style="-fx-background-color: #87CEEB;" text="Bought history" />
+                  <Button fx:id="sellingHistoryButton" layoutX="287.0" layoutY="43.0" mnemonicParsing="false" onAction="#soldHistoryAction" style="-fx-background-color: #87CEEB;" text="Sold history" />
+                  <Label fx:id="topLabel" layoutX="55.0" layoutY="95.0" text="Placed bids" />
+                  <Label fx:id="bottomLabel" layoutX="55.0" layoutY="344.0" text="Won auctions" />
+               </children>
+            </Pane>
+         </content>
+      </ScrollPane>
    </center>
 </BorderPane>

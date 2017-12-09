@@ -18,11 +18,7 @@ public class Auction {
     private Artwork artwork;
     private User sellerUsername;
     private User winner;
-
-
     private double highestBid;
- //   private ArrayList<Bid> bidsOnArtwork;
-
 
     public Auction() {
 
@@ -56,7 +52,7 @@ public class Auction {
      * @param winner
      * @param highestBid
      */
-    public Auction(int numOfBidsLeft, boolean auctionComp, Artwork artwork, User sellerUsername, User winner, double highestBid) {
+    public Auction(int numOfBidsLeft, boolean auctionComp, Artwork artwork, User sellerUsername, double highestBid, User winner) {
         this.numOfBidsLeft = numOfBidsLeft;
         this.auctionComp = auctionComp;
         this.artwork = artwork;
@@ -65,37 +61,6 @@ public class Auction {
         this.highestBid = highestBid;
     }
 
-    /**
-     * Method to decline the number of bids left until number of bids is zero
-     */
-    public void decBid() {
-        if (numOfBidsLeft < artwork.getBidsAllowed() && numOfBidsLeft != 0) {
-            numOfBidsLeft--;
-        } else {
-            setAuctionComp();
-        }
-    }
-
-    /**TODO i think this is not needed anymore.
-     * Method to add a new bid to the auction on an artwork
-     * @param newBid - a new bid which is placed
-     */
-    /*
-    public void addBid(Bid newBid) {
-    	if (this.bidsOnArtwork.size() == 0 && newBid.getBidAmount() > artwork.getReservedPrice()) {
-    		this.bidsOnArtwork.add(newBid);
-    		this.decBid();
-    	}
-    	else if (newBid.getBidAmount() > this.highestBid.getBidAmount() && 
-    			this.bidsOnArtwork.size() <= this.numOfBidsLeft) {
-    				this.highestBid = newBid;
-    				this.bidsOnArtwork.add(newBid);
-    				this.decBid();
-    	} else {
-    	    System.out.println("There was an error placing the following bid:" + newBid.toString());
-    	}
-    }
-    */
 
     /**
      * Method to get an artwork
@@ -138,37 +103,6 @@ public class Auction {
     }
 
 
-    /**
-     * Method to get the highest current bid on the artwork
-     * @return highestBid - highest bid placed
-     */
-     /*
-    public Bid getHighestBid() {
-        return highestBid;
-    }
-
-    */
-    /**
-     * Method to get the information of all bids placed on an artwork
-     * @return bidsOnArtwork - ArrayList of bids
-     */
-    /*
-    public ArrayList<Bid> getBidsOnArtwork() {
-        return bidsOnArtwork;
-    }
-
-*/
-    /**
-     * Method to set the auction to completed
-     */
-    public void setAuctionComp() {
-        auctionComp = false;
-        if (numOfBidsLeft == 0) {
-            auctionComp = true;
-        } else {
-            auctionComp = false;
-        }
-    }
 
     /**
      * Method to get the status of the auction

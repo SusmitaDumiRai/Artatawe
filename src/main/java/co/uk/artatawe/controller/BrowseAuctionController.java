@@ -52,10 +52,6 @@ public class BrowseAuctionController implements Initializable    {
     
     private ObservableList<Artwork> observeArrayList;
 
-    /*
-
-
-    */
 
     @FXML
     private TilePane artworkTilePane;
@@ -112,28 +108,9 @@ public class BrowseAuctionController implements Initializable    {
 
     public void getImages(ObservableList<Artwork> observeArrayList) {
 
-
-
-
         Stage stage = new Stage();
 
         ArrayList<String> artworkPhoto = new ArrayList<>();
-
-        /*
-        if(sculpRadioButton.isSelected()){
-
-        	observeArrayList = FXCollections.observableArrayList(sculptureArrayList);
-        } else if (paintRadioButton.isSelected()) {
-        	observeArrayList = FXCollections.observableArrayList(paintingArrayList);
-        } else if (allRadioButton.isSelected()) {
-        	observeArrayList = FXCollections.observableArrayList(artworkArrayList);
-        } else {
-        	allRadioButton.setSelected(true);
-        	observeArrayList = FXCollections.observableArrayList(artworkArrayList);
-
-        }
-        */
-
 
 
         Image[] images = new Image[observeArrayList.size()];
@@ -174,18 +151,18 @@ public class BrowseAuctionController implements Initializable    {
                 	
                 	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/ShowAuction.fxml"));
                 	
-                	
+                	//creates new controller
                 	ShowAuctionController showAuctionController = new ShowAuctionController();
                 	
                 	showAuctionController.setUsername(getUsername());
                 	
                 	showAuctionController.setPhoto(imageLocation[currentI]); //photo location.
-                	
+                	//set controller manually
                 	fxmlLoader.setController(showAuctionController);
 					
                	 
             			try {
-            				centerPane.setCenter(fxmlLoader.load());
+            				centerPane.setCenter(fxmlLoader.load()); //set the center of the pane to show auction scene
 						} catch (IOException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -202,79 +179,14 @@ public class BrowseAuctionController implements Initializable    {
 
 
     }
-   
 
-    /**
-     * Displays create auction when clicked.
-     * @param event event.
-     */
-    @FXML
-    void handleAuctionAction(ActionEvent event) {
-        Parent root;
-        Stage stage = new Stage();
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/CreateAuction.fxml"));
-            root = fxmlLoader.load();
 
-            stage.setTitle("Create new auction");
-            stage.setScene(new Scene(root, WIDTH, HEIGHT));
-            //delete down
-         //   stage.setWidth(Screen.getPrimary().getVisualBounds().getWidth());
-          //  stage.setHeight(Screen.getPrimary().getVisualBounds().getHeight());
-
-            CreateAuctionController createAuctionController = fxmlLoader.getController();
-
-            createAuctionController.changeSellerUsername(this.username);
-
-            stage.show(); //display create auctions.
-
-            //hides current window.
-            ((Node) (event.getSource())).getScene().getWindow().hide();
-
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
-        }
-
-    }
-
-    /**
-     * Displays profile page when clicked.
-     * @param event event.
-     */
-    @FXML
-    void handleProfileAction(ActionEvent event) {
-        Parent root;
-        try {
-
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/ProfilePage.fxml"));
-
-            //manually set controller.
-            ProfilePageController profilePageController = new ProfilePageController();
-            profilePageController.setUsername(this.username);
-            fxmlLoader.setController(profilePageController);
-
-            root = fxmlLoader.load();
-
-            Stage stage = new Stage();
-            stage.setTitle("My profile");
-            stage.setScene(new Scene(root, WIDTH, HEIGHT));
-
-            profilePageController.setUsername(this.username); //parse username.
-
-            stage.show(); //display profile page.
-
-            //hides current window.
-            ((Node) (event.getSource())).getScene().getWindow().hide();
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-        }
-    }
 
     
     @FXML
     public void sculpSelected() {
 
-
+        //Gets all sculpture artworks not being sold by you.
         String sqlSelect = "Select * from artwork, auction where auction.auctionid = artwork.artworkid and auctioncomp = 0 and artwork.typeOfArtwork = 'sculpture' and auction.seller <> '" +
                  this.username + "';";
 
@@ -289,6 +201,7 @@ public class BrowseAuctionController implements Initializable    {
     @FXML
     void paintSelected(ActionEvent event) {
 
+        //Gets all paintings not being sold by you.
         String sqlSelect = "Select * from artwork, auction where auction.auctionid = artwork.artworkid and auctioncomp = 0 and artwork.typeOfArtwork = 'painting' and auction.seller <> '"
                 + this.username + "';";
 
@@ -299,12 +212,14 @@ public class BrowseAuctionController implements Initializable    {
 
     @FXML
     void favouriteSelected(ActionEvent event) {
-        //TODO
-        String sqlSelect = "Select * from auction, artwork, favouriteuser where auction.auctionid = artwork.artworkid and auction.seller in (select username2 from favouriteuser where username1 = '"
+        //gets artwork being sold by user's favourited sellers.
+        String sqlSelect = "Select distinct artworkid, typeofartwork, title, description, photo, nameofcreator, reservedprice, dateentered," +
+                "bidsallowed, mainmaterial, extraphotos, width, height, depth " +
+                "from auction, artwork, favouriteuser where auction.auctionid = artwork.artworkid " +
+                "and auction.seller in (select username2 from favouriteuser where username1 = '"
                 + this.username + "');";
 
         artworkTilePane.getChildren().clear(); //delete all previous artworks.
-        System.out.println("favourite selected.");
         getImages(FXCollections.observableArrayList(artworkDatabaseManager.getAllArtworks(sqlSelect)));
 
 
@@ -312,6 +227,7 @@ public class BrowseAuctionController implements Initializable    {
 
     @FXML
     void allSelected(ActionEvent event) {
+        //Gets all auctions not being sold by you.
         String sqlSelect = "Select * from artwork, auction where auction.auctionid = artwork.artworkid and auctioncomp = 0 and auction.seller <> '" + this.username + "';";
         artworkTilePane.getChildren().clear(); //delete all previous artworks.
         getImages(FXCollections.observableArrayList(artworkDatabaseManager.getAllArtworks(sqlSelect)));
@@ -321,11 +237,18 @@ public class BrowseAuctionController implements Initializable    {
 
 
 
-
+    /**
+     * Returns the username of the user that is log in.
+     * @return username
+     */
     public String getUsername() {
         return username;
     }
 
+    /**
+     * Sets the username of the user that is log in.
+     * @param username
+     */
     public void setUsername(String username) {
         this.username = username;
     }

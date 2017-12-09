@@ -21,7 +21,7 @@ public class Main extends Application {
             ImageView imageView = new ImageView(imagePath);
 
 
-        //   Image image = new Image("//co//uk//artatawe//artworkpictures//Lion 1.jpg");
+
          //   ImageView imageView = new ImageView(image);
             root.getChildren().add(imageView);
         } catch (Exception ex) {
@@ -65,9 +65,8 @@ public class Main extends Application {
 
 
      //   System.out.println(bidDatabaseManager.getMaxBid(4));
-    //   String sql = "UPDATE auction set numofbidsleft = 18 where auctionid = 4";
-
-
+   // String sql = "UPDATE auction set winningbid = 24 where auctionid = 4";
+   // bidDatabaseManager.updateStatement(sql);
 
      //String sql = "update artwork set description = 'An unique handmade sculpture made from bright chamotte clay. Coated with glaze.' where title = 'FLIGHTLESS BIRD FROM FAIRY TALE'; ";
       //artworkDatabaseManager.updateStatement(sql);
@@ -84,9 +83,8 @@ public class Main extends Application {
     //    auctionDatabaseManager.getAllAuctions("select * from auction;");
         //   artworkDatabaseManager.getAllArtworks(sqlSelect);
     //    auctionDatabaseManager.getAllAuctions();
+        System.out.println("hello");
 
-        String username = "username";
-        System.out.println( "Select * from auction, bid where auctionComp = 1 and auction.auctionid = bid.auctionid and buyer = '" + username + "';");
     }
 
 

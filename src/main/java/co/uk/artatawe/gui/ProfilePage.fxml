@@ -71,12 +71,15 @@
                      <image>
                         <Image url="@Icons/icons8-love-filled-40.png" />
                      </image></ImageView>
+<<<<<<< HEAD
                   <MenuButton fx:id="changeUserIcon" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onChangeUserIconAction" prefHeight="31.0" prefWidth="248.0" style="-fx-background-color: #87CEEB;" text="Change User Icon">
                     <items>
                       <MenuItem fx:id="useAppIcons" mnemonicParsing="false" text="Use App Icons" />
                       <MenuItem fx:id="useCustomIcon" mnemonicParsing="false" onAction="#onUseCustomIconAction" text="Use Custom Drawing" />
                     </items>
                   </MenuButton>
+=======
+>>>>>>> branch 'master' of https://github.com/SusmitaDumiRai/Artatawe.git
                </children>
             </VBox>
          </children>

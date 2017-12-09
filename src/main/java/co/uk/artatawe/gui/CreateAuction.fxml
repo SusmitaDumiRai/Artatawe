@@ -186,23 +186,23 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
+                  <HBox fx:id="photoHBox" prefHeight="100.0" prefWidth="200.0">
                      <children>
                         <Label prefHeight="31.0" prefWidth="109.0" text="Image File Path: " />
-                        <TextField fx:id="photo" prefHeight="31.0" prefWidth="348.0" />
+                        <Button fx:id="imageBtn" mnemonicParsing="false" onAction="#handleImageButtonAction" text="Select image" />
                      </children>
                      <VBox.margin>
                         <Insets bottom="7.0" top="5.0" />
                      </VBox.margin>
                   </HBox>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
+                  <HBox fx:id="extraPhotoHBox" prefHeight="100.0" prefWidth="200.0">
                      <children>
                         <Label fx:id="extraPhotoText" prefHeight="31.0" prefWidth="109.0" text="Extra Photo:">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
                         </Label>
-                        <TextField fx:id="extraPhoto" prefHeight="31.0" prefWidth="348.0" />
+                        <Button fx:id="imageExtraPhotoBtn" mnemonicParsing="false" onAction="#handleImageExtraPhotoBtn" text="Select extra photo" />
                      </children>
                   </HBox>
                </children>
