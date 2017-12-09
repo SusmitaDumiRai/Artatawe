@@ -131,16 +131,16 @@ public class RegisterController implements Initializable {
     
     private void createAccountAuction(ActionEvent event) {
     	
-    	//need to get the information from the testfields while replacing ' with 
-    	//firstName.getText().replaceAll("'", "''")
-    	//need to add the information into the databse
-    	//and then proceed to open the window below(navigation)
-    	//while passing the username
-    	
+    	//creating a new user and inserting into the system
     	UserDatabaseManager userDatabaseManager = new UserDatabaseManager();
     	
-    	//String sqlInsertUser = "INSERT INTO user (auctionid, seller,  numofbidsleft, auctioncomp, highestbid) values ('" +  artworkDatabaseManager.getArtworkID(title.getText()) +
-         //       "','"  +  sellerName.getText() + "','" + allowedBids.getText()  + "','0','" +  reservedPrice.getText() + "');";
+    	String sqlInsertUser = "INSERT INTO user (username, firstname,  surname, phonenumber, address, postcode, lastlogin, profileimage)  values ("
+    			+ "'" + username.getText().replaceAll("'", "''") + "','"  + firstName.getText().replaceAll("'", "''") +
+    			"','" + lastName.getText().replaceAll("'", "''")  + "','"  + telephoneNumber.getText() + "','"  +
+    			address.getText().replaceAll("'", "''") + "','"  + postcode.getText().replaceAll("'", "''") +  "','"  +
+    			"2017-02-20T09:12:13" +  "','"  + "co/uk/artatawe/profileImage/SavedProfileImages/PresetImage_Bear.jpg" +  "');";
+    	
+    	userDatabaseManager.executeStatement(sqlInsertUser);
     
     	Parent root;
         try {
@@ -178,10 +178,29 @@ public class RegisterController implements Initializable {
     public boolean validateUsername() {
         String usernameText = username.getText();
         
-        if(usernameText.length()>30 || usernameText.length()<=0 ){
+        if(usernameText.length()>30 || usernameText.length()<=0 || validateExistingUsers()){
         	return false;
         }
         else return true;
+    }
+    
+    /**
+     * Validates if the username entered is already taken.
+     * @return true of username is valid.
+     */
+    public boolean validateExistingUsers() {
+        String usernameText = username.getText();
+        UserDatabaseManager userDatabaseManager = new UserDatabaseManager();
+
+        if (!usernameText.isEmpty()) {
+            for (String username1 : userDatabaseManager.getAllUsernames()) {
+                if (usernameText.equals(username1)) {
+                    return true;
+
+                }
+            }
+        }
+        return false;
     }
    
     /**
