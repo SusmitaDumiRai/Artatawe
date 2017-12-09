@@ -1,6 +1,5 @@
 package co.uk.artatawe.main;
 
-import co.uk.artatawe.controller.CustomProfileImagePageController;
 import co.uk.artatawe.database.*;
 
 

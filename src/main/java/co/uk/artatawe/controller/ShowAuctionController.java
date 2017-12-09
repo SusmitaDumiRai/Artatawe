@@ -147,11 +147,8 @@ public class ShowAuctionController implements Initializable {
      * @return true if the seller is from the list of favourites of the loged in user.
      */
     private boolean isFavouriteOf(FavouriteUsers favouriteUsers) {
-        if (favouriteUsers.getUser1().getUserName().equals(this.username)) {
-            return true;
-        }
+        return favouriteUsers.getUser1().getUserName().equals(this.username);
 
-        return false;
     }
 
     @Override

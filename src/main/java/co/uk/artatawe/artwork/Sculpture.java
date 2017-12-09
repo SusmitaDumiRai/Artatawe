@@ -1,6 +1,5 @@
 package co.uk.artatawe.artwork;
 
-import java.util.ArrayList;
 
 /**
  * Sculpture class inherits from Artwork class, creates sculpture object.

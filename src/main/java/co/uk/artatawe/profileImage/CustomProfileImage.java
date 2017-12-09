@@ -2,10 +2,8 @@ package co.uk.artatawe.profileImage;
 
 import java.util.ArrayList;
 
-import javafx.scene.Parent;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Pane;
+
 
 /**
  * The attributes and behaviours of a custom profile image.

@@ -1,6 +1,5 @@
 package co.uk.artatawe.sample;
 
-import co.uk.artatawe.controller.BrowseAuctionController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

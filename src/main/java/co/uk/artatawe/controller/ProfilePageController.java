@@ -6,7 +6,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import javafx.event.ActionEvent;
@@ -17,17 +16,16 @@ import java.util.ResourceBundle;
 
 import co.uk.artatawe.database.UserDatabaseManager;
 import co.uk.artatawe.main.User;
-import co.uk.artatawe.profileImage.SavedProfileImage;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Paint;
 
 /**
  * Controller class created for profile page.
  *
  * @author Tihomir Trendafilov
  * @author 908928
+ * @author Adam Taylor
  */
 public class ProfilePageController implements Initializable {
     private static final double AVATAR_SIZE = 237;
@@ -85,7 +83,7 @@ public class ProfilePageController implements Initializable {
      * @param username username of logged in user.
      */
     public ProfilePageController(String username) {
-        this.username = username;
+        ProfilePageController.username = username;
     }
 
 
@@ -100,7 +98,7 @@ public class ProfilePageController implements Initializable {
 
     @FXML
     public void onChangeUserIconAction(ActionEvent event) throws IOException {
-        if (changeUserIcon.getText() == useCustomIcon.getText()) {
+        if (changeUserIcon.getText().equals(useCustomIcon.getText())) {
             // CustomProfileImagePageController customProfileImagePageController = new CustomProfileImagePageController();
 
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/CustomProfileImagePage.fxml"));
@@ -114,7 +112,7 @@ public class ProfilePageController implements Initializable {
     public void onUseCustomIconAction(ActionEvent event) throws IOException {
         UserDatabaseManager userDatabaseManager = new UserDatabaseManager();
 
-        User user = userDatabaseManager.getUser(this.username);
+        User user = userDatabaseManager.getUser(username);
 
         CustomProfileImagePageController customProfileImagePageController
                 = new CustomProfileImagePageController(user, rootPane);
@@ -139,7 +137,7 @@ public class ProfilePageController implements Initializable {
      * @param username logged in user's username.
      */
     public void setUsername(String username) {
-        this.username = username;
+        ProfilePageController.username = username;
     }
 
     /**
@@ -148,9 +146,9 @@ public class ProfilePageController implements Initializable {
     public void displayUserInfo() {
         UserDatabaseManager userDatabaseManager = new UserDatabaseManager();
 
-        User user = userDatabaseManager.getUser(this.username); //get user.
+        User user = userDatabaseManager.getUser(username); //get user.
 
-        userName.setText(this.username);
+        userName.setText(username);
         firstName.setText(user.getFirstName());
         lastName.setText(user.getLastName());
         telephoneNumber.setText(user.getPhoneNumber());
