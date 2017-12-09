@@ -50,7 +50,7 @@ public class BrowseAuctionController implements Initializable    {
     
     private ArtworkDatabaseManager artworkDatabaseManager = new ArtworkDatabaseManager();
     
-    private ObservableList<Artwork> observeArrayList;
+    private ObservableList<Artwork> observeArrayList; //an empty observable list that is backed by an arraylist
 
 
     @FXML
@@ -71,6 +71,9 @@ public class BrowseAuctionController implements Initializable    {
     @FXML 
     private RadioButton allRadioButton;
     
+    @FXML 
+    private RadioButton favouriteRadioButton;
+    
     @FXML
     private BorderPane centerPane;
 
@@ -82,15 +85,16 @@ public class BrowseAuctionController implements Initializable    {
     public BrowseAuctionController() {
     }
 
+    
     /**
      * Sets username.
      * @param username username of logged in user.
      */
     public BrowseAuctionController(String username) {
         this.username = username;
-
     }
 
+    
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //gets all auctions being sold that is not by you.
@@ -98,14 +102,11 @@ public class BrowseAuctionController implements Initializable    {
         getImages(FXCollections.observableArrayList(artworkDatabaseManager.getAllArtworks(sqlSelect)));
         allRadioButton.setSelected(true);
     }
+
     
-
-
-
     /**
      * Gets all artworks currently in auction. Displays them.
      */
-
     public void getImages(ObservableList<Artwork> observeArrayList) {
 
         Stage stage = new Stage();
@@ -113,11 +114,11 @@ public class BrowseAuctionController implements Initializable    {
         ArrayList<String> artworkPhoto = new ArrayList<>();
 
 
-        Image[] images = new Image[observeArrayList.size()];
-        ImageView[] imageViews = new ImageView[observeArrayList.size()];
+        Image[] images = new Image[observeArrayList.size()]; //images to add into grid pane.
+        ImageView[] imageViews = new ImageView[observeArrayList.size()]; //imageViews to add into grid pane.
         VBox[] vBoxes = new VBox[observeArrayList.size()]; //vboxs to add in grid pane.
 
-
+        
         artworkScrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); //scroller can't move horizontally.
         artworkScrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED); //scroller can move vertically.
         artworkScrollPane.setFitToHeight(true);
@@ -137,12 +138,13 @@ public class BrowseAuctionController implements Initializable    {
             final int currentI = i;
             images[i] = new Image(imageLocation[i], IMAGE_WIDTH, 0, true, true); //get image.
             imageViews[i] = new ImageView(images[i]); //add image to image view.
-            imageViews[i].setFitWidth(IMAGE_WIDTH);
+            imageViews[i].setFitWidth(IMAGE_WIDTH); //formatting:
             imageViews[i].setFitHeight(stage.getHeight() - 10);
             imageViews[i].setPreserveRatio(true);
             imageViews[i].setSmooth(true);
             imageViews[i].setCache(true);
 
+            
             //Add event handler.
             //Opens show auction when clicking on an auction for sale.
             imageViews[i].setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -159,7 +161,6 @@ public class BrowseAuctionController implements Initializable    {
                 	showAuctionController.setPhoto(imageLocation[currentI]); //photo location.
                 	//set controller manually
                 	fxmlLoader.setController(showAuctionController);
-					
                	 
             			try {
             				centerPane.setCenter(fxmlLoader.load()); //set the center of the pane to show auction scene
@@ -174,30 +175,32 @@ public class BrowseAuctionController implements Initializable    {
             vBoxes[i].getChildren().addAll(imageViews[i]); //add vbox inside gridpane.
             artworkTilePane.getChildren().add(vBoxes[i]); //add image to gridpane.
             artworkTilePane.setAlignment(Pos.CENTER);
-
         }
-
-
     }
 
-
-
     
+    /**
+     * Method for if the sculpRadioButton is selected. 
+     * Output all auctions which the artwork is a sculpture type.
+     * @param sqlSelect - SQL Statement to pull information from the Database
+     */
     @FXML
     public void sculpSelected() {
 
         //Gets all sculpture artworks not being sold by you.
         String sqlSelect = "Select * from artwork, auction where auction.auctionid = artwork.artworkid and auctioncomp = 0 and artwork.typeOfArtwork = 'sculpture' and auction.seller <> '" +
                  this.username + "';";
-
+        
         artworkTilePane.getChildren().clear(); //delete all previous artworks.
-
-
         getImages(FXCollections.observableArrayList(artworkDatabaseManager.getAllArtworks(sqlSelect)));
-
     }
+    
 
-
+    /**
+     * Method for if the paintRadioButton is selected. 
+     * Output all artworks which are of the type painting.
+     * @param sqlSelect - SQL Statement to pull information from the Database
+     */
     @FXML
     void paintSelected(ActionEvent event) {
 
@@ -207,9 +210,14 @@ public class BrowseAuctionController implements Initializable    {
 
         artworkTilePane.getChildren().clear(); //delete all previous artworks.
         getImages(FXCollections.observableArrayList(artworkDatabaseManager.getAllArtworks(sqlSelect)));
-
     }
+    
 
+    /**
+     * Method for if the favouriteRadioButton is selected. 
+     * Outputs all auctions which are artworks of favourited users.
+     * @param sqlSelect - SQL Statement to pull information from the Database
+     */
     @FXML
     void favouriteSelected(ActionEvent event) {
         //gets artwork being sold by user's favourited sellers.
@@ -221,20 +229,21 @@ public class BrowseAuctionController implements Initializable    {
 
         artworkTilePane.getChildren().clear(); //delete all previous artworks.
         getImages(FXCollections.observableArrayList(artworkDatabaseManager.getAllArtworks(sqlSelect)));
-
-
     }
+    
 
+    /**
+     * Method for if the allRadioButton is selected. 
+     * Outputs all auctions which are not completed.
+     * @param sqlSelect - SQL Statement to pull information from the Database
+     */
     @FXML
     void allSelected(ActionEvent event) {
         //Gets all auctions not being sold by you.
         String sqlSelect = "Select * from artwork, auction where auction.auctionid = artwork.artworkid and auctioncomp = 0 and auction.seller <> '" + this.username + "';";
         artworkTilePane.getChildren().clear(); //delete all previous artworks.
         getImages(FXCollections.observableArrayList(artworkDatabaseManager.getAllArtworks(sqlSelect)));
-
-
     }
-
 
 
     /**
@@ -245,6 +254,7 @@ public class BrowseAuctionController implements Initializable    {
         return username;
     }
 
+    
     /**
      * Sets the username of the user that is log in.
      * @param username
