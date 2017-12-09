@@ -300,4 +300,8 @@ public class ShowAuctionController implements Initializable {
 
 
     }
+    @FXML
+    void watchAction(ActionEvent event) {
+
+    }
 }
