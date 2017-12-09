@@ -2,6 +2,8 @@ package co.uk.artatawe.artwork;
 
 /**
  * Artwork class creates and stores data for an artwork object. Painting and Sculpture are based on this class.
+ *
+ * @author Plamena Tseneva
  */
 public class Artwork {
 

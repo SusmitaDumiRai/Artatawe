@@ -27,6 +27,7 @@ import javafx.scene.paint.Paint;
  * Controller class created for profile page.
  *
  * @author Tihomir Trendafilov
+ * @author 908928
  */
 public class ProfilePageController implements Initializable {
 	private static final double AVATAR_SIZE = 237;

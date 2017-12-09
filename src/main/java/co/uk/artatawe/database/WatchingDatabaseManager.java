@@ -13,6 +13,7 @@ import java.util.ArrayList;
  * Allows creation, deletion and updates to be made to watching table.
  *
  * @author 908928
+ * @author Plamena Tseneva
  * @version 1.0
  */
 public class WatchingDatabaseManager extends DatabaseManager {

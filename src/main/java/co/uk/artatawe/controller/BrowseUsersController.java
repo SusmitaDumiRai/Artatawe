@@ -4,7 +4,7 @@ package co.uk.artatawe.controller;
  * Handles browse user fxml file.
  * Displays all users and the ability to un/favourite them.
  *
- * @author 914937
+ * @author Plamena Tseneva
  * @author 908928
  */
 import co.uk.artatawe.database.FavouriteUserDatabaseManager;

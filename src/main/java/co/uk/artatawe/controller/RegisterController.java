@@ -1,14 +1,5 @@
-
 package co.uk.artatawe.controller;
 
-import co.uk.artatawe.database.AuctionDatabaseManager;
-/**
- * Controller for register page.
- *
- * @author Tihomir Trendafilov
- *
- * @version 1.0
- */
 import co.uk.artatawe.database.UserDatabaseManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -26,6 +17,14 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+/**
+ * Controller for register page.
+ *
+ * @author Tihomir Trendafilov
+ *
+ * @version 1.0
+ */
 
 public class RegisterController implements Initializable {
 	

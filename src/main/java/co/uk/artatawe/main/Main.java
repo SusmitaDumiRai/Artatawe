@@ -11,6 +11,7 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 
+//TODO DELETE THIS CLASS
 public class Main extends Application {
 
     @Override
