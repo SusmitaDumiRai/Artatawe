@@ -132,10 +132,10 @@
             <VBox layoutX="14.0" layoutY="59.0" prefHeight="296.0" prefWidth="266.0">
                <children>
                   <ImageView fitHeight="266.0" fitWidth="266.0" pickOnBounds="true" preserveRatio="true" />
-                  <MenuButton alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="31.0" prefWidth="276.0" text="Choose Avatar">
+                  <MenuButton alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="31.0" prefWidth="276.0" style="-fx-background-color: #87CEEB;" text="Choose Avatar">
                     <items>
-                      <MenuItem mnemonicParsing="false" text="Predefined" />
-                      <MenuItem fx:id="customMenuItem" mnemonicParsing="false" onAction="#customDrawingAction" text="Custom drawing" />
+                      <MenuItem mnemonicParsing="false" text="Choose App Icon" />
+                      <MenuItem fx:id="customMenuItem" mnemonicParsing="false" onAction="#customDrawingAction" text="Draw Custom Icon" />
                     </items>
                   </MenuButton>
                </children>

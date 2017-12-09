@@ -70,9 +70,6 @@ public class RegisterController implements Initializable {
     private TextField postcode;
 
     @FXML
-    private Button signInButton;
-
-    @FXML
     private Button createAccountButton;
 
     @FXML
@@ -80,6 +77,9 @@ public class RegisterController implements Initializable {
 
     @FXML
     private Pane pane;
+    
+    @FXML
+    private Button goBackToLogIn;
 
 
     @Override
