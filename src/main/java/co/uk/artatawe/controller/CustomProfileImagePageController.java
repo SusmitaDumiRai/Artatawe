@@ -125,7 +125,7 @@ public class CustomProfileImagePageController implements Initializable {
     @FXML
     public void onCanvasMousePressed(MouseEvent event) {
                 /* If straight line radio button is selected,
-		 * start drawing straight line.
+                 * start drawing straight line.
 		 */
         if (optionsToggleGroup.getSelectedToggle()
                 == selectStraightLine) {
@@ -253,14 +253,11 @@ public class CustomProfileImagePageController implements Initializable {
     @FXML
     public void onBackAction(ActionEvent event) throws IOException {
         //Creates a new controller.
-        ProfilePageController profilePageController
-                = new ProfilePageController();
+        ProfilePageController profilePageController = new ProfilePageController();
         profilePageController.setUsername(user.getUserName());
         profilePageController.setRootPane(rootPane);
 
-        FXMLLoader fxmlLoader
-                = new FXMLLoader(getClass().getClassLoader().getResource(
-                "co/uk/artatawe/gui/ProfilePage.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/ProfilePage.fxml"));
 
         //Sets the controller manually.
         fxmlLoader.setController(profilePageController);

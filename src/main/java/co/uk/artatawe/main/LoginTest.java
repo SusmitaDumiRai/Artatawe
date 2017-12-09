@@ -1,6 +1,5 @@
 package co.uk.artatawe.main;
 
-import co.uk.artatawe.controller.CustomProfileImagePageController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

@@ -1,7 +1,6 @@
 package co.uk.artatawe.controller;
 
 import co.uk.artatawe.database.UserDatabaseManager;
-import co.uk.artatawe.profileImage.CustomProfileImage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -218,12 +217,7 @@ public class RegisterController implements Initializable {
     public boolean validateUsername() {
         String usernameText = username.getText();
 
-        if (usernameText.length() > 30 || usernameText.length() <= 0 || validateExistingUsers()) {
-
-            return false;
-        } else {
-            return true;
-        }
+        return !(usernameText.length() > 30 || usernameText.length() <= 0 || validateExistingUsers());
     }
 
     /**
@@ -254,11 +248,7 @@ public class RegisterController implements Initializable {
     public boolean validateFirstName() {
         String firstNameText = firstName.getText();
 
-        if (firstNameText.length() > 30 || firstNameText.length() <= 0) {
-            return false;
-        } else {
-            return true;
-        }
+        return !(firstNameText.length() > 30 || firstNameText.length() <= 0);
     }
 
     /**
@@ -269,11 +259,7 @@ public class RegisterController implements Initializable {
     public boolean validateLastName() {
         String lastNameText = lastName.getText();
 
-        if (lastNameText.length() > 30 || lastNameText.length() <= 0) {
-            return false;
-        } else {
-            return true;
-        }
+        return !(lastNameText.length() > 30 || lastNameText.length() <= 0);
     }
 
     /**
@@ -284,11 +270,7 @@ public class RegisterController implements Initializable {
     public boolean validatePhoneNumber() {
         String phoneNumText = telephoneNumber.getText();
 
-        if (phoneNumText.length() > 11 || phoneNumText.length() < 11 || !isNumeric(phoneNumText)) {
-            return false;
-        } else {
-            return true;
-        }
+        return !(phoneNumText.length() > 11 || phoneNumText.length() < 11 || !isNumeric(phoneNumText));
     }
 
     //checks if a string is made of numbers
@@ -304,11 +286,7 @@ public class RegisterController implements Initializable {
     public boolean validateAddess() {
         String addressText = address.getText();
 
-        if (addressText.length() > 30 || addressText.length() <= 0) {
-            return false;
-        } else {
-            return true;
-        }
+        return !(addressText.length() > 30 || addressText.length() <= 0);
     }
 
     /**
@@ -319,40 +297,12 @@ public class RegisterController implements Initializable {
     public boolean validatePostcde() {
         String usernameText = postcode.getText();
 
-        if (usernameText.length() > 6 || usernameText.length() <= 5) {
-            return false;
-        } else {
-            return true;
-        }
+        return !(usernameText.length() > 6 || usernameText.length() <= 5);
     }
 
     @FXML
     void customDrawingAction(ActionEvent event) throws IOException {
-        //builds a new stage
-
-        Stage primaryStage = new Stage();
-
         CustomProfileImagePageController customProfileImagePageController = new CustomProfileImagePageController();
-
-        /*
-        //creates a new controller
-        BrowseAuctionController browseAuctionController = new BrowseAuctionController();
-        browseAuctionController.setUsername(this.username);
-
-    	 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/BrowseAuctions.fxml"));
-
-    	 //sets the controller manually
-    	 fxmlLoader.setController(browseAuctionController);
-         try {
-             centerPane.getChildren().add(fxmlLoader.load()); //sets the center of the pane to browse auction scene
-
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-
-         */
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/CustomProfileImagePage.fxml"));
         fxmlLoader.setController(customProfileImagePageController);
@@ -362,17 +312,6 @@ public class RegisterController implements Initializable {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-
-        /*
-        Scene scene = new Scene(root);
-        primaryStage.setTitle("Login");
-        primaryStage.setScene(scene);
-        primaryStage.show();
-
-        // Hides the old window
-        ((Node) (event.getSource())).getScene().getWindow().hide();
-        */
-
 
 
     }

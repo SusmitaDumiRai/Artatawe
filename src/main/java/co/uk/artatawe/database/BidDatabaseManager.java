@@ -67,12 +67,13 @@ public class BidDatabaseManager extends DatabaseManager {
             System.out.println(ex.getMessage());
         }
 
-        return  bidArrayList;
+        return bidArrayList;
 
     }
 
     /**
      * Get bid from sql select statement.
+     *
      * @param sqlSelectBid sql statement to be executed.
      * @return
      */
@@ -101,7 +102,6 @@ public class BidDatabaseManager extends DatabaseManager {
 
         return bid;
     }
-
 
 
     public double getMaxBid(int auctionID) {

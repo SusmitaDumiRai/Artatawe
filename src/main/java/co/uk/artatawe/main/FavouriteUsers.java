@@ -13,6 +13,7 @@ public class FavouriteUsers {
 
     /**
      * Creates favourite users object.
+     *
      * @param user1 person who favourited.
      * @param user2 person being favourited.
      */
@@ -23,6 +24,7 @@ public class FavouriteUsers {
 
     /**
      * Get person who favourited.
+     *
      * @return user1
      */
     public User getUser1() {
@@ -32,6 +34,7 @@ public class FavouriteUsers {
 
     /**
      * Get person being favourited.
+     *
      * @return user2.
      */
     public User getUser2() {

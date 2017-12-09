@@ -22,10 +22,11 @@ public class Bid {
 
     /**
      * Constructor for bid.
-     * @param buyer The user that placed the bid.
-     * @param bidAmount The amount that the user bid.
+     *
+     * @param buyer       The user that placed the bid.
+     * @param bidAmount   The amount that the user bid.
      * @param dateAndTime The date and time that the bid was placed.
-     * @param auction The ID of the auction that the bid is made on.
+     * @param auction     The ID of the auction that the bid is made on.
      */
     public Bid(User buyer, double bidAmount, String dateAndTime, Auction auction) {
         this.buyer = buyer;
@@ -37,11 +38,12 @@ public class Bid {
 
     /**
      * Constructor for bid.
-     * @param bidID ID of bid.
-     * @param buyer The user that placed the bid.
-     * @param bidAmount The amount that the user bid.
+     *
+     * @param bidID       ID of bid.
+     * @param buyer       The user that placed the bid.
+     * @param bidAmount   The amount that the user bid.
      * @param dateAndTime The date and time that the bid was placed.
-     * @param auction The ID of the auction that the bid is made on.
+     * @param auction     The ID of the auction that the bid is made on.
      */
     public Bid(int bidID, User buyer, double bidAmount, String dateAndTime, Auction auction) {
         this.buyer = buyer;
@@ -53,6 +55,7 @@ public class Bid {
 
     /**
      * Gets the user that placed the bid.
+     *
      * @return buyer
      */
     public User getBuyer() {
@@ -61,6 +64,7 @@ public class Bid {
 
     /**
      * Gets the amount that the user bid on the auction.
+     *
      * @return bidAmount
      */
     public double getBidAmount() {
@@ -69,6 +73,7 @@ public class Bid {
 
     /**
      * Gets the date and time that the bid was placed.
+     *
      * @return dateAndTime
      */
     public String getDateAndTime() {
@@ -77,6 +82,7 @@ public class Bid {
 
     /**
      * Gets the ID of the bid.
+     *
      * @return bidID
      */
     public int getBidID() {
@@ -85,6 +91,7 @@ public class Bid {
 
     /**
      * Gets the auction the bid is made on.
+     *
      * @return auction
      */
     public Auction getAuction() {
