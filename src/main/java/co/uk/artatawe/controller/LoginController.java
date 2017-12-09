@@ -31,7 +31,7 @@ public class LoginController implements Initializable {
 
     private final int WIDTH_NAVIGATION = 800; //WIDTH size for navigation window.
     private final int HEIGHT_NAVIGATION = 600; //HEIGHT size for navigation window.
-    private final int WIDTH_REGISTER = 800; //WIDTH size for REGISTER  window.
+    private final int WIDTH_REGISTER = 600; //WIDTH size for REGISTER  window.
     private final int HEIGHT_REGISTER = 600; //HEIGHT for REGISTER  window.
     private final String ERROR = "Wrong username";
 
