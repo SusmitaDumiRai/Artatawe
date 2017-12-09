@@ -115,10 +115,9 @@ public class ProfilePageController implements Initializable {
 	    User user = userDatabaseManager.getUser(this.username);
 	
 		CustomProfileImagePageController customProfileImagePageController 
-        	= new CustomProfileImagePageController(user);
+        	= new CustomProfileImagePageController(user, rootPane);
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/CustomProfileImagePage.fxml"));
-        System.out.println(rootPane);
         fxmlLoader.setController(customProfileImagePageController);
         rootPane.getChildren().add(fxmlLoader.load());
     }

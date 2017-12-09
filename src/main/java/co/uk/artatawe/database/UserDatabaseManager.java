@@ -1,6 +1,7 @@
 package co.uk.artatawe.database;
 
 import co.uk.artatawe.main.User;
+import co.uk.artatawe.profileImage.ProfileImage;
 import co.uk.artatawe.profileImage.SavedProfileImage;
 
 import java.sql.*;
@@ -74,7 +75,7 @@ public class UserDatabaseManager extends  DatabaseManager {
      */
     public User getUser(String username) {
         User user = new User();
-
+        
         String selectUser = "SELECT * FROM user where username = '" + username + "'";
 
         try {
@@ -83,7 +84,7 @@ public class UserDatabaseManager extends  DatabaseManager {
 
             ResultSet resultSet = statement.executeQuery(selectUser);
             while (resultSet.next()) {
-
+            	
                 user = new User(resultSet.getString("username"), resultSet.getString("firstName"), resultSet.getString("surname"),
                         resultSet.getString("phonenumber"), resultSet.getString("address"), resultSet.getString("postcode"),
                         resultSet.getString("lastlogin"), new SavedProfileImage(resultSet.getString("profileImage")));
@@ -114,6 +115,23 @@ public class UserDatabaseManager extends  DatabaseManager {
 
     }
 
+    /**
+     * Updates a users profile image in the user table of the system database.
+     * @param user The user to be updated.
+     * @param filepath The file path of the new profile image.
+     */
+    public void updateProfileImage(User user, String filepath) {
+    	String sql = "Update USER " 
+    				+ "Set profileImage = '" + filepath + "' " 
+    				+ "Where username = '" + user.getUserName() + "';";
+    	try {
+            Connection connection = connect();
+            Statement statement = connection.createStatement();
+            statement.executeQuery(sql);
+    	} catch (SQLException ex) {
+             System.out.println(ex.getMessage());
+        }
+    }
 
 
 }

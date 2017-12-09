@@ -23,8 +23,9 @@ public class CustomProfileImage extends ProfileImage {
 	 * @param posX The x position of the center of the profile image.
 	 * @param posY The y position of the center of the profile image.	
 	 */
-	public CustomProfileImage(int size, int posX, int posY) {
+	public CustomProfileImage(double size, double posX, double posY) {
 		super(size, posX, posY);
+		component = new ArrayList<ProfileImageComponent>();
 	}
 
 	/**

@@ -151,6 +151,10 @@ public class User {
   public void setLastLogin(String newLastLogin) {
     this.lastLogin = newLastLogin;
   }
+  
+  public void setProfileImage(ProfileImage profileImage) {
+	  this.profileImage = profileImage;
+  }
 
   @Override
     public String toString() {

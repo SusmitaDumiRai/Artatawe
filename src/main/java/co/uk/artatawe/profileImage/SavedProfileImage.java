@@ -1,29 +1,33 @@
 package co.uk.artatawe.profileImage;
 
-import javafx.scene.Parent;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Pane;
 
 /**
  * The attributes and behaviours of a saved profile image.
  * 
- * @author Adam Taylor
+ * @author Adam Taylor (905448)
  * @version 1.0
  */
 public class SavedProfileImage extends ProfileImage {
+	//The default size of a saved profile image.
+	public static final double DEFAULT_SIZE = 400; 
 	private Image profileImage; //The saved profile image, as JavaFX image.
 	
+	/**
+	 * Creates a saved profile image of default size.
+	 * @param fileName The filename of the saved profile image.
+	 */
 	public SavedProfileImage(String fileName) {
-		super(400, 0, 0);
+		super(DEFAULT_SIZE, 0, 0);
 		this.profileImage = new Image(fileName);
 	}
 	
 	/**
 	 * Creates a saved profile image.
 	 * @param size The size of the profile image, which is square.
-	 * @param posX The x position of the center of the profile image.
-	 * @param posY The y position of the center of the profile image.	
+	 * @param posX The x position of the top left of the profile image.
+	 * @param posY The y position of the top left of the profile image.	
 	 * @param fileName The filename of the saved profile image.
 	 */
 	public SavedProfileImage(int size, int posX, int posY, 
@@ -60,7 +64,7 @@ public class SavedProfileImage extends ProfileImage {
 	
 	/**
 	 * This should display a preset profile image.
-	 * @param p The pane scene object the image is being displayed on.
+	 * @param imageView The ImageView scene object the image is being displayed on.
 	 */
 	@Override
     public void displayProfileImage(ImageView imageView) {
