@@ -33,8 +33,6 @@ public class Main extends Application {
 
        /* String imagePath = "co/uk/artatawe/artworkpictures/Giraffe.png";
         ImageView imageView = new ImageView(imagePath);*/
-
-        CustomProfileImagePageController.setPrimaryStage(primaryStage);
         
         // Display image on screen
 

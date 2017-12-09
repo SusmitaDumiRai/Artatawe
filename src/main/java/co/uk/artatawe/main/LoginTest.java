@@ -19,8 +19,6 @@ public class LoginTest extends Application {
 
         Scene scene = new Scene(root);
 
-        CustomProfileImagePageController.setPrimaryStage(primaryStage);
-
         primaryStage.setTitle("Login Test");
         primaryStage.setScene(scene);
         primaryStage.show();
