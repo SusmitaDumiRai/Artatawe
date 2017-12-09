@@ -1,6 +1,7 @@
 
 package co.uk.artatawe.controller;
 
+import co.uk.artatawe.database.AuctionDatabaseManager;
 /**
  * Controller for register page.
  *
@@ -29,13 +30,7 @@ import java.util.ResourceBundle;
 public class RegisterController implements Initializable {
 	
 	private final int WIDTH_NAVIGATION = 800; //WIDTH size for navigation window.
-    private final int HEIGHT_NAVIGATION = 600; //HEIGHT size for navigation window
-
-    //private final String ERROR = "Wrong username";
-	
-	
-    
-    
+    private final int HEIGHT_NAVIGATION = 600; //HEIGHT size for navigation window.
     
     
      @FXML
@@ -135,6 +130,17 @@ public class RegisterController implements Initializable {
     }
     
     private void createAccountAuction(ActionEvent event) {
+    	
+    	//need to get the information from the testfields while replacing ' with 
+    	//firstName.getText().replaceAll("'", "''")
+    	//need to add the information into the databse
+    	//and then proceed to open the window below(navigation)
+    	//while passing the username
+    	
+    	UserDatabaseManager userDatabaseManager = new UserDatabaseManager();
+    	
+    	//String sqlInsertUser = "INSERT INTO user (auctionid, seller,  numofbidsleft, auctioncomp, highestbid) values ('" +  artworkDatabaseManager.getArtworkID(title.getText()) +
+         //       "','"  +  sellerName.getText() + "','" + allowedBids.getText()  + "','0','" +  reservedPrice.getText() + "');";
     
     	Parent root;
         try {
