@@ -15,6 +15,7 @@ public abstract class DatabaseManager {
     /**
      * Allows connection to be made to the database.
      * If database does not exist, creates database.
+     *
      * @return connection to database.
      */
     public Connection connect() {
@@ -32,6 +33,7 @@ public abstract class DatabaseManager {
 
     /**
      * Inserts new row into a table in the database.
+     *
      * @param sqlInsert insert SQL statement.
      */
     public void insertIntoTable(String sqlInsert) {
@@ -49,6 +51,7 @@ public abstract class DatabaseManager {
 
     /**
      * Executes SQL statements.
+     *
      * @param sqlStatement statement to be executed.
      */
     public void executeStatement(String sqlStatement) {
@@ -65,6 +68,7 @@ public abstract class DatabaseManager {
 
     /**
      * Executes a SQL statement where it is updating info.
+     *
      * @param sqlStatement update sql statement.
      */
     public void updateStatement(String sqlStatement) {

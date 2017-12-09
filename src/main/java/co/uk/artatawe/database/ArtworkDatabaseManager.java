@@ -26,7 +26,6 @@ public class ArtworkDatabaseManager extends DatabaseManager {
     }
 
 
-
     /**
      * Creates table in database if it does not exist.
      */
@@ -67,43 +66,34 @@ public class ArtworkDatabaseManager extends DatabaseManager {
 
             ResultSet resultSet = statement.executeQuery(sqlSelect);
             while (resultSet.next()) {
-               if (resultSet.getString("typeofartwork").equals("painting")) { //add painting.
-                   artworkArrayList.add(new Painting(resultSet.getInt("artworkid"), resultSet.getString("typeofartwork"), resultSet.getString("title"), resultSet.getString("description"),
-                           resultSet.getString("photo"), resultSet.getString("nameofcreator"), resultSet.getDouble("reservedprice"),
-                           resultSet.getString("dateentered"), resultSet.getInt("bidsallowed"), resultSet.getDouble("width"),
-                           resultSet.getDouble("height")));
-               } else { //add sculpture.
-                  artworkArrayList.add(new Sculpture(resultSet.getInt("artworkid"), resultSet.getString("typeofartwork"), resultSet.getString("title"), resultSet.getString("description"),
-                           resultSet.getString("photo"), resultSet.getString("nameofcreator"), resultSet.getDouble("reservedprice"),
-                           resultSet.getString("dateentered"), resultSet.getInt("bidsallowed"), resultSet.getString("mainmaterial"),
-                           resultSet.getString("extraphotos"),
-                           resultSet.getDouble("width"),
-                           resultSet.getDouble("height"), resultSet.getDouble("depth")));
+                if (resultSet.getString("typeofartwork").equals("painting")) { //add painting.
+                    artworkArrayList.add(new Painting(resultSet.getInt("artworkid"), resultSet.getString("typeofartwork"), resultSet.getString("title"), resultSet.getString("description"),
+                            resultSet.getString("photo"), resultSet.getString("nameofcreator"), resultSet.getDouble("reservedprice"),
+                            resultSet.getString("dateentered"), resultSet.getInt("bidsallowed"), resultSet.getDouble("width"),
+                            resultSet.getDouble("height")));
+                } else { //add sculpture.
+                    artworkArrayList.add(new Sculpture(resultSet.getInt("artworkid"), resultSet.getString("typeofartwork"), resultSet.getString("title"), resultSet.getString("description"),
+                            resultSet.getString("photo"), resultSet.getString("nameofcreator"), resultSet.getDouble("reservedprice"),
+                            resultSet.getString("dateentered"), resultSet.getInt("bidsallowed"), resultSet.getString("mainmaterial"),
+                            resultSet.getString("extraphotos"),
+                            resultSet.getDouble("width"),
+                            resultSet.getDouble("height"), resultSet.getDouble("depth")));
 
-               }
+                }
 
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
 
-
-        /*
-        for (Artwork artwork : artworkArrayList) {
-            System.out.println(artwork.toString());
-        }
-
-*/
-
-
         return artworkArrayList;
 
     }
 
 
-
     /**
      * Get artwork ID for artwork.
+     *
      * @param title artwork to be searched.
      * @return artwork ID for artwork.
      */
@@ -138,7 +128,7 @@ public class ArtworkDatabaseManager extends DatabaseManager {
             while (resultSet.next()) {
                 if (resultSet.getString("typeofartwork").equals("painting")) { //add painting.
 
-                   artwork = (new Painting(resultSet.getInt("artworkid"), resultSet.getString("typeofartwork"), resultSet.getString("title"), resultSet.getString("description"),
+                    artwork = (new Painting(resultSet.getInt("artworkid"), resultSet.getString("typeofartwork"), resultSet.getString("title"), resultSet.getString("description"),
                             resultSet.getString("photo"), resultSet.getString("nameofcreator"), resultSet.getDouble("reservedprice"),
                             resultSet.getString("dateentered"), resultSet.getInt("bidsallowed"), resultSet.getDouble("width"),
                             resultSet.getDouble("height")));

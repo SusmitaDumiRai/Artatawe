@@ -36,7 +36,7 @@ public class AuctionDatabaseManager extends DatabaseManager {
                 "winningBid int," + //winning bid id.
                 "numOfBidsLeft integer not null," +
                 "auctioncomp int not null," + //sqlite does not support boolean, but instead 0 and 1.
-                "highestbid real not null,"  + //originally the reserve price.
+                "highestbid real not null," + //originally the reserve price.
                 "foreign key (auctionID) references artwork (artworkID)," +
                 "foreign key (seller) references user (username)," +
                 "foreign key (winningBid) references bid (bidid));";
@@ -70,7 +70,7 @@ public class AuctionDatabaseManager extends DatabaseManager {
                     if (artwork.getBidsAllowed() == resultSet.getInt("numofbidsleft")) { //no bids placed yet.
                         auctionArrayList.add(new Auction(resultSet.getInt("numOfBidsLeft"), false, artwork, seller, resultSet.getInt("highestbid")));
                     } else {
-                        auctionArrayList.add(new Auction(resultSet.getInt("numOfBidsLeft"), false, artwork, seller,  bidDatabaseManager.getMaxBid(resultSet.getInt("auctionid"))));
+                        auctionArrayList.add(new Auction(resultSet.getInt("numOfBidsLeft"), false, artwork, seller, bidDatabaseManager.getMaxBid(resultSet.getInt("auctionid"))));
                     }
 
 
@@ -92,6 +92,7 @@ public class AuctionDatabaseManager extends DatabaseManager {
 
     /**
      * Gets one auction back.
+     *
      * @param sqlSelect sql statement that returns one auction.
      * @return one auction.
      */
@@ -120,10 +121,10 @@ public class AuctionDatabaseManager extends DatabaseManager {
                     if (artwork.getBidsAllowed() == resultSet.getInt("numofbidsleft")) { //no bids placed yet.
                         auction = new Auction(resultSet.getInt("numOfBidsLeft"), false, artwork, user, resultSet.getInt("highestbid"));
                     } else {
-                        auction = new Auction(resultSet.getInt("numOfBidsLeft"), false, artwork, user,  bidDatabaseManager.getMaxBid(resultSet.getInt("auctionid")));
+                        auction = new Auction(resultSet.getInt("numOfBidsLeft"), false, artwork, user, bidDatabaseManager.getMaxBid(resultSet.getInt("auctionid")));
                     }
                 } else {
-                       auction =  new Auction(resultSet.getInt("numOfBidsLeft"), true, artwork, user, bidDatabaseManager.getMaxBid(resultSet.getInt("auctionid")));
+                    auction = new Auction(resultSet.getInt("numOfBidsLeft"), true, artwork, user, bidDatabaseManager.getMaxBid(resultSet.getInt("auctionid")));
                 }
             }
         } catch (SQLException ex) {

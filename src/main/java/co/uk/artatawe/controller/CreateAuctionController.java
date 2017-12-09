@@ -20,10 +20,11 @@ import java.util.ResourceBundle;
 
 /**
  * Controller class for create auction page.
+ *
  * @author 908928
  */
-public class CreateAuctionController  implements Initializable {
-	
+public class CreateAuctionController implements Initializable {
+
     private String username; //logged in user
 
     @FXML
@@ -107,7 +108,6 @@ public class CreateAuctionController  implements Initializable {
     private FileChooser fileChooser = new FileChooser();
 
 
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         sellerName.setText(username);
@@ -116,6 +116,7 @@ public class CreateAuctionController  implements Initializable {
 
     /**
      * Hide textboxes not related to painting.
+     *
      * @param event event.
      */
     @FXML
@@ -130,6 +131,7 @@ public class CreateAuctionController  implements Initializable {
 
     /**
      * Display textboxes related to sculpture.
+     *
      * @param event event.
      */
     @FXML
@@ -145,6 +147,7 @@ public class CreateAuctionController  implements Initializable {
 
     /**
      * Get file location of image.
+     *
      * @param event
      */
     @FXML
@@ -158,6 +161,7 @@ public class CreateAuctionController  implements Initializable {
 
     /**
      * Get file location of extra image.
+     *
      * @param event
      */
     @FXML
@@ -171,6 +175,7 @@ public class CreateAuctionController  implements Initializable {
 
     /**
      * Display current seller's name.
+     *
      * @param username username of logged in user.
      */
     public void changeSellerUsername(String username) {
@@ -180,6 +185,7 @@ public class CreateAuctionController  implements Initializable {
 
     /**
      * Validates and create auction when pressing submit.
+     *
      * @param event event.
      */
     @FXML
@@ -211,6 +217,7 @@ public class CreateAuctionController  implements Initializable {
 
     /**
      * Validates if one radio button is selected.
+     *
      * @return true if one radio button selected.
      */
     public boolean valRadioBtnSelected() {
@@ -227,6 +234,7 @@ public class CreateAuctionController  implements Initializable {
 
     /**
      * Validates user entered value for title.
+     *
      * @return true if not empty.
      */
     public boolean valTitle() {
@@ -236,6 +244,7 @@ public class CreateAuctionController  implements Initializable {
 
     /**
      * Validates user entered value for creator name.
+     *
      * @return true if not empty.
      */
     public boolean valCreatorName() {
@@ -244,6 +253,7 @@ public class CreateAuctionController  implements Initializable {
 
     /**
      * Validates user entered value for year.
+     *
      * @return true if int.
      */
     public boolean valYear() {
@@ -261,6 +271,7 @@ public class CreateAuctionController  implements Initializable {
 
     /**
      * Validates user entered double value for width.
+     *
      * @return true if double.
      */
     public boolean valWidth() {
@@ -277,6 +288,7 @@ public class CreateAuctionController  implements Initializable {
 
     /**
      * Validates user entered double value for height.
+     *
      * @return true if double.
      */
     public boolean valHeight() {
@@ -288,13 +300,14 @@ public class CreateAuctionController  implements Initializable {
             //TODO display error message
             sizeError.setText("Invalid height");
         }
-        return  false;
+        return false;
     }
 
     /**
      * Validates user entered double value for depth.
+     *
      * @return true if double.
-     * */
+     */
     public boolean valDepth() {
         try {
             Double.parseDouble(depth.getText());
@@ -309,6 +322,7 @@ public class CreateAuctionController  implements Initializable {
 
     /**
      * Validates user entered double value for reserved price.
+     *
      * @return true if double.
      */
     public boolean valReservedPrice() {
@@ -325,6 +339,7 @@ public class CreateAuctionController  implements Initializable {
 
     /**
      * Validates user entered value for year.
+     *
      * @return true if int.
      */
     public boolean valAllowedBids() {
@@ -353,8 +368,10 @@ public class CreateAuctionController  implements Initializable {
     public boolean valPhoto() {
         return !(imageBtn.getText().equals("Select image")); //return false if standard message.
     }
+
     /**
      * Insert artwork into artworks table.
+     *
      * @param isPainting true if artwork is painting.
      */
     public void insertIntoArtwork(boolean isPainting) {
@@ -365,18 +382,18 @@ public class CreateAuctionController  implements Initializable {
         String sqlInsertArtwork;
 
         if (isPainting) {
-             sqlInsertArtwork =  "INSERT INTO ARTWORK (title, description, photo, nameofcreator, reservedprice, dateentered," +
+            sqlInsertArtwork = "INSERT INTO ARTWORK (title, description, photo, nameofcreator, reservedprice, dateentered," +
                     "bidsallowed, typeofartwork, width, height) values ('" + title.getText().replaceAll("'", "''") + "', '" + description.getText().replaceAll("'", "''") + "'," +
-                    "'" + imageBtn.getText().replaceAll("'", "''") + "'," + "'" + creatorName.getText().replaceAll("'", "''") + "'," +  reservedPrice.getText() + "," +
+                    "'" + imageBtn.getText().replaceAll("'", "''") + "'," + "'" + creatorName.getText().replaceAll("'", "''") + "'," + reservedPrice.getText() + "," +
                     "'" + dateFormat.format(date) + "','" + allowedBids.getText() + "','painting', '" + width.getText() + "','" +
-                     height.getText() + "');";
+                    height.getText() + "');";
 
         } else {
             sqlInsertArtwork = "INSERT INTO ARTWORK (title, description, photo, nameofcreator, reservedprice, dateentered," +
                     "bidsallowed, typeofartwork, width, height, depth, mainmaterial, extraphotos) values ('" + title.getText().replaceAll("'", "''") + "', '" + description.getText().replaceAll("'", "''") +
-                    "'," + "'" +  imageBtn.getText().replaceAll("'", "''") + "'," + "'" + creatorName.getText().replaceAll("'", "''") + "'," +  reservedPrice.getText() + "," +
+                    "'," + "'" + imageBtn.getText().replaceAll("'", "''") + "'," + "'" + creatorName.getText().replaceAll("'", "''") + "'," + reservedPrice.getText() + "," +
                     "'" + dateFormat.format(date) + "','" + allowedBids.getText() + "','sculpture', '" + width.getText() + "','" + height.getText() + "','" +
-                    depth.getText() + "','" + material.getText().replaceAll("'", "''") + "','"  + imageExtraPhotoBtn.getText().replaceAll("'", "''") + "');";
+                    depth.getText() + "','" + material.getText().replaceAll("'", "''") + "','" + imageExtraPhotoBtn.getText().replaceAll("'", "''") + "');";
         }
 
         artworkDatabaseManager.executeStatement(sqlInsertArtwork); //VERY DANGEROUS LINE OF CODE. ONLY UNCOMMENT WHEN FINALISED.
@@ -389,16 +406,17 @@ public class CreateAuctionController  implements Initializable {
      */
     public void insertIntoAuction() {
         AuctionDatabaseManager auctionDatabaseManager = new AuctionDatabaseManager();
-        ArtworkDatabaseManager artworkDatabaseManager =  new ArtworkDatabaseManager();
+        ArtworkDatabaseManager artworkDatabaseManager = new ArtworkDatabaseManager();
 
-        String sqlInsertAuction = "INSERT INTO AUCTION (auctionid, seller,  numofbidsleft, auctioncomp, highestbid) values ('" +  artworkDatabaseManager.getArtworkID(title.getText()) +
-                "','"  +  sellerName.getText() + "','" + allowedBids.getText()  + "','0','" +  reservedPrice.getText() + "');";
+        String sqlInsertAuction = "INSERT INTO AUCTION (auctionid, seller,  numofbidsleft, auctioncomp, highestbid) values ('" + artworkDatabaseManager.getArtworkID(title.getText()) +
+                "','" + sellerName.getText() + "','" + allowedBids.getText() + "','0','" + reservedPrice.getText() + "');";
 
         auctionDatabaseManager.executeStatement(sqlInsertAuction); // VERY DANGEROUS LINE OF CODE. ONLY UNCOMMENT WHEN FINALISED.
     }
 
     /**
      * Get username.
+     *
      * @return username.
      */
     public String getUsername() {
@@ -407,6 +425,7 @@ public class CreateAuctionController  implements Initializable {
 
     /**
      * Set username.
+     *
      * @param username userame.
      */
     public void setUsername(String username) {

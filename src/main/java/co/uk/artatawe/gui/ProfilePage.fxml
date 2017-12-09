@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
@@ -73,8 +79,8 @@
                      </image></ImageView>
                   <MenuButton fx:id="changeUserIcon" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onChangeUserIconAction" prefHeight="31.0" prefWidth="248.0" style="-fx-background-color: #87CEEB;" text="Change User Icon">
                     <items>
-                      <MenuItem fx:id="useAppIcons" mnemonicParsing="false" text="Use App Icons" />
-                      <MenuItem fx:id="useCustomIcon" mnemonicParsing="false" onAction="#onUseCustomIconAction" text="Use Custom Drawing" />
+                      <MenuItem fx:id="useAppIcons" mnemonicParsing="false" onAction="#onUseAppIconAction" text="Choose App Icon" />
+                      <MenuItem fx:id="useCustomIcon" mnemonicParsing="false" onAction="#onUseCustomIconAction" text="Draw Custom Icon" />
                     </items>
                   </MenuButton>
                </children>

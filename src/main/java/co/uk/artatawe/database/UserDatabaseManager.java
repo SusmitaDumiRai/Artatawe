@@ -14,14 +14,13 @@ import java.util.ArrayList;
  * @author 908928.
  * @version 1.0
  */
-public class UserDatabaseManager extends  DatabaseManager {
+public class UserDatabaseManager extends DatabaseManager {
 
     /**
      * Empty constructor.
      */
     public UserDatabaseManager() {
     }
-
 
 
     /**
@@ -70,12 +69,13 @@ public class UserDatabaseManager extends  DatabaseManager {
 
     /**
      * Returns information of certain user.
+     *
      * @param username user to search.
      * @return user info.
      */
     public User getUser(String username) {
         User user = new User();
-        
+
         String selectUser = "SELECT * FROM user where username = '" + username + "'";
 
         try {
@@ -84,7 +84,7 @@ public class UserDatabaseManager extends  DatabaseManager {
 
             ResultSet resultSet = statement.executeQuery(selectUser);
             while (resultSet.next()) {
-            	
+
                 user = new User(resultSet.getString("username"), resultSet.getString("firstName"), resultSet.getString("surname"),
                         resultSet.getString("phonenumber"), resultSet.getString("address"), resultSet.getString("postcode"),
                         resultSet.getString("lastlogin"), new SavedProfileImage(resultSet.getString("profileImage")));
@@ -100,6 +100,7 @@ public class UserDatabaseManager extends  DatabaseManager {
 
     /**
      * Gets array list of usernames.
+     *
      * @return array list of usernames.
      */
     public ArrayList<String> getAllUsernames() {
@@ -107,7 +108,7 @@ public class UserDatabaseManager extends  DatabaseManager {
         String sqlSelect = "SELECT * FROM USER;";
         ArrayList<String> usernameArrayList = new ArrayList<>();
 
-        for (User user :  getAllUsers(sqlSelect)) {
+        for (User user : getAllUsers(sqlSelect)) {
             usernameArrayList.add(user.getUserName());
         }
 
@@ -117,19 +118,20 @@ public class UserDatabaseManager extends  DatabaseManager {
 
     /**
      * Updates a users profile image in the user table of the system database.
-     * @param user The user to be updated.
+     *
+     * @param user     The user to be updated.
      * @param filepath The file path of the new profile image.
      */
     public void updateProfileImage(User user, String filepath) {
-    	String sql = "Update USER " 
-    				+ "Set profileImage = '" + filepath + "' " 
-    				+ "Where username = '" + user.getUserName() + "';";
-    	try {
+        String sql = "Update USER "
+                + "Set profileImage = '" + filepath + "' "
+                + "Where username = '" + user.getUserName() + "';";
+        try {
             Connection connection = connect();
             Statement statement = connection.createStatement();
             statement.executeQuery(sql);
-    	} catch (SQLException ex) {
-             System.out.println(ex.getMessage());
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
         }
     }
 

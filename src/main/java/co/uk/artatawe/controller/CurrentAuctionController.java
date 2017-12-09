@@ -6,19 +6,16 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
 
 
 /**
@@ -47,6 +44,7 @@ public class CurrentAuctionController implements Initializable {
 
     /**
      * Creates controller object.
+     *
      * @param username username of logged in user.
      */
     public CurrentAuctionController(String username) {
@@ -92,10 +90,10 @@ public class CurrentAuctionController implements Initializable {
         //TODO make it look nice
         Label informationText = new Label();
         informationText.setText("People who have placed bids on your ongoing auction");
-        informationText.setFont(Font.font("Verdana",FontWeight.BOLD,TEXT));
+        informationText.setFont(Font.font("Verdana", FontWeight.BOLD, TEXT));
         informationText.setAlignment(Pos.TOP_LEFT);
 
-        auctionListView.setPrefSize(WIDTH,HEIGHT);
+        auctionListView.setPrefSize(WIDTH, HEIGHT);
         auctionListView.setLayoutY(25);
 
         pane.getChildren().add(informationText);
@@ -104,6 +102,7 @@ public class CurrentAuctionController implements Initializable {
 
     /**
      * Gets logged in username.
+     *
      * @return username of logged in user.
      */
     public String getUsername() {
@@ -112,6 +111,7 @@ public class CurrentAuctionController implements Initializable {
 
     /**
      * Sets logged in user's username.
+     *
      * @param username username of logged in user.
      */
     public void setUsername(String username) {

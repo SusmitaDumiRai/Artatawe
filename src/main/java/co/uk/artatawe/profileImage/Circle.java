@@ -3,7 +3,6 @@ package co.uk.artatawe.profileImage;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 
 /**
  * The attributes and behaviours of a circle.

@@ -1,6 +1,5 @@
 package co.uk.artatawe.artwork;
 
-import java.util.ArrayList;
 
 /**
  * Sculpture class inherits from Artwork class, creates sculpture object.
@@ -15,6 +14,7 @@ public class Sculpture extends Artwork {
 
     /**
      * constructor that creates an sculpture object.
+     *
      * @param typeOfArtwork the type of an artwork, in this class it's a sculpture.
      * @param title         title of the sculpture.
      * @param description   description of the sculpture.
@@ -67,6 +67,7 @@ public class Sculpture extends Artwork {
 
     /**
      * method that gets depth of a sculpture.
+     *
      * @return the depth of a sculpture.
      */
     public double getDepth() {
@@ -75,6 +76,7 @@ public class Sculpture extends Artwork {
 
     /**
      * method that sets the depth of a sculpture.
+     *
      * @param depth depth of a sculpture.
      */
     public void setDepth(double depth) {
@@ -83,6 +85,7 @@ public class Sculpture extends Artwork {
 
     /**
      * method that gets the main material of a sculpture.
+     *
      * @return the main material a sculpture is made of.
      */
     public String getMainMaterial() {
@@ -91,6 +94,7 @@ public class Sculpture extends Artwork {
 
     /**
      * method that sets the main material of a sculpture.
+     *
      * @param mainMaterial the main material a sculpture is made of.
      */
     public void setMainMaterial(String mainMaterial) {
@@ -99,6 +103,7 @@ public class Sculpture extends Artwork {
 
     /**
      * method that gets extra photos of the sculpture.
+     *
      * @return extra photos of the sculpture.
      */
     public String getExtraPhoto() {
@@ -107,6 +112,7 @@ public class Sculpture extends Artwork {
 
     /**
      * method that sets the extra photos of a sculpture.
+     *
      * @param extraPhoto some extra photos of the sculpture.
      */
     public void setExtraPhoto(String extraPhoto) {
