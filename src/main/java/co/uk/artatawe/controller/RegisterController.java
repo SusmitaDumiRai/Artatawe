@@ -38,11 +38,42 @@ public class RegisterController implements Initializable {
     
     
     
-    
+     @FXML
+     private Label usernameErrorMessage;
+     
+     @FXML
+     private Label firstNameErrorMessage;
+     
+     @FXML
+     private Label lastNameErrorMessage;
+     
+     @FXML
+     private Label phoneNumErrorMessage;
+     
+     @FXML
+     private Label addressErrorMessage;
+     
+     @FXML
+     private Label postcodeErrorMessage;
     
     
      @FXML
      private TextField username;
+     
+     @FXML
+     private TextField firstName;
+     
+     @FXML
+     private TextField lastName;
+     
+     @FXML
+     private TextField telephoneNumber;
+     
+     @FXML
+     private TextField address;
+     
+     @FXML
+     private TextField postcode;
     
 	 @FXML
 	 private Button signInButton;
@@ -81,15 +112,30 @@ public class RegisterController implements Initializable {
     
     /**
      * Creates an account with the details provided if they are valid and opens navigation window with your new account log on.
+     * If there is a problem with the details displays error message indicating where the problem is.
      * @param event
      * @throws IOException
      */
     @FXML
     void createAccount(ActionEvent event) {
-    	createAccountAuction(event); 
+    	if (validateUsername()) {
+    		if(validateFirstName()) {
+    			if(validateLastName()) {
+    				if(validatePhoneNumber()) {
+    					if(validateAddess()) {
+    						if(validatePostcde()) {
+    								createAccountAuction(event); 
+    						} else postcodeErrorMessage.setTextFill(Paint.valueOf("RED"));
+    					} else addressErrorMessage.setTextFill(Paint.valueOf("RED"));
+    				} else phoneNumErrorMessage.setTextFill(Paint.valueOf("RED"));
+    			} else lastNameErrorMessage.setTextFill(Paint.valueOf("RED"));
+    		} else firstNameErrorMessage.setTextFill(Paint.valueOf("RED"));
+    	} else usernameErrorMessage.setTextFill(Paint.valueOf("RED"));
+        
     }
     
     private void createAccountAuction(ActionEvent event) {
+    
     	Parent root;
         try {
 
@@ -116,9 +162,92 @@ public class RegisterController implements Initializable {
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
+
     }
-    	
+    
+    /**
+     * Validates username. A username can't be more than 30 characters.
+     * @return true of username is valid.
+     */
+    public boolean validateUsername() {
+        String usernameText = username.getText();
+        
+        if(usernameText.length()>30 || usernameText.length()<=0 ){
+        	return false;
+        }
+        else return true;
+    }
    
+    /**
+     * Validates first name. A first name can't be more than 30 characters.
+     * @return true of first name is valid.
+     */
+    public boolean validateFirstName() {
+        String firstNameText = firstName.getText();
+        
+        if(firstNameText.length()>30 || firstNameText.length()<=0 ){
+        	return false;
+        }
+        else return true;
+    }
+    
+    /**
+     * Validates last name. A last name can't be more than 30 characters.
+     * @return true of last name is valid.
+     */
+    public boolean validateLastName() {
+        String lastNameText = lastName.getText();
+        
+        if(lastNameText.length()>30 || lastNameText.length()<=0 ){
+        	return false;
+        }
+        else return true;
+    }
+    
+    /**
+     * Validates phone number. A phone number can't be more or less than 11 digits.
+     * @return true of phone number is valid.
+     */
+    public boolean validatePhoneNumber() {
+        String phoneNumText = telephoneNumber.getText();
+        
+        if(phoneNumText.length()>11 || phoneNumText.length()<11 || !isNumeric(phoneNumText)){
+        	return false;
+        }
+        else return true;
+    }
+    
+    //checks if a string is made of numbers
+    private boolean isNumeric(String str)
+    {
+      return str.matches(".*\\d+.*");
+    }
+    
+    /**
+     * Validates Address. An Address can't be more than 30 characters.
+     * @return true of Address is valid.
+     */
+    public boolean validateAddess() {
+        String addressText = address.getText();
+        
+        if(addressText.length()>30 || addressText.length()<=0 ){
+        	return false;
+        }
+        else return true;
+    }
+   
+    /**
+     * Validates postcode. An postcode can't be more than 6 characters.
+     * @return true of postcode is valid.
+     */
+    public boolean validatePostcde() {
+        String usernameText = postcode.getText();
+        
+        if(usernameText.length()>6 || usernameText.length()<=5 ){
+        	return false;
+        }
+        else return true;
+    }
     
 
 
