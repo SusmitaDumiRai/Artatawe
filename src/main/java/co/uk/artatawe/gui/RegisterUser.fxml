@@ -10,7 +10,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #DCDCDC;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.uk.artatawe.controller.CreateAuctionController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="590.0" style="-fx-background-color: #DCDCDC;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
@@ -119,7 +119,10 @@
                   <Insets bottom="10.0" top="15.0" />
                </padding>
             </VBox>
-            <Button fx:id="submitButton" layoutX="506.0" layoutY="355.0" mnemonicParsing="false" onAction="#handleSubmitAction" text="Submit" />
+            <Button fx:id="createAccountButton" layoutX="350.0" layoutY="443.0" mnemonicParsing="false" onAction="#createAccount" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #00cc00;" text="Create Account" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font></Button>
             <VBox layoutX="14.0" layoutY="59.0" prefHeight="296.0" prefWidth="266.0">
                <children>
                   <ImageView fitHeight="266.0" fitWidth="266.0" pickOnBounds="true" preserveRatio="true" />
@@ -131,8 +134,8 @@
                   </MenuButton>
                </children>
             </VBox>
-            <Label layoutX="105.0" layoutY="501.0" text="Go back to login page" />
-            <Button layoutX="14.0" layoutY="474.0" mnemonicParsing="false" style="-fx-background-color: ca3a5e;">
+            <Label layoutX="100.0" layoutY="455.0" text="Go back to login page" />
+            <Button fx:id="goBackToLogIn" layoutX="14.0" layoutY="427.0" mnemonicParsing="false" onAction="#backToLogIn" style="-fx-background-color: ca3a5e;">
                <graphic>
                   <ImageView fitHeight="64.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -144,115 +147,12 @@
                   </ImageView>
                </graphic>
             </Button>
+            <Label layoutX="194.0" layoutY="14.0" prefHeight="34.0" prefWidth="232.0" text="Create a new account">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
    </center>
-   <left>
-      <VBox prefHeight="600.0" prefWidth="201.0" BorderPane.alignment="CENTER">
-         <children>
-            <AnchorPane prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #ca3a5e;">
-               <children>
-                  <Label fx:id="welcomeText" alignment="CENTER" contentDisplay="TOP" prefHeight="76.0" prefWidth="211.0" text="Welcome Back!" textFill="WHITE" textOverrun="CENTER_ELLIPSIS" underline="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Label>
-               </children>
-               <VBox.margin>
-                  <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
-               </VBox.margin>
-            </AnchorPane>
-            <Button fx:id="profileButton" contentDisplay="TOP" mnemonicParsing="false" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #23112a;" text="My Profile" textFill="WHITE">
-               <graphic>
-                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                     <effect>
-                        <ColorAdjust brightness="1.0" />
-                     </effect>
-                     <image>
-                        <Image url="@Icons/icons8-customer-filled-40.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <VBox.margin>
-                  <Insets bottom="6.0" left="6.0" right="6.0" />
-               </VBox.margin>
-            </Button>
-            <Button fx:id="usersButton" contentDisplay="TOP" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #492976;" text="Browse Users" textFill="WHITE">
-               <graphic>
-                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                     <effect>
-                        <ColorAdjust brightness="1.0" />
-                     </effect>
-                     <image>
-                        <Image url="@Icons/icons8-find-user-male-filled-40.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <VBox.margin>
-                  <Insets bottom="6.0" left="6.0" right="6.0" />
-               </VBox.margin>
-            </Button>
-            <Button fx:id="artworkButton" contentDisplay="TOP" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #ca3a5e;" text="Browse Artwork" textFill="WHITE">
-               <graphic>
-                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                     <effect>
-                        <ColorAdjust brightness="1.0" />
-                     </effect>
-                     <image>
-                        <Image url="@Icons/binoculars.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <VBox.margin>
-                  <Insets bottom="6.0" left="6.0" right="6.0" />
-               </VBox.margin>
-            </Button>
-            <Button fx:id="auctionButton" contentDisplay="TOP" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #f58071;" text="Create an Auction" textFill="WHITE">
-               <graphic>
-                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                     <effect>
-                        <ColorAdjust brightness="1.0" />
-                     </effect>
-                     <image>
-                        <Image url="@Icons/icons8-add-filled-40.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <VBox.margin>
-                  <Insets bottom="6.0" left="6.0" right="6.0" />
-               </VBox.margin>
-            </Button>
-            <Button fx:id="myActionsButton" contentDisplay="TOP" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #361949;" text="My Auctions" textFill="WHITE">
-               <graphic>
-                  <ImageView fitHeight="15040.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                     <effect>
-                        <ColorAdjust brightness="1.0" />
-                     </effect>
-                     <image>
-                        <Image url="@Icons/icons8-bust-filled-40.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <VBox.margin>
-                  <Insets bottom="6.0" left="6.0" right="6.0" />
-               </VBox.margin>
-            </Button>
-            <Button fx:id="bidHistoryButton" contentDisplay="TOP" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #23112a;" text="My History" textFill="WHITE">
-               <graphic>
-                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                     <effect>
-                        <ColorAdjust brightness="1.0" />
-                     </effect>
-                     <image>
-                        <Image url="@Icons/sandtimer.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <VBox.margin>
-                  <Insets bottom="6.0" left="6.0" right="6.0" />
-               </VBox.margin>
-            </Button>
-         </children>
-      </VBox>
-   </left>
 </BorderPane>
