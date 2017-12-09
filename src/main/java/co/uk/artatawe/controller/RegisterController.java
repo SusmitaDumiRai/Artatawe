@@ -1,6 +1,7 @@
 package co.uk.artatawe.controller;
 
 import co.uk.artatawe.database.UserDatabaseManager;
+import co.uk.artatawe.main.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -78,8 +79,12 @@ public class RegisterController implements Initializable {
     @FXML
     private Pane pane;
     
-    @FXML
-    private Button goBackToLogIn;
+    /**
+     * Empty Constructor.
+     */
+    public RegisterController() {
+    	
+    }
 
 
     @Override
@@ -300,6 +305,11 @@ public class RegisterController implements Initializable {
         return !(usernameText.length() > 6 || usernameText.length() <= 5);
     }
 
+    /**
+     * Opens custom drawing window. Lets the user draw an icon.
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void customDrawingAction(ActionEvent event) throws IOException {
         CustomProfileImagePageController customProfileImagePageController = new CustomProfileImagePageController();
@@ -312,8 +322,27 @@ public class RegisterController implements Initializable {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-
-
+        
     }
+    
+    /**
+     * Opens an window where the user can choose an icon from provided icons.
+     * @param event
+     * @throws IOException
+     */
+    @FXML
+    public void chooseAppIconAction(ActionEvent event) throws IOException {
+		
+
+		ChooseIconController chooseIconController 
+        	= new ChooseIconController();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/ChooseIcon.fxml"));
+        fxmlLoader.setController(chooseIconController);
+        pane.getChildren().add(fxmlLoader.load());
+    }
+    
+    
+    
+    
 
 }

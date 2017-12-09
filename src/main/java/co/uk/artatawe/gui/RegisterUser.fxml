@@ -134,7 +134,7 @@
                   <ImageView fitHeight="266.0" fitWidth="266.0" pickOnBounds="true" preserveRatio="true" />
                   <MenuButton alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="31.0" prefWidth="276.0" style="-fx-background-color: #87CEEB;" text="Choose Avatar">
                     <items>
-                      <MenuItem mnemonicParsing="false" text="Choose App Icon" />
+                      <MenuItem fx:id="chooseAppIcon" mnemonicParsing="false" onAction="#chooseAppIconAction" text="Choose App Icon" />
                       <MenuItem fx:id="customMenuItem" mnemonicParsing="false" onAction="#customDrawingAction" text="Draw Custom Icon" />
                     </items>
                   </MenuButton>
