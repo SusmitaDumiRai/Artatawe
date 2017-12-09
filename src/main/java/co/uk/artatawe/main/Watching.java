@@ -4,6 +4,7 @@ package co.uk.artatawe.main;
  * Class that handles who is watching what auction.
  *
  * @author 908928
+ * @author Plamena Tseneva
  */
 public class Watching {
 

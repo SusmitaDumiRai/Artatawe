@@ -3,6 +3,8 @@ package co.uk.artatawe.main;
 
 /**
  * Creates bid object.
+ *
+ * @author James Finlayson
  */
 
 public class Bid {
