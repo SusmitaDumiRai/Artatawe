@@ -311,6 +311,8 @@ public class ChooseIconController implements Initializable {
 
     /**
      * Gets register param indicating where are you coming from.
+     *
+     * @return register.
      */
     public int getRegister() {
         return register;
