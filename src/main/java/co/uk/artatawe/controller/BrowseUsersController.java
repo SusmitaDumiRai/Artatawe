@@ -77,7 +77,7 @@ public class BrowseUsersController implements Initializable {
         getUserProfiles();
     }
 
-    public boolean isFavouriteOf(User user) {
+    private boolean isFavouriteOf(User user) {
         for (User fav : getAllFavouriteUsers()) {
             if (fav.getUserName().equals(user.getUserName())) {
                 return true;
