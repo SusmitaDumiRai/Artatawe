@@ -124,6 +124,7 @@ public class ProfilePageController implements Initializable {
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/CustomProfileImagePage.fxml"));
         fxmlLoader.setController(customProfileImagePageController);
+        rootPane.getChildren().remove(0, rootPane.getChildren().size());
         rootPane.getChildren().add(fxmlLoader.load());
     }
 
