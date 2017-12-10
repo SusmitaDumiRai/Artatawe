@@ -100,7 +100,12 @@ public class ShowAuctionController implements Initializable {
     private Label numWatchers;
 
     @FXML
+    private Label successLabel;
+
+    @FXML
     private ImageView watchIcon;
+
+
 
 
     /**
@@ -322,12 +327,14 @@ public class ShowAuctionController implements Initializable {
      */
     @FXML
     void handleButtonAction(ActionEvent event) {
+        errorMessage.setVisible(false);
         AuctionDatabaseManager auctionDatabaseManager = new AuctionDatabaseManager();
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         Date date = new Date();
 
         //Insert into bid.
         if (valMakeBid()) {
+
             String sqlInsert = "INSERT INTO BID (auctionid, buyer, bidamount, dateandtime) values (" + artwork.getArtworkID() + ", '" +
                     this.username + "'," + bid.getText() + ", '" + dateFormat.format(date) + "');";
 
@@ -339,6 +346,8 @@ public class ShowAuctionController implements Initializable {
             //Decrease bid amount.
             if (auction.getNumOfBidsLeft() > 1) {
                 sqlUpdateBidAmount = "Update auction set numofbidsleft = " + (auction.getNumOfBidsLeft() - 1) + " where auctionid = " + this.artwork.getArtworkID() + ";";
+                successLabel.setText("Successful.");
+                successLabel.setTextFill(Paint.valueOf("GREEN"));
             //Complete auction.
             } else {
                 //Get id of winning bid.
@@ -350,6 +359,8 @@ public class ShowAuctionController implements Initializable {
                         "winningBid = " + bid.getBidID() + " where auctionid = " + this.artwork.getArtworkID() +
                         ";";
                 makeBidButton.setDisable(true);
+                successLabel.setText("You have won the auction!");
+                successLabel.setTextFill(Paint.valueOf("#035d67"));
             }
 
             //Update num of bids left in GUI.
@@ -371,12 +382,14 @@ public class ShowAuctionController implements Initializable {
             if (Double.parseDouble(bid.getText()) > Double.parseDouble(reservedPrice.getText())) {
                 return true;
             } else {
+                errorMessage.setVisible(true);
                 errorMessage.setText("'Bid is too low'");
                 errorMessage.setTextFill(Paint.valueOf("RED"));
                 return false;
             }
 
         } catch (NumberFormatException ex) {
+            errorMessage.setVisible(true);
             errorMessage.setText("'Enter digits only'");
             errorMessage.setTextFill(Paint.valueOf("RED"));
         }
