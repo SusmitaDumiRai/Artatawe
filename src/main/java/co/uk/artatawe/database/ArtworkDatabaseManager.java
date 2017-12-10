@@ -53,6 +53,7 @@ public class ArtworkDatabaseManager extends DatabaseManager {
     /**
      * Gets all artwork info.
      *
+     * @param sqlSelect sql statement to be executed.
      * @return array list of all artworks.
      */
     public ArrayList<Artwork> getAllArtworks(String sqlSelect) {
@@ -122,8 +123,8 @@ public class ArtworkDatabaseManager extends DatabaseManager {
 
     /**
      * Gets only one artwork back.
-     * @param sqlSelectAuction sql statement to be executed.
      *
+     * @param sqlSelectAuction sql statement to be executed.
      * @return returns one artwork.
      */
     public Artwork getArtwork(String sqlSelectAuction) {

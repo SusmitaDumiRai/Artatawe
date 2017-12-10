@@ -44,6 +44,7 @@ public class UserDatabaseManager extends DatabaseManager {
     /**
      * Returns all users in the table.
      *
+     * @param sqlSelect sql statement to be executed.
      * @return array list of all users.
      */
     public ArrayList<User> getAllUsers(String sqlSelect) {

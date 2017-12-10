@@ -48,6 +48,7 @@ public class AuctionDatabaseManager extends DatabaseManager {
     /**
      * Displays all auction info.
      *
+     * @param sqlSelect sql statement to be executed.
      * @return array list of auctions.
      */
     public ArrayList<Auction> getAllAuctions(String sqlSelect) {

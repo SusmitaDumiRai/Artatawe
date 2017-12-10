@@ -116,13 +116,14 @@ public class ChooseIconController implements Initializable {
     /**
      * It runs when you chose the first Icon.
      * It takes into account where you come from and returns you to that page while saving your choice of icon.
-     * @param event
-     * @throws IOException
+     *
+     * @param event event.
+     * @throws IOException io exception.
      */
     @FXML
     public void chooseDog1Auction(ActionEvent event) throws IOException {
         if (register == 0) {
-        	String dog1Path = "co/uk/artatawe/profileImage/SavedProfileImages/PresetImage_Bear.jpg";
+            String dog1Path = "co/uk/artatawe/profileImage/SavedProfileImages/PresetImage_Bear.jpg";
             openRegisterPage(event, dog1Path);
 
         } else {
@@ -135,13 +136,14 @@ public class ChooseIconController implements Initializable {
     /**
      * It runs when you chose the second Icon.
      * It takes into account where you come from and returns you to that page while saving your choice of icon.
-     * @param event
-     * @throws IOException
+     *
+     * @param event event.
+     * @throws IOException io exception.
      */
     @FXML
     public void chooseCatAuction(ActionEvent event) throws IOException {
         if (register == 0) {
-        	String catPath = "co/uk/artatawe/profileImage/SavedProfileImages/PresetImage_Cat.jpg";
+            String catPath = "co/uk/artatawe/profileImage/SavedProfileImages/PresetImage_Cat.jpg";
             openRegisterPage(event, catPath);
 
         } else {
@@ -155,13 +157,14 @@ public class ChooseIconController implements Initializable {
     /**
      * It runs when you chose the third Icon.
      * It takes into account where you come from and returns you to that page while saving your choice of icon.
-     * @param event
-     * @throws IOException
+     *
+     * @param event event.
+     * @throws IOException io exception.
      */
     @FXML
     public void chooseDog2Auction(ActionEvent event) throws IOException {
         if (register == 0) {
-        	String dog2Path = "co/uk/artatawe/profileImage/SavedProfileImages/PresetImage_Dog.jpg";
+            String dog2Path = "co/uk/artatawe/profileImage/SavedProfileImages/PresetImage_Dog.jpg";
             openRegisterPage(event, dog2Path);
 
         } else {
@@ -175,13 +178,14 @@ public class ChooseIconController implements Initializable {
     /**
      * It runs when you chose the forth Icon.
      * It takes into account where you come from and returns you to that page while saving your choice of icon.
-     * @param event
-     * @throws IOException
+     *
+     * @param event event.
+     * @throws IOException io exception.
      */
     @FXML
     public void chooseBearAuction(ActionEvent event) throws IOException {
         if (register == 0) {
-        	String bearPath = "co/uk/artatawe/profileImage/SavedProfileImages/PresetImage_Lion.jpg";
+            String bearPath = "co/uk/artatawe/profileImage/SavedProfileImages/PresetImage_Lion.jpg";
             openRegisterPage(event, bearPath);
 
         } else {
@@ -195,13 +199,14 @@ public class ChooseIconController implements Initializable {
     /**
      * It runs when you chose the fifth Icon.
      * It takes into account where you come from and returns you to that page while saving your choice of icon.
-     * @param event
-     * @throws IOException
+     *
+     * @param event event.
+     * @throws IOException io exception.
      */
     @FXML
     public void choosePenguinAuction(ActionEvent event) throws IOException {
         if (register == 0) {
-        	String penguinPath = "co/uk/artatawe/profileImage/SavedProfileImages/PresetImage_Penguin.jpg";
+            String penguinPath = "co/uk/artatawe/profileImage/SavedProfileImages/PresetImage_Penguin.jpg";
             openRegisterPage(event, penguinPath);
 
         } else {
@@ -212,7 +217,11 @@ public class ChooseIconController implements Initializable {
 
     }
 
-    //changes the profile image in the data base for the user that is choosing by passing a name of an icon.
+    /**
+     * Set the profile image of user.
+     *
+     * @param picName name of picture.
+     */
     private void setProfileImage(String picName) {
         SavedProfileImage s = new SavedProfileImage(
                 "/co/uk/artatawe/profileImage/SavedProfileImages/"
@@ -225,32 +234,40 @@ public class ChooseIconController implements Initializable {
 
     }
 
-    //Returns you to register page and it passes the path of the chosen icon.
+    /**
+     * Opens up register page.
+     *
+     * @param event event.
+     * @param path  path to profile image.
+     */
     private void openRegisterPage(ActionEvent event, String path) {
-    	RegisterController registerController
-        	= new RegisterController();
-    	registerController.setAvatarImagePath(path);
-    	registerController.setRootPane(centerPane);
-		
-		FXMLLoader fxmlLoader
-		        = new FXMLLoader(getClass().getClassLoader().getResource(
-		        "co/uk/artatawe/gui/RegisterUser.fxml"));
-		
-		//Sets the controller manually.
-		fxmlLoader.setController(registerController);
-		//Puts the custom profile image page scene on the root pane.
-		try {
-		    centerPane.getChildren().clear(); //clears the old scene
-		    centerPane.getChildren().add(fxmlLoader.load()); //set the center of the pane to show auction scene
-		} catch (IOException e) {
-		    // TODO Auto-generated catch block
-		    e.printStackTrace();
-		}
-    	
+        RegisterController registerController
+                = new RegisterController();
+        registerController.setAvatarImagePath(path);
+        registerController.setRootPane(centerPane);
+
+        FXMLLoader fxmlLoader
+                = new FXMLLoader(getClass().getClassLoader().getResource(
+                "co/uk/artatawe/gui/RegisterUser.fxml"));
+
+        //Sets the controller manually.
+        fxmlLoader.setController(registerController);
+        //Puts the custom profile image page scene on the root pane.
+        try {
+            centerPane.getChildren().clear(); //clears the old scene
+            centerPane.getChildren().add(fxmlLoader.load()); //set the center of the pane to show auction scene
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
 
     }
-    
-    //Returns you to profile page.
+
+    /**
+     * Returns to profile page.
+     *
+     * @param event event.
+     */
     private void goBackToProfilePage(ActionEvent event) {
         //Creates a new controller.
         ProfilePageController profilePageController
@@ -269,7 +286,6 @@ public class ChooseIconController implements Initializable {
             centerPane.getChildren().clear(); //clears the old scene
             centerPane.getChildren().add(fxmlLoader.load()); //set the center of the pane to show auction scene
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
@@ -295,8 +311,6 @@ public class ChooseIconController implements Initializable {
 
     /**
      * Gets register param indicating where are you coming from.
-     *
-     * @param register param indicating where are you coming from.
      */
     public int getRegister() {
         return register;

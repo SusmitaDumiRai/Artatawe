@@ -42,6 +42,7 @@ public class FavouriteUserDatabaseManager extends DatabaseManager {
 
     /**
      * Gets array list of favourite users.
+     *
      * @param sqlSelect sql statement to be executed.
      * @return array list of favourite users.
      */

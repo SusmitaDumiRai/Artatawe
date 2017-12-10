@@ -24,6 +24,7 @@ import java.util.ResourceBundle;
 /**
  * Handles show auction fxml file.
  * Displays detailed information about certain artwork.
+ *
  * @author 908928 - Susmita
  * @author 914937 - Plamena
  */
@@ -106,8 +107,6 @@ public class ShowAuctionController implements Initializable {
     private ImageView watchIcon;
 
 
-
-
     /**
      * Empty constructor.
      */
@@ -115,18 +114,9 @@ public class ShowAuctionController implements Initializable {
     }
 
     /**
-     * Creates controller object.
-     *
-     * @param username username of logged in user.
-     */
-    public ShowAuctionController(String username, String photo) {
-        this.username = username;
-    }
-
-
-    /**
      * Get all from watching table.
      * If user had previously watched this auction, add them to arraylist.
+     *
      * @return arraylist of whether user has watched this auction before or not.
      */
     public ArrayList<Watching> getWatching() {
@@ -144,6 +134,7 @@ public class ShowAuctionController implements Initializable {
 
     /**
      * Check to see if user is already a watcher.
+     *
      * @param user logged in user.
      * @return true if user has already watched this auction.
      */
@@ -158,6 +149,7 @@ public class ShowAuctionController implements Initializable {
 
     /**
      * Get all favourite sellers of logged in user.
+     *
      * @return arraylist of users favourited by logged in user.
      */
     public ArrayList<User> getAllFavouriteSellers() {
@@ -177,6 +169,7 @@ public class ShowAuctionController implements Initializable {
 
     /**
      * Checks whether a seller is a favourite user of the current user.
+     *
      * @param seller seller of auction.
      * @return true if the seller is from the list of favourites of the logged in user.
      */
@@ -260,13 +253,12 @@ public class ShowAuctionController implements Initializable {
         UserDatabaseManager userDatabaseManager = new UserDatabaseManager();
 
 
-
         //Check whether seller is favourite.
 
         String sqlSelect = "Select * from user where username = '" + this.sellerName.getText() + "';";
-        for (User user: userDatabaseManager.getAllUsers(sqlSelect)) {
+        for (User user : userDatabaseManager.getAllUsers(sqlSelect)) {
             if (isFavouriteOf(user)) {
-               heart.setImage(new Image("co/uk/artatawe/gui/Icons/icons8-love-50.png"));
+                heart.setImage(new Image("co/uk/artatawe/gui/Icons/icons8-love-50.png"));
             }
         }
         // Check watchers in database
@@ -323,6 +315,7 @@ public class ShowAuctionController implements Initializable {
      * Validates bid.
      * Checks number of bids left for auction, if 1 then latest bidder won.
      * Updates information to database.
+     *
      * @param event
      */
     @FXML
@@ -348,7 +341,7 @@ public class ShowAuctionController implements Initializable {
                 sqlUpdateBidAmount = "Update auction set numofbidsleft = " + (auction.getNumOfBidsLeft() - 1) + " where auctionid = " + this.artwork.getArtworkID() + ";";
                 successLabel.setText("Successful.");
                 successLabel.setTextFill(Paint.valueOf("GREEN"));
-            //Complete auction.
+                //Complete auction.
             } else {
                 //Get id of winning bid.
                 String sqlSelectBid = "SELECT * FROM BID WHERE bidamount = " + bidDatabaseManager.getMaxBid(artwork.getArtworkID()); //get highest bid for this auction.
@@ -404,6 +397,7 @@ public class ShowAuctionController implements Initializable {
      * Checks to see if seller is already a favourite.
      * If seller already a favourite, removes seller from favourite.
      * Else adds to favourite.
+     *
      * @param event event.
      */
     @FXML
@@ -412,7 +406,7 @@ public class ShowAuctionController implements Initializable {
         UserDatabaseManager userDatabaseManager = new UserDatabaseManager();
 
         String sqlSelect = "Select * from user where username = '" + this.sellerName.getText() + "';";
-        for (User a: userDatabaseManager.getAllUsers(sqlSelect)) {
+        for (User a : userDatabaseManager.getAllUsers(sqlSelect)) {
             if (isFavouriteOf(a)) {
                 String sqlDelete = "delete from favouriteuser where username1 = '" + this.username
                         + "' and username2 = '" + this.sellerName.getText() + "';";
@@ -437,6 +431,7 @@ public class ShowAuctionController implements Initializable {
      * Triggers when user presses watch icon.
      * If user is already watching auction, removes from watchers and decreases num of people watching.
      * Else adds user to the watchers list. Increases num of people watching.
+     *
      * @param event event.
      */
     @FXML

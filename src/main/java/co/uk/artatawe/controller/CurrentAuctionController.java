@@ -57,7 +57,8 @@ public class CurrentAuctionController implements Initializable {
 
     /**
      * Display all ongoing auctions.
-     * @param location location.
+     *
+     * @param location  location.
      * @param resources resources.
      */
     @Override
@@ -156,6 +157,7 @@ public class CurrentAuctionController implements Initializable {
         pane.getChildren().add(auctionListView);
 
     }
+
     /**
      * Gets logged in username.
      *

@@ -185,6 +185,7 @@ public class ProfilePageController implements Initializable {
 
     /**
      * Sets root pane which is going to be the center of the scene.
+     *
      * @param rootPane going to be the center of the scene.
      */
     public void setRootPane(Pane rootPane) {

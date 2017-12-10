@@ -4,9 +4,10 @@ package co.uk.artatawe.controller;
  * Handles browse user fxml file.
  * Displays all users and the ability to un/favourite them.
  *
- * @author 914937 - Plamena 
+ * @author 914937 - Plamena
  * @author 908928 - Susmita
  */
+
 import co.uk.artatawe.database.FavouriteUserDatabaseManager;
 import co.uk.artatawe.database.UserDatabaseManager;
 import co.uk.artatawe.main.FavouriteUsers;
@@ -49,6 +50,7 @@ public class BrowseUsersController implements Initializable {
 
     /**
      * Sets username.
+     *
      * @param username username of logged in user.
      */
     public BrowseUsersController(String username) {
@@ -57,6 +59,7 @@ public class BrowseUsersController implements Initializable {
 
     /**
      * Gets all favourite users of logged in user.
+     *
      * @return arraylist of favourited users of logged in user.
      */
     public ArrayList<User> getAllFavouriteUsers() {
@@ -82,6 +85,7 @@ public class BrowseUsersController implements Initializable {
 
     /**
      * Checks to see if user is a favourite.
+     *
      * @param user user
      * @return true or false.
      */
@@ -104,7 +108,7 @@ public class BrowseUsersController implements Initializable {
 
         UserDatabaseManager userDatabaseManager = new UserDatabaseManager();
 
-       String sqlSelect = "Select * from user where username <> '" + this.username + "';";
+        String sqlSelect = "Select * from user where username <> '" + this.username + "';";
 
         scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
@@ -148,7 +152,8 @@ public class BrowseUsersController implements Initializable {
             //If user presses heart, check if already favourite, if not remove from favourite.
             //Write changes to database.
             heartButton.setOnAction(new EventHandler<ActionEvent>() {
-                @Override public void handle(ActionEvent e) {
+                @Override
+                public void handle(ActionEvent e) {
 
                     FavouriteUserDatabaseManager favouriteUserDatabaseManager = new FavouriteUserDatabaseManager();
 
@@ -177,6 +182,7 @@ public class BrowseUsersController implements Initializable {
 
     /**
      * Gets logged in user's username.
+     *
      * @return username of logged in user.
      */
     public String getUsername() {
@@ -185,6 +191,7 @@ public class BrowseUsersController implements Initializable {
 
     /**
      * Sets logged in user's username.
+     *
      * @param username username of logged in user.
      */
     public void setUsername(String username) {

@@ -103,6 +103,7 @@ public class LoginController implements Initializable {
 
     /**
      * Opens a window for registering a new user.
+     *
      * @param event
      * @throws IOException
      */
@@ -137,6 +138,7 @@ public class LoginController implements Initializable {
 
     /**
      * Validates username.
+     *
      * @return true of username is valid.
      */
     public boolean validateUsername() {

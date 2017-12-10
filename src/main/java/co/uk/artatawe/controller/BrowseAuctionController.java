@@ -97,6 +97,8 @@ public class BrowseAuctionController implements Initializable {
 
     /**
      * Gets all artworks currently in auction. Displays them.
+     *
+     * @param observeArrayList array list of artworks to display.
      */
     public void getImages(ObservableList<Artwork> observeArrayList) {
 
@@ -172,7 +174,6 @@ public class BrowseAuctionController implements Initializable {
     /**
      * Method for if the sculpRadioButton is selected.
      * Output all auctions which the artwork is a sculpture type.
-     *
      */
     @FXML
     public void sculpSelected() {
@@ -189,7 +190,6 @@ public class BrowseAuctionController implements Initializable {
     /**
      * Method for if the paintRadioButton is selected.
      * Output all artworks which are of the type painting.
-     *
      */
     @FXML
     void paintSelected(ActionEvent event) {
@@ -206,7 +206,6 @@ public class BrowseAuctionController implements Initializable {
     /**
      * Method for if the favouriteRadioButton is selected.
      * Outputs all auctions which are artworks of favourited users.
-     *
      */
     @FXML
     void favouriteSelected(ActionEvent event) {

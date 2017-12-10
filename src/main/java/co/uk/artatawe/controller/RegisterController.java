@@ -346,8 +346,8 @@ public class RegisterController implements Initializable {
     /**
      * Opens an window where the user can choose an icon from provided icons.
      *
-     * @param event
-     * @throws IOException
+     * @param event event.
+     * @throws IOException io exception.
      */
     @FXML
     public void chooseAppIconAction(ActionEvent event) throws IOException {

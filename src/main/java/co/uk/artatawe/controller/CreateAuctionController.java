@@ -384,6 +384,7 @@ public class CreateAuctionController implements Initializable {
     /**
      * Validate to see if user selected a photo.
      * If it's not empty, create file path.
+     *
      * @return true of user selected a photo.
      */
     public boolean valPhoto() {

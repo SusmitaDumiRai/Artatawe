@@ -66,7 +66,7 @@ public class PresetProfileImage extends ProfileImage {
     /**
      * This should display a preset profile image.
      *
-     * @param p The pane scene object the image is being displayed on.
+     * @param imageView the image view.
      */
     @Override
     public void displayProfileImage(ImageView imageView) {

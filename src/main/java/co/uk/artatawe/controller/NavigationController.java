@@ -229,7 +229,7 @@ public class NavigationController implements Initializable {
     /**
      * Sets the username of the user that is log in.
      *
-     * @param username
+     * @param username username.
      */
     public void setUsername(String username) {
         this.username = username;

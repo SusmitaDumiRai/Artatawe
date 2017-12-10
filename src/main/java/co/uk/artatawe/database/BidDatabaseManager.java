@@ -46,6 +46,7 @@ public class BidDatabaseManager extends DatabaseManager {
     /**
      * Gets all bids.
      *
+     * @param sqlSelect sql statement to be executed.
      * @return array list of all bids/
      */
     public ArrayList<Bid> getAllBids(String sqlSelect) {
@@ -107,6 +108,7 @@ public class BidDatabaseManager extends DatabaseManager {
 
     /**
      * Gets the max bid for a certain auction.
+     *
      * @param auctionID auction in question.
      * @return max bid amount.
      */

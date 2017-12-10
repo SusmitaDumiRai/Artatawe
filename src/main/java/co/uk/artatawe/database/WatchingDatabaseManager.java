@@ -39,6 +39,7 @@ public class WatchingDatabaseManager extends DatabaseManager {
 
     /**
      * Get array list of watchings.
+     *
      * @param sqlSelect sql statement to be executed.
      * @return array list of watching.
      */

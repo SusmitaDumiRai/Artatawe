@@ -32,30 +32,30 @@ public class Auction {
     /**
      * Constructor for auction.
      *
-     * @param numOfBidsLeft number of bids left.
-     * @param auctionComp whether auction completed or not.
-     * @param artwork artwork associated.
+     * @param numOfBidsLeft  number of bids left.
+     * @param auctionComp    whether auction completed or not.
+     * @param artwork        artwork associated.
      * @param sellerUsername username of seller.
-     * @param highestBid highest bid for auction.
+     * @param highestBid     highest bid for auction.
      */
     public Auction(int numOfBidsLeft, boolean auctionComp, Artwork artwork, User sellerUsername, double highestBid) {
         this.numOfBidsLeft = numOfBidsLeft;
         this.auctionComp = auctionComp;
         this.artwork = artwork;
         this.sellerUsername = sellerUsername;
-        this.highestBid = highestBid;      
+        this.highestBid = highestBid;
     }
 
 
     /**
      * Constructor for auction.
      *
-     * @param numOfBidsLeft number of bids left.
-     * @param auctionComp whether auction completed or not.
-     * @param artwork artwork associated.
+     * @param numOfBidsLeft  number of bids left.
+     * @param auctionComp    whether auction completed or not.
+     * @param artwork        artwork associated.
      * @param sellerUsername username of seller.
-     * @param winner username of winner of auction.
-     * @param highestBid highest bif for auction.
+     * @param winner         username of winner of auction.
+     * @param highestBid     highest bif for auction.
      */
     public Auction(int numOfBidsLeft, boolean auctionComp, Artwork artwork, User sellerUsername, double highestBid, User winner) {
         this.numOfBidsLeft = numOfBidsLeft;
@@ -126,6 +126,7 @@ public class Auction {
 
     /**
      * Method to get the highestBid on the auction
+     *
      * @return highestBid
      */
     public double getHighestBid() {
@@ -134,7 +135,8 @@ public class Auction {
 
     /**
      * Method to set the highestBid of the auction
-     * @param highestBid
+     *
+     * @param highestBid highest bid.
      */
     public void setHighestBid(double highestBid) {
         this.highestBid = highestBid;

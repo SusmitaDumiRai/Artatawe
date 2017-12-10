@@ -29,13 +29,14 @@ public class User {
     /**
      * Constructor class for user.
      *
-     * @param userName    user name of user.
-     * @param firstName   firstname of user.
-     * @param surname     surname of user.
-     * @param phoneNumber phone number of user.
-     * @param address     first line of address of user.
-     * @param postcode    post code of user.
-     * @param lastLogin   date time of user's last login.
+     * @param userName     user name of user.
+     * @param firstName    firstname of user.
+     * @param surname      surname of user.
+     * @param phoneNumber  phone number of user.
+     * @param address      first line of address of user.
+     * @param postcode     post code of user.
+     * @param lastLogin    date time of user's last login.
+     * @param profileImage profile image of user.
      */
     public User(String userName, String firstName, String surname,
                 String phoneNumber, String address, String postcode, String lastLogin, ProfileImage profileImage) {

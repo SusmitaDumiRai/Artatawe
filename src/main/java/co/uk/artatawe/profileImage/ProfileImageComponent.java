@@ -32,6 +32,8 @@ public abstract class ProfileImageComponent {
 
     /**
      * Gets the x position at which the component starts.
+     *
+     * @return The x position at which the component starts.
      */
     public double getXStartPosition() {
         return startPosition[X_INDEX];
@@ -39,6 +41,8 @@ public abstract class ProfileImageComponent {
 
     /**
      * Gets the y position at which the component starts.
+     *
+     * @return The y position at which the component starts.
      */
     public double getYStartPosition() {
         return startPosition[Y_INDEX];
@@ -56,7 +60,7 @@ public abstract class ProfileImageComponent {
     /**
      * Resets the x position at which the component starts.
      *
-     * @return The x position at which the component starts.
+     * @param xStartPosition x start position.
      */
     public void setXStartPosition(double xStartPosition) {
         this.startPosition[X_INDEX] = xStartPosition;
@@ -65,7 +69,7 @@ public abstract class ProfileImageComponent {
     /**
      * Resets the y position at which the component starts.
      *
-     * @return The y position at which the component starts.
+     * @param yStartPosition y start position.
      */
     public void setYStartPosition(double yStartPosition) {
         this.startPosition[Y_INDEX] = yStartPosition;
@@ -91,6 +95,6 @@ public abstract class ProfileImageComponent {
         return result;
     }
 
-    //Unsure on implementation
+
     public abstract void displayComponent(Canvas canvas);
 }

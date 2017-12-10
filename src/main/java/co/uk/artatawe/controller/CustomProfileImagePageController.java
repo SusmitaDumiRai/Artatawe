@@ -108,11 +108,11 @@ public class CustomProfileImagePageController implements Initializable {
     /**
      * Creates a custom profile image controller.
      *
-     * @param user     The user the custom profile image is being created for.
-     * @param rootPane The pane the custom profile image page is
-     *                 attached to.
+     * @param user                   The user the custom profile image is being created for.
+     * @param rootPane               The pane the custom profile image page is
+     *                               attached to.
+     * @param registerPrevController true if prev controller was register.
      */
-
     public CustomProfileImagePageController(User user, Pane rootPane, Boolean registerPrevController) {
         this.user = user;
         this.rootPane = rootPane;
@@ -164,7 +164,7 @@ public class CustomProfileImagePageController implements Initializable {
      */
     @FXML
     public void onCanvasMouseDragged(MouseEvent event) {
-    	/* if particle trace radio button is selected,
+            /* if particle trace radio button is selected,
     	* keep drawing particle trace.
 	*/
         if (optionsToggleGroup.getSelectedToggle() == selectParticleTrace) {
@@ -248,11 +248,12 @@ public class CustomProfileImagePageController implements Initializable {
     /**
      * Convert custom profile image to file.
      *
-     * @param path location of directory.
+     * @param path     location of directory.
+     * @param fileName file name.
      */
     public void convertToFile(String fileName, String path) {
 
-    	//Create path for File class as absolute path to project
+        //Create path for File class as absolute path to project
 
         path = path.substring(0, path.length() - 2)
                 + "/target/classes/co/uk/artatawe/profileImage/SavedProfileImages/"
@@ -282,6 +283,7 @@ public class CustomProfileImagePageController implements Initializable {
 
     /**
      * Creates file relative to the project.
+     *
      * @param fileName name of file.
      * @return the profile image.
      */
@@ -313,7 +315,7 @@ public class CustomProfileImagePageController implements Initializable {
             //Puts the custom profile image page scene on the root pane.
             rootPane.getChildren().clear(); //clears the old scene
             rootPane.getChildren().add(fxmlLoader.load());
-        //Return to register page.
+            //Return to register page.
         } else {
             RegisterController registerController = new RegisterController();
             //If user has created an image, get the file path.

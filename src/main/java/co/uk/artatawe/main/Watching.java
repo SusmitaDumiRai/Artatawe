@@ -13,8 +13,9 @@ public class Watching {
 
     /**
      * Constructor.
+     *
      * @param auctionID ID of auction being watched.
-     * @param username user watching auction.
+     * @param username  user watching auction.
      */
     public Watching(int auctionID, String username) {
         this.auctionID = auctionID;
@@ -23,6 +24,7 @@ public class Watching {
 
     /**
      * Gets auction ID.
+     *
      * @return auction id.
      */
     public int getAuctionID() {
@@ -31,6 +33,7 @@ public class Watching {
 
     /**
      * Sets auction id.
+     *
      * @param auctionID auction id.
      */
     public void setAuctionID(int auctionID) {
@@ -39,6 +42,7 @@ public class Watching {
 
     /**
      * Gets username.
+     *
      * @return username.
      */
     public String getUsername() {
@@ -47,6 +51,7 @@ public class Watching {
 
     /**
      * Gets username.
+     *
      * @param username username.
      */
     public void setUsername(String username) {
