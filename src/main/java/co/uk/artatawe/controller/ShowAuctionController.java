@@ -141,15 +141,31 @@ public class ShowAuctionController implements Initializable {
         return false;
     }
 
+    public ArrayList<User> getAllFavouriteSellers() {
+
+        FavouriteUserDatabaseManager favouriteUserDatabaseManager = new FavouriteUserDatabaseManager();
+        String sqlSelect = "select * from favouriteuser where username2 = '" + this.sellerName.getText() + "';";
+        ArrayList<User> favSellers = new ArrayList<>();
+
+        for (FavouriteUsers favouriteUsers : favouriteUserDatabaseManager.getFavouriteUsers(sqlSelect)) {
+            if (favouriteUsers.getUser1().getUserName().equals(this.username)) {
+                favSellers.add(favouriteUsers.getUser2());
+            }
+        }
+
+        return favSellers;
+    }
+
     /**
      * method that checks whether a seller is a favourite user of the current user.
-     *
-     * @param favouriteUsers favourite user object.
+     * @param seller
      * @return true if the seller is from the list of favourites of the loged in user.
      */
-    private boolean isFavouriteOf(FavouriteUsers favouriteUsers) {
-        if (favouriteUsers.getUser1().getUserName().equals(this.username)) {
-            return true;
+    private boolean isFavouriteOf(User seller) {
+        for (User favSeller : getAllFavouriteSellers()) {
+            if (favSeller.getUserName().equals(seller.getUserName())) {
+                return true;
+            }
         }
 
         return false;
@@ -215,20 +231,19 @@ public class ShowAuctionController implements Initializable {
         }
 
         //check whether the given seller is in user's favourites
-        FavouriteUserDatabaseManager favouriteUserDatabaseManager = new FavouriteUserDatabaseManager();
-        String sqlSelect = "Select * from favouriteuser, auction where favouriteuser.username2 = '" + sellerName.getText() + "' " +
-                "and favouriteuser.username1 =  '" + this.username + "';";
-        heart.setImage(new Image(("co/uk/artatawe/gui/Icons/icons8-heart-48.png")));
+        UserDatabaseManager userDatabaseManager = new UserDatabaseManager();
 
-        for (FavouriteUsers favs : favouriteUserDatabaseManager.getFavouriteUsers(sqlSelect)) {
-            if (isFavouriteOf(favs)) {
-                heart.setImage(new Image("co/uk/artatawe/gui/Icons/icons8-love-50.png"));
+        AuctionDatabaseManager auctionDatabaseManager1 = new AuctionDatabaseManager();
+
+        String sqlSelect = "Select * from user where username = '" + this.sellerName.getText() + "';";
+        for (User a: userDatabaseManager.getAllUsers(sqlSelect)) {
+            if (isFavouriteOf(a)) {
+               heart.setImage(new Image("co/uk/artatawe/gui/Icons/icons8-love-50.png"));
             }
         }
 
-
         //check wathchers in database
-        UserDatabaseManager userDatabaseManager = new UserDatabaseManager();
+
         String sqlSelectWatching = "select * from user,watching where user.username = watching.username " +
                 " and auctionid = '" + artwork.getArtworkID() + "';";
         for (User user : userDatabaseManager.getAllUsers(sqlSelectWatching)) {
@@ -351,33 +366,30 @@ public class ShowAuctionController implements Initializable {
     @FXML
     void handleHeartAction(ActionEvent event) {
         FavouriteUserDatabaseManager favouriteUserDatabaseManager = new FavouriteUserDatabaseManager();
-
-        //String sql = "Select * from favouriteuser where username1 = '" + this.username + "' and username2 = '" + this.auction.getSeller().getUserName() + "';";
-
         UserDatabaseManager userDatabaseManager = new UserDatabaseManager();
 
-        String sqlSelect = "Select * from user where username = '" + this.username + "';";
-        for (User user : userDatabaseManager.getAllUsers(sqlSelect)) {
+        String sqlSelect = "Select * from user where username = '" + this.sellerName.getText() + "';";
+        for (User a: userDatabaseManager.getAllUsers(sqlSelect)) {
+            if (isFavouriteOf(a)) {
+                String sqlDelete = "delete from favouriteuser where username1 = '" + this.username
+                        + "' and username2 = '" + this.sellerName.getText() + "';";
 
-            BrowseUsersController browse = new BrowseUsersController();
-        if (browse.isFavouriteOf(user)) {
-            String sqlDelete = "delete from favouriteuser where username1 = '" + username
-                    + "' and username2 = '" + sellerName.getText() + "';";
+                favouriteUserDatabaseManager.executeStatement(sqlDelete);
 
-            favouriteUserDatabaseManager.executeStatement(sqlDelete);
+                heart.setImage(new Image("co/uk/artatawe/gui/Icons/icons8-heart-48.png"));
+            } else {
+                String sqlInsert = "insert into favouriteuser(username1,username2) values ('" +
+                        this.username + "', '" + this.sellerName.getText() + "');";
 
-            heart.setImage(new Image(("co/uk/artatawe/gui/Icons/icons8-heart-48.png")));
-        } else {
-            String sqlInsert = "insert into favouriteuser(username1,username2) values ('" +
-                    username + "', '" + sellerName.getText() + "');";
+                favouriteUserDatabaseManager.executeStatement(sqlInsert);
 
-            favouriteUserDatabaseManager.executeStatement(sqlInsert);
+                heart.setImage(new Image(("co/uk/artatawe/gui/Icons/icons8-love-50.png")));
+            }
 
-            heart.setImage(new Image(("co/uk/artatawe/gui/Icons/icons8-love-50.png")));
         }
-    }
+}
 
-    }
+
 
     @FXML
     void watchAction(ActionEvent event) {
