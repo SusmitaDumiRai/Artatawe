@@ -5,7 +5,7 @@ package co.uk.artatawe.controller;
  * Controller for login page.
  *
  * @author Plamena Tseneva
- * @author 908928
+ * @author 908928 - Susmita
  * @version 1.0
  */
 
@@ -73,7 +73,6 @@ public class LoginController implements Initializable {
         if (validateUsername()) {
             Parent root;
             try {
-
                 //new controller so it can be set manually
                 NavigationController navigationController = new NavigationController();
                 navigationController.setUsername(username.getText());

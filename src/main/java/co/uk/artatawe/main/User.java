@@ -9,7 +9,6 @@ import co.uk.artatawe.profileImage.ProfileImage;
  * The class handles information about a user.
  *
  * @author Tihomir Trendafilov
- * @author 908928
  * @version 1.0
  */
 

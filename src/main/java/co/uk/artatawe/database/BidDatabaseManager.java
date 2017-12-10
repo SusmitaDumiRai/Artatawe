@@ -14,7 +14,7 @@ import java.util.ArrayList;
  * Handles communication to bid table in database.
  * Allows creation, deletion and updates to be made to bid table.
  *
- * @author 908928.
+ * @author 908928 - Susmita
  * @version 1.0
  */
 public class BidDatabaseManager extends DatabaseManager {
@@ -45,6 +45,8 @@ public class BidDatabaseManager extends DatabaseManager {
 
     /**
      * Gets all bids.
+     *
+     * @return array list of all bids/
      */
     public ArrayList<Bid> getAllBids(String sqlSelect) {
 
@@ -57,9 +59,9 @@ public class BidDatabaseManager extends DatabaseManager {
             ResultSet resultSet = statement.executeQuery(sqlSelect);
             while (resultSet.next()) {
 
-                User user = new UserDatabaseManager().getUser(resultSet.getString("buyer"));
+                User user = new UserDatabaseManager().getUser(resultSet.getString("buyer")); //Get buyer info.
                 String sqlGetAuction = "SELECT * FROM AUCTION WHERE AUCTIONID = " + resultSet.getInt("auctionid");
-                Auction auction = new AuctionDatabaseManager().getAuction(sqlGetAuction);
+                Auction auction = new AuctionDatabaseManager().getAuction(sqlGetAuction); //get Auction info.
                 bidArrayList.add(new Bid(user, resultSet.getDouble("bidamount"), resultSet.getString("dateandtime"), auction));
 
             }
@@ -75,13 +77,12 @@ public class BidDatabaseManager extends DatabaseManager {
      * Get bid from sql select statement.
      *
      * @param sqlSelectBid sql statement to be executed.
-     * @return
+     * @return one bid.
      */
 
     public Bid getBid(String sqlSelectBid) {
 
         Bid bid = new Bid();
-
 
         try {
             Connection connection = connect();
@@ -89,10 +90,10 @@ public class BidDatabaseManager extends DatabaseManager {
 
             ResultSet resultSet = statement.executeQuery(sqlSelectBid);
             while (resultSet.next()) {
-                User user = new UserDatabaseManager().getUser(resultSet.getString("buyer"));
+                User user = new UserDatabaseManager().getUser(resultSet.getString("buyer")); //get buyer info.
 
                 String sqlSelect = "SELECT * FROM AUCTION WHERE AUCTIONID = " + resultSet.getInt("auctionid");
-                Auction auction = new AuctionDatabaseManager().getAuction(sqlSelect);
+                Auction auction = new AuctionDatabaseManager().getAuction(sqlSelect); //get auction info.
                 bid = new Bid(resultSet.getInt("bidid"), user, resultSet.getDouble("bidamount"), resultSet.getString("dateandtime"), auction);
 
             }
@@ -104,6 +105,11 @@ public class BidDatabaseManager extends DatabaseManager {
     }
 
 
+    /**
+     * Gets the max bid for a certain auction.
+     * @param auctionID auction in question.
+     * @return max bid amount.
+     */
     public double getMaxBid(int auctionID) {
         String sqlSelect = "SELECT max(bidAmount) as maxBid from bid where auctionid = " + auctionID + ";";
 
@@ -115,7 +121,7 @@ public class BidDatabaseManager extends DatabaseManager {
 
             ResultSet resultSet = statement.executeQuery(sqlSelect);
             while (resultSet.next()) {
-                maxBid = resultSet.getDouble(1);
+                maxBid = resultSet.getDouble(1); //SQLite database is 1 based.
 
             }
         } catch (SQLException ex) {

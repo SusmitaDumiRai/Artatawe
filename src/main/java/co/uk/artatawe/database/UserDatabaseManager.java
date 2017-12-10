@@ -11,7 +11,7 @@ import java.util.ArrayList;
  * Handles communication to user table in database.
  * Allows creation, deletion and updates to be made to user table.
  *
- * @author 908928.
+ * @author 908928 - Susmita
  * @version 1.0
  */
 public class UserDatabaseManager extends DatabaseManager {
@@ -43,11 +43,11 @@ public class UserDatabaseManager extends DatabaseManager {
 
     /**
      * Returns all users in the table.
+     *
+     * @return array list of all users.
      */
-
     public ArrayList<User> getAllUsers(String sqlSelect) {
         ArrayList<User> userArrayList = new ArrayList<>();
-
 
         try {
             Connection connection = connect();
@@ -56,8 +56,9 @@ public class UserDatabaseManager extends DatabaseManager {
             ResultSet resultSet = statement.executeQuery(sqlSelect);
             while (resultSet.next()) {
 
-                userArrayList.add(new User(resultSet.getString("username"), resultSet.getString("firstname"), resultSet.getString("surname"),
-                        resultSet.getString("phonenumber"), resultSet.getString("address"), resultSet.getString("postcode"),
+                userArrayList.add(new User(resultSet.getString("username"), resultSet.getString("firstname"),
+                        resultSet.getString("surname"), resultSet.getString("phonenumber"),
+                        resultSet.getString("address"), resultSet.getString("postcode"),
                         resultSet.getString("lastlogin"), new SavedProfileImage(resultSet.getString("profileImage"))));
             }
         } catch (SQLException ex) {

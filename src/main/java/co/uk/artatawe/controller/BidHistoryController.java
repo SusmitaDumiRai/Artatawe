@@ -21,6 +21,7 @@ import java.util.ResourceBundle;
 
 /**
  * Controller for bid history page.
+ *
  * @author James Finlayson 905234
  * @author 908928 - Susmita
  */
@@ -29,6 +30,9 @@ public class BidHistoryController implements Initializable {
     private String username; //logged in user.
     private final int WIDTH = 520; //size of window.
     private final int HEIGHT = 220; //size of window.
+    private final int TOP_LIST_LAYOUT_Y = 120; //Y location of bid history list + sold auction list.
+    private final int BOTTOM_LIST_LAYOUT_Y = 369; //Y location of won auction list.
+
 
     @FXML
     private Label topLabel;
@@ -81,10 +85,8 @@ public class BidHistoryController implements Initializable {
      * Gets list of placed bids for logged in user.
      */
     public ObservableList<Bid> getPlacedBids() {
-
         String sqlSelect = "Select * from bid where buyer = '" + this.username + "';";
         return FXCollections.observableArrayList(new BidDatabaseManager().getAllBids(sqlSelect));
-
     }
 
     /**
@@ -120,7 +122,7 @@ public class BidHistoryController implements Initializable {
         //TODO make it look nice
         topLabel.setText("Placed Bids");
         auctionListView.setPrefSize(WIDTH, HEIGHT);
-        auctionListView.setLayoutY(369);
+        auctionListView.setLayoutY(BOTTOM_LIST_LAYOUT_Y);
         pane.getChildren().add(auctionListView);
     }
 
@@ -150,12 +152,10 @@ public class BidHistoryController implements Initializable {
             }
         });
 
-
-        //TODO FOR YOU TO MAKE IT LOOK NICE LENI
         bottomLabel.setText("Won auctions");
         bottomLabel.setVisible(true);
-        bidListView.setPrefSize(WIDTH,HEIGHT);
-        bidListView.setLayoutY(120);
+        bidListView.setPrefSize(WIDTH, HEIGHT);
+        bidListView.setLayoutY(TOP_LIST_LAYOUT_Y);
         pane.getChildren().add(bidListView);
     }
 
@@ -180,33 +180,40 @@ public class BidHistoryController implements Initializable {
             }
         });
 
-        //TODO make it look nice
         bidListView.setVisible(false);
         auctionListView.setVisible(false);
         bottomLabel.setVisible(false);
         topLabel.setText("Sold auctions");
-        soldAuctionListView.setPrefSize(WIDTH,HEIGHT);
-        soldAuctionListView.setLayoutY(121);
+        soldAuctionListView.setPrefSize(WIDTH, HEIGHT);
+        soldAuctionListView.setLayoutY(TOP_LIST_LAYOUT_Y);
         pane.getChildren().add(soldAuctionListView);
     }
 
     @FXML
     void boughtHistoryAction(ActionEvent event) {
-      //  pane.getChildren().clear(); //remove old details.
+        pane.getChildren().clear(); //remove old details.
         populateBidHistory();
         populateWonAuction();
     }
 
     @FXML
     void soldHistoryAction(ActionEvent event) {
-    //    pane.getChildren().clear(); //remove old details.
+        pane.getChildren().clear(); //remove old details.
         populateSoldAuction();
     }
 
+    /**
+     * Get username of logged in user.
+     * @return username.
+     */
     public String getUsername() {
         return username;
     }
 
+    /**
+     * Set username of logged in user.
+     * @param username username.
+     */
     public void setUsername(String username) {
         this.username = username;
     }

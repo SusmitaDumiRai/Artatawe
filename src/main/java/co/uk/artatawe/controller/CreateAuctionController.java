@@ -115,7 +115,7 @@ public class CreateAuctionController implements Initializable {
     }
 
     /**
-     * Hide textboxes not related to painting.
+     * Hide text boxes not related to painting.
      *
      * @param event event.
      */
@@ -148,7 +148,7 @@ public class CreateAuctionController implements Initializable {
     /**
      * Get file location of image.
      *
-     * @param event
+     * @param event event.
      */
     @FXML
     void handleImageButtonAction(ActionEvent event) {
@@ -162,7 +162,7 @@ public class CreateAuctionController implements Initializable {
     /**
      * Get file location of extra image.
      *
-     * @param event
+     * @param event event.
      */
     @FXML
     void handleImageExtraPhotoBtn(ActionEvent event) {
@@ -225,7 +225,6 @@ public class CreateAuctionController implements Initializable {
             return true;
         } else {
             System.out.println("choose one radio button");
-            //TODO NICE ERROR MSG.
             radioButtonError.setTextFill(Paint.valueOf("RED"));
         }
 
@@ -262,7 +261,6 @@ public class CreateAuctionController implements Initializable {
             return true;
         } catch (NumberFormatException ex) {
             System.out.println("enter a number."); //needs to be changed.
-            //TODO nice error message.
             yearError.setTextFill(Paint.valueOf("RED"));
         }
         return false;
@@ -280,7 +278,6 @@ public class CreateAuctionController implements Initializable {
             return true;
         } catch (NumberFormatException ex) {
             System.out.println("enter digits only plz"); // needs to be cahnged.
-            //TODO display error message
             sizeError.setTextFill(Paint.valueOf("RED"));
         }
         return false;
@@ -297,7 +294,6 @@ public class CreateAuctionController implements Initializable {
             return true;
         } catch (NumberFormatException ex) {
             System.out.println("enter digits only plz"); // needs to be cahnged.
-            //TODO display error message
             sizeError.setText("Invalid height");
         }
         return false;
@@ -314,7 +310,6 @@ public class CreateAuctionController implements Initializable {
             return true;
         } catch (NumberFormatException ex) {
             System.out.println("enter digits only plz"); // needs to be cahnged.
-            //TODO display error message
             sizeError.setText("Invalid depth");
         }
         return false;
@@ -334,7 +329,6 @@ public class CreateAuctionController implements Initializable {
             }
         } catch (NumberFormatException ex) {
             System.out.println("enter digits only please"); // needs to be cahnged.
-            //TODO display error message
             priceError.setTextFill(Paint.valueOf("RED"));
         }
         return false;
@@ -354,20 +348,20 @@ public class CreateAuctionController implements Initializable {
                 System.out.println("enter a number more than 0 plz.");
                 allowedBidsError.setTextFill(Paint.valueOf("RED"));
                 return false;
-                //TODO nice error message.
-
-
             }
 
         } catch (NumberFormatException ex) {
             System.out.println("enter a number."); //needs to be changed.
-            //TODO nice error message.
             allowedBidsError.setText("Please enter a number");
 
         }
         return false;
     }
 
+    /**
+     * Validate to see if user selected a photo.
+     * @return true of user selected a photo.
+     */
     public boolean valPhoto() {
         return !(imageBtn.getText().equals("Select image")); //return false if standard message.
     }
@@ -386,21 +380,23 @@ public class CreateAuctionController implements Initializable {
 
         if (isPainting) {
             sqlInsertArtwork = "INSERT INTO ARTWORK (title, description, photo, nameofcreator, reservedprice, dateentered," +
-                    "bidsallowed, typeofartwork, width, height) values ('" + title.getText().replaceAll("'", "''") + "', '" + description.getText().replaceAll("'", "''") + "'," +
-                    "'" + imageBtn.getText().replaceAll("'", "''") + "'," + "'" + creatorName.getText().replaceAll("'", "''") + "'," + reservedPrice.getText() + "," +
+                    "bidsallowed, typeofartwork, width, height) values ('" + title.getText().replaceAll("'", "''") + "', '" +
+                    description.getText().replaceAll("'", "''") + "'," +
+                    "'" + imageBtn.getText().replaceAll("'", "''") + "'," + "'" + creatorName.getText().replaceAll("'", "''") + "'," +
+                    reservedPrice.getText() + "," +
                     "'" + dateFormat.format(date) + "','" + allowedBids.getText() + "','painting', '" + width.getText() + "','" +
                     height.getText() + "');";
 
         } else {
             sqlInsertArtwork = "INSERT INTO ARTWORK (title, description, photo, nameofcreator, reservedprice, dateentered," +
-                    "bidsallowed, typeofartwork, width, height, depth, mainmaterial, extraphotos) values ('" + title.getText().replaceAll("'", "''") + "', '" + description.getText().replaceAll("'", "''") +
+                    "bidsallowed, typeofartwork, width, height, depth, mainmaterial, extraphotos) values ('" + title.getText().replaceAll("'", "''") + "', '" +
+                    description.getText().replaceAll("'", "''") +
                     "'," + "'" + imageBtn.getText().replaceAll("'", "''") + "'," + "'" + creatorName.getText().replaceAll("'", "''") + "'," + reservedPrice.getText() + "," +
                     "'" + dateFormat.format(date) + "','" + allowedBids.getText() + "','sculpture', '" + width.getText() + "','" + height.getText() + "','" +
                     depth.getText() + "','" + material.getText().replaceAll("'", "''") + "','" + imageExtraPhotoBtn.getText().replaceAll("'", "''") + "');";
         }
 
-        artworkDatabaseManager.executeStatement(sqlInsertArtwork); //VERY DANGEROUS LINE OF CODE. ONLY UNCOMMENT WHEN FINALISED.
-
+        artworkDatabaseManager.executeStatement(sqlInsertArtwork);
     }
 
     /**
@@ -411,10 +407,11 @@ public class CreateAuctionController implements Initializable {
         AuctionDatabaseManager auctionDatabaseManager = new AuctionDatabaseManager();
         ArtworkDatabaseManager artworkDatabaseManager = new ArtworkDatabaseManager();
 
-        String sqlInsertAuction = "INSERT INTO AUCTION (auctionid, seller,  numofbidsleft, auctioncomp, highestbid) values ('" + artworkDatabaseManager.getArtworkID(title.getText()) +
+        String sqlInsertAuction = "INSERT INTO AUCTION (auctionid, seller,  numofbidsleft, auctioncomp, highestbid) values ('" +
+                artworkDatabaseManager.getArtworkID(title.getText()) +
                 "','" + sellerName.getText() + "','" + allowedBids.getText() + "','0','" + reservedPrice.getText() + "');";
 
-        auctionDatabaseManager.executeStatement(sqlInsertAuction); // VERY DANGEROUS LINE OF CODE. ONLY UNCOMMENT WHEN FINALISED.
+        auctionDatabaseManager.executeStatement(sqlInsertAuction);
     }
 
     /**

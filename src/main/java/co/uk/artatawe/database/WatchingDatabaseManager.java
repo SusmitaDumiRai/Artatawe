@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * Handles communication to watching table in database.
  * Allows creation, deletion and updates to be made to watching table.
  *
- * @author 908928
+ * @author 908928 - Susmita
  * @author Plamena Tseneva
  * @version 1.0
  */
@@ -37,8 +37,12 @@ public class WatchingDatabaseManager extends DatabaseManager {
         executeStatement(sqlCreateWatchingTable);
     }
 
+    /**
+     * Get array list of watchings.
+     * @param sqlSelect sql statement to be executed.
+     * @return array list of watching.
+     */
     public ArrayList<Watching> getAllWatching(String sqlSelect) {
-
         ArrayList<Watching> watchingArrayList = new ArrayList<>();
 
         try {

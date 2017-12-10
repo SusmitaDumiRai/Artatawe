@@ -14,7 +14,7 @@ import java.util.ArrayList;
  * Handles communication to user table in database.
  * Allows creation, deletion and updates to be made to artwork table.
  *
- * @author 908928
+ * @author 908928 - Susmita
  * @version 1.0
  */
 public class ArtworkDatabaseManager extends DatabaseManager {
@@ -45,7 +45,6 @@ public class ArtworkDatabaseManager extends DatabaseManager {
                 "depth real," +
                 "mainMaterial text," + "extraPhotos text," +
                 "UNIQUE(title), UNIQUE(photo));";
-
         executeStatement(sqlCreateArtworkTable);
 
     }
@@ -53,8 +52,9 @@ public class ArtworkDatabaseManager extends DatabaseManager {
 
     /**
      * Gets all artwork info.
+     *
+     * @return array list of all artworks.
      */
-
     public ArrayList<Artwork> getAllArtworks(String sqlSelect) {
         ArrayList<Artwork> artworkArrayList = new ArrayList<>();
 
@@ -66,13 +66,17 @@ public class ArtworkDatabaseManager extends DatabaseManager {
 
             ResultSet resultSet = statement.executeQuery(sqlSelect);
             while (resultSet.next()) {
+                //Add painting
                 if (resultSet.getString("typeofartwork").equals("painting")) { //add painting.
-                    artworkArrayList.add(new Painting(resultSet.getInt("artworkid"), resultSet.getString("typeofartwork"), resultSet.getString("title"), resultSet.getString("description"),
+                    artworkArrayList.add(new Painting(resultSet.getInt("artworkid"), resultSet.getString("typeofartwork"),
+                            resultSet.getString("title"), resultSet.getString("description"),
                             resultSet.getString("photo"), resultSet.getString("nameofcreator"), resultSet.getDouble("reservedprice"),
                             resultSet.getString("dateentered"), resultSet.getInt("bidsallowed"), resultSet.getDouble("width"),
                             resultSet.getDouble("height")));
-                } else { //add sculpture.
-                    artworkArrayList.add(new Sculpture(resultSet.getInt("artworkid"), resultSet.getString("typeofartwork"), resultSet.getString("title"), resultSet.getString("description"),
+                    //Add sculpture.
+                } else {
+                    artworkArrayList.add(new Sculpture(resultSet.getInt("artworkid"), resultSet.getString("typeofartwork"),
+                            resultSet.getString("title"), resultSet.getString("description"),
                             resultSet.getString("photo"), resultSet.getString("nameofcreator"), resultSet.getDouble("reservedprice"),
                             resultSet.getString("dateentered"), resultSet.getInt("bidsallowed"), resultSet.getString("mainmaterial"),
                             resultSet.getString("extraphotos"),
@@ -116,6 +120,12 @@ public class ArtworkDatabaseManager extends DatabaseManager {
         return artworkID;
     }
 
+    /**
+     * Gets only one artwork back.
+     * @param sqlSelectAuction sql statement to be executed.
+     *
+     * @return returns one artwork.
+     */
     public Artwork getArtwork(String sqlSelectAuction) {
 
         Artwork artwork = new Artwork();

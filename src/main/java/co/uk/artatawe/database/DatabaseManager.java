@@ -5,12 +5,12 @@ import java.sql.*;
 /**
  * Class that handles creation of database.
  *
- * @author 908928.
+ * @author 908928 - Susmita
  * @version 1.0
  */
 public abstract class DatabaseManager {
     private String fileName = "artatawe.db"; //database file name.
-    private String connURL = "jdbc:sqlite:" + fileName;
+    private String connURL = "jdbc:sqlite:" + fileName; //connection URL.
 
     /**
      * Allows connection to be made to the database.

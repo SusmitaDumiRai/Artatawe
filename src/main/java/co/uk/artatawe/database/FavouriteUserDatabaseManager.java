@@ -14,10 +14,11 @@ import java.util.ArrayList;
  * Handles communication to favourite user table in database.
  * Allows creation, deletion and updates to be made to favourite user table.
  *
- * @author 908928.
+ * @author 908928 - Susmita
  * @version 1.0
  */
 public class FavouriteUserDatabaseManager extends DatabaseManager {
+
     /**
      * Empty constructor.
      */
@@ -39,10 +40,14 @@ public class FavouriteUserDatabaseManager extends DatabaseManager {
         executeStatement(sqlCreateFavouriteUserTable);
     }
 
+    /**
+     * Gets array list of favourite users.
+     * @param sqlSelect sql statement to be executed.
+     * @return array list of favourite users.
+     */
     public ArrayList<FavouriteUsers> getFavouriteUsers(String sqlSelect) {
         UserDatabaseManager userDatabaseManager = new UserDatabaseManager();
         ArrayList<FavouriteUsers> favouriteUsersArrayList = new ArrayList<>();
-
 
         try {
             Connection connection = connect();
@@ -51,10 +56,9 @@ public class FavouriteUserDatabaseManager extends DatabaseManager {
             ResultSet resultSet = statement.executeQuery(sqlSelect);
             while (resultSet.next()) {
 
-                User user1 = userDatabaseManager.getUser(resultSet.getString("username1"));
-                User user2 = userDatabaseManager.getUser(resultSet.getString("username2"));
+                User user1 = userDatabaseManager.getUser(resultSet.getString("username1")); //get user 1 info.
+                User user2 = userDatabaseManager.getUser(resultSet.getString("username2")); //get user 2 info.
                 favouriteUsersArrayList.add(new FavouriteUsers(user1, user2));
-
 
             }
         } catch (SQLException ex) {

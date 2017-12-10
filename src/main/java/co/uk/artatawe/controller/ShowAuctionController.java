@@ -25,7 +25,7 @@ import java.util.ResourceBundle;
  * Handles show auction fxml file.
  * Displays detailed information about certain artwork.
  *
- * @author 908928
+ * @author 908928 - Susmita
  */
 public class ShowAuctionController implements Initializable {
 
@@ -33,7 +33,7 @@ public class ShowAuctionController implements Initializable {
     private String photo; //selected artwork.
     private Artwork artwork;
     private Auction auction;
-    private int numPeaopleWatching;
+    private int numPeopleWatching;
 
     @FXML
     private Label date;
@@ -119,6 +119,11 @@ public class ShowAuctionController implements Initializable {
     }
 
 
+    /**
+     * Get all from watching table.
+     * If user had previously watched this auction, add them to arraylist.
+     * @return arraylist of whether user has watched this auction before or not.
+     */
     public ArrayList<Watching> getWatching() {
         WatchingDatabaseManager watchingDatabaseManager = new WatchingDatabaseManager();
         String sqlSelect = "select * from watching;";
@@ -132,6 +137,11 @@ public class ShowAuctionController implements Initializable {
         return watchingUsers;
     }
 
+    /**
+     * Check to see if user is already a watcher.
+     * @param user logged in user.
+     * @return true if user has already watched this auction.
+     */
     private boolean isWatching(User user) {
         for (Watching watcher : getWatching()) {
             if (watcher.getUsername().equals(user.getUserName())) {
@@ -141,6 +151,10 @@ public class ShowAuctionController implements Initializable {
         return false;
     }
 
+    /**
+     * Get all favourite sellers of logged in user.
+     * @return arraylist of users favourited by logged in user.
+     */
     public ArrayList<User> getAllFavouriteSellers() {
 
         FavouriteUserDatabaseManager favouriteUserDatabaseManager = new FavouriteUserDatabaseManager();
@@ -157,9 +171,9 @@ public class ShowAuctionController implements Initializable {
     }
 
     /**
-     * method that checks whether a seller is a favourite user of the current user.
-     * @param seller
-     * @return true if the seller is from the list of favourites of the loged in user.
+     * Checks whether a seller is a favourite user of the current user.
+     * @param seller seller of auction.
+     * @return true if the seller is from the list of favourites of the logged in user.
      */
     private boolean isFavouriteOf(User seller) {
         for (User favSeller : getAllFavouriteSellers()) {
@@ -171,10 +185,14 @@ public class ShowAuctionController implements Initializable {
         return false;
     }
 
+    /**
+     * Get number of people watching this artwork.
+     * Set the number of people watching.
+     */
     public void getNumOfPeopleWatching() {
         String sqlSelect = "Select * from watching where auctionid = " + this.auction.getArtwork().getArtworkID() + ";";
         ArrayList<Watching> watchings = new WatchingDatabaseManager().getAllWatching(sqlSelect);
-        numPeaopleWatching = watchings.size();
+        numPeopleWatching = watchings.size();
     }
 
     @Override
@@ -184,11 +202,14 @@ public class ShowAuctionController implements Initializable {
         material.setVisible(false);
         materialLabel.setVisible(false);
 
-        getArtwork();
-        getNumOfPeopleWatching();
-        numWatchers.setText(Integer.toString(numPeaopleWatching));
+        getArtwork(); //display artwork.
+        getNumOfPeopleWatching(); //get number of people watching.
+        numWatchers.setText(Integer.toString(numPeopleWatching)); //set text to num of people watching.
     }
 
+    /**
+     * Get auction's artwork's details.
+     */
     public void getArtwork() {
 
         ArtworkDatabaseManager artworkDatabaseManager = new ArtworkDatabaseManager();
@@ -217,8 +238,8 @@ public class ShowAuctionController implements Initializable {
         Image image = new Image(artwork.getPhoto());
         this.imageViewPhoto.setImage(image);
 
-        if (artwork.getTypeOfArtwork().equals("sculpture")) { //if sculpture display more info.
-            //TODO EXTRA PHOTO.
+        //If sculpture display more info.
+        if (artwork.getTypeOfArtwork().equals("sculpture")) {
             Sculpture sculpture = (Sculpture) artwork;
             this.xDepth.setVisible(true);
             depth.setVisible(true);
@@ -230,19 +251,20 @@ public class ShowAuctionController implements Initializable {
 
         }
 
-        //check whether the given seller is in user's favourites
+        //Check whether the given seller is in user's favourites
         UserDatabaseManager userDatabaseManager = new UserDatabaseManager();
 
-        AuctionDatabaseManager auctionDatabaseManager1 = new AuctionDatabaseManager();
+
+
+        //Check whether seller is favourite.
 
         String sqlSelect = "Select * from user where username = '" + this.sellerName.getText() + "';";
-        for (User a: userDatabaseManager.getAllUsers(sqlSelect)) {
-            if (isFavouriteOf(a)) {
+        for (User user: userDatabaseManager.getAllUsers(sqlSelect)) {
+            if (isFavouriteOf(user)) {
                heart.setImage(new Image("co/uk/artatawe/gui/Icons/icons8-love-50.png"));
             }
         }
-
-        //check wathchers in database
+        // Check watchers in database
 
         String sqlSelectWatching = "select * from user,watching where user.username = watching.username " +
                 " and auctionid = '" + artwork.getArtworkID() + "';";
@@ -291,9 +313,15 @@ public class ShowAuctionController implements Initializable {
         this.photo = photo;
     }
 
+    /**
+     * Triggers when user makes bid.
+     * Validates bid.
+     * Checks number of bids left for auction, if 1 then latest bidder won.
+     * Updates information to database.
+     * @param event
+     */
     @FXML
     void handleButtonAction(ActionEvent event) {
-        ArtworkDatabaseManager artworkDatabaseManager = new ArtworkDatabaseManager();
         AuctionDatabaseManager auctionDatabaseManager = new AuctionDatabaseManager();
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         Date date = new Date();
@@ -311,25 +339,23 @@ public class ShowAuctionController implements Initializable {
             //Decrease bid amount.
             if (auction.getNumOfBidsLeft() > 1) {
                 sqlUpdateBidAmount = "Update auction set numofbidsleft = " + (auction.getNumOfBidsLeft() - 1) + " where auctionid = " + this.artwork.getArtworkID() + ";";
-
-            } else { //complete auction.
-                //get id of winning bid.
+            //Complete auction.
+            } else {
+                //Get id of winning bid.
                 String sqlSelectBid = "SELECT * FROM BID WHERE bidamount = " + bidDatabaseManager.getMaxBid(artwork.getArtworkID()); //get highest bid for this auction.
                 Bid bid = bidDatabaseManager.getBid(sqlSelectBid);
 
-                //update auction info.
+                //Update auction info.
                 sqlUpdateBidAmount = "Update auction set numofbidsleft = " + (auction.getNumOfBidsLeft() - 1) + ", auctioncomp = 1, " +
                         "winningBid = " + bid.getBidID() + " where auctionid = " + this.artwork.getArtworkID() +
                         ";";
                 makeBidButton.setDisable(true);
             }
 
-            numOfBidLeft.setText(Integer.toString(auction.getNumOfBidsLeft() - 1)); //update num of bids left in GUI.
+            //Update num of bids left in GUI.
+            numOfBidLeft.setText(Integer.toString(auction.getNumOfBidsLeft() - 1));
             reservedPrice.setText(bid.getText());
-
-
             auctionDatabaseManager.updateStatement(sqlUpdateBidAmount);
-
         }
     }
 
@@ -337,7 +363,7 @@ public class ShowAuctionController implements Initializable {
      * Validates bid.
      * If it is a double and greater than the highest bid.
      *
-     * @return
+     * @return true if bid is valid.
      */
     public boolean valMakeBid() {
         try {
@@ -345,15 +371,12 @@ public class ShowAuctionController implements Initializable {
             if (Double.parseDouble(bid.getText()) > Double.parseDouble(reservedPrice.getText())) {
                 return true;
             } else {
-                System.out.println("bid price too low"); //TODO ERROR MESAGE.
                 errorMessage.setText("'Bid is too low'");
                 errorMessage.setTextFill(Paint.valueOf("RED"));
                 return false;
             }
 
         } catch (NumberFormatException ex) {
-            System.out.println("enter digits only please"); // needs to be cahnged.
-            //TODO display error message
             errorMessage.setText("'Enter digits only'");
             errorMessage.setTextFill(Paint.valueOf("RED"));
         }
@@ -363,6 +386,13 @@ public class ShowAuctionController implements Initializable {
     }
 
 
+    /**
+     * Triggers when user presses the heart button.
+     * Checks to see if seller is already a favourite.
+     * If seller already a favourite, removes seller from favourite.
+     * Else adds to favourite.
+     * @param event event.
+     */
     @FXML
     void handleHeartAction(ActionEvent event) {
         FavouriteUserDatabaseManager favouriteUserDatabaseManager = new FavouriteUserDatabaseManager();
@@ -387,10 +417,15 @@ public class ShowAuctionController implements Initializable {
             }
 
         }
-}
+    }
 
 
-
+    /**
+     * Triggers when user presses watch icon.
+     * If user is already watching auction, removes from watchers and decreases num of people watching.
+     * Else adds user to the watchers list. Increases num of people watching.
+     * @param event event.
+     */
     @FXML
     void watchAction(ActionEvent event) {
         UserDatabaseManager userDatabaseManager = new UserDatabaseManager();
@@ -405,15 +440,15 @@ public class ShowAuctionController implements Initializable {
 
             watchIcon.setImage(new Image("co/uk/artatawe/gui/Icons/icons8-eye-40.png"));
             watchingDatabaseManager.executeStatement(sqlDelete);
-            numPeaopleWatching--;
-            numWatchers.setText(Integer.toString(numPeaopleWatching));
+            numPeopleWatching--;
+            numWatchers.setText(Integer.toString(numPeopleWatching));
         } else {
             String sqlInsert = "insert into watching values (" + this.auction.getArtwork().getArtworkID() + ",'" + this.username + "');";
 
             watchingDatabaseManager.executeStatement(sqlInsert);
             watchIcon.setImage(new Image("co/uk/artatawe/gui/Icons/full-eye.png"));
-            numPeaopleWatching++;
-            numWatchers.setText(Integer.toString(numPeaopleWatching));
+            numPeopleWatching++;
+            numWatchers.setText(Integer.toString(numPeopleWatching));
         }
 
     }

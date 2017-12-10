@@ -55,6 +55,10 @@ public class BrowseUsersController implements Initializable {
         this.username = username;
     }
 
+    /**
+     * Gets all favourite users of logged in user.
+     * @return arraylist of favourited users of logged in user.
+     */
     public ArrayList<User> getAllFavouriteUsers() {
 
         FavouriteUserDatabaseManager favouriteUserDatabaseManager = new FavouriteUserDatabaseManager();
@@ -76,6 +80,11 @@ public class BrowseUsersController implements Initializable {
         getUserProfiles();
     }
 
+    /**
+     * Checks to see if user is a favourite.
+     * @param user user
+     * @return true or false.
+     */
     private boolean isFavouriteOf(User user) {
         for (User fav : getAllFavouriteUsers()) {
             if (fav.getUserName().equals(user.getUserName())) {
@@ -96,7 +105,6 @@ public class BrowseUsersController implements Initializable {
         UserDatabaseManager userDatabaseManager = new UserDatabaseManager();
 
        String sqlSelect = "Select * from user where username <> '" + this.username + "';";
-        //String sqlSelect = "Select * from user where username <> 'username';";
 
         scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
@@ -105,7 +113,7 @@ public class BrowseUsersController implements Initializable {
         tilePane.setHgap(GAP);
         tilePane.setVgap(GAP);
 
-        //gets all usernames and profile images
+        //Gets all usernames and profile images
         for (User user : userDatabaseManager.getAllUsers(sqlSelect)) {
 
             ImageView imageView = new ImageView();
@@ -135,6 +143,10 @@ public class BrowseUsersController implements Initializable {
             vBox.getChildren().add(heartButton);
             tilePane.getChildren().add(vBox); //add image to gridpane.
 
+
+            //Add event handler.
+            //If user presses heart, check if already favourite, if not remove from favourite.
+            //Write changes to database.
             heartButton.setOnAction(new EventHandler<ActionEvent>() {
                 @Override public void handle(ActionEvent e) {
 

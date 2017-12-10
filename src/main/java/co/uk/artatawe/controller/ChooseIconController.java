@@ -6,6 +6,7 @@ package co.uk.artatawe.controller;
  *
  * @author Tihomir Trendafilov
  */
+
 import co.uk.artatawe.database.FavouriteUserDatabaseManager;
 import co.uk.artatawe.database.UserDatabaseManager;
 import co.uk.artatawe.main.FavouriteUsers;
@@ -46,31 +47,30 @@ public class ChooseIconController implements Initializable {
     private int register = 1; //do you come from register page or not.
     private User user;//the user that is choosing an icon.
 
-	@FXML
+    @FXML
     private TilePane tilePane;
 
     @FXML
     private ScrollPane scrollPane;
-    
+
     @FXML
     private Button dogButton;
-    
+
     @FXML
     private Button catButton;
-    
+
     @FXML
     private Button dog2Button;
-    
+
     @FXML
     private Button bearButton;
-    
+
     @FXML
     private Button penguinButton;
-    
+
     @FXML
     private Pane centerPane; //a pane in the center of the main pane.
-    
-    
+
 
     /**
      * Empty constructor.
@@ -81,6 +81,7 @@ public class ChooseIconController implements Initializable {
 
     /**
      * Constructor with register
+     *
      * @param register do you come from the register page(0) or not (1).
      */
     public ChooseIconController(int register) {
@@ -89,135 +90,138 @@ public class ChooseIconController implements Initializable {
 
     /**
      * Constructor with register and username
+     *
      * @param register do you come from the register page(0) or not (1).
      * @param username username of logged in user.
      */
     public ChooseIconController(String username, int register) {
-    	this.register = register;
+        this.register = register;
         this.username = username;
     }
-    
+
     /**
      * Constructor with user so when a user chooses an icon the change would be saved in the data base.
+     *
      * @param user the user that is choosing an icon.
      */
     public ChooseIconController(User user) {
-    	this.user = user;
+        this.user = user;
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        
+
     }
 
-    
-    
+
     @FXML
     public void chooseDog1Auction(ActionEvent event) throws IOException {
-    	if (register == 0) {
-    		openRegisterPage(event);
-    		
-    	} else {
-    		setProfileImage("PresetImage_Bear.jpg");
-    		goBackToProfilePage(event);
-    		
-    	}
+        if (register == 0) {
+            openRegisterPage(event);
+
+        } else {
+            setProfileImage("PresetImage_Bear.jpg");
+            goBackToProfilePage(event);
+
+        }
     }
-    
+
     @FXML
     public void chooseCatAuction(ActionEvent event) throws IOException {
-    	if (register == 0) {
-    		openRegisterPage(event);
-    		
-    	} else {
-    		setProfileImage("PresetImage_Cat.jpg");
-    		goBackToProfilePage(event);
-    		
-    	}
-    	
+        if (register == 0) {
+            openRegisterPage(event);
+
+        } else {
+            setProfileImage("PresetImage_Cat.jpg");
+            goBackToProfilePage(event);
+
+        }
+
     }
-    
+
     @FXML
     public void chooseDog2Auction(ActionEvent event) throws IOException {
-    	if (register == 0) {
-    		openRegisterPage(event);
-    		
-    	} else {
-    		setProfileImage("PresetImage_Dog.jpg");
-    		goBackToProfilePage(event);
-    		
-    	}
-    	
+        if (register == 0) {
+            openRegisterPage(event);
+
+        } else {
+            setProfileImage("PresetImage_Dog.jpg");
+            goBackToProfilePage(event);
+
+        }
+
     }
-    
+
     @FXML
     public void chooseBearAuction(ActionEvent event) throws IOException {
-    	if (register == 0) {
-    		openRegisterPage(event);
-    		
-    	} else {
-    		setProfileImage("PresetImage_Lion.jpg");
-    		goBackToProfilePage(event);
-    		
-    	}
-    	
+        if (register == 0) {
+            openRegisterPage(event);
+
+        } else {
+            setProfileImage("PresetImage_Lion.jpg");
+            goBackToProfilePage(event);
+
+        }
+
     }
-    
+
     @FXML
     public void choosePenguinAuction(ActionEvent event) throws IOException {
-    	if (register == 0) {
-    		openRegisterPage(event);
-    		
-    	} else {
-    		setProfileImage("PresetImage_Penguin.jpg");
-    		goBackToProfilePage(event);
-    		
-    	}
-    	
+        if (register == 0) {
+            openRegisterPage(event);
+
+        } else {
+            setProfileImage("PresetImage_Penguin.jpg");
+            goBackToProfilePage(event);
+
+        }
+
     }
-    
+
     //changes the profile image in the data base for the user that is choosing by passing a name of an icon.
     private void setProfileImage(String picName) {
-    	SavedProfileImage s = new SavedProfileImage(
-    			"/co/uk/artatawe/profileImage/SavedProfileImages/" 
-    			+ picName);
-    	user.setProfileImage(s);
-    	UserDatabaseManager u = new UserDatabaseManager();
-    	u.updateProfileImage(user, 
-    			"/co/uk/artatawe/profileImage/SavedProfileImages/" 
-    			+ picName);
-    		
+        SavedProfileImage s = new SavedProfileImage(
+                "/co/uk/artatawe/profileImage/SavedProfileImages/"
+                        + picName);
+        user.setProfileImage(s);
+        UserDatabaseManager u = new UserDatabaseManager();
+        u.updateProfileImage(user,
+                "/co/uk/artatawe/profileImage/SavedProfileImages/"
+                        + picName);
+
     }
-    
+
     private void openRegisterPage(ActionEvent event) {
-    	
+
     }
+
     private void goBackToProfilePage(ActionEvent event) {
-	  //Creates a new controller.
-	    ProfilePageController profilePageController 
-	    	= new ProfilePageController();
-	    profilePageController.setUsername(username);
-	    profilePageController.setRootPane(centerPane);
-	    
-	    FXMLLoader fxmlLoader 
-	    	= new FXMLLoader(getClass().getClassLoader().getResource(
-	    				"co/uk/artatawe/gui/ProfilePage.fxml"));
-	    
-	    //Sets the controller manually.
-	    fxmlLoader.setController(profilePageController);
-	    //Puts the custom profile image page scene on the root pane.
-			try {
-				centerPane.getChildren().clear();//clears the old scene
-				centerPane.getChildren().add(fxmlLoader.load()); //set the center of the pane to show auction scene
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+        //Creates a new controller.
+        ProfilePageController profilePageController
+                = new ProfilePageController();
+        profilePageController.setUsername(username);
+        profilePageController.setRootPane(centerPane);
+
+        FXMLLoader fxmlLoader
+                = new FXMLLoader(getClass().getClassLoader().getResource(
+                "co/uk/artatawe/gui/ProfilePage.fxml"));
+
+        //Sets the controller manually.
+        fxmlLoader.setController(profilePageController);
+        //Puts the custom profile image page scene on the root pane.
+        try {
+            centerPane.getChildren().clear(); //clears the old scene
+            centerPane.getChildren().add(fxmlLoader.load()); //set the center of the pane to show auction scene
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 
 
     /**
      * Gets logged in user's username.
+     *
      * @return username of logged in user.
      */
     public String getUsername() {
@@ -226,27 +230,30 @@ public class ChooseIconController implements Initializable {
 
     /**
      * Sets logged in user's username.
+     *
      * @param username username of logged in user.
      */
     public void setUsername(String username) {
         this.username = username;
     }
-    
+
     /**
      * Gets register param indicating where are you coming from.
+     *
      * @param register param indicating where are you coming from.
      */
     public int getRegister() {
-		return register;
-	}
+        return register;
+    }
 
     /**
      * Sets register param indicating where are you coming from.
+     *
      * @param register param indicating where are you coming from.
      */
-	public void setRegister(int register) {
-		this.register = register;
-	}
+    public void setRegister(int register) {
+        this.register = register;
+    }
 
 }
 

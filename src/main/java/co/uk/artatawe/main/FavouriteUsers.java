@@ -4,7 +4,7 @@ package co.uk.artatawe.main;
  * Class that keeps track of who has favourited who.
  * User1 favourites user2.
  *
- * @author 908928
+ * @author 908928 - Susmita
  * @author Plamena Tseneva
  */
 public class FavouriteUsers {
