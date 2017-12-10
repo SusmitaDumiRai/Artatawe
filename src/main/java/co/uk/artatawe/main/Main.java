@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 /**
  * Main class used for testing.
  */
-public class LoginTest extends Application {
+public class Main extends Application {
 
 
     @Override

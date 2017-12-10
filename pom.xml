@@ -25,7 +25,7 @@
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>1.2.1</version>
                 <configuration>
-                    <mainClass>co.uk.artatawe.main.LoginTest</mainClass>
+                    <mainClass>co.uk.artatawe.main.Main</mainClass>
                     <arguments>
                     </arguments>
                 </configuration>
