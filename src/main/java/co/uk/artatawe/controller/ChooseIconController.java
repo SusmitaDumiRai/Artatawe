@@ -81,7 +81,7 @@ public class ChooseIconController implements Initializable {
 
     /**
      * Constructor with register
-     * @param rgister do you come from the register page(0) or not (1).
+     * @param register do you come from the register page(0) or not (1).
      */
     public ChooseIconController(int register) {
 
@@ -89,7 +89,7 @@ public class ChooseIconController implements Initializable {
 
     /**
      * Constructor with register and username
-     * @param rgister do you come from the register page(0) or not (1).
+     * @param register do you come from the register page(0) or not (1).
      * @param username username of logged in user.
      */
     public ChooseIconController(String username, int register) {

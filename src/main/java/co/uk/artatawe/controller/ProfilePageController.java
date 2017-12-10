@@ -98,19 +98,19 @@ public class ProfilePageController implements Initializable {
 
     @FXML
     public void onChangeUserIconAction(ActionEvent event) throws IOException {
-		if (changeUserIcon.getText().equals(useCustomIcon.getText())) {
-	       // CustomProfileImagePageController customProfileImagePageController = new CustomProfileImagePageController();
+        if (changeUserIcon.getText().equals(useCustomIcon.getText())) {
+            // CustomProfileImagePageController customProfileImagePageController = new CustomProfileImagePageController();
 
-	        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/CustomProfileImagePage.fxml"));
-	        
-	      //  fxmlLoader.setController(customProfileImagePageController);
-	        rootPane.getChildren().add(fxmlLoader.load());
-		} else if(changeUserIcon.getText().equals(useAppIcons.getText())) {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/CooseIcon.fxml"));
-			
-			rootPane.getChildren().add(fxmlLoader.load());
-		}
-	}
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/CustomProfileImagePage.fxml"));
+
+            //  fxmlLoader.setController(customProfileImagePageController);
+            rootPane.getChildren().add(fxmlLoader.load());
+        } else if (changeUserIcon.getText().equals(useAppIcons.getText())) {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/CooseIcon.fxml"));
+
+            rootPane.getChildren().add(fxmlLoader.load());
+        }
+    }
 
 
     @FXML
@@ -126,16 +126,15 @@ public class ProfilePageController implements Initializable {
         fxmlLoader.setController(customProfileImagePageController);
         rootPane.getChildren().add(fxmlLoader.load());
     }
-	
-	@FXML
+
+    @FXML
     public void onUseAppIconAction(ActionEvent event) throws IOException {
-		UserDatabaseManager userDatabaseManager = new UserDatabaseManager();
+        UserDatabaseManager userDatabaseManager = new UserDatabaseManager();
 
-	    User user = userDatabaseManager.getUser(this.username);
+        User user = userDatabaseManager.getUser(this.username);
 
-		ChooseIconController chooseIconController 
-        	= new ChooseIconController(user);
-		chooseIconController.setUsername(this.username);
+        ChooseIconController chooseIconController = new ChooseIconController(user);
+        chooseIconController.setUsername(this.username);
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/ChooseIcon.fxml"));
         fxmlLoader.setController(chooseIconController);
         rootPane.getChildren().add(fxmlLoader.load());

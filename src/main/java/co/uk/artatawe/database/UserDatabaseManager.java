@@ -126,13 +126,10 @@ public class UserDatabaseManager extends DatabaseManager {
         String sql = "Update USER "
                 + "Set profileImage = '" + filepath + "' "
                 + "Where username = '" + user.getUserName() + "';";
-        try {
-            Connection connection = connect();
-            Statement statement = connection.createStatement();
-            statement.executeQuery(sql);
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
+
+
+        updateStatement(sql);
+
     }
 
 
