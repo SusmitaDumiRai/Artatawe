@@ -84,6 +84,7 @@ public class RegisterController implements Initializable {
     @FXML
     private ImageView avatar;
     
+    private String avatarPath = "co/uk/artatawe/profileImage/SavedProfileImages/PresetImage_Bear.jpg";
     
     
     /**
@@ -96,6 +97,9 @@ public class RegisterController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+    	Image newAvatar = new Image(avatarPath);
+    	
+    	avatar.setImage(newAvatar);
 
 
     }
@@ -189,7 +193,7 @@ public class RegisterController implements Initializable {
                 + "'" + username.getText().replaceAll("'", "''") + "','" + firstName.getText().replaceAll("'", "''") +
                 "','" + lastName.getText().replaceAll("'", "''") + "','" + telephoneNumber.getText() + "','" +
                 address.getText().replaceAll("'", "''") + "','" + postcode.getText().replaceAll("'", "''") + "','" +
-                "2017-02-20T09:12:13" + "','" + "co/uk/artatawe/profileImage/SavedProfileImages/PresetImage_Bear.jpg" + "');";
+                "2017-02-20T09:12:13" + "','" + avatarPath + "');";
 
         userDatabaseManager.executeStatement(sqlInsertUser);
 
@@ -355,6 +359,15 @@ public class RegisterController implements Initializable {
      */
     public void setIcon(Image image) {
     	this.avatar.setImage(image);
+    }
+    	
+    /**
+     * Sets the path of the image for user avatar.
+     * @param path of the image for user avatar.
+     */
+    public void setAvatarImagePath(String path) {
+    	this.avatarPath = path;
+    	
     }
     
 
