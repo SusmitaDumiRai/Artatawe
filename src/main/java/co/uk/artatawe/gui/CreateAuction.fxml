@@ -235,6 +235,7 @@
                </children>
             </VBox>
             <Button fx:id="submitButton" layoutX="495.0" layoutY="528.0" mnemonicParsing="false" onAction="#handleSubmitAction" style="-fx-background-color: #87CEEB;" text="Submit" />
+            <Label fx:id="successLabel" layoutX="375.0" layoutY="529.0" prefHeight="28.0" prefWidth="109.0" />
          </children>
       </Pane>
    </center>
