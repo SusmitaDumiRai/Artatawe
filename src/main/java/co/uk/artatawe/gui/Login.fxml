@@ -35,9 +35,9 @@
       <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
             <TextField fx:id="username" layoutX="157.0" layoutY="-8.0" onAction="#onEnter" promptText="Type in user name" />
-            <Button fx:id="signInButton" layoutX="276.0" layoutY="29.0" mnemonicParsing="false" onAction="#signInUser" prefHeight="25.0" prefWidth="67.0" style="-fx-background-color: #87CEEB;" text="Sign in" />
+            <Button fx:id="signInButton" layoutX="260.0" layoutY="29.0" mnemonicParsing="false" onAction="#signInUser" prefHeight="25.0" prefWidth="83.0" style="-fx-background-color: #87CEEB;" text="Sign in" />
             <Label fx:id="errorMessage" layoutX="276.0" layoutY="60.0" style="-fx-text-fill: transparent;" text="'Please use a valid username'" />
-            <Button fx:id="regiserButton" layoutX="181.0" layoutY="29.0" mnemonicParsing="false" onAction="#handleRegisterAction" prefHeight="25.0" prefWidth="67.0" style="-fx-background-color: #87CEEB;" text="Register" />
+            <Button fx:id="regiserButton" layoutX="157.0" layoutY="29.0" mnemonicParsing="false" onAction="#handleRegisterAction" prefHeight="25.0" prefWidth="83.0" style="-fx-background-color: #87CEEB;" text="Register" />
          </children>
       </Pane>
    </center>
