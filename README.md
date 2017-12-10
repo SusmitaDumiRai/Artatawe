@@ -7,6 +7,18 @@ Ebay-like system for auctioning artwork on a standalone device. Allows registrat
 ### Understanding this project
 To the software engineering group that will get this project next semester, all the best from SE02. 
 
+#### Logging onto the system
+Currently there are 6 default registered users. These usernames allows access to the system, case senstitive.
+* username
+* buygymmem
+* uglybackpack
+* yaytesting
+* finzfinz
+* lolfan
+
+#### Creating an auction
+When the user decides to create an auction, the file path for the system will record the absolute file path for the photo(s). This can **cause errors for other people** as they may not have the same file path. The database provided will only have relative file paths set up however this is a word of warning. The specification says that the system runs on a standalone device therefore we did not address this problem.
+
 #### Database tables and their schema
 ##### All data in this project is handled by SQL queries. All data is stored in the database.
 * **Artwork** - ArtworkID (PK), Title, Description, Photo, NameOfCreator, ReservedPrice, DateEntered, BidsAllowed, TypeOfArtwork, Width, Height, Depth, MainMaterial, ExtraPhoto
@@ -22,27 +34,18 @@ To the software engineering group that will get this project next semester, all 
 
 #### Random facts
 * Date and time is saved in this format: dd/MM/yyyy HH:mm:ss.
-* All (except login) fxml files load in the same window.
+* All (except login and custom profile image) fxml files load in the same window.
 * SQLite will create the database if it cannot find the one. However it will be empty.
 * Errors where it cannot find FXML Files - make sure they are in the target folder as well.
-
-#### Logging onto the system
-Currently there are 6 default registered users. These usernames allows access to the system, case senstitive.
-* username
-* buygymmem
-* uglybackpack
-* yaytesting
-* finzfinz
-* lolfan
 
 #### Extension
 * A user can watch/remove watch a certain auction. This remains anonymous however users can see how many users are watching that auction.
 * A user can also edit their profile image through "My Profile" page.
 *** 
 ### Maven
-This project uses maven. This allows easy distribution of frameworks as you do not have to manually download relavent dependencies (e.g. sqlite). You can add more frameworks in pom.xml, simply google frameworkName maven dependency. 
+This project uses maven. This allows easy distribution of frameworks as you do not have to manually download relavent dependencies (e.g. sqlite). You can add more frameworks in pom.xml, simply google [framework name] maven dependency. 
 
-When you first load this project up please allow maven to download. IDE will do all this for you. It has already been tested across NetBeans, IntelliJ and Eclipse. 
+When you first load this project up please allow maven to download. IDE will do all this for you, it has already been tested across NetBeans, IntelliJ and Eclipse. 
 
 *** 
 ### Dependencies and JDK
