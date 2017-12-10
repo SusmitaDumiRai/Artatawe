@@ -349,6 +349,7 @@ public class RegisterController implements Initializable {
 		ChooseIconController chooseIconController 
         	= new ChooseIconController();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/ChooseIcon.fxml"));
+        chooseIconController.setRegister(0);
         fxmlLoader.setController(chooseIconController);
         pane.getChildren().add(fxmlLoader.load());
     }

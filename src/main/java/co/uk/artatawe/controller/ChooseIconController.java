@@ -44,7 +44,7 @@ public class ChooseIconController implements Initializable {
     private final int IMAGE_WIDTH = 150;
     private final int GAP = 10;
     private String username; //logged in user.
-    private int register = 1; //do you come from register page or not.
+    private int register = 1; //do you come from register page or not: 0 for yes 1 for no.
     private User user;//the user that is choosing an icon.
 
     @FXML
@@ -192,6 +192,7 @@ public class ChooseIconController implements Initializable {
     }
 
     private void openRegisterPage(ActionEvent event) {
+    	
 
     }
 
