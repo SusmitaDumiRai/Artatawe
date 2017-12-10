@@ -34,7 +34,7 @@ When the user decides to create an auction, the file path for the system will re
 
 #### Random facts
 * Date and time is saved in this format: dd/MM/yyyy HH:mm:ss.
-* All (except login and custom profile image) fxml files load in the same window.
+* All (except login) fxml files load in the same window.
 * SQLite will create the database if it cannot find the one. However it will be empty.
 * Errors where it cannot find FXML Files - make sure they are in the target folder as well.
 
@@ -66,7 +66,15 @@ Instructions to compile this project in command line - video demo will be provid
 * [Database](https://sqliteonline.com/) - Open the database and you can see all its content + perform SQL queries.
 * Gary's lecture notes from CS-250
 * [SQLite tutorial](http://www.sqlitetutorial.net/)
+***
+### Snapshots
+![Login](https://i.gyazo.com/d5350315f1b9726dab4579eec1b0ef33.png "Login page")
 
+![Browse users](https://i.gyazo.com/12cc9542437988d0d31e93aadf292efa.png "Browse users")
+
+![Create auction](https://i.gyazo.com/66b308861e6512250c59c303dae4a8d4.png "Create auction")
+
+![Auction information](https://i.gyazo.com/9c392070d2a1900d9a98f12614c75529.png "Auction info")
 
 
 
