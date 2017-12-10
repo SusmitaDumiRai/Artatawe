@@ -131,7 +131,10 @@
                </font></Button>
             <VBox layoutX="14.0" layoutY="59.0" prefHeight="296.0" prefWidth="266.0">
                <children>
-                  <ImageView fitHeight="266.0" fitWidth="266.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="avatar" fitHeight="266.0" fitWidth="266.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../profileImage/SavedProfileImages/PresetImage_Bear.jpg" />
+                     </image></ImageView>
                   <MenuButton alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="31.0" prefWidth="276.0" style="-fx-background-color: #87CEEB;" text="Choose Avatar">
                     <items>
                       <MenuItem fx:id="chooseAppIcon" mnemonicParsing="false" onAction="#chooseAppIconAction" text="Choose App Icon" />
