@@ -36,7 +36,8 @@ When the user decides to create an auction, the file path for the system will re
 * Date and time is saved in this format: dd/MM/yyyy HH:mm:ss.
 * All (except login) fxml files load in the same window.
 * SQLite will create the database if it cannot find the one. However it will be empty.
-* Errors where it cannot find FXML Files - make sure they are in the target folder as well.
+* [Errors where it cannot find FXML Files - make sure they are in the target folder as well.](https://youtu.be/bU4ovkVMWjY) 
+* If the bid price becomes to high, it will standarise it. Example 3.0E10 - 30,000,000,000
 
 #### Extension
 * A user can watch/remove watch a certain auction. This remains anonymous however users can see how many users are watching that auction.
@@ -55,7 +56,7 @@ When you first load this project up please allow maven to download. IDE will do 
 ### Compiling
 Instructions to compile this project in command line - video demo will be provided.
 1. Extract the zipped source.
-2. Add new systems variable called **JAVA_HOME** which points to your JDK e.g. D:\User\Documents\jdk1.8.0_121
+2. Add new environmental variable called **JAVA_HOME** which points to your JDK e.g. D:\User\Documents\jdk1.8.0_121
 3. [Install and extract maven](http://maven.apache.org/download.cgi)
 4. Add maven to PATH e.g. D:\User\Documents\apache-maven-3.5.2\bin
 5. Perform verification test - ```mvn --version```
