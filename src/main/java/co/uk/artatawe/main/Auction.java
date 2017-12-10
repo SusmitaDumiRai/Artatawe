@@ -19,6 +19,8 @@ public class Auction {
     private User sellerUsername;
     private User winner;
     private double highestBid;
+    private String date;
+    private String time;
 
     /**
      * Empty constructor
@@ -41,7 +43,7 @@ public class Auction {
         this.auctionComp = auctionComp;
         this.artwork = artwork;
         this.sellerUsername = sellerUsername;
-        this.highestBid = highestBid;
+        this.highestBid = highestBid;      
     }
 
 
@@ -122,11 +124,18 @@ public class Auction {
         return auctionComp;
     }
 
-
+    /**
+     * Method to get the highestBid on the auction
+     * @return highestBid
+     */
     public double getHighestBid() {
         return highestBid;
     }
 
+    /**
+     * Method to set the highestBid of the auction
+     * @param highestBid
+     */
     public void setHighestBid(double highestBid) {
         this.highestBid = highestBid;
     }
