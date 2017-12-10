@@ -54,7 +54,7 @@ Instructions to compile this project in command line - video demo will be provid
 1. Extract the zipped source.
 2. Add new systems variable called **JAVA_HOME** which points to your JDK e.g. D:\User\Documents\jdk1.8.0_121
 3. [Install and extract maven](http://maven.apache.org/download.cgi)
-4. Add maven to PATH.
+4. Add maven to PATH e.g. D:\User\Documents\apache-maven-3.5.2\bin
 5. Perform verification test - ```mvn --version```
 6. Compile and run in directory - ```mvn exec:java```
 
