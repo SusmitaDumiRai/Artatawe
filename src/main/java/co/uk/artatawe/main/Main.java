@@ -68,6 +68,7 @@ public class Main extends Application {
 
 
 
+
        // WatchingDatabaseManager watchingDatabaseManager = new WatchingDatabaseManager();
        // String sql = "update watching set username = 'username' where username = ' username';";
         //watchingDatabaseManager.updateStatement(sql);

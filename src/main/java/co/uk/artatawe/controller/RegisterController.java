@@ -2,6 +2,7 @@ package co.uk.artatawe.controller;
 
 import co.uk.artatawe.database.UserDatabaseManager;
 import co.uk.artatawe.main.User;
+import co.uk.artatawe.profileImage.SavedProfileImage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -80,20 +81,20 @@ public class RegisterController implements Initializable {
 
     @FXML
     private Pane pane;
-    
+
     @FXML
     private ImageView avatar;
-    
+
     private String avatarPath = "co/uk/artatawe/profileImage/SavedProfileImages/PresetImage_Bear.jpg";
-    
+
     private Pane rootPane; // the center of the scene
-    
-    
+
+
     /**
      * Empty Constructor.
      */
     public RegisterController() {
-    	
+
     }
 
     /**
@@ -101,17 +102,14 @@ public class RegisterController implements Initializable {
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-    	Image newAvatar = new Image(avatarPath);
-    	
-    	avatar.setImage(newAvatar);
-
-
+        Image newAvatar = new Image(avatarPath);
+        avatar.setImage(newAvatar);
     }
 
     /**
      * Returns you back to log in window.
      *
-     * @param event
+     * @param event event.
      * @throws IOException
      */
     @FXML
@@ -193,7 +191,7 @@ public class RegisterController implements Initializable {
 
         //creating a new user and inserting into the system
         UserDatabaseManager userDatabaseManager = new UserDatabaseManager();
-        
+
 
         String sqlInsertUser = "INSERT INTO user (username, firstname,  surname, phonenumber, address, postcode, lastlogin, profileimage)  values ("
                 + "'" + username.getText().replaceAll("'", "''") + "','" + firstName.getText().replaceAll("'", "''") +
@@ -325,6 +323,7 @@ public class RegisterController implements Initializable {
 
     /**
      * Opens custom drawing window. Lets the user draw an icon.
+     *
      * @param event
      * @throws IOException
      */
@@ -340,48 +339,50 @@ public class RegisterController implements Initializable {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-        
+
     }
-    
+
     /**
      * Opens an window where the user can choose an icon from provided icons.
+     *
      * @param event
      * @throws IOException
      */
     @FXML
     public void chooseAppIconAction(ActionEvent event) throws IOException {
-		
-
-		ChooseIconController chooseIconController 
-        	= new ChooseIconController();
+        ChooseIconController chooseIconController
+                = new ChooseIconController();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/ChooseIcon.fxml"));
         chooseIconController.setRegister(0); //sets register so chooseIcon page knows you come from register.
         fxmlLoader.setController(chooseIconController); //sets controller manually.
         pane.getChildren().add(fxmlLoader.load()); //changes the center of the page.
     }
-    
+
     /**
      * Setting the image the user is going to use as an profile icon.
+     *
      * @param image the new profile image.
      */
     public void setIcon(Image image) {
-    	this.avatar.setImage(image);
+        this.avatar.setImage(image);
     }
-    	
+
     /**
      * Sets the path of the image for user avatar.
+     *
      * @param path of the image for user avatar.
      */
     public void setAvatarImagePath(String path) {
-    	this.avatarPath = path;
+        this.avatarPath = path;
     }
-    
+
     /**
      * Sets pane that is going to be the center of the scene.
+     *
      * @param pane going to be the center of the scene.
      */
     public void setRootPane(Pane pane) {
-    	this.rootPane = pane;
+        this.rootPane = pane;
     }
 
 }

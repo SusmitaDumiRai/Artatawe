@@ -51,6 +51,7 @@ public class CustomProfileImagePageController implements Initializable {
     //The pane the custom profile image page is attached to.   
     private Pane rootPane;
     private boolean registerPrevController; //true if prev controller was register, else false (from profile.)
+    private String customDrawingFileLocation = ""; //location of the custom drawing created.
 
     //FXML generated attributes.
 
@@ -92,6 +93,12 @@ public class CustomProfileImagePageController implements Initializable {
     @FXML
     private Button saveImage;
 
+    /**
+     * Creates custom profile image controller.
+     *
+     * @param rootPane               the pane attached.
+     * @param registerPrevController true if controller was created from register controller.
+     */
     public CustomProfileImagePageController(Pane rootPane, boolean registerPrevController) {
         this.rootPane = rootPane;
         this.registerPrevController = registerPrevController;
@@ -136,8 +143,8 @@ public class CustomProfileImagePageController implements Initializable {
             drawStraightLine(event);
         } else if (optionsToggleGroup.getSelectedToggle()
                 == selectParticleTrace) {
-			/* If particle trace radio buttion is selected, 
-			 * start drawing particle trace.
+                        /* If particle trace radio buttion is selected,
+                         * start drawing particle trace.
 			 */
             canvas.getGraphicsContext2D().beginPath();
             canvas.getGraphicsContext2D().moveTo(event.getX(),
@@ -156,9 +163,9 @@ public class CustomProfileImagePageController implements Initializable {
      */
     @FXML
     public void onCanvasMouseDragged(MouseEvent event) {
-    	/* if particle trace radio button is selected, 
-		 * keep drawing particle trace.
-		 */
+    	/* if particle trace radio button is selected,
+    	* keep drawing particle trace.
+	*/
         if (optionsToggleGroup.getSelectedToggle() == selectParticleTrace) {
             canvas.getGraphicsContext2D().moveTo(event.getX(), event.getY());
             drawParticleTrace(event);
@@ -195,22 +202,60 @@ public class CustomProfileImagePageController implements Initializable {
      */
     @FXML
     public void onSaveImageAction(ActionEvent event) throws IOException {
+
         //Get the absolute path of the project.
         File directory = new File("./");
         String path = directory.getAbsolutePath();
-    	
-    	/* The filename of the image will be the users username followed by the 
+        String fileName;
+
+        //Checks whether it came from profile or register prev controller.
+        if (!registerPrevController) {
+
+    	/* The filename of the image will be the users username followed by the
     	 * time it was created in milliseconds as a png file.
     	 */
-        String filename = user.getUserName() + System.currentTimeMillis()
-                + ".png";
-    	
-    	/* Create path for File class as absolute path to project, followed by
-    	 * the relative path to SavedProfileImages folder followed by file name.
-    	 */
+            fileName = user.getUserName() + System.currentTimeMillis()
+                    + ".png";
+
+            convertToFile(fileName, path);
+
+            //Update system and database with new profile image.
+            user.setProfileImage(createSavedProfileImage(fileName));
+            UserDatabaseManager u = new UserDatabaseManager();
+            u.updateProfileImage(user,
+                    "/co/uk/artatawe/profileImage/SavedProfileImages/"
+                            + fileName);
+
+        } else {
+            //Create file name.
+            fileName = System.currentTimeMillis() + ".png";
+
+            convertToFile(fileName, path);
+
+            createSavedProfileImage(fileName);
+
+            //Set the relative path.
+            customDrawingFileLocation = "/co/uk/artatawe/profileImage/SavedProfileImages/"
+                    + fileName;
+
+
+        }
+        //Return to previous page.
+        onBackAction(event);
+    }
+
+    /**
+     * Convert custom profile image to file.
+     *
+     * @param path location of directory.
+     */
+    public void convertToFile(String fileName, String path) {
+
+    	//Create path for File class as absolute path to project
+
         path = path.substring(0, path.length() - 2)
                 + "/target/classes/co/uk/artatawe/profileImage/SavedProfileImages/"
-                + filename;
+                + fileName;
 
         //Create the file that will be saved.
         File file = new File(path);
@@ -218,45 +263,43 @@ public class CustomProfileImagePageController implements Initializable {
         //If the file isn't null, try to save it.
         if (!(file == null)) {
             try {
-    			/* Convert a snapshot of the canvas to a buffered image 
-    			 * and the write it to file.
-    			 */
+                /* Convert a snapshot of the canvas to a buffered image
+                 * and the write it to file.
+                 */
                 BufferedImage bImage = SwingFXUtils.fromFXImage(
                         canvas.snapshot(null, null), null);
                 ImageIO.write(bImage, "png", file);
             } catch (Exception e) {
-    			/* If an exception is cause, print the error message
-    			 * on the console.
-    			 */
+                /* If an exception is cause, print the error message
+                 * on the console.
+                 */
                 System.out.println(e.getMessage());
             }
         }
+    }
 
+
+    /**
+     * Creates file relative to the project.
+     * @param fileName name of file.
+     * @return the profile image.
+     */
+    public SavedProfileImage createSavedProfileImage(String fileName) {
         //Create a new Saved Profile Image.
-        SavedProfileImage s = new SavedProfileImage(
-                "/co/uk/artatawe/profileImage/SavedProfileImages/"
-                        + filename);
-
-        //Update system and database with new profile image.
-        user.setProfileImage(s);
-        UserDatabaseManager u = new UserDatabaseManager();
-        u.updateProfileImage(user,
-                "/co/uk/artatawe/profileImage/SavedProfileImages/"
-                        + filename);
-
-        //Return to profile page.
-        onBackAction(event);
+        return new SavedProfileImage(
+                "co/uk/artatawe/profileImage/SavedProfileImages/"
+                        + fileName);
     }
 
     /**
-     * Returns to the profile page when the "Back" button is pressed.
+     * Returns to the controller page when the "Back" button is pressed.
      *
      * @param event event.
      * @throws IOException Thrown if ProfilePage.fxml can't be loaded.
      */
     @FXML
     public void onBackAction(ActionEvent event) throws IOException {
-        //Creates a new controller.
+        //Returns to profile page.
         if (!registerPrevController) {
             ProfilePageController profilePageController = new ProfilePageController();
             profilePageController.setUsername(user.getUserName());
@@ -269,10 +312,18 @@ public class CustomProfileImagePageController implements Initializable {
             //Puts the custom profile image page scene on the root pane.
             rootPane.getChildren().clear(); //clears the old scene
             rootPane.getChildren().add(fxmlLoader.load());
+        //Return to register page.
         } else {
             RegisterController registerController = new RegisterController();
+            //If user has created an image, get the file path.
+            if (!customDrawingFileLocation.equals("")) {
+                registerController.setAvatarImagePath(customDrawingFileLocation);
+            }
+
+            //Load up register page with the new saved profile image.
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/RegisterUser.fxml"));
             fxmlLoader.setController(registerController);
+            rootPane.getChildren().clear(); //clear old scene.
             rootPane.getChildren().add(fxmlLoader.load());
         }
     }
