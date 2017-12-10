@@ -54,7 +54,7 @@ When you first load this project up please allow maven to download. IDE will do 
 * [Java](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 ***
 ### Compiling
-Instructions to compile this project in command line - video demo will be provided.
+Instructions to compile this project in command line - [video demo is provided.](https://youtu.be/3Bs4nr7bMWk)
 1. Extract the zipped source.
 2. Add new environmental variable called **JAVA_HOME** which points to your JDK e.g. D:\User\Documents\jdk1.8.0_121
 3. [Install and extract maven](http://maven.apache.org/download.cgi)
