@@ -2,6 +2,7 @@ package co.uk.artatawe.profileImage;
 
 import java.util.ArrayList;
 
+import javafx.scene.canvas.Canvas;
 import javafx.scene.image.ImageView;
 
 
@@ -47,7 +48,15 @@ public class CustomProfileImage extends ProfileImage {
 
     @Override
     public void displayProfileImage(ImageView imageView) {
-
-
+    	//Create a canvas.
+    	Canvas canvas = new Canvas();
+    	
+    	//Display every component of the custom profile image.
+    	for (ProfileImageComponent elem : component) {
+    		elem.displayComponent(canvas);
+    	}
+    	
+    	//Add the canvas to the scene.
+    	imageView.getParent().getChildrenUnmodifiable().add(canvas);
     }
 }

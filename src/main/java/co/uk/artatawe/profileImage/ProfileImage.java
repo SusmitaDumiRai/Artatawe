@@ -95,7 +95,10 @@ public abstract class ProfileImage {
         return result;
     }
 
-    //Unsure on the type of graphics input.
+    /**
+     * Displays the profile image on an ImageView.
+     * @param imageView The ImageView that the profile image is being displayed on.
+     */
     public abstract void displayProfileImage(ImageView imageView);
 }
 

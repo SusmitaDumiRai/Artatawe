@@ -37,5 +37,10 @@ public class ParticleTrace extends ProfileImageComponent {
 
     @Override
     public void displayComponent(Canvas canvas) {
+    	//Display every circle that makes up the canvas.
+    	for (Circle elem : particleTrace) {
+    		elem.displayComponent(canvas);
+    	}
+    	
     }
 }

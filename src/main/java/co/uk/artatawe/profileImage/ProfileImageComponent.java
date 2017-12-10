@@ -95,6 +95,9 @@ public abstract class ProfileImageComponent {
         return result;
     }
 
-
+    /**
+     * Displays the component on the canvas provided.
+     * @param canvas The canvas the component will be displayed on.
+     */
     public abstract void displayComponent(Canvas canvas);
 }
