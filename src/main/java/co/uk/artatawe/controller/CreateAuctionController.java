@@ -26,6 +26,8 @@ import java.util.ResourceBundle;
 public class CreateAuctionController implements Initializable {
 
     private String username; //logged in user
+    private String extraImageFilePath; //file path for extra image.
+    private String photoFilePath;
 
     @FXML
     private Button submitButton;
@@ -98,6 +100,9 @@ public class CreateAuctionController implements Initializable {
 
     @FXML
     private Label materialText;
+
+    @FXML
+    private Label successLabel;
 
     @FXML
     private HBox extraPhotoHBox;
@@ -206,13 +211,39 @@ public class CreateAuctionController implements Initializable {
             if (paintingRadioButton.isSelected()) { //painting selected.
                 insertIntoArtwork(true);
                 insertIntoAuction();
+
             } else { //sculpture selected.
                 if (valDepth()) {
+                    checkExtraPhoto();
                     insertIntoArtwork(false);
                     insertIntoAuction();
                 }
             }
+
+            successLabel.setText("Success!");
+            successLabel.setTextFill(Paint.valueOf("GREEN"));
+
+
         }
+    }
+
+    /**
+     * Clears all data entered.
+     */
+    public void clearAllData() {
+
+        title.clear();
+        year.clear();
+        width.clear();
+        height.clear();
+        depth.clear();
+        reservedPrice.clear();
+        allowedBids.clear();
+        description.clear();
+        material.clear();
+
+        imageBtn.setText("Select image");
+        imageExtraPhotoBtn.setText("Select extra photo");
     }
 
     /**
@@ -224,7 +255,6 @@ public class CreateAuctionController implements Initializable {
         if (paintingRadioButton.isSelected() || sculptureRadioButton.isSelected()) {
             return true;
         } else {
-            System.out.println("choose one radio button");
             radioButtonError.setTextFill(Paint.valueOf("RED"));
         }
 
@@ -260,7 +290,6 @@ public class CreateAuctionController implements Initializable {
             Integer.parseInt(year.getText());
             return true;
         } catch (NumberFormatException ex) {
-            System.out.println("enter a number."); //needs to be changed.
             yearError.setTextFill(Paint.valueOf("RED"));
         }
         return false;
@@ -277,7 +306,6 @@ public class CreateAuctionController implements Initializable {
             Double.parseDouble(width.getText());
             return true;
         } catch (NumberFormatException ex) {
-            System.out.println("enter digits only plz"); // needs to be cahnged.
             sizeError.setTextFill(Paint.valueOf("RED"));
         }
         return false;
@@ -293,7 +321,6 @@ public class CreateAuctionController implements Initializable {
             Double.parseDouble(height.getText());
             return true;
         } catch (NumberFormatException ex) {
-            System.out.println("enter digits only plz"); // needs to be cahnged.
             sizeError.setText("Invalid height");
         }
         return false;
@@ -309,7 +336,6 @@ public class CreateAuctionController implements Initializable {
             Double.parseDouble(depth.getText());
             return true;
         } catch (NumberFormatException ex) {
-            System.out.println("enter digits only plz"); // needs to be cahnged.
             sizeError.setText("Invalid depth");
         }
         return false;
@@ -328,7 +354,6 @@ public class CreateAuctionController implements Initializable {
                 return true;
             }
         } catch (NumberFormatException ex) {
-            System.out.println("enter digits only please"); // needs to be cahnged.
             priceError.setTextFill(Paint.valueOf("RED"));
         }
         return false;
@@ -345,13 +370,11 @@ public class CreateAuctionController implements Initializable {
             if (Integer.parseInt(allowedBids.getText()) > 0) {
                 return true;
             } else {
-                System.out.println("enter a number more than 0 plz.");
                 allowedBidsError.setTextFill(Paint.valueOf("RED"));
                 return false;
             }
 
         } catch (NumberFormatException ex) {
-            System.out.println("enter a number."); //needs to be changed.
             allowedBidsError.setText("Please enter a number");
 
         }
@@ -360,10 +383,29 @@ public class CreateAuctionController implements Initializable {
 
     /**
      * Validate to see if user selected a photo.
+     * If it's not empty, create file path.
      * @return true of user selected a photo.
      */
     public boolean valPhoto() {
-        return !(imageBtn.getText().equals("Select image")); //return false if standard message.
+        if (!(imageBtn.getText().equals("Select image"))) { //check not standard message.
+            photoFilePath = "file:///" + imageBtn.getText().replaceAll("'", "''"); //replace all apostrophes.
+            photoFilePath = photoFilePath.replaceAll("\\\\", "\\\\\\\\");
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * If extra photo not selected, keep it empty.
+     * Else create file path.
+     */
+    public void checkExtraPhoto() {
+        if (imageExtraPhotoBtn.getText().equals("Select extra photo")) {
+            extraImageFilePath = "";
+        } else {
+            extraImageFilePath = "file:///" + imageExtraPhotoBtn.getText().replaceAll("'", "''");
+            extraImageFilePath = extraImageFilePath.replaceAll("\\\\", "\\\\\\\\");
+        }
     }
 
     /**
@@ -382,21 +424,24 @@ public class CreateAuctionController implements Initializable {
             sqlInsertArtwork = "INSERT INTO ARTWORK (title, description, photo, nameofcreator, reservedprice, dateentered," +
                     "bidsallowed, typeofartwork, width, height) values ('" + title.getText().replaceAll("'", "''") + "', '" +
                     description.getText().replaceAll("'", "''") + "'," +
-                    "'" + imageBtn.getText().replaceAll("'", "''") + "'," + "'" + creatorName.getText().replaceAll("'", "''") + "'," +
+                    "'" + photoFilePath + "'," + "'" + creatorName.getText().replaceAll("'", "''") + "'," +
                     reservedPrice.getText() + "," +
                     "'" + dateFormat.format(date) + "','" + allowedBids.getText() + "','painting', '" + width.getText() + "','" +
                     height.getText() + "');";
 
+
         } else {
+
             sqlInsertArtwork = "INSERT INTO ARTWORK (title, description, photo, nameofcreator, reservedprice, dateentered," +
                     "bidsallowed, typeofartwork, width, height, depth, mainmaterial, extraphotos) values ('" + title.getText().replaceAll("'", "''") + "', '" +
                     description.getText().replaceAll("'", "''") +
-                    "'," + "'" + imageBtn.getText().replaceAll("'", "''") + "'," + "'" + creatorName.getText().replaceAll("'", "''") + "'," + reservedPrice.getText() + "," +
+                    "'," + "'" + photoFilePath + "'," + "'" + creatorName.getText().replaceAll("'", "''") + "'," + reservedPrice.getText() + "," +
                     "'" + dateFormat.format(date) + "','" + allowedBids.getText() + "','sculpture', '" + width.getText() + "','" + height.getText() + "','" +
-                    depth.getText() + "','" + material.getText().replaceAll("'", "''") + "','" + imageExtraPhotoBtn.getText().replaceAll("'", "''") + "');";
+                    depth.getText() + "','" + material.getText().replaceAll("'", "''") + "','" + extraImageFilePath + "');";
+
         }
 
-        artworkDatabaseManager.executeStatement(sqlInsertArtwork);
+        artworkDatabaseManager.updateStatement(sqlInsertArtwork);
     }
 
     /**
@@ -411,7 +456,7 @@ public class CreateAuctionController implements Initializable {
                 artworkDatabaseManager.getArtworkID(title.getText()) +
                 "','" + sellerName.getText() + "','" + allowedBids.getText() + "','0','" + reservedPrice.getText() + "');";
 
-        auctionDatabaseManager.executeStatement(sqlInsertAuction);
+        auctionDatabaseManager.updateStatement(sqlInsertAuction);
     }
 
     /**
