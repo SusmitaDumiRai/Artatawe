@@ -66,9 +66,9 @@
                   <Label fx:id="lastNameErrorMessage" layoutX="140.0" layoutY="117.0" style="-fx-text-fill: transparent;" text="'Please use a valid Last name'" />
                   <HBox prefHeight="100.0" prefWidth="413.0">
                      <children>
-                        <Label prefHeight="52.0" prefWidth="72.0" text="Telephone&#10;number:">
+                        <Label prefHeight="31.0" prefWidth="79.0" text="Telephone:">
                            <HBox.margin>
-                              <Insets right="32.0" />
+                              <Insets right="22.0" />
                            </HBox.margin>
                         </Label>
                         <TextField fx:id="telephoneNumber" prefHeight="31.0" prefWidth="172.0">
@@ -125,7 +125,7 @@
                   <Insets bottom="10.0" top="15.0" />
                </padding>
             </VBox>
-            <Button fx:id="createAccountButton" layoutX="350.0" layoutY="443.0" mnemonicParsing="false" onAction="#createAccount" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #00cc00;" text="Create Account" textFill="WHITE">
+            <Button fx:id="createAccountButton" layoutX="350.0" layoutY="443.0" mnemonicParsing="false" onAction="#createAccount" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #87CEEB;" text="Create Account" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font></Button>
@@ -143,10 +143,10 @@
                   </MenuButton>
                </children>
             </VBox>
-            <Label layoutX="100.0" layoutY="455.0" text="Go back to login page" />
-            <Button fx:id="goBackToLogIn" layoutX="14.0" layoutY="427.0" mnemonicParsing="false" onAction="#backToLogIn" style="-fx-background-color: ca3a5e;">
+            <Label layoutX="74.0" layoutY="451.0" text="Go back to login page" />
+            <Button fx:id="goBackToLogIn" layoutX="14.0" layoutY="442.0" mnemonicParsing="false" onAction="#backToLogIn" prefHeight="20.0" prefWidth="32.0" style="-fx-background-color: ca3a5e;">
                <graphic>
-                  <ImageView fitHeight="64.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="32.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@Icons/icons8-left-3-filled-50.png" />
                      </image>
