@@ -15,8 +15,10 @@ To the software engineering group that will get this project next semester, all 
 * **Auction** - AuctionID (PK, FK - Artwork), Seller (FK - User), WinningBid (FK - Bid), NumOfBidsLeft, AuctionComp, HighestBid
   - AuctionComp: 0 = false, 1 = true. SQLite sadly does not support boolean.
 * **Bid** - BidID (PK), AuctionID (FK - Auction), Buyer (FK - User), BidAmount, DateAndTime
-* **FavouriteUser** - (Username1 (FK - User), Username2 (FK - User)) PK
+* **FavouriteUser** - (Username1 (FK - User), Username2 (FK - User)) - PK
   - Username1 favourites Username2.
+* **Watching** - (AuctionID (FK - Auction), Username (FK - User)) - PK
+  - Username is watching auction.
 
 #### Random facts
 * Date and time is saved in this format: dd/MM/yyyy HH:mm:ss.
@@ -32,6 +34,10 @@ Currently there are 6 default registered users. These usernames allows access to
 * yaytesting
 * finzfinz
 * lolfan
+
+#### Extension
+* A user can watch/remove watch a certain auction. This remains anonymous however users can see how many users are watching that auction.
+* A user can also edit their profile image through "My Profile" page.
 *** 
 ### Maven
 This project uses maven. This allows easy distribution of frameworks as you do not have to manually download relavent dependencies (e.g. sqlite). You can add more frameworks in pom.xml, simply google frameworkName maven dependency. 
@@ -45,11 +51,12 @@ When you first load this project up please allow maven to download. IDE will do 
 ***
 ### Compiling
 Instructions to compile this project in command line - video demo will be provided.
-1. Add new systems variable called **JAVA_HOME** which points to your JDK e.g. D:\User\Documents\jdk1.8.0_121
-2. [Install and extract maven](http://maven.apache.org/download.cgi)
-3. Add maven to PATH.
-4. Perform verification test - ```mvn --version```
-5. Compile and run in directory - ```mvn exec:java```
+1. Extract the zipped source.
+2. Add new systems variable called **JAVA_HOME** which points to your JDK e.g. D:\User\Documents\jdk1.8.0_121
+3. [Install and extract maven](http://maven.apache.org/download.cgi)
+4. Add maven to PATH.
+5. Perform verification test - ```mvn --version```
+6. Compile and run in directory - ```mvn exec:java```
 
 ***
 ### Useful links
