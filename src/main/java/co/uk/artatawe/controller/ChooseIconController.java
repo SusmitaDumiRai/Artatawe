@@ -1,48 +1,29 @@
 package co.uk.artatawe.controller;
 
-/**
- * Handles choose icon fxml file.
- * Displays app avialbe icons and lets the user choose one for their profile.
- *
- * @author Tihomir Trendafilov
- */
-
-import co.uk.artatawe.database.FavouriteUserDatabaseManager;
 import co.uk.artatawe.database.UserDatabaseManager;
-import co.uk.artatawe.main.FavouriteUsers;
 import co.uk.artatawe.main.User;
 import co.uk.artatawe.profileImage.SavedProfileImage;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.image.*;
-import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.TilePane;
-import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+/**
+ * Handles choose icon fxml file.
+ * Displays app available icons and lets the user choose one for their profile.
+ *
+ * @author Tihomir Trendafilov
+ */
 public class ChooseIconController implements Initializable {
 
-    private final int WIDTH_NAVIGATION = 800; //WIDTH size for navigation window.
-    private final int HEIGHT_NAVIGATION = 600; //HEIGHT size for navigation window.
-    private final int WIDTH_REGISTER = 590; //WIDTH size for REGISTER  window.
-    private final int HEIGHT_REGISTER = 510; //HEIGHT for REGISTER  window.
-    private final int IMAGE_WIDTH = 150;
-    private final int GAP = 10;
     private String username; //logged in user.
     private int register = 1; //do you come from register page or not: 0 for yes 1 for no.
     private User user; //the user that is choosing an icon.

@@ -1,8 +1,6 @@
 package co.uk.artatawe.controller;
 
 import co.uk.artatawe.database.UserDatabaseManager;
-import co.uk.artatawe.main.User;
-import co.uk.artatawe.profileImage.SavedProfileImage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,7 +18,6 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 
-import javax.swing.text.DateFormatter;
 import java.io.IOException;
 import java.net.URL;
 import java.text.DateFormat;
@@ -115,7 +112,7 @@ public class RegisterController implements Initializable {
      * Returns you back to log in window.
      *
      * @param event event.
-     * @throws IOException
+     * @throws IOException io exception.
      */
     @FXML
     void backToLogIn(ActionEvent event) throws IOException {
@@ -139,8 +136,8 @@ public class RegisterController implements Initializable {
      * Creates an account with the details provided if they are valid and opens navigation window with your new account log on.
      * If there is a problem with the details displays error message indicating where the problem is.
      *
-     * @param event
-     * @throws IOException
+     * @param event event.
+     * @throws IOException io exception.
      */
     @FXML
     void createAccount(ActionEvent event) {
@@ -190,8 +187,11 @@ public class RegisterController implements Initializable {
 
     }
 
-    //uses all the informatoin from the textfield and  the avatar that is being displayed and build account from it.
-    //then logs the user into the system.
+    /** Uses all the informatoin from the textfield and  the avatar that is being displayed and build account from it.
+     *  Then logs the user into the system.
+     *
+     *  @param event event.
+     */
     private void createAccountAuction(ActionEvent event) {
 
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
@@ -301,7 +301,12 @@ public class RegisterController implements Initializable {
         return !(phoneNumText.length() > 11 || phoneNumText.length() < 11 || !isNumeric(phoneNumText));
     }
 
-    //checks if a string is made of numbers.
+    /**
+     * Checks if a string is made of numbers.
+     *
+     * @param str string to check.
+     * @return true of numbers.
+     */
     private boolean isNumeric(String str) {
         return str.matches(".*\\d+.*");
     }
@@ -331,8 +336,8 @@ public class RegisterController implements Initializable {
     /**
      * Opens custom drawing window. Lets the user draw an icon.
      *
-     * @param event
-     * @throws IOException
+     * @param event event.
+     * @throws IOException io exception.
      */
     @FXML
     void customDrawingAction(ActionEvent event) throws IOException {
