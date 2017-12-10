@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
@@ -15,9 +16,9 @@
                <children>
                   <HBox prefHeight="22.0" prefWidth="413.0">
                      <children>
-                        <Label prefHeight="33.0" prefWidth="74.0" text="username: ">
+                        <Label prefHeight="31.0" prefWidth="90.0" text="username: ">
                            <HBox.margin>
-                              <Insets right="30.0" />
+                              <Insets />
                            </HBox.margin>
                         </Label>
                         <TextField fx:id="username" prefHeight="31.0" prefWidth="172.0" />
@@ -29,9 +30,9 @@
                   <Label fx:id="usernameErrorMessage" prefHeight="32.0" prefWidth="153.0" style="-fx-text-fill: transparent;" text="'Please use a valid username'" />
                   <HBox prefHeight="4.0" prefWidth="413.0">
                      <children>
-                        <Label prefHeight="35.0" prefWidth="73.0" text="First name:">
+                        <Label prefHeight="35.0" prefWidth="90.0" text="First name:">
                            <HBox.margin>
-                              <Insets right="30.0" />
+                              <Insets />
                            </HBox.margin>
                         </Label>
                         <TextField fx:id="firstName" prefHeight="31.0" prefWidth="172.0" />
@@ -46,9 +47,9 @@
                   <Label fx:id="firstNameErrorMessage" layoutX="140.0" layoutY="60.0" style="-fx-text-fill: transparent;" text="'Please use a valid First name'" />
                   <HBox prefHeight="16.0" prefWidth="413.0">
                      <children>
-                        <Label prefHeight="37.0" prefWidth="71.0" text="Last name:">
+                        <Label prefHeight="37.0" prefWidth="90.0" text="Last name:">
                            <HBox.margin>
-                              <Insets right="32.0" />
+                              <Insets />
                            </HBox.margin>
                         </Label>
                         <TextField fx:id="lastName" prefHeight="31.0" prefWidth="172.0" />
@@ -63,9 +64,9 @@
                   <Label fx:id="lastNameErrorMessage" layoutX="140.0" layoutY="117.0" style="-fx-text-fill: transparent;" text="'Please use a valid Last name'" />
                   <HBox prefHeight="100.0" prefWidth="413.0">
                      <children>
-                        <Label prefHeight="31.0" prefWidth="79.0" text="Telephone:">
+                        <Label prefHeight="31.0" prefWidth="90.0" text="Telephone:">
                            <HBox.margin>
-                              <Insets right="22.0" />
+                              <Insets />
                            </HBox.margin>
                         </Label>
                         <TextField fx:id="telephoneNumber" prefHeight="31.0" prefWidth="172.0">
@@ -81,12 +82,12 @@
                   <Label fx:id="phoneNumErrorMessage" prefHeight="17.0" prefWidth="236.0" style="-fx-text-fill: transparent;" text="'Please use a valid Telephone number'" />
                   <HBox prefHeight="12.0" prefWidth="413.0">
                      <children>
-                        <Label prefHeight="30.0" prefWidth="63.0" text="Address:">
+                        <Label prefHeight="30.0" prefWidth="90.0" text="Address:">
                            <padding>
                               <Insets right="6.0" />
                            </padding>
                            <HBox.margin>
-                              <Insets right="40.0" />
+                              <Insets />
                            </HBox.margin>
                         </Label>
                         <TextField fx:id="address" prefWidth="172.0" />
@@ -98,9 +99,9 @@
                   <Label fx:id="addressErrorMessage" layoutX="140.0" layoutY="174.0" style="-fx-text-fill: transparent;" text="'Please use a valid address'" />
                   <HBox prefHeight="22.0" prefWidth="413.0">
                      <children>
-                        <Label prefHeight="28.0" prefWidth="66.0" text="Postcode:">
+                        <Label prefHeight="28.0" prefWidth="90.0" text="Postcode:">
                            <HBox.margin>
-                              <Insets right="37.0" />
+                              <Insets />
                            </HBox.margin>
                         </Label>
                         <TextField fx:id="postcode" prefHeight="31.0" prefWidth="172.0">
