@@ -9,6 +9,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
@@ -51,6 +52,12 @@ public class BidHistoryController implements Initializable {
 
     @FXML
     private ListView<Auction> soldAuctionListView;
+
+    @FXML
+    private Button buyingHistoryButton;
+
+    @FXML
+    private Button sellingHistoryButton;
 
     //Empty constructor.
     public BidHistoryController() {
@@ -119,10 +126,10 @@ public class BidHistoryController implements Initializable {
             }
         });
 
-        //TODO make it look nice
         topLabel.setText("Placed Bids");
         auctionListView.setPrefSize(WIDTH, HEIGHT);
         auctionListView.setLayoutY(BOTTOM_LIST_LAYOUT_Y);
+
         pane.getChildren().add(auctionListView);
     }
 
@@ -192,6 +199,10 @@ public class BidHistoryController implements Initializable {
     @FXML
     void boughtHistoryAction(ActionEvent event) {
         pane.getChildren().clear(); //remove old details.
+        pane.getChildren().add(buyingHistoryButton);
+        pane.getChildren().add(sellingHistoryButton);
+        pane.getChildren().add(topLabel);
+        pane.getChildren().add(bottomLabel);
         populateBidHistory();
         populateWonAuction();
     }
@@ -199,6 +210,9 @@ public class BidHistoryController implements Initializable {
     @FXML
     void soldHistoryAction(ActionEvent event) {
         pane.getChildren().clear(); //remove old details.
+        pane.getChildren().add(buyingHistoryButton);
+        pane.getChildren().add(sellingHistoryButton);
+        pane.getChildren().add(topLabel);
         populateSoldAuction();
     }
 
