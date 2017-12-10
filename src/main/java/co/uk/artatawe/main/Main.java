@@ -67,9 +67,6 @@ public class Main extends Application {
         FavouriteUserDatabaseManager favouriteUserDatabaseManager = new FavouriteUserDatabaseManager();
 
 
-        String sql = "delete from user where username = 'hiuhsdbf';";
-        userDatabaseManager.updateStatement(sql);
-
 
        // WatchingDatabaseManager watchingDatabaseManager = new WatchingDatabaseManager();
        // String sql = "update watching set username = 'username' where username = ' username';";

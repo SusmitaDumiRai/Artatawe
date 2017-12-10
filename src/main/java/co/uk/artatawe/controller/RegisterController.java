@@ -330,7 +330,7 @@ public class RegisterController implements Initializable {
      */
     @FXML
     void customDrawingAction(ActionEvent event) throws IOException {
-        CustomProfileImagePageController customProfileImagePageController = new CustomProfileImagePageController();
+        CustomProfileImagePageController customProfileImagePageController = new CustomProfileImagePageController(pane, true);
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/CustomProfileImagePage.fxml"));
         fxmlLoader.setController(customProfileImagePageController); //sets controller manually.

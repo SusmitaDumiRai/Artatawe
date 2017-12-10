@@ -50,6 +50,7 @@ public class CustomProfileImagePageController implements Initializable {
     private ParticleTrace currentParticleTrace;
     //The pane the custom profile image page is attached to.   
     private Pane rootPane;
+    private boolean registerPrevController; //true if prev controller was register, else false (from profile.)
 
     //FXML generated attributes.
 
@@ -91,7 +92,9 @@ public class CustomProfileImagePageController implements Initializable {
     @FXML
     private Button saveImage;
 
-    public CustomProfileImagePageController() {
+    public CustomProfileImagePageController(Pane rootPane, boolean registerPrevController) {
+        this.rootPane = rootPane;
+        this.registerPrevController = registerPrevController;
     }
 
     /**
@@ -102,9 +105,10 @@ public class CustomProfileImagePageController implements Initializable {
      *                 attached to.
      */
 
-    public CustomProfileImagePageController(User user, Pane rootPane) {
+    public CustomProfileImagePageController(User user, Pane rootPane, Boolean registerPrevController) {
         this.user = user;
         this.rootPane = rootPane;
+        this.registerPrevController = registerPrevController;
     }
 
     @Override
@@ -253,17 +257,24 @@ public class CustomProfileImagePageController implements Initializable {
     @FXML
     public void onBackAction(ActionEvent event) throws IOException {
         //Creates a new controller.
-        ProfilePageController profilePageController = new ProfilePageController();
-        profilePageController.setUsername(user.getUserName());
-        profilePageController.setRootPane(rootPane);
+        if (!registerPrevController) {
+            ProfilePageController profilePageController = new ProfilePageController();
+            profilePageController.setUsername(user.getUserName());
+            profilePageController.setRootPane(rootPane);
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/ProfilePage.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/ProfilePage.fxml"));
 
-        //Sets the controller manually.
-        fxmlLoader.setController(profilePageController);
-        //Puts the custom profile image page scene on the root pane.
-        rootPane.getChildren().clear();//clears the old scene
-        rootPane.getChildren().add(fxmlLoader.load());
+            //Sets the controller manually.
+            fxmlLoader.setController(profilePageController);
+            //Puts the custom profile image page scene on the root pane.
+            rootPane.getChildren().clear(); //clears the old scene
+            rootPane.getChildren().add(fxmlLoader.load());
+        } else {
+            RegisterController registerController = new RegisterController();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/RegisterUser.fxml"));
+            fxmlLoader.setController(registerController);
+            rootPane.getChildren().add(fxmlLoader.load());
+        }
     }
 
     /**
