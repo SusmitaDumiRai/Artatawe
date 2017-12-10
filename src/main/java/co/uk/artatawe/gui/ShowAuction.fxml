@@ -179,7 +179,7 @@
                   <Label fx:id="numWatchers" prefHeight="100.0" />
                </children>
             </HBox>
-            <Label fx:id="successLabel" layoutX="457.0" layoutY="393.0" prefHeight="17.0" prefWidth="68.0" />
+            <Label fx:id="successLabel" layoutX="296.0" layoutY="393.0" prefHeight="17.0" prefWidth="229.0" />
          </children>
       </Pane>
    </center>
