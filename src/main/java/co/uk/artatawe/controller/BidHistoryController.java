@@ -21,9 +21,8 @@ import java.util.ResourceBundle;
 
 /**
  * Controller for bid history page.
- *
  * @author James Finlayson 905234
- * @author 908928
+ * @author 908928 - Susmita
  */
 public class BidHistoryController implements Initializable {
 
@@ -56,7 +55,6 @@ public class BidHistoryController implements Initializable {
 
     /**
      * Sets username.
-     *
      * @param username username of logged in user.
      */
     public BidHistoryController(String username) {
@@ -75,7 +73,7 @@ public class BidHistoryController implements Initializable {
     public ObservableList<Auction> getWonAuctions() {
         String sqlSelect = "Select distinct auction.auctionid, numofbidsleft, seller, highestbid, auctioncomp, winningbid from auction, bid " +
                 "where auctionComp = 1 and auction.auctionid = bid.auctionid and buyer = '" + this.username + "';";
-        return FXCollections.observableArrayList(new AuctionDatabaseManager().getAllAuctions(sqlSelect));
+        return  FXCollections.observableArrayList(new AuctionDatabaseManager().getAllAuctions(sqlSelect));
 
     }
 
@@ -156,7 +154,7 @@ public class BidHistoryController implements Initializable {
         //TODO FOR YOU TO MAKE IT LOOK NICE LENI
         bottomLabel.setText("Won auctions");
         bottomLabel.setVisible(true);
-        bidListView.setPrefSize(WIDTH, HEIGHT);
+        bidListView.setPrefSize(WIDTH,HEIGHT);
         bidListView.setLayoutY(120);
         pane.getChildren().add(bidListView);
     }
@@ -187,21 +185,21 @@ public class BidHistoryController implements Initializable {
         auctionListView.setVisible(false);
         bottomLabel.setVisible(false);
         topLabel.setText("Sold auctions");
-        soldAuctionListView.setPrefSize(WIDTH, HEIGHT);
+        soldAuctionListView.setPrefSize(WIDTH,HEIGHT);
         soldAuctionListView.setLayoutY(121);
         pane.getChildren().add(soldAuctionListView);
     }
 
     @FXML
     void boughtHistoryAction(ActionEvent event) {
-        //  pane.getChildren().clear(); //remove old details.
+      //  pane.getChildren().clear(); //remove old details.
         populateBidHistory();
         populateWonAuction();
     }
 
     @FXML
     void soldHistoryAction(ActionEvent event) {
-        //    pane.getChildren().clear(); //remove old details.
+    //    pane.getChildren().clear(); //remove old details.
         populateSoldAuction();
     }
 

@@ -4,10 +4,9 @@ package co.uk.artatawe.controller;
  * Handles browse user fxml file.
  * Displays all users and the ability to un/favourite them.
  *
- * @author Plamena Tseneva
- * @author 908928
+ * @author 914937 - Plamena 
+ * @author 908928 - Susmita
  */
-
 import co.uk.artatawe.database.FavouriteUserDatabaseManager;
 import co.uk.artatawe.database.UserDatabaseManager;
 import co.uk.artatawe.main.FavouriteUsers;
@@ -17,6 +16,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.*;
 import javafx.scene.image.Image;
@@ -49,7 +49,6 @@ public class BrowseUsersController implements Initializable {
 
     /**
      * Sets username.
-     *
      * @param username username of logged in user.
      */
     public BrowseUsersController(String username) {
@@ -96,7 +95,7 @@ public class BrowseUsersController implements Initializable {
 
         UserDatabaseManager userDatabaseManager = new UserDatabaseManager();
 
-        String sqlSelect = "Select * from user where username <> '" + this.username + "';";
+       String sqlSelect = "Select * from user where username <> '" + this.username + "';";
         //String sqlSelect = "Select * from user where username <> 'username';";
 
         scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
@@ -137,8 +136,7 @@ public class BrowseUsersController implements Initializable {
             tilePane.getChildren().add(vBox); //add image to gridpane.
 
             heartButton.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent e) {
+                @Override public void handle(ActionEvent e) {
 
                     FavouriteUserDatabaseManager favouriteUserDatabaseManager = new FavouriteUserDatabaseManager();
 
@@ -167,7 +165,6 @@ public class BrowseUsersController implements Initializable {
 
     /**
      * Gets logged in user's username.
-     *
      * @return username of logged in user.
      */
     public String getUsername() {
@@ -176,7 +173,6 @@ public class BrowseUsersController implements Initializable {
 
     /**
      * Sets logged in user's username.
-     *
      * @param username username of logged in user.
      */
     public void setUsername(String username) {
