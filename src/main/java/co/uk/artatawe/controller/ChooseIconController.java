@@ -117,7 +117,8 @@ public class ChooseIconController implements Initializable {
     @FXML
     public void chooseDog1Auction(ActionEvent event) throws IOException {
         if (register == 0) {
-            openRegisterPage(event);
+        	String dog1Path = "co/uk/artatawe/profileImage/SavedProfileImages/PresetImage_Bear.jpg";
+            openRegisterPage(event,dog1Path);
 
         } else {
             setProfileImage("PresetImage_Bear.jpg");
@@ -129,7 +130,8 @@ public class ChooseIconController implements Initializable {
     @FXML
     public void chooseCatAuction(ActionEvent event) throws IOException {
         if (register == 0) {
-            openRegisterPage(event);
+        	String catPath = "co/uk/artatawe/profileImage/SavedProfileImages/PresetImage_Cat.jpg";
+            openRegisterPage(event,catPath);
 
         } else {
             setProfileImage("PresetImage_Cat.jpg");
@@ -142,7 +144,8 @@ public class ChooseIconController implements Initializable {
     @FXML
     public void chooseDog2Auction(ActionEvent event) throws IOException {
         if (register == 0) {
-            openRegisterPage(event);
+        	String dog2Path = "co/uk/artatawe/profileImage/SavedProfileImages/PresetImage_Dog.jpg";
+            openRegisterPage(event,dog2Path);
 
         } else {
             setProfileImage("PresetImage_Dog.jpg");
@@ -155,7 +158,8 @@ public class ChooseIconController implements Initializable {
     @FXML
     public void chooseBearAuction(ActionEvent event) throws IOException {
         if (register == 0) {
-            openRegisterPage(event);
+        	String bearPath = "co/uk/artatawe/profileImage/SavedProfileImages/PresetImage_Lion.jpg";
+            openRegisterPage(event,bearPath);
 
         } else {
             setProfileImage("PresetImage_Lion.jpg");
@@ -168,7 +172,8 @@ public class ChooseIconController implements Initializable {
     @FXML
     public void choosePenguinAuction(ActionEvent event) throws IOException {
         if (register == 0) {
-            openRegisterPage(event);
+        	String penguinPath = "co/uk/artatawe/profileImage/SavedProfileImages/PresetImage_Penguin.jpg";
+            openRegisterPage(event,penguinPath);
 
         } else {
             setProfileImage("PresetImage_Penguin.jpg");
@@ -191,10 +196,10 @@ public class ChooseIconController implements Initializable {
 
     }
 
-    private void openRegisterPage(ActionEvent event) {
+    private void openRegisterPage(ActionEvent event, String path) {
     	RegisterController registerController
         	= new RegisterController();
-    	//registerController.setUsername(username);
+    	registerController.setAvatarImagePath(path);
     	registerController.setRootPane(centerPane);
 		
 		FXMLLoader fxmlLoader
