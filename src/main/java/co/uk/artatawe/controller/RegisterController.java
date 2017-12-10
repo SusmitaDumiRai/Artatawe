@@ -86,7 +86,7 @@ public class RegisterController implements Initializable {
     
     private String avatarPath = "co/uk/artatawe/profileImage/SavedProfileImages/PresetImage_Bear.jpg";
     
-    private Pane rootPane;// the center of the scene
+    private Pane rootPane; // the center of the scene
     
     
     /**
@@ -96,7 +96,9 @@ public class RegisterController implements Initializable {
     	
     }
 
-
+    /**
+     * Loads an image for profile avatar.
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
     	Image newAvatar = new Image(avatarPath);
@@ -185,6 +187,8 @@ public class RegisterController implements Initializable {
 
     }
 
+    //uses all the informatoin from the textfield and  the avatar that is being displayed and build account from it.
+    //then logs the user into the system.
     private void createAccountAuction(ActionEvent event) {
 
         //creating a new user and inserting into the system
@@ -202,13 +206,13 @@ public class RegisterController implements Initializable {
         Parent root;
         try {
 
-            //new controller so it can be set manually
+            //new controller so it can be set manually.
             NavigationController navigationController = new NavigationController();
             navigationController.setUsername(username.getText());
 
 
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/Navigation.fxml"));
-            //sets controller manually
+            //sets controller manually.
             fxmlLoader.setController(navigationController);
 
             root = fxmlLoader.load();
@@ -292,7 +296,7 @@ public class RegisterController implements Initializable {
         return !(phoneNumText.length() > 11 || phoneNumText.length() < 11 || !isNumeric(phoneNumText));
     }
 
-    //checks if a string is made of numbers
+    //checks if a string is made of numbers.
     private boolean isNumeric(String str) {
         return str.matches(".*\\d+.*");
     }
@@ -329,10 +333,10 @@ public class RegisterController implements Initializable {
         CustomProfileImagePageController customProfileImagePageController = new CustomProfileImagePageController();
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/CustomProfileImagePage.fxml"));
-        fxmlLoader.setController(customProfileImagePageController);
+        fxmlLoader.setController(customProfileImagePageController); //sets controller manually.
 
         try {
-            pane.getChildren().add(fxmlLoader.load());
+            pane.getChildren().add(fxmlLoader.load()); //changes the center of the page.
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -351,9 +355,9 @@ public class RegisterController implements Initializable {
 		ChooseIconController chooseIconController 
         	= new ChooseIconController();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("co/uk/artatawe/gui/ChooseIcon.fxml"));
-        chooseIconController.setRegister(0);
-        fxmlLoader.setController(chooseIconController);
-        pane.getChildren().add(fxmlLoader.load());
+        chooseIconController.setRegister(0); //sets register so chooseIcon page knows you come from register.
+        fxmlLoader.setController(chooseIconController); //sets controller manually.
+        pane.getChildren().add(fxmlLoader.load()); //changes the center of the page.
     }
     
     /**
@@ -372,6 +376,10 @@ public class RegisterController implements Initializable {
     	this.avatarPath = path;
     }
     
+    /**
+     * Sets pane that is going to be the center of the scene.
+     * @param pane going to be the center of the scene.
+     */
     public void setRootPane(Pane pane) {
     	this.rootPane = pane;
     }
