@@ -324,8 +324,10 @@ public class RegisterController implements Initializable {
      */
     public boolean validatePostcde() {
         String usernameText = postcode.getText();
-
-        return !(usernameText.length() > 6 || usernameText.length() <= 5);
+        if (usernameText.contains(" ")) {
+        	return !(usernameText.length() > 8 || usernameText.length() <= 6);
+        }
+        return !(usernameText.length() > 7 || usernameText.length() <= 5);
     }
 
     /**
