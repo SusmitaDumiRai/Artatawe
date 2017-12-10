@@ -321,14 +321,17 @@ public class CreateAuctionController implements Initializable {
     }
 
     /**
-     * Validates user entered double value for reserved price.
+     * Validates user entered double value for reserved price
+     * and is greater than 0.
      *
-     * @return true if double.
+     * @return true if validation passes..
      */
     public boolean valReservedPrice() {
         try {
             Double.parseDouble(reservedPrice.getText());
-            return true;
+            if (Double.parseDouble(reservedPrice.getText()) > 0) {
+                return true;
+            }
         } catch (NumberFormatException ex) {
             System.out.println("enter digits only please"); // needs to be cahnged.
             //TODO display error message
