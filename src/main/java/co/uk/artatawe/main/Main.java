@@ -9,6 +9,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
+import java.net.URL;
+import java.nio.file.Paths;
+
 
 //TODO DELETE THIS CLASS
 public class Main extends Application {
@@ -17,9 +20,12 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         StackPane root = new StackPane();
 
+        /*
         try {
-            String imagePath = "co/uk/artatawe/artworkpictures/Giraffe.png";
-            ImageView imageView = new ImageView(imagePath);
+
+         //   String imagePath = "file:///D:\\Susi\\Documents\\University\\Level 2\\CS-230 Software engineering\\Artatawe\\src\\main\\java\\co\\uk\\artatawe\\artworkpictures\\Solstice 1.png";
+
+       //     ImageView imageView = new ImageView(imagePath);
 
 
             //   ImageView imageView = new ImageView(image);
@@ -29,6 +35,8 @@ public class Main extends Application {
         }
 
 
+*/
+        System.out.println("file:///" + "hello");
         // Display image on screen
 
 
@@ -41,6 +49,7 @@ public class Main extends Application {
     }
 
 
+
     /*
     public static void main(String[] args) {
         launch(args);
@@ -49,12 +58,14 @@ public class Main extends Application {
     */
 
 
+
     public static void main(String[] args) {
         UserDatabaseManager userDatabaseManager = new UserDatabaseManager();
         ArtworkDatabaseManager artworkDatabaseManager = new ArtworkDatabaseManager();
         AuctionDatabaseManager auctionDatabaseManager = new AuctionDatabaseManager();
         BidDatabaseManager bidDatabaseManager = new BidDatabaseManager();
         FavouriteUserDatabaseManager favouriteUserDatabaseManager = new FavouriteUserDatabaseManager();
+
 
 
 
@@ -89,6 +100,7 @@ public class Main extends Application {
 
 
     }
+
 
 
 }
