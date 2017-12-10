@@ -13,6 +13,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
@@ -78,6 +80,11 @@ public class RegisterController implements Initializable {
 
     @FXML
     private Pane pane;
+    
+    @FXML
+    private ImageView avatar;
+    
+    
     
     /**
      * Empty Constructor.
@@ -176,6 +183,7 @@ public class RegisterController implements Initializable {
 
         //creating a new user and inserting into the system
         UserDatabaseManager userDatabaseManager = new UserDatabaseManager();
+        
 
         String sqlInsertUser = "INSERT INTO user (username, firstname,  surname, phonenumber, address, postcode, lastlogin, profileimage)  values ("
                 + "'" + username.getText().replaceAll("'", "''") + "','" + firstName.getText().replaceAll("'", "''") +
@@ -341,8 +349,13 @@ public class RegisterController implements Initializable {
         pane.getChildren().add(fxmlLoader.load());
     }
     
-    
-    
+    /**
+     * Setting the image the user is going to use as an profile icon.
+     * @param image the new profile image.
+     */
+    public void setIcon(Image image) {
+    	this.avatar.setImage(image);
+    }
     
 
 }
