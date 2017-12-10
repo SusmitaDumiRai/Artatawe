@@ -218,13 +218,12 @@ public class ShowAuctionController implements Initializable {
         FavouriteUserDatabaseManager favouriteUserDatabaseManager = new FavouriteUserDatabaseManager();
         String sqlSelect = "Select * from favouriteuser, auction where favouriteuser.username2 = '" + sellerName.getText() + "' " +
                 "and favouriteuser.username1 =  '" + this.username + "';";
-        Image heartIcon = new Image(("co/uk/artatawe/gui/Icons/icons8-heart-48.png"));
+        heart.setImage(new Image(("co/uk/artatawe/gui/Icons/icons8-heart-48.png")));
 
         for (FavouriteUsers favs : favouriteUserDatabaseManager.getFavouriteUsers(sqlSelect)) {
             if (isFavouriteOf(favs)) {
-                heartIcon = new Image("co/uk/artatawe/gui/Icons/icons8-love-50.png");
+                heart.setImage(new Image("co/uk/artatawe/gui/Icons/icons8-love-50.png"));
             }
-            heartButton.setGraphic(new ImageView(heartIcon));
         }
 
 
@@ -351,7 +350,32 @@ public class ShowAuctionController implements Initializable {
 
     @FXML
     void handleHeartAction(ActionEvent event) {
+        FavouriteUserDatabaseManager favouriteUserDatabaseManager = new FavouriteUserDatabaseManager();
 
+        //String sql = "Select * from favouriteuser where username1 = '" + this.username + "' and username2 = '" + this.auction.getSeller().getUserName() + "';";
+
+        UserDatabaseManager userDatabaseManager = new UserDatabaseManager();
+
+        String sqlSelect = "Select * from user where username = '" + this.username + "';";
+        for (User user : userDatabaseManager.getAllUsers(sqlSelect)) {
+
+            BrowseUsersController browse = new BrowseUsersController();
+        if (browse.isFavouriteOf(user)) {
+            String sqlDelete = "delete from favouriteuser where username1 = '" + username
+                    + "' and username2 = '" + sellerName.getText() + "';";
+
+            favouriteUserDatabaseManager.executeStatement(sqlDelete);
+
+            heart.setImage(new Image(("co/uk/artatawe/gui/Icons/icons8-heart-48.png")));
+        } else {
+            String sqlInsert = "insert into favouriteuser(username1,username2) values ('" +
+                    username + "', '" + sellerName.getText() + "');";
+
+            favouriteUserDatabaseManager.executeStatement(sqlInsert);
+
+            heart.setImage(new Image(("co/uk/artatawe/gui/Icons/icons8-love-50.png")));
+        }
+    }
 
     }
 
