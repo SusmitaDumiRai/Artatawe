@@ -7,13 +7,18 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -29,13 +34,11 @@ import co.uk.artatawe.database.ArtworkDatabaseManager;
  * Controller class for browse auction.
  *
  * @author 908928 - Susmita
- * @author Plamena Tseneva
+ * @author 914937 - Plamena
  */
 public class BrowseAuctionController implements Initializable {
 
     private String username; //logged in user.
-    private final int WIDTH = 800; //size of window.
-    private final int HEIGHT = 600; //size of window.
     private final int IMAGE_WIDTH = 200;
     private final int GAP = 10;
 
@@ -105,13 +108,18 @@ public class BrowseAuctionController implements Initializable {
         Stage stage = new Stage();
 
         ArrayList<String> artworkPhoto = new ArrayList<>();
+        ArrayList<String> artworkTitle = new ArrayList<>();
 
 
         Image[] images = new Image[observeArrayList.size()]; //images to add into grid pane.
         ImageView[] imageViews = new ImageView[observeArrayList.size()]; //imageViews to add into grid pane.
         VBox[] vBoxes = new VBox[observeArrayList.size()]; //vboxs to add in grid pane.
+        Label[] labels = new Label[observeArrayList.size()];
 
 
+        artworkScrollPane.setPadding(new Insets(10, 0, 0, 0));
+        artworkTilePane.setPadding(new Insets(10, 0, 0, 0));
+        artworkTilePane.setStyle("-fx-background-color: #DCDCDC");
         artworkScrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); //scroller can't move horizontally.
         artworkScrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED); //scroller can move vertically.
         artworkScrollPane.setFitToHeight(true);
@@ -122,9 +130,11 @@ public class BrowseAuctionController implements Initializable {
         //Get location of artwork photos.
         for (Artwork artwork : observeArrayList) {
             artworkPhoto.add(artwork.getPhoto());
+            artworkTitle.add(artwork.getTitle());
         }
 
         String[] imageLocation = artworkPhoto.toArray(new String[observeArrayList.size()]); //convert array list to array.
+        String[] labelOfTitles = artworkTitle.toArray(new String[observeArrayList.size()]);
 
         for (int i = 0; i < imageLocation.length; i++) {
 
@@ -136,6 +146,8 @@ public class BrowseAuctionController implements Initializable {
             imageViews[i].setPreserveRatio(true);
             imageViews[i].setSmooth(true);
             imageViews[i].setCache(true);
+            labels[i] = new Label(labelOfTitles[i]);
+            labels[i].setFont(Font.font("Verdana", FontPosture.ITALIC, 12));
 
 
             //Add event handler.
@@ -164,6 +176,7 @@ public class BrowseAuctionController implements Initializable {
             });
 
             vBoxes[i] = new VBox();
+            vBoxes[i].getChildren().addAll(labels[i]);
             vBoxes[i].getChildren().addAll(imageViews[i]); //add vbox inside gridpane.
             artworkTilePane.getChildren().add(vBoxes[i]); //add image to gridpane.
             artworkTilePane.setAlignment(Pos.CENTER);
