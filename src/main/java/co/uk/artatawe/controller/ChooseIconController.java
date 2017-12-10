@@ -192,6 +192,25 @@ public class ChooseIconController implements Initializable {
     }
 
     private void openRegisterPage(ActionEvent event) {
+    	RegisterController registerController
+        	= new RegisterController();
+    	//registerController.setUsername(username);
+    	registerController.setRootPane(centerPane);
+		
+		FXMLLoader fxmlLoader
+		        = new FXMLLoader(getClass().getClassLoader().getResource(
+		        "co/uk/artatawe/gui/RegisterUser.fxml"));
+		
+		//Sets the controller manually.
+		fxmlLoader.setController(registerController);
+		//Puts the custom profile image page scene on the root pane.
+		try {
+		    centerPane.getChildren().clear(); //clears the old scene
+		    centerPane.getChildren().add(fxmlLoader.load()); //set the center of the pane to show auction scene
+		} catch (IOException e) {
+		    // TODO Auto-generated catch block
+		    e.printStackTrace();
+		}
     	
 
     }

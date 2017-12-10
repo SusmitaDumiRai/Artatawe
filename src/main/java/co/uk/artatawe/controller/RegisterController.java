@@ -86,6 +86,8 @@ public class RegisterController implements Initializable {
     
     private String avatarPath = "co/uk/artatawe/profileImage/SavedProfileImages/PresetImage_Bear.jpg";
     
+    private Pane rootPane;// the center of the scene
+    
     
     /**
      * Empty Constructor.
@@ -368,8 +370,10 @@ public class RegisterController implements Initializable {
      */
     public void setAvatarImagePath(String path) {
     	this.avatarPath = path;
-    	
     }
     
+    public void setRootPane(Pane pane) {
+    	this.rootPane = pane;
+    }
 
 }
