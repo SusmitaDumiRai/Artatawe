@@ -20,8 +20,12 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 
+import javax.swing.text.DateFormatter;
 import java.io.IOException;
 import java.net.URL;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 /**
@@ -190,6 +194,8 @@ public class RegisterController implements Initializable {
     //then logs the user into the system.
     private void createAccountAuction(ActionEvent event) {
 
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        Date date = new Date();
         //creating a new user and inserting into the system
         UserDatabaseManager userDatabaseManager = new UserDatabaseManager();
 
@@ -198,7 +204,7 @@ public class RegisterController implements Initializable {
                 + "'" + username.getText().replaceAll("'", "''") + "','" + firstName.getText().replaceAll("'", "''") +
                 "','" + lastName.getText().replaceAll("'", "''") + "','" + telephoneNumber.getText() + "','" +
                 address.getText().replaceAll("'", "''") + "','" + postcode.getText().replaceAll("'", "''") + "','" +
-                "2017-02-20T09:12:13" + "','" + avatarPath + "');";
+                dateFormat.format(date) + "','" + avatarPath + "');";
 
         userDatabaseManager.executeStatement(sqlInsertUser);
 
