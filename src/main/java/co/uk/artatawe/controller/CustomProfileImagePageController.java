@@ -36,6 +36,7 @@ import co.uk.artatawe.profileImage.StraightLine;
  * that allows the custom drawing of a profile image.
  *
  * @author Adam Taylor (905448)
+ * @author 908928 - Susmita
  * @version 1.0
  */
 public class CustomProfileImagePageController implements Initializable {

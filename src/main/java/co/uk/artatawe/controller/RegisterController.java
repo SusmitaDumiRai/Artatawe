@@ -28,6 +28,7 @@ import java.util.ResourceBundle;
  * Controller for register page.
  *
  * @author Tihomir Trendafilov
+ * @author 908928 - Susmita
  * @version 1.0
  */
 
