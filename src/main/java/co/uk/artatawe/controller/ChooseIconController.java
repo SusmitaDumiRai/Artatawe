@@ -45,7 +45,7 @@ public class ChooseIconController implements Initializable {
     private final int GAP = 10;
     private String username; //logged in user.
     private int register = 1; //do you come from register page or not: 0 for yes 1 for no.
-    private User user;//the user that is choosing an icon.
+    private User user; //the user that is choosing an icon.
 
     @FXML
     private TilePane tilePane;
@@ -113,12 +113,17 @@ public class ChooseIconController implements Initializable {
 
     }
 
-
+    /**
+     * It runs when you chose the first Icon.
+     * It takes into account where you come from and returns you to that page while saving your choice of icon.
+     * @param event
+     * @throws IOException
+     */
     @FXML
     public void chooseDog1Auction(ActionEvent event) throws IOException {
         if (register == 0) {
         	String dog1Path = "co/uk/artatawe/profileImage/SavedProfileImages/PresetImage_Bear.jpg";
-            openRegisterPage(event,dog1Path);
+            openRegisterPage(event, dog1Path);
 
         } else {
             setProfileImage("PresetImage_Bear.jpg");
@@ -127,11 +132,17 @@ public class ChooseIconController implements Initializable {
         }
     }
 
+    /**
+     * It runs when you chose the second Icon.
+     * It takes into account where you come from and returns you to that page while saving your choice of icon.
+     * @param event
+     * @throws IOException
+     */
     @FXML
     public void chooseCatAuction(ActionEvent event) throws IOException {
         if (register == 0) {
         	String catPath = "co/uk/artatawe/profileImage/SavedProfileImages/PresetImage_Cat.jpg";
-            openRegisterPage(event,catPath);
+            openRegisterPage(event, catPath);
 
         } else {
             setProfileImage("PresetImage_Cat.jpg");
@@ -141,11 +152,17 @@ public class ChooseIconController implements Initializable {
 
     }
 
+    /**
+     * It runs when you chose the third Icon.
+     * It takes into account where you come from and returns you to that page while saving your choice of icon.
+     * @param event
+     * @throws IOException
+     */
     @FXML
     public void chooseDog2Auction(ActionEvent event) throws IOException {
         if (register == 0) {
         	String dog2Path = "co/uk/artatawe/profileImage/SavedProfileImages/PresetImage_Dog.jpg";
-            openRegisterPage(event,dog2Path);
+            openRegisterPage(event, dog2Path);
 
         } else {
             setProfileImage("PresetImage_Dog.jpg");
@@ -155,11 +172,17 @@ public class ChooseIconController implements Initializable {
 
     }
 
+    /**
+     * It runs when you chose the forth Icon.
+     * It takes into account where you come from and returns you to that page while saving your choice of icon.
+     * @param event
+     * @throws IOException
+     */
     @FXML
     public void chooseBearAuction(ActionEvent event) throws IOException {
         if (register == 0) {
         	String bearPath = "co/uk/artatawe/profileImage/SavedProfileImages/PresetImage_Lion.jpg";
-            openRegisterPage(event,bearPath);
+            openRegisterPage(event, bearPath);
 
         } else {
             setProfileImage("PresetImage_Lion.jpg");
@@ -169,11 +192,17 @@ public class ChooseIconController implements Initializable {
 
     }
 
+    /**
+     * It runs when you chose the fifth Icon.
+     * It takes into account where you come from and returns you to that page while saving your choice of icon.
+     * @param event
+     * @throws IOException
+     */
     @FXML
     public void choosePenguinAuction(ActionEvent event) throws IOException {
         if (register == 0) {
         	String penguinPath = "co/uk/artatawe/profileImage/SavedProfileImages/PresetImage_Penguin.jpg";
-            openRegisterPage(event,penguinPath);
+            openRegisterPage(event, penguinPath);
 
         } else {
             setProfileImage("PresetImage_Penguin.jpg");
@@ -196,6 +225,7 @@ public class ChooseIconController implements Initializable {
 
     }
 
+    //Returns you to register page and it passes the path of the chosen icon.
     private void openRegisterPage(ActionEvent event, String path) {
     	RegisterController registerController
         	= new RegisterController();
@@ -219,7 +249,8 @@ public class ChooseIconController implements Initializable {
     	
 
     }
-
+    
+    //Returns you to profile page.
     private void goBackToProfilePage(ActionEvent event) {
         //Creates a new controller.
         ProfilePageController profilePageController

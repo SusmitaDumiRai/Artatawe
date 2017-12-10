@@ -24,8 +24,8 @@ import java.util.ResourceBundle;
 /**
  * Handles show auction fxml file.
  * Displays detailed information about certain artwork.
- *
  * @author 908928 - Susmita
+ * @author 914937 - Plamena
  */
 public class ShowAuctionController implements Initializable {
 
@@ -270,7 +270,7 @@ public class ShowAuctionController implements Initializable {
                 " and auctionid = '" + artwork.getArtworkID() + "';";
         for (User user : userDatabaseManager.getAllUsers(sqlSelectWatching)) {
             if (isWatching(user)) {
-                watchIcon.setImage(new Image("co/uk/artatawe/gui/Icons/full-eye.png"));
+                watchIcon.setImage(new Image("co/uk/artatawe/gui/Icons/full-eye1.png"));
             }
         }
 
@@ -446,7 +446,7 @@ public class ShowAuctionController implements Initializable {
             String sqlInsert = "insert into watching values (" + this.auction.getArtwork().getArtworkID() + ",'" + this.username + "');";
 
             watchingDatabaseManager.executeStatement(sqlInsert);
-            watchIcon.setImage(new Image("co/uk/artatawe/gui/Icons/full-eye.png"));
+            watchIcon.setImage(new Image("co/uk/artatawe/gui/Icons/full-eye1.png"));
             numPeopleWatching++;
             numWatchers.setText(Integer.toString(numPeopleWatching));
         }
