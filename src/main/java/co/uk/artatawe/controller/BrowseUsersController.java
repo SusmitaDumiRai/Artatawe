@@ -1,13 +1,5 @@
 package co.uk.artatawe.controller;
 
-/**
- * Handles browse user fxml file.
- * Displays all users and the ability to un/favourite them.
- *
- * @author 914937 - Plamena
- * @author 908928 - Susmita
- */
-
 import co.uk.artatawe.database.FavouriteUserDatabaseManager;
 import co.uk.artatawe.database.UserDatabaseManager;
 import co.uk.artatawe.main.FavouriteUsers;
@@ -17,7 +9,6 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.*;
 import javafx.scene.image.Image;
@@ -29,6 +20,13 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+/**
+ * Handles browse user fxml file.
+ * Displays all users and the ability to un/favourite them.
+ *
+ * @author 914937 - Plamena
+ * @author 908928 - Susmita
+ */
 public class BrowseUsersController implements Initializable {
 
     private final int IMAGE_WIDTH = 150;
