@@ -454,7 +454,7 @@ public class CreateAuctionController implements Initializable {
         ArtworkDatabaseManager artworkDatabaseManager = new ArtworkDatabaseManager();
 
         String sqlInsertAuction = "INSERT INTO AUCTION (auctionid, seller,  numofbidsleft, auctioncomp, highestbid) values ('" +
-                artworkDatabaseManager.getArtworkID(title.getText()) +
+                artworkDatabaseManager.getArtworkID(title.getText().replaceAll("'", "''")) +
                 "','" + sellerName.getText() + "','" + allowedBids.getText() + "','0','" + reservedPrice.getText() + "');";
 
         auctionDatabaseManager.updateStatement(sqlInsertAuction);
