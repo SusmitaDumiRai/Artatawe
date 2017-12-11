@@ -68,6 +68,17 @@ Instructions to compile this project in command line - [video demo is provided.]
 * Gary's lecture notes from CS-250
 * [SQLite tutorial](http://www.sqlitetutorial.net/)
 ***
+### Art used 
+* [Bar reflection](http://www.artistkevday.co.uk/gallery_445356.html)
+* [Pile of strawberries](https://neilcarroll.com/about)
+* [Summer Holiday](https://joelclarkartist.artweb.com/)
+* [To catch a moon fish](https://qinni.deviantart.com/art/To-Catch-A-Moon-Fish-203610895)
+* [The dangers of late night mushroom picking](https://imaginism.deviantart.com/art/The-Dangers-of-Late-Night-Mushroom-Picking-383862402)
+* [Wooden wonders](https://www.creativeboom.com/inspiration/willy-verginer/)
+* [Demeter](https://www.carlpaynefineart.com/demeter/)
+* [FLIGHTLESS BIRD FROM FAIRY TALE](https://www.saatchiart.com/art/Sculpture-FLIGHTLESS-BIRD-FROM-FAIRY-TALE/856304/2943230/view)
+* [Bear, Cat, Dog, Penguin, Lion](https://www.saatchiart.com/art/Sculpture-FLIGHTLESS-BIRD-FROM-FAIRY-TALE/856304/2943230/view)
+***
 ### Snapshots
 ![Login](https://i.gyazo.com/d5350315f1b9726dab4579eec1b0ef33.png "Login page")
 
