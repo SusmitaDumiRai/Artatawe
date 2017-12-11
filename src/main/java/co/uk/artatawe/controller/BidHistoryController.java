@@ -85,8 +85,9 @@ public class BidHistoryController implements Initializable {
      * @return array list of auctions won by user.
      */
     public ObservableList<Auction> getWonAuctions() {
-        String sqlSelect = "Select distinct auction.auctionid, numofbidsleft, seller, highestbid, auctioncomp, winningbid from auction, bid " +
-                "where auctionComp = 1 and auction.auctionid = bid.auctionid and buyer = '" + this.username + "';";
+        String sqlSelect = "select auction.auctionid, seller, numofbidsleft, highestbid, auctioncomp, winningbid" +
+                " from auction, bid where auction.auctionid = bid.bidid and auctioncomp = 1 " +
+                "and auction.winningbid in (select bidid from bid where buyer = '" + this.username + "');";
         return FXCollections.observableArrayList(new AuctionDatabaseManager().getAllAuctions(sqlSelect));
 
     }
