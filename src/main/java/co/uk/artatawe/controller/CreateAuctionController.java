@@ -222,7 +222,7 @@ public class CreateAuctionController implements Initializable {
 
             successLabel.setText("Success!");
             successLabel.setTextFill(Paint.valueOf("GREEN"));
-
+            clearAllData();
 
         }
     }
@@ -237,6 +237,7 @@ public class CreateAuctionController implements Initializable {
         width.clear();
         height.clear();
         depth.clear();
+        creatorName.clear();
         reservedPrice.clear();
         allowedBids.clear();
         description.clear();
